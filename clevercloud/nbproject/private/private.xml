@@ -13,5 +13,6 @@
             <file>file:/home/apanarello/Scrivania/progetto/FINITO/clevercloud/sources/org/clever/ClusterManager/HadoopNamenode/HadoopNamenodeAgent.java</file>
             <file>file:/home/apanarello/Scrivania/progetto/FINITO/clevercloud/sources/org/clever/ClusterManager/HadoopJobtracker/configuration_HadoopJobTracker.xml</file>
         </group>
+        <group name="Federation"/>
     </open-files>
 </project-private>

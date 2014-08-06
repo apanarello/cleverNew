@@ -59,6 +59,7 @@ import org.clever.Common.S3tools.S3Tools;
 
 import org.clever.Common.JobRouler.Dataweight;
 import org.clever.Common.JobRouler.WeightComparator;
+import org.clever.Common.XMLTools.SmilXML;
 
 /**
  *
@@ -85,6 +86,7 @@ public class JobRuler implements Runnable {
     String[][] domRes;
     private S3Tools s3t = null;
     byte part;
+    static int count=0;
 
     public JobRuler() {
 
@@ -225,8 +227,11 @@ public class JobRuler implements Runnable {
         this.logger.debug("size ricavata file");
         logger.debug("VERIFICO VALORE array domRES: " + domRes[0][0] + "con numero VM: " + domRes[0][1]);
         domWeights = calcWeights(domRes, localResources, size);
+        int numberthread=domWeights.size();
         this.logger.debug("calcolo pesi fatto" + domWeights.get(0).getStart() + " " + domWeights.get(0).getEnd() + " dominioA:  " + domWeights.get(1).getStart() + " " + domWeights.get(1).getEnd());
         this.logger.debug("Launching the command to local domain...");
+        int[] numThread=new int[1];
+        numThread[0]=0;
         try {
             long firstByte = domWeights.get(0).getStart();
             long lastByte = domWeights.get(0).getEnd();
@@ -249,6 +254,7 @@ public class JobRuler implements Runnable {
         }
         //domWeights.remove(0);
         Dataweight datTemp = null;
+        
         //Iterator<Dataweight> it = domWeights.iterator();
         part=1;
         for(int i=0;i<domWeights.size();i++){
@@ -291,6 +297,9 @@ public class JobRuler implements Runnable {
             }
 
         }
+        //while(count<numberthread){}
+        
+        SmilXML smil = new SmilXML(this.logger,fileNameS3,bucketName);
 
         //this.ownerPlugin.execJob(fileBuffer, jobName, numDom, listDomains);
     }
@@ -469,6 +478,7 @@ public class JobRuler implements Runnable {
                 }
                 this.logger.debug("Sto per lanciare L'invoke con i seguenti parametri: " + fedParms.get(0).toString() + ";" + fedParms.get(1).toString() + ";" + fedParms.get(2).toString() + ";" + fedParms.get(3).toString());
                 reply = this.owner.invoke("FederationListenerAgent", "forwardCommandToDomainWithoutTimeout", true, fedParms);
+                count++;
                 this.logger.debug("INVOCATO FORWARD");
                 try {
                     Timestamper.write("T17-riuscitoLancioSendJobSuDominioFederato");
@@ -487,7 +497,7 @@ public class JobRuler implements Runnable {
             else {
                 this.logger.debug("Lancio del metodo : " + this.getClass().getName());
                 this.ownerPlugin.submitJob(fileBuffer, jobName, bucketName, fileNameS3, first, last, part);
-
+                count++;
             }
         } catch (CleverException ex) {
             logger.error("Error to lauch job in local domain", ex);
