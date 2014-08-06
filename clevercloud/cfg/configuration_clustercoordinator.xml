@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <server>server.dominioA.it</server>
+  <port>5222</port>
+  <tls>false</tls>
+  <caJks />
+  <caJksPassword />
+  <certPkcs12 />
+  <certPkcs12Password />
+  <username>cmgiovanni-K53SV</username>
+  <password>macmthj</password>
+  <nickname>cmgiovanni-K53SV</nickname>
+  <room>main@conference.server.dominioA.it</room>
+  <roomclients>shell@conference.server.dominioA.it</roomclients>
+  <threshold>1</threshold>
+  <!-- questa threshold non viene più usata, ne uso una dentro configuration_initiator -->
+  <activeAgents>true</activeAgents>
+  <!--Questo tag se settato a true istanzia cmq gli agenti x il CC anche se non è in stato attivo, altrimenti se a false gli agenti verranno istanziati solo se il CM è nello status CM_ACTIVE-->
+  <replaceAgents>true</replaceAgents>
+  <numReloadAgent>4</numReloadAgent>
+  <!--imposto il numero di lanci max consentiti per un agente-->
+  <timeReloadAgent>10</timeReloadAgent>
+  <!-- imposto il max tempo x il rilancio di un agente -->
+  <!-- PROVA CAMPO: -->
+  <librariespath>./lib</librariespath>
+  <agents>
+    <agent>
+      <class>org.clever.ClusterManager.StorageManager.StorageManagerAgent</class>
+      <name />
+    </agent>
+    <agent>
+      <class>org.clever.ClusterManager.Test.TestAgent</class>
+      <name>TestAgent</name>
+    </agent>
+    <agent>
+      <class>org.clever.ClusterManager.DatabaseManager.DatabaseManagerAgent</class>
+      <name />
+    </agent>
+    <agent>
+      <class>org.clever.ClusterManager.VirtualizationManager.VirtualizationManagerAgent</class>
+      <name />
+    </agent>
+    <agent>
+      <class>org.clever.ClusterManager.HelloWorldLauncher.HelloWorldLauncherAgent</class>
+      <name />
+    </agent>
+    <!--<agent>
+      <class>org.clever.ClusterManager.HBaseManager.HBaseManagerAgent</class>
+      <name />
+    </agent>-->
+    <agent>
+      <class>org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent</class>
+      <name />
+    </agent>
+    <agent>
+      <class>org.clever.ClusterManager.Federation.FederationListenerAgent</class>
+      <name />
+    </agent>
+  </agents>
+  <brain>
+    <class>org.clever.ClusterManager.Brain.SensorBrain</class>
+    <name />
+  </brain>
+</configuration>
+

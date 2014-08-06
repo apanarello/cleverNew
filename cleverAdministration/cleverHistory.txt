@@ -1,0 +1,507 @@
+helloWorldLauncher
+exit
+help
+forceHBaseCheckpoint
+help
+forceHBaseCheckpoint
+help
+forceHBaeCheckpoint
+forceHBaseCheckpoint
+help
+forceHBaseCheckpoint
+help
+forceHBaseCheckpoint
+help
+forceHBaseCheckpoint
+help
+forceHBaseCheckpoint
+help
+launchDBNode
+launchDBNode datanode
+launchDBNode
+launchDBNode cacca
+launchDBNode datanode
+help
+launchDBNode namenode
+forceDBCheckpoint
+help
+listhostmanager
+launchDBNode datanode
+launchHelloWorld
+help
+halloWorldLauncher
+helloWorldLauncher
+launchDBNode namenode
+help
+forceDBCheckpoint
+launchDBNode datanode
+launchDBNode namenode
+forceDBCheckpoint
+launchDBNode datanode
+launchDBNode namenode
+launchDBNode datanode
+launchDBNode namenode
+launchDBNode datanode
+forceDBCheckpoint
+launchDBNode datanode
+forceDBCheckpoint
+launchDBNode namenode
+forceDBCheckpoint
+launchDBNode namenode
+forceDBCheckpoint
+help
+launchDBNode datanode
+launchDBNode master
+launchDBNode regionserver
+help
+launchDBNode namenode
+forceDBCheckpoint
+help
+launchDBNode namenode
+forceDBCheckpoint
+launchDBNode namenode
+forceDBCheckpoint
+help
+launchDBNode namenode
+forceDBCheckpoint
+help
+launchDBNode datanode
+launchDBNode namenode
+forceDBCheckpoint
+help
+launchDBNode zookeeper
+launchDBNode zookeeper_quorum
+help
+forceDBCheckpoint
+launchDBNode namenode
+help
+launchDBNode namenode
+help
+launchDBNode
+launchDBNode format_hdfs
+help
+forceDBCheckpoint
+ls
+launchDBNode zookeeper
+launchDBNode zookeeper_quorum
+launchDBNode master
+launchDBNode namenode
+launchDBNode format_hdfs
+forceDBCheckpoint
+help
+launchDBNode format_hdfs
+launchDBNode master
+launchDBNode datanode
+launchDBNode namenode
+launchDBNode datanode
+launchDBNode namenode
+launchDBNode zookeeper_quorum
+halp
+help
+launchDBNode format_hdfs
+launchDBNode
+launchDBNode format_hdfs
+help
+helloWorldLauncher
+help
+helloWorldForward
+helloWorldForward 1
+help
+helloWorldForward 1
+help
+helloWorldForward 1
+help
+helloWorldForward
+help
+helloWorldForward
+help
+helloWorldForward
+helloWorldLauncher
+helloWorldForward
+helloWorldLauncher
+help
+registerUser userProva passProva
+help
+readStorageRulerNodes
+help
+registerUser userProva passProva
+help
+registerUser userProva passProva
+help
+registerUser userProva passProva
+help
+registerUser
+help
+readStorageRulerNodes
+registerUser userProva2 passProva2
+readStorageRulerNodes
+authenticate userProva passProva
+registerUser userProva passProva
+help
+registerUser userProva passProva
+registerUser user2 pass2
+help
+readStorageRulerNodes
+registerUser userProva passProva
+readStorageRulerNodes
+help
+registerUser user1 pass1
+registerUser user2 pass2
+readGroups
+createGroup
+CreateGroup gruppo\ creato\ manualmente user1 pass1
+readGroups
+createGroup gruppo\ creato\ manualmente user1 pass1
+readGroups
+createGroup gruppo_creato_manualmente user1 pass1
+readGroup
+readGroups
+registerUser user1 pass1
+authenticate user1 pass1
+createGroup newGroup user1 pass1
+readGroups
+registerClient user1 pass1
+registerUser user1 pass1
+createGroup newGroup user1 pass1
+registerUser user1 pass1
+authenticate user1 pass1
+help
+getMyGroups
+getMyGroups user1 pass1
+readGroups
+registerClient user1 pass1
+help
+readGroups
+registerUser user1 pass1
+readGroups
+getGroupCreator 913415457 user1 pass1
+registerUser user1 pass1
+readGroups
+getGroupCreator 610486124 user2 pass2
+registerUser user1 pass1
+authenticate user1 pass1
+authenticate user2 pass2
+readGroups
+createGroup user1 pass1
+createGroup newGroup user1 pass1
+registerUser user1 pass1
+createGroup newGroup user1 pass1
+register user1 pass1
+registerUser user1 pass1
+readGroups
+createGroup nuovoGruppo user1 pass1
+registerUser user1 pass1
+createGroup nuovo user1 pass1
+registerUser user1 pass1
+createGroup gruppo user1 pass1
+readGroups
+registerUser user1 pass1
+registerUser user2 pass2
+readGroups
+help
+getGroupCreator 31973787 user2 pass2
+registerUser user1 pass1
+registerUser user2 pass2
+getMyGroups user1 pass1
+registerUser user1 pass1
+registerUser user2 pass2
+getGroupCreator 1094611132 user1 pass1
+getGroupCreator 1094611132 user2 pass2
+createGroup
+createGroup gruppo_condiviso_con_user2
+createGroup gruppo_condiviso_con_user2 user1 pass1
+addClientToGroup
+readGroups
+addUserToGroup
+addUserToGroup user2 -1331954531 user1 pass1
+addUserToGroup
+addUserToGroup user2 -1331954531 user1 pass1
+readGroups
+addUserToGroup user2 -1331954531 user1 pass1
+ addUserToGroup user2 -1331954531 user1
+help
+addUserToGroup
+addUserToGroup [user to add] [group] [user] [password]
+addUserToGroup [user_to_add] [group] [user] [password]
+addUserToGroup user2 -1331954531 user1 pass1
+deleteGroup -1331954531 user1 pass1
+help
+registerUser user1 pass1
+registerUser user2 pass2
+createGroup user1 pass1
+createGroup newGroup user1 pass1
+readGroups
+addUserToGroup
+addUserToGroup user2 1066886744 user1 pass1
+readGroups
+getGroupCreator 1066886744 user1 pass1
+getGroupCreator 1066886744 user2 pass2
+help
+getGroupMembers 1066886744 user1 pass1
+getGroupMembers 1066886744 user2 pass2
+registerUser user3 pass3
+getGroupMembers 1066886744 user3 pass3
+getGroupCreator 1066886744 user3 pass3
+grtGroupCreator 1066886744 user1 pass2
+getGroupCreator 1066886744 user1 pass1
+getGroupCreator 1066886744 user1 pass2
+help
+getMyGroups user1 pass1
+getMyGroups user2 pass2
+help
+isPartOfGroup
+isPartOfGroup user3 1066886744 user1 pass1
+isPartOfGroup user2 1066886744 user1 pass1
+isPartOfGroup user1 1066886744 user1 pass1
+isPartOfGroup user3 1066886744 user2 pass1
+help
+removeUserFromGroup
+removeUserFromGroup user2 1066886744 user1 pass1
+readGroups
+addUserToGroup user3 1066886744 user1 pass1
+readGroups
+deleteGroup 1066886744 user2 pass2
+deleteGroup 1066886744 user3 pass3
+getGroupMembers 1066886744 user2 pass2
+deleteGroup 1066886744 user1 pass1
+readGroups
+help
+readStorage
+registerUser user1 pass1
+help
+registerUser user1 pass1
+registerUser user2 pass2
+help
+readStorage
+help
+putFile
+putFile prova provaHDFS user1 pass1
+putFile /home/giovanni/prova provaHDFS user1 pass1
+help
+putFile /home/giovanni/prova provaHDFS user1 pass1
+registerUser user1 pass1
+registerUser user2 pass2
+putFile /home/giovanni/prova provaHDFS user1 pass1
+help
+readGroups
+readStorage
+readClients
+readGroups
+getFile provaHDFS provaOUT user1 pass1
+registerUser user1 pass1
+registerUser user2 pass2
+putFile /home/giovanni/prova provaHDFS user1 pass1
+registerUser user1 pass1
+registerUser user2 pass2
+putFile /home/giovanni/prova provaHDFS user1 pass1
+registerUser
+registerUser user1 pass1
+registerUser user2 pass2
+putFile /home/giovanni/prova provaHDFS user1 pass1
+registerUser user1 pass1
+putFile /home/giovanni/prova provaHDFS user1 pass1
+registerUser user1 pass1
+putFile /home/giovanni/prova provaHDFS user1 pass1
+registerUser user1 pass1
+putFile /home/giovanni/prova provaHDFS user1 pass1
+registerUser user1 pass1
+putFile /home/giovanni/prova provaHDFS1 user1 pass1
+readStorage
+registerUser user1 pass1
+putFile /home/giovanni/prova provaHDFS user1 pass1
+registerUser user1 pass1
+putFile /home/giovanni/prova provaHDFS user1 prova1
+putFile /home/giovanni/prova provaHDFS user1 pass1
+readGroups
+readStorage
+getFile
+getFile provaHDFS provaOUT user1 pass1
+registerUser user1 pass1
+putFile /home/giovanni/prova provaHDFS user1 pass1
+readGroups
+readStorage
+getFile provaHDFS provaOUT1 user1 pass1
+createGroup
+registerUser user2 pass2
+registerUser user3 pass3
+getFile provaHDFS provaOUT user2 pass2
+deleteFile provaHDFS user3 pass3
+deleteFile provaHDFS user1 pass1
+readStorage
+registerUser user1 pass1
+putFile /home/giovanni/prova provaClever user1 pass1
+listMyFiles user1 pass1
+readStorage
+registerUser user2 pass2
+registerUser user3 pass3
+deleteFile provaHDFS user1 pass1
+deleteFile provaClever user1 pass1
+readStorage
+putFile /home/giovanni/prova provaClever user2 pass2
+readStorage
+readGroups
+createGroup
+createGroup condivided_with_user1
+createGroup condivided_with_user1 user2 pass2
+getMyGroups user2 pass2
+addUserToGroup
+addUserToGroup user1 -1641401886 user2 pass2
+addUserToGroup
+addUserToGroup user1 -1641401886 user2 pass2
+addUserToGroup 
+addUserToGroup
+createGroup condiviso_con_user_3 user2 pass2
+addUserToGroup user3 -905075753 user2 pass2
+addUserToGroup user3 905075753 user2 pass2
+readStorage
+readGroups
+registerUser user1 pass1
+registerUser user2 pass2
+registerUser user3 pass3
+addUserToGroup user2 condiviso_con_user2 user1 pass1
+createGroup condiviso_con_user2 user1 pass1
+addUserToGroup user2 1880365578 user1 pass1
+readGroups
+putFile /home/giovanni/prova provaHDFS user1 pass1
+readStorage
+help
+existsFile provaHDFS user1 pass1
+getFile provaHDFS provaOUT user1 pass1
+getFile provaHDFS provaOUT user2 pass2
+help
+getMyRights provaHDFS user1 pass1
+getRights
+getMyRights
+addOwner
+addOwner provaHDFS 1880365578 RW user1 pass1
+readGroups
+readStorage
+addOwner provaHDFS 1880365578 RW user1 pass1
+registerUser user1 pass1
+registerUser user2 pass2
+putFile /home/giovanni/prova1 prova1 user1 pass1
+createGroup condiviso user1 pass1
+addUserToGroup user2 323209452 user1 pass1
+readGroups
+readStorage
+listMyFiles user1 pass1
+addOwner
+addOwner prova1 323209452 RW user1 pass1
+registerUser user1 pass1
+registerUser user2 pass2
+putFile /home/giovanni/prova1 prova1 user1 pass1
+createGroup condiviso user1 pass1
+addUserToGroup
+addUserToGroup user2 1929686428 user1 pass1
+readGroups
+readStorage
+addOwner
+addOwner prova1 1929686428 RW user1 pass1
+registerUser user1 pass1
+registerUser user2 pass2
+createGroup condiviso user1 pass1
+addUserToGroup user2 1326470274 user1 pass1
+readGroups
+putFile /home/giovanni/prova1 prova1 user1 pass1
+readStorage
+addOwner
+addOwner prova1 1326470274 RW user1 pass1
+readStorage
+listMyFiles user1 pass1
+registerUser user1 pass1
+registerUser user2 pass2
+registerUser user1 pass3
+createGroup condiviso user1 pass1
+addUserToGroup user2 382420217 user1 pass1
+putFile /home/giovanni/prova1 prova1 user1 pass1
+readStorage
+readGroups
+listMyFiles user1 pass1
+readStorage
+addOwner
+addOwner prova1 382420217 RW user1 pass1
+readStorage
+registerUser user3 pass3
+getFile prova1 prova3OUT user3 pass3
+getFile prova1 prova1OUT1 user1 pass1
+getFile prova1 prova1OUT2 user2 pass2
+putFile /home/giovanni/prova2 prova1 user1 pass1
+getFile prova1 prova1OUT2 user2 pass2
+putFile /home/giovanni/prova1 prova1 user2 pass2
+getFile prova1 prova1OUT13 user1 pass1
+getRights
+getRights prova1 user1 pass1
+getRights prova1 user2 pass2
+getMyPermissions
+getPermissions
+help
+getRights
+getMyRights prova1 user1 pass1
+getMyRights prova1 user2 pass2
+registerUser user1 pass1
+registerUser user2 pass2
+registerUser user3 pass3
+createGroup condiviso user1 pass1
+addUserToGroup user2 403756956 user1 pass1
+putFile /home/giovanni/prova1 prova1 user1 pass1
+readStorage
+listMyFiles user1 pass1
+getMyRights prova1 user1 pass1
+listMyFiles user2 pass2
+addOwner
+addOwner prova1 403756956 R user2 pass2
+readStorage
+addOwner prova1 403756956 R user1 pass1
+listMyFiles user2 pass2
+getMyRights prova1 user1 pass1
+changeRights
+changeRights prova1 403756956 W user1 pass1
+getMyRights prova1 user1 pass1
+removeOwner
+removeOwner prova1 403756956 user2 pass2
+removeOwner prova1 403756956 user3 pass3
+removeOwner prova1 403756956 user1 pass1
+listMyFiles user2 pass2
+listAllRights prova1 user1 pass1
+getAllRights prova1 user1 pass1
+removeOwner
+removeOwner prova1 1728243918 user1 pass1
+listMyFiles user1 pass1
+getMyGroups
+getMyGroups user1 pass1
+addOwner
+addOwner prova1 403756956 R user1 pass1
+getFile prova1 prova1OUT2 user2 pass2
+moveFile
+moveFile prova1 prova2 user2 pass2
+moveFile prova1 prova2 user1 pass1
+getFile prova1 prova2OUT2 user2 pass2
+getFile prova2 prova2OUT2 user2 pass2
+putFile /home/giovanni/prova2 prova2 user2 pass2
+changeRights
+changeRights prova2 403756956 W user1 pass1
+getFile prova2 prova2OUT3 user2 pass2
+getFile prova2 prova1OUT1 user1 pass1
+putFile /home/giovanni/prova1 prova2 user2 pass2
+getFile prova2 prova2OUT3 user2 pass2
+getFile prova2 prova1OUT2 user1 pass1
+putFile /home/giovanni/prova2 prova2 user2 pass2
+getFile prova2 prova1OUT2 user1 pass1
+help
+helloWorldForward
+help
+helloWorldForward
+registerUser user1 pass1
+putFil
+putFile /home/giovanni/prova1 prova1 user1 pass1
+registerUser user1 pass1
+putFile /home/giovanni/prova1 prova1 user1 pass1
+readGroup
+readGroups
+registerUser user1 pass1
+readGroups
+putFile /home/giovanni/prova1 prova1 user1 pass1
+getFile prova1 provaOUTfed1 user1 pass1
+readStorage
+deleteFile prova1 user1 pass1
+readStorage

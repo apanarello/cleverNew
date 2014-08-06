@@ -1,0 +1,387 @@
+org.clever.Common.XMPPCommunicator.CleverChatManagerListener: chatCreated 2013-12-16 20:42:53,615 [Smack Listener Processor (0)] INFO  XMPPCommunicator - Chat created with: cmclever1.dominioa.it@server.dominioa.it createdLocally: false
+org.clever.administration.ClusterManagerAdministrationTools: handleCleverMessage 2013-12-16 20:42:53,632 [Smack Listener Processor (0)] DEBUG ClusterManagerAdministrationTools - Received:
+<?xml version="1.0" encoding="UTF-8"?>
+<message id="31409867" type="REPLY">
+  <source>cmclever1.dominioA.it</source>
+  <destination>giovanni</destination>
+  <timestamp>Mon Dec 16 20:42:53 CET 2013</timestamp>
+  <replyToMsg>1968679880</replyToMsg>
+  <hasReply>false</hasReply>
+  <body>
+    <result type="OBJECT" useAttachementId="true">
+      <module>HadoopNamenodeAgent</module>
+      <operation>readClientRulerNodes</operation>
+    </result>
+  </body>
+  <attachement id="0"><![CDATA[<string>&lt;StorageClients&gt;
+&lt;client name=&quot;HADOOP-dominioB.it&quot;&gt;
+  &lt;type&gt;DOMAIN&lt;/type&gt;
+  &lt;password&gt;swktacp&lt;/password&gt;
+  &lt;groups&gt;
+    &lt;group id=&quot;2033598071&quot;&gt;
+      &lt;note&gt;Created with the client&apos;s registration&lt;/note&gt;
+    &lt;/group&gt;
+  &lt;/groups&gt;
+&lt;/client&gt;&lt;client name=&quot;user1&quot;&gt;
+  &lt;type&gt;CLIENT&lt;/type&gt;
+  &lt;password&gt;pass1&lt;/password&gt;
+  &lt;groups&gt;
+    &lt;group id=&quot;1301086378&quot;&gt;
+      &lt;note&gt;Created with the client&apos;s registration&lt;/note&gt;
+    &lt;/group&gt;
+  &lt;/groups&gt;
+&lt;/client&gt;
+&lt;/StorageClients&gt;
+
+&lt;StorageGroups&gt;
+&lt;group id=&quot;2033598071&quot;&gt;
+  &lt;note&gt;Created with the client&apos;s registration&lt;/note&gt;
+  &lt;creator&gt;HADOOP-dominioB.it&lt;/creator&gt;
+&lt;/group&gt;&lt;group id=&quot;1301086378&quot;&gt;
+  &lt;note&gt;Created with the client&apos;s registration&lt;/note&gt;
+  &lt;creator&gt;user1&lt;/creator&gt;
+&lt;/group&gt;
+&lt;/StorageGroups&gt;</string>]]></attachement>
+</message>
+
+
+org.clever.Common.XMPPCommunicator.CleverChatManagerListener: chatCreated 2013-12-16 21:15:27,524 [Smack Listener Processor (0)] INFO  XMPPCommunicator - Chat created with: cmclever1.dominioa.it@server.dominioa.it createdLocally: false
+org.clever.administration.ClusterManagerAdministrationTools: handleCleverMessage 2013-12-16 21:15:28,805 [Smack Listener Processor (0)] DEBUG ClusterManagerAdministrationTools - Received:
+<?xml version="1.0" encoding="UTF-8"?>
+<message id="173917466" type="REPLY">
+  <source>cmclever1.dominioA.it</source>
+  <destination>giovanni</destination>
+  <timestamp>Mon Dec 16 21:15:28 CET 2013</timestamp>
+  <replyToMsg>452903483</replyToMsg>
+  <hasReply>false</hasReply>
+  <body>
+    <result type="OBJECT" useAttachementId="true">
+      <module>HadoopNamenodeAgent</module>
+      <operation>readClientRulerNodes</operation>
+    </result>
+  </body>
+  <attachement id="0"><![CDATA[<string>&lt;StorageClients&gt;
+&lt;client name=&quot;HADOOP-dominioB.it&quot;&gt;
+  &lt;type&gt;DOMAIN&lt;/type&gt;
+  &lt;password&gt;qfkikdp&lt;/password&gt;
+  &lt;groups&gt;
+    &lt;group id=&quot;72993993&quot;&gt;
+      &lt;note&gt;Created with the client&apos;s registration&lt;/note&gt;
+    &lt;/group&gt;
+  &lt;/groups&gt;
+&lt;/client&gt;&lt;client name=&quot;user1&quot;&gt;
+  &lt;type&gt;CLIENT&lt;/type&gt;
+  &lt;password&gt;pass1&lt;/password&gt;
+  &lt;groups&gt;
+    &lt;group id=&quot;261960169&quot;&gt;
+      &lt;note&gt;Created with the client&apos;s registration&lt;/note&gt;
+    &lt;/group&gt;
+  &lt;/groups&gt;
+&lt;/client&gt;
+&lt;/StorageClients&gt;
+
+&lt;StorageGroups&gt;
+&lt;group id=&quot;72993993&quot;&gt;
+  &lt;note&gt;Created with the client&apos;s registration&lt;/note&gt;
+  &lt;creator&gt;HADOOP-dominioB.it&lt;/creator&gt;
+&lt;/group&gt;&lt;group id=&quot;261960169&quot;&gt;
+  &lt;note&gt;Created with the client&apos;s registration&lt;/note&gt;
+  &lt;creator&gt;user1&lt;/creator&gt;
+&lt;/group&gt;
+&lt;/StorageGroups&gt;</string>]]></attachement>
+</message>
+
+
+org.clever.administration.commands.HelpCommand: exec 2013-12-16 21:15:38,860 [main] ERROR CleverCommand - java.lang.ClassNotFoundException: org.clever.administration.commands.ExistsFileCommand
+org.clever.administration.ClusterManagerAdministrationTools: handleCleverMessage 2013-12-16 21:16:31,005 [Smack Listener Processor (0)] DEBUG ClusterManagerAdministrationTools - Received:
+<?xml version="1.0" encoding="UTF-8"?>
+<message id="877515720" type="REPLY">
+  <source>cmclever1.dominioA.it</source>
+  <destination>giovanni</destination>
+  <timestamp>Mon Dec 16 21:16:31 CET 2013</timestamp>
+  <replyToMsg>620466485</replyToMsg>
+  <hasReply>false</hasReply>
+  <body>
+    <result type="OBJECT" useAttachementId="true">
+      <module>HadoopNamenodeAgent</module>
+      <operation>readStorageRulerNodes</operation>
+    </result>
+  </body>
+  <attachement id="0"><![CDATA[<string>&lt;Storage&gt;
+&lt;file path=&quot;prova1&quot; id=&quot;1296499981&quot;&gt;
+  &lt;path&gt;prova1&lt;/path&gt;
+  &lt;id&gt;1296499981&lt;/id&gt;
+  &lt;domain&gt;dominioA.it&lt;/domain&gt;
+  &lt;creator&gt;261960169&lt;/creator&gt;
+  &lt;owners&gt;
+    &lt;group id=&quot;261960169&quot;&gt;
+      &lt;rights&gt;READ_AND_WRITE&lt;/rights&gt;
+    &lt;/group&gt;
+  &lt;/owners&gt;
+&lt;/file&gt;&lt;file path=&quot;1296499981&quot; id=&quot;-1240056960&quot;&gt;
+  &lt;path&gt;1296499981&lt;/path&gt;
+  &lt;id&gt;-1240056960&lt;/id&gt;
+  &lt;domain&gt;LOCAL_DOMAIN&lt;/domain&gt;
+  &lt;creator&gt;72993993&lt;/creator&gt;
+  &lt;owners&gt;
+    &lt;group id=&quot;72993993&quot;&gt;
+      &lt;rights&gt;READ_AND_WRITE&lt;/rights&gt;
+    &lt;/group&gt;
+  &lt;/owners&gt;
+&lt;/file&gt;
+&lt;/Storage&gt;</string>]]></attachement>
+</message>
+
+
+org.clever.Common.XMPPCommunicator.CleverChatManagerListener: chatCreated 2013-12-16 21:48:20,821 [Smack Listener Processor (0)] INFO  XMPPCommunicator - Chat created with: cmclever1.dominioa.it@server.dominioa.it createdLocally: false
+org.clever.administration.ClusterManagerAdministrationTools: handleCleverMessage 2013-12-16 21:48:20,844 [Smack Listener Processor (0)] DEBUG ClusterManagerAdministrationTools - Received:
+<?xml version="1.0" encoding="UTF-8"?>
+<message id="1706972106" type="REPLY">
+  <source>cmclever1.dominioA.it</source>
+  <destination>giovanni</destination>
+  <timestamp>Mon Dec 16 21:48:20 CET 2013</timestamp>
+  <replyToMsg>1673849640</replyToMsg>
+  <hasReply>false</hasReply>
+  <body>
+    <result type="OBJECT" useAttachementId="true">
+      <module>HadoopNamenodeAgent</module>
+      <operation>readClientRulerNodes</operation>
+    </result>
+  </body>
+  <attachement id="0"><![CDATA[<string>&lt;StorageClients&gt;
+
+&lt;/StorageClients&gt;
+
+&lt;StorageGroups&gt;
+
+&lt;/StorageGroups&gt;</string>]]></attachement>
+</message>
+
+
+org.clever.administration.ClusterManagerAdministrationTools: handleCleverMessage 2013-12-16 21:49:21,665 [Smack Listener Processor (0)] DEBUG ClusterManagerAdministrationTools - Received:
+<?xml version="1.0" encoding="UTF-8"?>
+<message id="2012268713" type="REPLY">
+  <source>cmclever1.dominioA.it</source>
+  <destination>giovanni</destination>
+  <timestamp>Mon Dec 16 21:49:21 CET 2013</timestamp>
+  <replyToMsg>1945204241</replyToMsg>
+  <hasReply>false</hasReply>
+  <body>
+    <result type="OBJECT" useAttachementId="true">
+      <module>HadoopNamenodeAgent</module>
+      <operation>readClientRulerNodes</operation>
+    </result>
+  </body>
+  <attachement id="0"><![CDATA[<string>&lt;StorageClients&gt;
+&lt;client name=&quot;HADOOP-dominioB.it&quot;&gt;
+  &lt;type&gt;DOMAIN&lt;/type&gt;
+  &lt;password&gt;xgugaqe&lt;/password&gt;
+  &lt;groups&gt;
+    &lt;group id=&quot;782603966&quot;&gt;
+      &lt;note&gt;Created with the client&apos;s registration&lt;/note&gt;
+    &lt;/group&gt;
+  &lt;/groups&gt;
+&lt;/client&gt;
+&lt;/StorageClients&gt;
+
+&lt;StorageGroups&gt;
+&lt;group id=&quot;782603966&quot;&gt;
+  &lt;note&gt;Created with the client&apos;s registration&lt;/note&gt;
+  &lt;creator&gt;HADOOP-dominioB.it&lt;/creator&gt;
+&lt;/group&gt;
+&lt;/StorageGroups&gt;</string>]]></attachement>
+</message>
+
+
+org.clever.administration.ClusterManagerAdministrationTools: handleCleverMessage 2013-12-16 21:51:07,964 [Smack Listener Processor (0)] DEBUG ClusterManagerAdministrationTools - Received:
+<?xml version="1.0" encoding="UTF-8"?>
+<message id="918926546" type="REPLY">
+  <source>cmclever1.dominioA.it</source>
+  <destination>giovanni</destination>
+  <timestamp>Mon Dec 16 21:51:07 CET 2013</timestamp>
+  <replyToMsg>814193380</replyToMsg>
+  <hasReply>false</hasReply>
+  <body>
+    <result type="OBJECT" useAttachementId="true">
+      <module>HadoopNamenodeAgent</module>
+      <operation>readStorageRulerNodes</operation>
+    </result>
+  </body>
+  <attachement id="0"><![CDATA[<string>&lt;Storage&gt;
+&lt;file path=&quot;-1571376825&quot; id=&quot;1590335748&quot;&gt;
+  &lt;path&gt;-1571376825&lt;/path&gt;
+  &lt;id&gt;1590335748&lt;/id&gt;
+  &lt;domain&gt;LOCAL_DOMAIN&lt;/domain&gt;
+  &lt;creator&gt;782603966&lt;/creator&gt;
+  &lt;owners&gt;
+    &lt;group id=&quot;782603966&quot;&gt;
+      &lt;rights&gt;READ_AND_WRITE&lt;/rights&gt;
+    &lt;/group&gt;
+  &lt;/owners&gt;
+&lt;/file&gt;
+&lt;/Storage&gt;</string>]]></attachement>
+</message>
+
+
+org.clever.administration.ClusterManagerAdministrationTools: handleCleverMessage 2013-12-16 21:55:09,504 [Smack Listener Processor (0)] DEBUG ClusterManagerAdministrationTools - Received:
+<?xml version="1.0" encoding="UTF-8"?>
+<message id="1472577390" type="REPLY">
+  <source>cmclever1.dominioA.it</source>
+  <destination>giovanni</destination>
+  <timestamp>Mon Dec 16 21:55:09 CET 2013</timestamp>
+  <replyToMsg>1374591836</replyToMsg>
+  <hasReply>false</hasReply>
+  <body>
+    <result type="OBJECT" useAttachementId="true">
+      <module>HadoopNamenodeAgent</module>
+      <operation>readStorageRulerNodes</operation>
+    </result>
+  </body>
+  <attachement id="0"><![CDATA[<string>&lt;Storage&gt;
+
+&lt;/Storage&gt;</string>]]></attachement>
+</message>
+
+
+org.clever.administration.commands.HelpCommand: exec 2013-12-17 00:32:06,697 [main] ERROR CleverCommand - java.lang.ClassNotFoundException: org.clever.administration.commands.ExistsFileCommand
+org.clever.Common.XMPPCommunicator.CleverChatManagerListener: chatCreated 2013-12-18 11:14:12,945 [Smack Listener Processor (0)] INFO  XMPPCommunicator - Chat created with: cmclever1.dominioa.it@server.dominioa.it createdLocally: false
+org.clever.administration.ClusterManagerAdministrationTools: handleCleverMessage 2013-12-18 11:14:12,973 [Smack Listener Processor (0)] DEBUG ClusterManagerAdministrationTools - Received:
+<?xml version="1.0" encoding="UTF-8"?>
+<message id="163703822" type="REPLY">
+  <source>cmclever1.dominioA.it</source>
+  <destination>giovanni</destination>
+  <timestamp>Wed Dec 18 11:14:12 CET 2013</timestamp>
+  <replyToMsg>715299339</replyToMsg>
+  <hasReply>false</hasReply>
+  <body>
+    <result type="OBJECT" useAttachementId="true">
+      <module>HadoopNamenodeAgent</module>
+      <operation>readStorageRulerNodes</operation>
+    </result>
+  </body>
+  <attachement id="0"><![CDATA[<string>&lt;Storage&gt;
+&lt;file path=&quot;347906650&quot; id=&quot;1318202147&quot;&gt;
+  &lt;path&gt;347906650&lt;/path&gt;
+  &lt;id&gt;1318202147&lt;/id&gt;
+  &lt;domain&gt;LOCAL_DOMAIN&lt;/domain&gt;
+  &lt;creator&gt;130554599&lt;/creator&gt;
+  &lt;owners&gt;
+    &lt;group id=&quot;130554599&quot;&gt;
+      &lt;rights&gt;READ_AND_WRITE&lt;/rights&gt;
+    &lt;/group&gt;
+  &lt;/owners&gt;
+&lt;/file&gt;
+&lt;/Storage&gt;</string>]]></attachement>
+</message>
+
+
+org.clever.Common.XMPPCommunicator.CleverChatManagerListener: chatCreated 2013-12-18 13:06:06,775 [Smack Listener Processor (0)] INFO  XMPPCommunicator - Chat created with: cmclever1.dominioa.it@server.dominioa.it createdLocally: false
+org.clever.administration.ClusterManagerAdministrationTools: handleCleverMessage 2013-12-18 13:06:06,807 [Smack Listener Processor (0)] DEBUG ClusterManagerAdministrationTools - Received:
+<?xml version="1.0" encoding="UTF-8"?>
+<message id="1488389778" type="REPLY">
+  <source>cmclever1.dominioA.it</source>
+  <destination>giovanni</destination>
+  <timestamp>Wed Dec 18 13:06:06 CET 2013</timestamp>
+  <replyToMsg>1979560693</replyToMsg>
+  <hasReply>false</hasReply>
+  <body>
+    <result type="OBJECT" useAttachementId="true">
+      <module>HadoopNamenodeAgent</module>
+      <operation>readStorageRulerNodes</operation>
+    </result>
+  </body>
+  <attachement id="0"><![CDATA[<string>&lt;Storage&gt;
+
+&lt;/Storage&gt;</string>]]></attachement>
+</message>
+
+
+org.clever.administration.ClusterManagerAdministrationTools: handleCleverMessage 2013-12-18 13:06:11,938 [Smack Listener Processor (0)] DEBUG ClusterManagerAdministrationTools - Received:
+<?xml version="1.0" encoding="UTF-8"?>
+<message id="1441009695" type="REPLY">
+  <source>cmclever1.dominioA.it</source>
+  <destination>giovanni</destination>
+  <timestamp>Wed Dec 18 13:06:11 CET 2013</timestamp>
+  <replyToMsg>2060534058</replyToMsg>
+  <hasReply>false</hasReply>
+  <body>
+    <result type="OBJECT" useAttachementId="true">
+      <module>HadoopNamenodeAgent</module>
+      <operation>readClientRulerNodes</operation>
+    </result>
+  </body>
+  <attachement id="0"><![CDATA[<string>&lt;StorageClients&gt;
+
+&lt;/StorageClients&gt;
+
+&lt;StorageGroups&gt;
+
+&lt;/StorageGroups&gt;</string>]]></attachement>
+</message>
+
+
+org.clever.administration.ClusterManagerAdministrationTools: handleCleverMessage 2013-12-18 13:12:11,684 [Smack Listener Processor (0)] DEBUG ClusterManagerAdministrationTools - Received:
+<?xml version="1.0" encoding="UTF-8"?>
+<message id="25560649" type="REPLY">
+  <source>cmclever1.dominioA.it</source>
+  <destination>giovanni</destination>
+  <timestamp>Wed Dec 18 13:12:11 CET 2013</timestamp>
+  <replyToMsg>780260844</replyToMsg>
+  <hasReply>false</hasReply>
+  <body>
+    <result type="OBJECT" useAttachementId="true">
+      <module>HadoopNamenodeAgent</module>
+      <operation>readClientRulerNodes</operation>
+    </result>
+  </body>
+  <attachement id="0"><![CDATA[<string>&lt;StorageClients&gt;
+&lt;client name=&quot;HADOOP-dominioB.it&quot;&gt;
+  &lt;type&gt;DOMAIN&lt;/type&gt;
+  &lt;password&gt;qwgmjyh&lt;/password&gt;
+  &lt;groups&gt;
+    &lt;group id=&quot;525387744&quot;&gt;
+      &lt;note&gt;Created with the client&apos;s registration&lt;/note&gt;
+    &lt;/group&gt;
+  &lt;/groups&gt;
+&lt;/client&gt;
+&lt;/StorageClients&gt;
+
+&lt;StorageGroups&gt;
+&lt;group id=&quot;525387744&quot;&gt;
+  &lt;note&gt;Created with the client&apos;s registration&lt;/note&gt;
+  &lt;creator&gt;HADOOP-dominioB.it&lt;/creator&gt;
+&lt;/group&gt;
+&lt;/StorageGroups&gt;</string>]]></attachement>
+</message>
+
+
+org.clever.administration.ClusterManagerAdministrationTools: handleCleverMessage 2013-12-18 13:12:28,021 [Smack Listener Processor (0)] DEBUG ClusterManagerAdministrationTools - Received:
+<?xml version="1.0" encoding="UTF-8"?>
+<message id="935036335" type="REPLY">
+  <source>cmclever1.dominioA.it</source>
+  <destination>giovanni</destination>
+  <timestamp>Wed Dec 18 13:12:28 CET 2013</timestamp>
+  <replyToMsg>416902498</replyToMsg>
+  <hasReply>false</hasReply>
+  <body>
+    <result type="OBJECT" useAttachementId="true">
+      <module>HadoopNamenodeAgent</module>
+      <operation>readStorageRulerNodes</operation>
+    </result>
+  </body>
+  <attachement id="0"><![CDATA[<string>&lt;Storage&gt;
+&lt;file path=&quot;-1087838001&quot; id=&quot;-726028359&quot;&gt;
+  &lt;path&gt;-1087838001&lt;/path&gt;
+  &lt;id&gt;-726028359&lt;/id&gt;
+  &lt;domain&gt;LOCAL_DOMAIN&lt;/domain&gt;
+  &lt;creator&gt;525387744&lt;/creator&gt;
+  &lt;owners&gt;
+    &lt;group id=&quot;525387744&quot;&gt;
+      &lt;rights&gt;READ_AND_WRITE&lt;/rights&gt;
+    &lt;/group&gt;
+  &lt;/owners&gt;
+&lt;/file&gt;
+&lt;/Storage&gt;</string>]]></attachement>
+</message>
+
+

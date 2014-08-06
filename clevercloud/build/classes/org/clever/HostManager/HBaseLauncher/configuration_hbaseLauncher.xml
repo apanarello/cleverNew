@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+        <HBaseLauncherPlugin>org.clever.HostManager.HBaseLauncherPlugins.HBaseLauncher</HBaseLauncherPlugin>
+	<moduleName>HBaseLauncherAgent</moduleName>
+        
+        <!--Network interface used to connect with HBase, Hadoop or Zookeeper nodes.-->
+        <networkInterface>wlan0</networkInterface>
+        
+        <!--If "true", beetween an IPv4 and an IPv6 IP, IPv4 one will be communicated to
+        cluster manager to allow connections to nodes running on this host.-->
+        <prefereIPv4>true</prefereIPv4>
+        
+        <!--With the previous option, it is needed to choose the appropriate IP between
+        IPv4 and IPv6 ones-->
+        <useIPv6>false</useIPv6>
+        
+        <!-- Directory in which Hadoop and Zookeeper nodes will save their files.
+        This property is in Host Manager conf because it's host-depending -->
+        <filesDirectory>/home/giovanni/FILESYSTEM</filesDirectory>
+</configuration>

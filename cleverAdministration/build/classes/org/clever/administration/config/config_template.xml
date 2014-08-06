@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <server>serverA</server>
+  <port>5222</port>
+  <username></username>
+  <password></password>
+  <nickname></nickname>
+  <room>shell@conference.serverA</room>
+</configuration>
+

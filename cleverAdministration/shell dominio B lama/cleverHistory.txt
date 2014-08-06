@@ -1,0 +1,195 @@
+readGroups
+exit
+readGroups
+help
+readStorage
+exit
+readGroups
+readStorage
+registerClient user1 pass1
+registerUser user1 pass1
+putFile /home/giovanni/prova1 provaDB1 user1 pass1
+putFile
+exit
+readGroups
+putFile /home/giovanni/prova1 prova1 user1 pass1
+readStorage
+exit
+registerUser user1 pass1
+readGroups
+pufFile
+putFile
+putFile /home/giovanni/prova1 provaDB1 user1 pass1
+readGroups
+readStorage
+getFile provaDB1 provaOUT1 user1 pass1
+listMyFiles
+listMyFiles user1 pass1
+getFile provaDB1 provaOUT2 user1 pass2
+registerClient user2 pass2
+registerUser user2 pass2
+getFile provaDB1 provaOUT2 user2 pass2
+createGroup
+createGroup condiviso user1 pass1
+readGroups
+addUserToGroup
+addUserToGroup user2 user2 pass2
+readGroups
+addUserToGroup
+addUserToGroup user2 263239903 user2 pass2
+addUserToGroup user2 263239903 user1 pass1
+readGroups
+listMyFiles user1 pass1
+listMyFiles user2 pass2
+addOwner
+addOwner provaDB1 263239903 RW user1 pass1
+readStorage
+listMyFiles user2 pass2
+getFile provaDB1 provaOUT2 user2 pass2
+putFile /home/giovanni/prova2 provaDB1 user2 pass2
+getFile provaDB1 provaOUT3 user1 pass1
+exit
+registerUser user1 pass1
+putFile /home/giovanni/prova1 provaDB1 user1 pass1
+exit
+registerUser user1 pass1
+readGroups
+readStorage
+registerUser user1 pass1
+putFile /home/giovanni/prova1 provaDB1 user1 pass1
+getFile provaDB1 provaOUTent user1 pass1
+putFile /home/giovanni/prova2 provaDB2 user1 pass1
+exit
+help
+helloWorldForward
+registerUser user1 pass1
+putFile /home/giovanni/prova1 provaDB1 user1 pass1
+readStorage
+putFile /home/giovanni/prova1 provaDB1 user1 pass1
+exit
+putFile /home/giovanni/prova1 provaDB1 user1 pass1
+exit
+registerUser user1 pass1
+putFile /home/giovanni/prova1 provaDB1 user1 pass1
+exit
+registerUser user1 pass1
+putFile /home/giovanni/prova1 provaDB1 user1 pass1
+readStorage
+getFile provaDB1 provaOUTend1 user1 pass1
+exit
+help
+registerUser user1 pass1
+putFile /home/giovanni/prova1 provaDB1 user1 pass1
+putFile /home/giovanni/prova1 provaDB2 user1 pass1 0
+putFile /home/giovanni/prova1 provaDB2 user1 pass1 3
+putFile /home/giovanni/prova1 provaDB2 user1 pass1 -1
+putFile /home/giovanni/prova1 provaDB2 user1 pass1 30000
+putFile /home/giovanni/prova1 provaDB2 user1 pass1
+exit
+registerUser user1 pass1
+putFile /home/giovanni/prova1 provaDB1 user1 pass1
+getFile provaDB1 provaOggi user1 pass1
+getFile provaDB1 provaOggi user1 pass2
+getFile provaDB1 provaOggi user1 pass2 60000
+exit
+registerUser user1 pass1
+putFile /home/giovanni/prova1 provaDB1 user1 pass1
+exit
+registerUser user1 pass1
+putFile /home/giovanni/prova1 provaDB1 user1 pass1
+putFile /home/giovanni/prova1 provaDB1 user1 pass1 60000
+registerUser user1 pass1
+putFile /home/giovanni/prova1 provaDB1 user1 pass1
+putFile /home/giovanni/prova1 provaDB1 user1 pass1 0
+exit
+readGroups
+putFile /home/giovanni/prova1 provaDB2 user1 pass1
+putFile /home/giovanni/prova1 provaDB2 user1 pass1 1
+putFile /home/giovanni/prova1 provaDB2 user1 pass1
+putFile /home/giovanni/prova1 provaDB3 user1 pass1 4
+putFile /home/giovanni/prova1 provaDB3 user1 pass1 4 4
+putFile /home/giovanni/prova1 provaDB4 user1 pass1 0
+readStorage
+exit
+putFile /home/giovanni/prova1 prova5 user1 pass1
+exit
+putFile /home/giovanni/prova1 prova6 user1 pass1
+putFile /home/giovanni/prova1 prova6 user1 pass1 0
+exit
+registerUser user1 pass1
+putFile /home/giovanni/prova1 prova1 user1 pass1
+exit
+putFile /home/giovanni/prova1 prova2 user1 pass1
+putFile /home/giovanni/prova1 prova2 user1 pass1 0
+exit
+registerUser user1 pass1
+putFile /home/giovanni/prova1 prova1 user1 pass1
+putFile /home/giovanni/prova1 prova1 user1 pass1 0
+putFile /home/giovanni/prova1 prova1 user1 pass1 60000
+exit
+registerUser user1 pass1
+putFile /home/giovanni/prova1 prova1 user1 pass1
+exit
+registerUser user1 pass1
+putFile /home/giovanni/prova1 prova1 user1 pass1
+exit
+registerUser user1 pass1
+putFile /home/giovanni/prova1 prova1 user1 pass1
+getFile prova1 prova1OUTfinale user1 pass1
+deleteFile prova1 user1 pass1
+existsFile prova1 user1 pass1
+putFile /home/giovanni/prova1 prova2 user1 pass1
+getFile prova2 prova2OUTfinale user1 pass1 1
+getFile prova2 prova2OUTfinale user1 pass1 10000
+readStorage
+getFile prova2 prova2OUTfinale user1 pass1 0
+exit
+readStorage
+exit
+readStorage
+help
+registerUser user1 pass1
+putFile
+putFile /home/giovanni/prova1 provaDB1 user1 pass1
+getFile
+getFile provaDB1 provaOUT1 user1 pass1
+putFile /home/giovanni/prova2 provaDB2 user1 pass1
+getFile provaDB2 provaOUT2 user1 pass1
+exit
+readStorage
+putFile prova provaDB user1 pass1
+readStorag
+readStorage
+registerClient user1 pass1
+registerUser user1 pass1
+putFile prova provaDB user1 pass1
+readGroups
+exit
+registerUser user1 pass1
+readGroups
+putFile prova provaDB user1 pass1
+registerUser
+registerUser user1 pass1
+putFile prova provaDB user1 pass1
+exit
+readStorage
+registerUser user1 pass1
+readStorage
+readGroups
+putFile prova provaDB user1 pass1
+exit
+registerUser user1 pass1
+readGroups
+putFile prova provaDB user1 pass1
+registerUser user1 pass1
+exit
+readGroups
+putFile prova provaDB user1 pass1
+exit
+registerUser user1 pass1
+putFile prova provaDB user1 pass1
+exit
+registerUser user1 pass1
+readGroups
+putFile prova provaDB user1 pass1
+getFile provaDB provaRiuscita user1 pass1

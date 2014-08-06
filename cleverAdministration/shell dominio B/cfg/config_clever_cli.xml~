@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <server>server.dominioB.it</server>
+  <port>5222</port>
+  <username>giovanni</username>
+  <password>prova</password>
+  <nickname>shellClient</nickname>
+  <room>shell@conference.server.dominioA.it</room>
+</configuration>
+

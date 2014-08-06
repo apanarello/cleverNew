@@ -1,0 +1,1249 @@
+org.clever.Common.Initiator.Initiator: VerificaNecessitaCM 2013-12-02 12:31:16,161 [main] INFO  Initiator - Number of CM istantiated is 0
+org.clever.Common.Initiator.Initiator: VerificaNecessitaCM 2013-12-02 12:31:16,161 [main] INFO  Initiator - Number of CM istantiated is 0
+org.clever.Common.Initiator.Initiator: start 2013-12-02 12:31:16,162 [main] INFO  Initiator - Number of CM istantiated: truetreshold is: 1
+org.clever.Common.Initiator.Initiator: start 2013-12-02 12:31:16,162 [main] INFO  Initiator - A new Cluster Manager is istantiated!
+org.clever.Common.Initiator.Initiator: launchClusterCoordinator 2013-12-02 12:31:16,162 [main] INFO  Initiator - Launching cluster coordinator with classpath: /home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/jdom.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/jna.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/jug-lgpl-2.0.0.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/sigar.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/smack.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/smackx-debug.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/smackx.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/dbus-2.7.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/api-1.1.3.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/bcmail-jdk16-145.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/bcprov-jdk16-145.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/client-1.1.3.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/log4j.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/activemq-all-5.5.0.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/vboxjxpcom.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/xstream-1.4.2-20110928.170215-1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/xmldb.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-cli-1.2.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-codec-1.4.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-collections-3.1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-httpclient-3.0.1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-logging-1.1.1-javadoc.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-logging-1.1.1-sources.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-logging-1.1.1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-logging-adapters-1.1.1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-logging-api-1.1.1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-net-3.0.1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-vfs2-2.0.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/hexdump.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/httpclient-4.1.2.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/httpclient-cache-4.1.2.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/httpcore-4.1.2.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/httpmime-4.1.2.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/libvirt-0.4.7.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/sedna-xmldb.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/unix.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/vijava520110926.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/activation-1.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/asm-3.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/aspectjrt-1.6.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/aspectjtools-1.6.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/avro-1.5.3.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/avro-ipc-1.5.3.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/com.google.protobuf-2.4.0.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-beanutils-1.7.0.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-beanutils-core-1.8.0.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-cli-1.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-codec-1.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-collections-3.2.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-configuration-1.6.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-daemon-1.0.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-digester-1.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-el-1.0.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-httpclient-3.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-io-2.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-lang-2.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-logging-1.1.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-math-2.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-net-1.4.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/core-3.1.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/guava-11.0.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-ant-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-capacity-scheduler-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-client-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-core-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-examples-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-fairscheduler-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-minicluster-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-test-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-thriftfs-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-tools-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hbase-0.94.5-tests.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hbase-0.94.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/high-scale-lib-1.1.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hsqldb-1.8.0.10.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/httpclient-4.1.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/httpcore-4.1.3.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jackson-core-asl-1.8.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jackson-jaxrs-1.8.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jackson-mapper-asl-1.8.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jackson-xc-1.8.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jamon-runtime-2.3.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jasper-compiler-5.5.23.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jasper-runtime-5.5.23.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jaxb-api-2.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jaxb-impl-2.2.3-1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jdeb-0.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jersey-core-1.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jersey-json-1.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jersey-server-1.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jets3t-0.6.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jettison-1.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jetty-6.1.26.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jetty-util-6.1.26.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jruby-complete-1.6.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jsch-0.1.42.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jsp-2.1-6.1.14.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jsp-api-2.1-6.1.14.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jsr305-1.3.9.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/junit-4.10-HBASE-1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/junit-4.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/kfs-0.2.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/libthrift-0.8.0.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/log4j-1.2.16.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/metrics-core-2.1.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/mockito-all-1.8.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/netty-3.2.4.Final.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/oro-2.0.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/protobuf-java-2.4.0a.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/servlet-api-2.5-6.1.14.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/slf4j-api-1.4.3.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/slf4j-log4j12-1.4.3.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/snappy-java-1.0.3.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/stax-api-1.0.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/velocity-1.7.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/xmlenc-0.52.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/zookeeper-3.4.5.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/build/classes
+org.clever.Common.Initiator.Initiator: launchClusterCoordinator 2013-12-02 12:31:16,162 [main] INFO  Initiator - ClusterCoordinato launching: [Ljava.lang.String;@4f11e3b4
+org.clever.ClusterManager.ClusterCoordinator.Main: <init> 2013-12-02 12:31:16,390 [main] INFO  Main_ClusterCoordinator - 
+ Prima del lancio del costruttore cc!
+
+org.clever.ClusterManager.ClusterCoordinator.Main: <init> 2013-12-02 12:31:16,398 [main] INFO  Main_ClusterCoordinator - 
+Dopo il lancio del costruttore CC, si sta x avviare la start()
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: start 2013-12-02 12:31:16,398 [main] INFO  ClusterCoordinator - 
+START DI CC
+
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: init 2013-12-02 12:31:16,451 [main] DEBUG ClusterCoordinator - Setting java.library.path ...
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: init 2013-12-02 12:31:16,454 [main] DEBUG ClusterCoordinator - ./lib:/usr/lib/jvm/java-7-oracle/jre/lib/amd64:/usr/lib/jvm/java-7-oracle/jre/lib/i386::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib:./lib
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: init 2013-12-02 12:31:16,455 [main] INFO  ClusterCoordinator - 
+
+&&&&& i nuovi valori caricati sono: 4 10
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: init 2013-12-02 12:31:16,455 [main] INFO  ClusterCoordinator - 
+
+REPLACEAGENTS NEL CC: true
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: init 2013-12-02 12:31:16,456 [main] DEBUG ClusterCoordinator - ./lib:./lib:/usr/lib/jvm/java-7-oracle/jre/lib/amd64:/usr/lib/jvm/java-7-oracle/jre/lib/i386::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib:./lib:./lib
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: connectionManagement 2013-12-02 12:31:16,462 [main] INFO  ClusterCoordinator - Connection to server XMPP: server.dominioA.itat port: 5222
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: connect 2013-12-02 12:31:16,929 [main] INFO  XMPPCommunicator - XMPP connected plain mode
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: connectionManagement 2013-12-02 12:31:16,929 [main] INFO  ClusterCoordinator - authentication....
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: authenticate 2013-12-02 12:31:17,557 [main] DEBUG XMPPCommunicator - XMPP connection established with username: cmgiovanni-K53SV password: macmthj server: server.dominioA.it port: 5222
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: joinInRoom 2013-12-02 12:31:17,565 [main] INFO  XMPPCommunicator - Creating room: main@conference.server.dominioA.it with nickname: cmgiovanni-K53SV
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: joinInRoom 2013-12-02 12:31:17,586 [main] INFO  XMPPCommunicator - Created room: main@conference.server.dominioA.it with nickname: cmgiovanni-K53SV
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: connectionManagement 2013-12-02 12:31:17,596 [main] INFO  ClusterCoordinator - DispatcherAgent created
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:31:17,600 [main] INFO  DispatcherAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:31:17,605 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:31:17,605 [main] INFO  LocalCommunicationPlugin - Modules HasMap instatiated
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:31:17,605 [main] INFO  LocalCommunicationPlugin - Module Attaching: DispatcherAgent on group:CM attached total (on each group) modules : 0
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:31:17,606 [main] INFO  DispatcherAgent - 
+nfine istanza ModuleCommunicator
+org.clever.ClusterManager.Dispatcher.DispatcherAgent: initialization 2013-12-02 12:31:17,616 [main] INFO  DispatcherAgent - Dispatcher created
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: connectionManagement 2013-12-02 12:31:17,617 [main] INFO  ClusterCoordinator - Dispatcher Plugin created
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:31:17,622 [main] INFO  InfoAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: InfoAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:31:17,624 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:31:17,624 [main] INFO  LocalCommunicationPlugin - Module Attaching: InfoAgent on group:CM attached total (on each group) modules : 1
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:31:17,625 [main] INFO  InfoAgent - 
+nfine istanza ModuleCommunicator
+org.clever.Common.Initiator.ModuleFactory.ModuleFactory: getInstance 2013-12-02 12:31:17,628 [main] DEBUG ModuleFactory - ModuleFactory created: org.clever.Common.Initiator.ModuleFactory.ModuleFactoryLocal
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: connectionManagement 2013-12-02 12:31:17,629 [main] INFO  ClusterCoordinator - InfoAgent for CM created
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: start 2013-12-02 12:31:17,629 [main] INFO  ClusterCoordinator - Starting procedure launching Agents for CM
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: start 2013-12-02 12:31:17,629 [main] INFO  ClusterCoordinator - This CM is FORCED to launch his Agents
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:31:17,631 [main] INFO  StorageManagerAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: StorageManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:31:17,634 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:31:17,634 [main] INFO  LocalCommunicationPlugin - Module Attaching: StorageManagerAgent on group:CM attached total (on each group) modules : 2
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:31:17,634 [main] INFO  StorageManagerAgent - 
+nfine istanza ModuleCommunicator
+org.clever.ClusterManager.StorageManager.StorageManagerAgent: initialization 2013-12-02 12:31:17,634 [main] INFO  StorageManagerAgent - Read Configuration StorageManager!
+org.clever.ClusterManager.StorageManager.StorageManagerAgent: initialization 2013-12-02 12:31:17,638 [main] INFO  StorageManagerAgent - StorageManager Plugin instantiated !
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: launchAgents 2013-12-02 12:31:17,638 [main] DEBUG ClusterCoordinator - Agent created: org.clever.ClusterManager.StorageManager.StorageManagerAgent
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:31:17,642 [main] INFO  TestAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: TestAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:31:17,645 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:31:17,645 [main] INFO  LocalCommunicationPlugin - Module Attaching: TestAgent on group:CM attached total (on each group) modules : 3
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:31:17,646 [main] INFO  TestAgent - 
+nfine istanza ModuleCommunicator
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: launchAgents 2013-12-02 12:31:17,646 [main] DEBUG ClusterCoordinator - Agent created: org.clever.ClusterManager.Test.TestAgent
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:31:17,648 [main] INFO  DatabaseManagerAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:31:17,650 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:31:17,650 [main] INFO  LocalCommunicationPlugin - Module Attaching: DatabaseManagerAgent on group:CM attached total (on each group) modules : 4
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:31:17,651 [main] INFO  DatabaseManagerAgent - 
+nfine istanza ModuleCommunicator
+org.clever.ClusterManager.DatabaseManagerPlugins.Sedna.DbSedna: <init> 2013-12-02 12:31:17,672 [main] DEBUG DbSednaPlugin - DbSedna plugin created!
+org.clever.ClusterManager.DatabaseManager.DatabaseManagerAgent: initialization 2013-12-02 12:31:17,672 [main] DEBUG DatabaseManagerAgent - called init of org.clever.ClusterManager.DatabaseManagerPlugins.Sedna.DbSedna
+org.clever.ClusterManager.DatabaseManager.DatabaseManagerAgent: initialization 2013-12-02 12:31:18,019 [main] INFO  DatabaseManagerAgent - DbManagerPlugin created 
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,019 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,159 [main] DEBUG LocalCommunicationPlugin - sync message to DispatcherAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,187 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,190 [main] DEBUG DatabaseManagerAgent - Method invoked: subscribeNotification
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,194 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,195 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,199 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: launchAgents 2013-12-02 12:31:18,200 [main] DEBUG ClusterCoordinator - Agent created: org.clever.ClusterManager.DatabaseManager.DatabaseManagerAgent
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:31:18,202 [main] INFO  CMAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: VirtualizationManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:31:18,204 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:31:18,205 [main] INFO  LocalCommunicationPlugin - Module Attaching: VirtualizationManagerAgent on group:CM attached total (on each group) modules : 5
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:31:18,205 [main] INFO  CMAgent - 
+nfine istanza ModuleCommunicator
+org.clever.ClusterManager.VirtualizationManager.VirtualizationManagerAgent: initialization 2013-12-02 12:31:18,205 [main] INFO  VirtualizationManagerAgent - Read Configuration VirtualManager!
+org.clever.ClusterManager.VirtualizationManagerPlugin.VirtualizationManagerClever: <init> 2013-12-02 12:31:18,209 [main] INFO  VirtualizationManager plugin - VirtualizationManager plugin created: 
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,209 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,214 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,219 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,222 [main] DEBUG CMAgent - Method invoked: checkAgentNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,225 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,226 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,230 [main] DEBUG ModuleCommunicator - Result :false
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,231 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,234 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,241 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,265 [main] DEBUG CMAgent - Method invoked: insertNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,274 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,275 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,279 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,280 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,283 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,289 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,291 [main] DEBUG CMAgent - Method invoked: checkAgentNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,294 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,295 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,303 [main] DEBUG ModuleCommunicator - Result :false
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,303 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,306 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,311 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,332 [main] DEBUG CMAgent - Method invoked: insertNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,342 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,343 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,350 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.ClusterManager.VirtualizationManager.VirtualizationManagerAgent: initialization 2013-12-02 12:31:18,350 [main] DEBUG VirtualizationManagerAgent - called init of org.clever.ClusterManager.VirtualizationManagerPlugin.VirtualizationManagerClever
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,351 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,360 [main] DEBUG LocalCommunicationPlugin - sync message to DispatcherAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,366 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,367 [main] DEBUG CMAgent - Method invoked: subscribeNotification
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,370 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,370 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,374 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,374 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,379 [main] DEBUG LocalCommunicationPlugin - sync message to DispatcherAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,385 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,385 [main] DEBUG CMAgent - Method invoked: subscribeNotification
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,388 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,388 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,392 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,392 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,395 [main] DEBUG LocalCommunicationPlugin - sync message to DispatcherAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,400 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,400 [main] DEBUG CMAgent - Method invoked: subscribeNotification
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,402 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,402 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,405 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,405 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,408 [main] DEBUG LocalCommunicationPlugin - sync message to DispatcherAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,413 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,413 [main] DEBUG CMAgent - Method invoked: subscribeNotification
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,415 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,415 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,418 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,418 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,421 [main] DEBUG LocalCommunicationPlugin - sync message to DispatcherAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,425 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,425 [main] DEBUG CMAgent - Method invoked: subscribeNotification
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,428 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,428 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,432 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,432 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,435 [main] DEBUG LocalCommunicationPlugin - sync message to DispatcherAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,440 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,440 [main] DEBUG CMAgent - Method invoked: subscribeNotification
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,443 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,443 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,446 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.ClusterManager.VirtualizationManager.VirtualizationManagerAgent: initialization 2013-12-02 12:31:18,446 [main] INFO  VirtualizationManagerAgent - VirtualizationManager Agent created 
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: launchAgents 2013-12-02 12:31:18,446 [main] DEBUG ClusterCoordinator - Agent created: org.clever.ClusterManager.VirtualizationManager.VirtualizationManagerAgent
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:31:18,448 [main] INFO  HelloWorldLauncherAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: HelloWorldLauncherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:31:18,451 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:31:18,451 [main] INFO  LocalCommunicationPlugin - Module Attaching: HelloWorldLauncherAgent on group:CM attached total (on each group) modules : 6
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:31:18,451 [main] INFO  HelloWorldLauncherAgent - 
+nfine istanza ModuleCommunicator
+org.clever.ClusterManager.HelloWorldLauncher.HelloWorldLauncherAgent: initialization 2013-12-02 12:31:18,451 [main] INFO  HelloWorldLauncherAgent - Reading configuration HelloWorldLauncher
+org.clever.ClusterManager.HelloWorldLauncher.HelloWorldLauncherAgent: initialization 2013-12-02 12:31:18,454 [main] DEBUG HelloWorldLauncherAgent - inxml: java.io.BufferedInputStream@65b165c3
+org.clever.ClusterManager.HelloWorldLauncher.HelloWorldLauncherAgent: initialization 2013-12-02 12:31:18,455 [main] INFO  HelloWorldLauncherAgent - HelloWorldLauncher plugin instantiated !
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,455 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: HelloWorldLauncherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,458 [main] DEBUG LocalCommunicationPlugin - sync message to HelloWorldLauncherAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,462 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,463 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,466 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,471 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,474 [main] DEBUG HelloWorldLauncherAgent - Method invoked: checkAgentNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,476 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,477 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,480 [main] DEBUG ModuleCommunicator - Result :false
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,480 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,483 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,488 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,490 [main] DEBUG HelloWorldLauncherAgent - Method invoked: checkAgentNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,494 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,494 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,497 [main] DEBUG ModuleCommunicator - Result :false
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,497 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,500 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,505 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,518 [main] DEBUG HelloWorldLauncherAgent - Method invoked: insertNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,521 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,521 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,524 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,524 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,527 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,536 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,541 [main] DEBUG HelloWorldLauncherAgent - Method invoked: checkAgentNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,547 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>true</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,548 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>true</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,553 [main] DEBUG ModuleCommunicator - Result :true
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,553 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,556 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,560 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,563 [main] DEBUG HelloWorldLauncherAgent - Method invoked: existNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,566 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,566 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,569 [main] DEBUG ModuleCommunicator - Result :false
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,569 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,572 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,577 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,588 [main] DEBUG HelloWorldLauncherAgent - Method invoked: insertNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,595 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,595 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,601 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,602 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,604 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,608 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,611 [main] DEBUG HelloWorldLauncherAgent - Method invoked: existNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,618 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>true</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,618 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>true</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,624 [main] DEBUG ModuleCommunicator - Result :true
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,624 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,627 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,631 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,639 [main] DEBUG HelloWorldLauncherAgent - Method invoked: deleteNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,645 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,646 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,650 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,650 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,653 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,658 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,662 [main] DEBUG HelloWorldLauncherAgent - Method invoked: existNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,669 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,670 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,674 [main] DEBUG ModuleCommunicator - Result :false
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,675 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,678 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,682 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,690 [main] DEBUG HelloWorldLauncherAgent - Method invoked: getContentNodeXML
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,696 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <string>&lt;agent name=&quot;HadoopNamenodeAgent&quot;&gt;
+  &lt;HadoopStorage/&gt;
+&lt;/agent&gt;</string>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,697 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<string>&lt;agent name=&quot;HadoopNamenodeAgent&quot;&gt;
+  &lt;HadoopStorage/&gt;
+&lt;/agent&gt;</string>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,700 [main] DEBUG ModuleCommunicator - Result :<agent name="HadoopNamenodeAgent">
+  <HadoopStorage/>
+</agent>
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,700 [main] DEBUG HelloWorldLauncherAgent - Method invoked: tryDbSedna
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,702 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <string>RISULTATO DI tryDbSedna()
+HadoopNamenodeAgent non trovato
+HadoopStorage non trovato
+HadoopStorage inserito
+HadoopStorage trovato stavolta
+File non trovato dentro HadoopStorageFile inserito in HadoopStorage
+File trovato stavolta dentro HadoopStorage
+Cancellato nodo File da HadoopStorage
+File non trovato neanche stavolta dentro HadoopStorage
+&lt;agent name=&quot;HadoopNamenodeAgent&quot;&gt;
+  &lt;HadoopStorage/&gt;
+&lt;/agent&gt;</string>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,702 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<string>RISULTATO DI tryDbSedna()
+HadoopNamenodeAgent non trovato
+HadoopStorage non trovato
+HadoopStorage inserito
+HadoopStorage trovato stavolta
+File non trovato dentro HadoopStorageFile inserito in HadoopStorage
+File trovato stavolta dentro HadoopStorage
+Cancellato nodo File da HadoopStorage
+File non trovato neanche stavolta dentro HadoopStorage
+&lt;agent name=&quot;HadoopNamenodeAgent&quot;&gt;
+  &lt;HadoopStorage/&gt;
+&lt;/agent&gt;</string>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,706 [main] DEBUG ModuleCommunicator - Result :RISULTATO DI tryDbSedna()
+HadoopNamenodeAgent non trovato
+HadoopStorage non trovato
+HadoopStorage inserito
+HadoopStorage trovato stavolta
+File non trovato dentro HadoopStorageFile inserito in HadoopStorage
+File trovato stavolta dentro HadoopStorage
+Cancellato nodo File da HadoopStorage
+File non trovato neanche stavolta dentro HadoopStorage
+<agent name="HadoopNamenodeAgent">
+  <HadoopStorage/>
+</agent>
+org.clever.ClusterManager.HelloWorldLauncher.HelloWorldLauncherAgent: initialization 2013-12-02 12:31:18,706 [main] INFO  HelloWorldLauncherAgent - RISULTATO DI tryDbSedna()
+HadoopNamenodeAgent non trovato
+HadoopStorage non trovato
+HadoopStorage inserito
+HadoopStorage trovato stavolta
+File non trovato dentro HadoopStorageFile inserito in HadoopStorage
+File trovato stavolta dentro HadoopStorage
+Cancellato nodo File da HadoopStorage
+File non trovato neanche stavolta dentro HadoopStorage
+<agent name="HadoopNamenodeAgent">
+  <HadoopStorage/>
+</agent>
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: launchAgents 2013-12-02 12:31:18,706 [main] DEBUG ClusterCoordinator - Agent created: org.clever.ClusterManager.HelloWorldLauncher.HelloWorldLauncherAgent
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:31:18,709 [main] INFO  CMAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: HadoopNamenodeAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:31:18,711 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:31:18,711 [main] INFO  LocalCommunicationPlugin - Module Attaching: HadoopNamenodeAgent on group:CM attached total (on each group) modules : 7
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:31:18,711 [main] INFO  CMAgent - 
+nfine istanza ModuleCommunicator
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,711 [main] INFO  HadoopNamenodeAgent - Read Configuration HadoopNamenodeAgent!
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,714 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,716 [main] DEBUG LocalCommunicationPlugin - sync message to DispatcherAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,720 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,721 [main] DEBUG CMAgent - Method invoked: subscribeNotification
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,722 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,723 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,725 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,725 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,728 [main] DEBUG LocalCommunicationPlugin - sync message to DispatcherAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,731 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,732 [main] DEBUG CMAgent - Method invoked: subscribeNotification
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,733 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,734 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,736 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.ClusterManager.HadoopPlugin.NamenodePlugin: <init> 2013-12-02 12:31:18,738 [main] INFO  NamenodePlugin - Read Configuration HadoopNamenodeAgent!
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,742 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,745 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,759 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,764 [main] DEBUG CMAgent - Method invoked: checkAgentNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,766 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,767 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,771 [main] DEBUG ModuleCommunicator - Result :false
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,771 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,775 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,781 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,799 [main] DEBUG CMAgent - Method invoked: insertNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,804 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,804 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,807 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,808 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,810 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,815 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,839 [main] DEBUG CMAgent - Method invoked: insertNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,841 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,841 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,845 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,845 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,848 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,853 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,856 [main] DEBUG CMAgent - Method invoked: checkAgentNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,862 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>true</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,862 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>true</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,869 [main] DEBUG ModuleCommunicator - Result :true
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,872 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,877 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:18,881 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:18,891 [main] DEBUG CMAgent - Method invoked: getContentNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:18,898 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <list>
+  <string>192.168.10.10</string>
+  <string>giovanni-K53SV</string>
+  <string>giovanni</string>
+</list>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,898 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<list>
+  <string>192.168.10.10</string>
+  <string>giovanni-K53SV</string>
+  <string>giovanni</string>
+</list>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:18,903 [main] DEBUG ModuleCommunicator - Result :[192.168.10.10, giovanni-K53SV, giovanni]
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,903 [main] INFO  HadoopNamenodeAgent - scrivo file127.0.0.1	localhost
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,903 [main] INFO  HadoopNamenodeAgent - scrivo file127.0.1.1	giovanni-K53SV
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,903 [main] INFO  HadoopNamenodeAgent - scrivo file
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,904 [main] INFO  HadoopNamenodeAgent - scrivo file# CLEVER
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,904 [main] INFO  HadoopNamenodeAgent - scrivo file
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,904 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.110	server.dominioA.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,904 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.111	clever1.dominioA.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,904 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.112	clever2.dominioA.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,904 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.113	clever3.dominioA.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,904 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.114	clever4.dominioA.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,904 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.115	clever5.dominioA.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,905 [main] INFO  HadoopNamenodeAgent - scrivo file
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,905 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.120	server.dominioB.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,905 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.121	clever1.dominioB.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,905 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.122	clever2.dominioB.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,905 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.123	clever3.dominioB.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,905 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.124	clever4.dominioB.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,905 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.125	clever5.dominioB.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,906 [main] INFO  HadoopNamenodeAgent - scrivo file
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,906 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.130	server.dominioC.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,906 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.131	clever1.dominioC.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,906 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.132	clever2.dominioC.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,906 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.133	clever3.dominioC.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,906 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.134	clever4.dominioC.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,906 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.135	clever5.dominioC.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,906 [main] INFO  HadoopNamenodeAgent - scrivo file
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,907 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.140	server.federation
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,907 [main] INFO  HadoopNamenodeAgent - scrivo file
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,907 [main] INFO  HadoopNamenodeAgent - scrivo file# The following lines are desirable for IPv6 capable hosts
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,907 [main] INFO  HadoopNamenodeAgent - scrivo file::1     ip6-localhost ip6-loopback
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,907 [main] INFO  HadoopNamenodeAgent - scrivo filefe00::0 ip6-localnet
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,907 [main] INFO  HadoopNamenodeAgent - scrivo fileff00::0 ip6-mcastprefix
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,907 [main] INFO  HadoopNamenodeAgent - scrivo fileff02::1 ip6-allnodes
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,908 [main] INFO  HadoopNamenodeAgent - scrivo fileff02::2 ip6-allrouters
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:18,908 [main] INFO  HadoopNamenodeAgent - added to vector
+org.apache.hadoop.conf.Configuration: <init> 2013-12-02 12:31:18,935 [main] DEBUG org.apache.hadoop.conf.Configuration - java.io.IOException: config()
+	at org.apache.hadoop.conf.Configuration.<init>(Configuration.java:227)
+	at org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent.initialization(HadoopNamenodeAgent.java:285)
+	at org.clever.Common.Initiator.ModuleFactory.ModuleFactoryLocal.createAgent(ModuleFactoryLocal.java:87)
+	at org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator.launchAgents(ClusterCoordinator.java:388)
+	at org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator.start(ClusterCoordinator.java:508)
+	at org.clever.ClusterManager.ClusterCoordinator.Main.<init>(Main.java:71)
+	at org.clever.ClusterManager.ClusterCoordinator.Main.main(Main.java:100)
+
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:19,003 [main] INFO  HadoopNamenodeAgent - dim23
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:31:19,007 [main] INFO  HadoopNamenodeAgent - HadoopNamenode Plugin instantiated !
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: launchAgents 2013-12-02 12:31:19,007 [main] DEBUG ClusterCoordinator - Agent created: org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:31:19,009 [main] INFO  FederationListenerAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: FederationListenerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:31:19,012 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:31:19,012 [main] INFO  LocalCommunicationPlugin - Module Attaching: FederationListenerAgent on group:CM attached total (on each group) modules : 8
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:31:19,013 [main] INFO  FederationListenerAgent - 
+nfine istanza ModuleCommunicator
+org.clever.ClusterManager.Federation.FederationListenerAgent: initialization 2013-12-02 12:31:19,013 [main] INFO  FederationListenerAgent - Reading configuration FederationListenerAgent
+org.clever.ClusterManager.Federation.FederationListenerAgent: initialization 2013-12-02 12:31:19,027 [main] INFO  FederationListenerAgent - configuring FederationListenerAgent...
+org.clever.ClusterManager.Federation.FederationListenerAgent: initialization 2013-12-02 12:31:19,029 [main] INFO  FederationListenerAgent - FederationListenerAgent configured!
+org.clever.Common.XMPPCommunicator.RoomListener: <init> 2013-12-02 12:31:19,031 [main] DEBUG RoomListener - roomlistener added: 
+org.clever.ClusterManager.Federation.FederationListenerAgent: initialization 2013-12-02 12:31:19,031 [main] INFO  FederationListenerAgent - FEDERATION RoomListener created
+org.clever.ClusterManager.Federation.FederationListenerAgent: connectionManagement 2013-12-02 12:31:19,032 [main] INFO  FederationListenerAgent - Connection to federation's server XMPP: server.federationat port: 5222
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: connect 2013-12-02 12:31:19,105 [main] INFO  XMPPCommunicator - XMPP connected plain mode
+org.clever.ClusterManager.Federation.FederationListenerAgent: connectionManagement 2013-12-02 12:31:19,105 [main] INFO  FederationListenerAgent - authentication with federation's XMPP server....
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: authenticate 2013-12-02 12:31:19,667 [main] DEBUG XMPPCommunicator - XMPP connection established with username: cmgiovanni-K53SV password: spakeed server: server.federation port: 5222
+org.clever.ClusterManager.Federation.FederationListenerAgent: connectionManagement 2013-12-02 12:31:19,668 [main] INFO  FederationListenerAgent - authenticated with federation's XMPP server!
+org.clever.ClusterManager.Federation.FederationListenerAgent: initialization 2013-12-02 12:31:19,668 [main] INFO  FederationListenerAgent - Created connection to FEDERATION XMPP server
+org.clever.ClusterManager.Federation.FederationListenerAgent: initialization 2013-12-02 12:31:19,672 [main] INFO  FederationListenerAgent - FederatioMessagePoolThread started
+org.clever.ClusterManager.Federation.FederationMessagePoolThread: run 2013-12-02 12:31:19,672 [Thread-11] INFO  FederationListenerAgent - There are not messages to send to other federated CMs. Time to sleep
+org.clever.ClusterManager.Federation.FederationListenerAgent: initialization 2013-12-02 12:31:19,672 [main] INFO  FederationListenerAgent - FederationListenerPlugin istantiated!
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: launchAgents 2013-12-02 12:31:19,673 [main] DEBUG ClusterCoordinator - Agent created: org.clever.ClusterManager.Federation.FederationListenerAgent
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: launchAgents 2013-12-02 12:31:19,674 [main] DEBUG ClusterCoordinator - Brain created: org.clever.ClusterManager.Brain.SensorBrain
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: launchAgents 2013-12-02 12:31:19,674 [main] INFO  ClusterCoordinator - Cluster Coordinator created
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: tryActiveCC 2013-12-02 12:31:19,674 [main] INFO  ClusterCoordinator - Start Election thread....
+org.clever.ClusterManager.ClusterCoordinator.Main: <init> 2013-12-02 12:31:19,675 [main] INFO  Main_ClusterCoordinator - 
+dopo la start()
+
+org.clever.Common.Initiator.ElectionThread: run 2013-12-02 12:31:19,675 [Thread-12] INFO  Election Thread for: cmgiovanni-K53SV - Switching a cluster manager active
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: joinInRoom 2013-12-02 12:31:22,655 [Thread-12] INFO  XMPPCommunicator - Creating room: shell@conference.server.dominioA.it with nickname: cmgiovanni-K53SV
+org.clever.HostManager.Dispatcher.NotificationThread: run 2013-12-02 12:31:22,661 [NotificationThread] DEBUG NotificationThread - X?X target=cmgiovanni-K53SV
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: joinInRoom 2013-12-02 12:31:22,666 [Thread-12] INFO  XMPPCommunicator - Created room: shell@conference.server.dominioA.it with nickname: cmgiovanni-K53SV
+org.clever.Common.XMPPCommunicator.RoomListener: <init> 2013-12-02 12:31:22,667 [Thread-12] DEBUG RoomListener - roomlistener added: 
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: setAsActiveCC 2013-12-02 12:31:22,668 [Thread-12] INFO  ClusterCoordinator - The number of CM in room CLEVER_MAIN is now: 1
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:22,668 [Thread-12] DEBUG ModuleCommunicator - Before sendRecv with has return: FederationListenerAgent
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: sendMessage 2013-12-02 12:31:22,671 [NotificationThread] DEBUG XMPPCommunicator - Sending message: <?xml version="1.0" encoding="UTF-8"?>
+<message id="1630324444" type="NOTIFY">
+  <source>giovanni-K53SV</source>
+  <destination>cmgiovanni-K53SV</destination>
+  <timestamp>Mon Dec 02 12:31:22 CET 2013</timestamp>
+  <replyToMsg>0</replyToMsg>
+  <hasReply>false</hasReply>
+  <body>
+    <notification useAttachementId="true">
+      <hostId>giovanni-K53SV</hostId>
+      <agentId />
+      <notificationId>PRESENCE/HM</notificationId>
+    </notification>
+  </body>
+  <attachement id="0"><![CDATA[<null/>]]></attachement>
+</message>
+
+
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: sendMessage 2013-12-02 12:31:22,671 [NotificationThread] DEBUG XMPPCommunicator - Chat toward cmgiovanni-K53SV@server.dominioA.it not found
+org.clever.Common.XMPPCommunicator.CleverChatManagerListener: chatCreated 2013-12-02 12:31:22,678 [NotificationThread] INFO  XMPPCommunicator - Chat created with: cmgiovanni-K53SV@server.dominioA.it createdLocally: true
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:22,678 [Thread-12] DEBUG LocalCommunicationPlugin - sync message to FederationListenerAgent
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: sendMessage 2013-12-02 12:31:22,678 [NotificationThread] DEBUG XMPPCommunicator - sending message
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: sendMessage 2013-12-02 12:31:22,683 [NotificationThread] DEBUG XMPPCommunicator - message sent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:22,684 [Thread-12] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.ClusterManager.Federation.FederationListenerAgent: setAsActiveCM 2013-12-02 12:31:22,684 [Thread-12] DEBUG FederationListenerAgent - ConnectionXMPP.ROOM.FEDERATION = FEDERATION
+org.clever.ClusterManager.Federation.FederationListenerAgent: setAsActiveCM 2013-12-02 12:31:22,685 [Thread-12] DEBUG FederationListenerAgent - conn = org.clever.Common.XMPPCommunicator.ConnectionXMPP@4c082ab3
+org.clever.ClusterManager.Federation.FederationListenerAgent: setAsActiveCM 2013-12-02 12:31:22,685 [Thread-12] DEBUG FederationListenerAgent - room = federation@conference.server.federation
+org.clever.ClusterManager.Federation.FederationListenerAgent: setAsActiveCM 2013-12-02 12:31:22,685 [Thread-12] DEBUG FederationListenerAgent - username = cmgiovanni-K53SV
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: joinInRoom 2013-12-02 12:31:22,685 [Thread-12] INFO  XMPPCommunicator - Creating room: federation@conference.server.federation with nickname: cmgiovanni-K53SV
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: joinInRoom 2013-12-02 12:31:22,691 [Thread-12] INFO  XMPPCommunicator - Created room: federation@conference.server.federation with nickname: cmgiovanni-K53SV
+org.clever.Common.XMPPCommunicator.CleverChatManagerListener: chatCreated 2013-12-02 12:31:22,691 [Smack Listener Processor (0)] INFO  XMPPCommunicator - Chat created with: giovanni-k53sv@server.dominioa.it createdLocally: false
+org.clever.ClusterManager.Federation.FederationListenerAgent: setAsActiveCM 2013-12-02 12:31:22,691 [Thread-12] INFO  FederationListenerAgent - CM joined in FEDERATION room
+org.clever.ClusterManager.Federation.FederationListenerAgent: setAsActiveCM 2013-12-02 12:31:22,693 [Thread-12] DEBUG FederationListenerAgent - MultiUserChat = org.jivesoftware.smackx.muc.MultiUserChat@513efafd
+org.clever.ClusterManager.Federation.FederationListenerAgent: setAsActiveCM 2013-12-02 12:31:22,693 [Thread-12] INFO  FederationListenerAgent - Room listener added in FEDERATION MultiUserChat
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:31:22,693 [Thread-12] DEBUG XMPPCommunicator - lanciato getFederatedCMs
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:31:22,700 [Thread-12] DEBUG XMPPCommunicator - mucTemp: org.jivesoftware.smackx.muc.MultiUserChat@513efafd
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:31:22,701 [Thread-12] DEBUG XMPPCommunicator - it: java.util.Collections$UnmodifiableCollection$1@216b55e2
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:31:22,702 [Thread-12] DEBUG XMPPCommunicator - it.next
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:31:22,703 [Thread-12] DEBUG XMPPCommunicator - occupantJid: federation@conference.server.federation/cmgiovanni-K53SV
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:31:22,703 [Thread-12] DEBUG XMPPCommunicator - presence: available: chat (CM_ACTIVE)
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:31:22,704 [Thread-12] DEBUG XMPPCommunicator - nick: cmgiovanni-K53SV
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:31:22,704 [Thread-12] DEBUG XMPPCommunicator - it.next
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:31:22,704 [Thread-12] DEBUG XMPPCommunicator - occupantJid: federation@conference.server.federation/cmclever1.dominioB.it
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:31:22,705 [Thread-12] DEBUG XMPPCommunicator - presence: available: chat (CM_ACTIVE)
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:31:22,705 [Thread-12] DEBUG XMPPCommunicator - nick: cmclever1.dominioB.it
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:31:22,706 [Thread-12] DEBUG XMPPCommunicator - tmp: CM_ACTIVE
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:31:22,706 [Thread-12] DEBUG XMPPCommunicator - Occupant aggiunto alla lista il CM cmclever1.dominioB.it
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:31:22,707 [Thread-12] DEBUG XMPPCommunicator - array: [cmclever1.dominioB.it]
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:22,707 [Thread-12] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:22,713 [Thread-12] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:22,720 [Thread-12] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:22,723 [Thread-12] DEBUG FederationListenerAgent - Method invoked: existNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:22,726 [Thread-12] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:22,726 [Thread-12] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:22,730 [Thread-12] DEBUG ModuleCommunicator - Result :false
+org.clever.ClusterManager.FederationPlugins.FederationListener: initAsActive 2013-12-02 12:31:22,730 [Thread-12] INFO  FederationListenerAgent - Federation's node doesn't exist in sednaDB. Creating federation's node
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:22,730 [Thread-12] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:22,735 [Thread-12] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:31:22,741 [Thread-12] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:31:22,756 [Thread-12] DEBUG FederationListenerAgent - Method invoked: insertNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:31:22,759 [Thread-12] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:22,759 [Thread-12] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:31:22,763 [Thread-12] DEBUG ModuleCommunicator - Result :null
+org.clever.ClusterManager.FederationPlugins.FederationListener: initAsActive 2013-12-02 12:31:22,763 [Thread-12] INFO  FederationListenerAgent - FederationNode created.
+org.clever.ClusterManager.FederationPlugins.FederationListener: initAsActive 2013-12-02 12:31:22,763 [Thread-12] DEBUG FederationListenerAgent - Creation of nodes on sednaDB for each of the federated CMs...
+org.clever.ClusterManager.FederationPlugins.FederationListener: initAsActive 2013-12-02 12:31:22,764 [Thread-12] DEBUG FederationListenerAgent - target: cmclever1.dominioB.it
+org.clever.ClusterManager.FederationPlugins.FederationListener: initAsActive 2013-12-02 12:31:22,764 [Thread-12] INFO  FederationListenerAgent - Retrieving nick and domain for CM: cmclever1.dominioB.it
+org.clever.ClusterManager.FederationPlugins.FederationListener: forwardCommandToCM 2013-12-02 12:31:22,766 [Thread-12] DEBUG FederationListenerAgent - ID for this msg: 1436907971
+org.clever.ClusterManager.FederationPlugins.FederationListener: forwardCommandToCM 2013-12-02 12:31:22,777 [Thread-12] DEBUG FederationListenerAgent - Launching addAsActiveCMandReply method of FederationListenerAgent agent to dominioA.it domain (CM=cmclever1.dominioB.it).
+org.clever.ClusterManager.FederationPlugins.FederationListener: forwardCommandToCM 2013-12-02 12:31:22,777 [Thread-12] DEBUG FederationListenerAgent - Message type: REQUEST type value: 0 id: 1436907971
+org.clever.Common.XMPPCommunicator.RoomListener: processPacket 2013-12-02 12:31:22,786 [Smack Listener Processor (1)] DEBUG RoomListener - messaggio xmpp: org.jivesoftware.smack.packet.Message@ca577fd5
+org.clever.Common.XMPPCommunicator.RoomListener: processPacket 2013-12-02 12:31:23,025 [Smack Listener Processor (1)] DEBUG RoomListener - messaggio xmpp: org.jivesoftware.smack.packet.Message@aada9a3a
+org.clever.ClusterManager.Federation.FederationListenerAgent: handleCleverMessage 2013-12-02 12:31:23,030 [Smack Listener Processor (1)] DEBUG FederationListenerAgent - Message: <?xml version="1.0" encoding="UTF-8"?>
+<message id="1436907971" type="REPLY">
+  <source>cmclever1.dominioB.it</source>
+  <destination>cmgiovanni-K53SV</destination>
+  <timestamp>Mon Dec 02 12:31:23 CET 2013</timestamp>
+  <replyToMsg>1436907971</replyToMsg>
+  <hasReply>false</hasReply>
+  <body>
+    <result type="OBJECT" useAttachementId="true">
+      <module>FederationListenerAgent</module>
+      <operation>addAsActiveCMandReply</operation>
+    </result>
+  </body>
+  <attachement id="0"><![CDATA[<string-array>
+  <string>dominioB.it</string>
+  <string>cmclever1.dominioB.it</string>
+</string-array>]]></attachement>
+</message>
+
+
+org.clever.ClusterManager.Federation.FederationListenerAgent: handleCleverMessage 2013-12-02 12:31:23,057 [Smack Listener Processor (1)] DEBUG FederationListenerAgent - id risposta: 1436907971
+org.clever.ClusterManager.Federation.FederationListenerAgent: handleCleverMessage 2013-12-02 12:31:23,058 [Smack Listener Processor (1)] DEBUG FederationListenerAgent - Prendo la request alla key 1436907971 dalla hashmap che fa da pool
+org.clever.ClusterManager.Federation.FederationListenerAgent: handleCleverMessage 2013-12-02 12:31:23,058 [Smack Listener Processor (1)] DEBUG FederationListenerAgent - Request = org.clever.ClusterManager.DispatcherPlugins.DispatcherClever.Request@27612a4c
+org.clever.ClusterManager.Federation.FederationListenerAgent: handleCleverMessage 2013-12-02 12:31:23,068 [Smack Listener Processor (1)] DEBUG FederationListenerAgent - reply object: [Ljava.lang.String;@521ab8b7
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: connect 2013-12-02 12:35:18,213 [main] INFO  XMPPCommunicator - XMPP connected plain mode
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: authenticate 2013-12-02 12:35:18,829 [main] DEBUG XMPPCommunicator - XMPP connection established with username: giovanni-K53SV password: tllmjbq server: server.dominioA.it port: 5222
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: joinInRoom 2013-12-02 12:35:18,836 [main] INFO  XMPPCommunicator - Creating room: main@conference.server.dominioA.it with nickname: giovanni-K53SV
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: joinInRoom 2013-12-02 12:35:18,856 [main] INFO  XMPPCommunicator - Created room: main@conference.server.dominioA.it with nickname: giovanni-K53SV
+org.clever.Common.Initiator.Initiator: start 2013-12-02 12:35:18,858 [main] INFO  Initiator - Lancio processo Initiator, pid: 13519@giovanni-K53SV
+org.clever.Common.Initiator.Initiator: launchHostCoordinator 2013-12-02 12:35:18,859 [main] INFO  Initiator - Lancio host coordinator
+org.clever.HostManager.HostCoordinator.HostCoordinator: init 2013-12-02 12:35:18,862 [main] DEBUG Host Coordinator - CLASSPATH= /home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/jdom.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/jna.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/jug-lgpl-2.0.0.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/sigar.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/smack.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/smackx-debug.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/smackx.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/dbus-2.7.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/api-1.1.3.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/bcmail-jdk16-145.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/bcprov-jdk16-145.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/client-1.1.3.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/log4j.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/activemq-all-5.5.0.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/vboxjxpcom.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/xstream-1.4.2-20110928.170215-1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/xmldb.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-cli-1.2.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-codec-1.4.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-collections-3.1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-httpclient-3.0.1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-logging-1.1.1-javadoc.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-logging-1.1.1-sources.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-logging-1.1.1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-logging-adapters-1.1.1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-logging-api-1.1.1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-net-3.0.1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-vfs2-2.0.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/hexdump.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/httpclient-4.1.2.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/httpclient-cache-4.1.2.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/httpcore-4.1.2.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/httpmime-4.1.2.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/libvirt-0.4.7.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/sedna-xmldb.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/unix.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/vijava520110926.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/activation-1.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/asm-3.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/aspectjrt-1.6.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/aspectjtools-1.6.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/avro-1.5.3.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/avro-ipc-1.5.3.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/com.google.protobuf-2.4.0.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-beanutils-1.7.0.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-beanutils-core-1.8.0.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-cli-1.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-codec-1.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-collections-3.2.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-configuration-1.6.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-daemon-1.0.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-digester-1.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-el-1.0.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-httpclient-3.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-io-2.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-lang-2.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-logging-1.1.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-math-2.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-net-1.4.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/core-3.1.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/guava-11.0.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-ant-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-capacity-scheduler-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-client-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-core-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-examples-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-fairscheduler-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-minicluster-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-test-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-thriftfs-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-tools-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hbase-0.94.5-tests.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hbase-0.94.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/high-scale-lib-1.1.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hsqldb-1.8.0.10.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/httpclient-4.1.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/httpcore-4.1.3.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jackson-core-asl-1.8.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jackson-jaxrs-1.8.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jackson-mapper-asl-1.8.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jackson-xc-1.8.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jamon-runtime-2.3.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jasper-compiler-5.5.23.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jasper-runtime-5.5.23.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jaxb-api-2.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jaxb-impl-2.2.3-1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jdeb-0.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jersey-core-1.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jersey-json-1.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jersey-server-1.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jets3t-0.6.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jettison-1.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jetty-6.1.26.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jetty-util-6.1.26.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jruby-complete-1.6.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jsch-0.1.42.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jsp-2.1-6.1.14.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jsp-api-2.1-6.1.14.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jsr305-1.3.9.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/junit-4.10-HBASE-1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/junit-4.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/kfs-0.2.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/libthrift-0.8.0.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/log4j-1.2.16.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/metrics-core-2.1.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/mockito-all-1.8.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/netty-3.2.4.Final.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/oro-2.0.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/protobuf-java-2.4.0a.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/servlet-api-2.5-6.1.14.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/slf4j-api-1.4.3.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/slf4j-log4j12-1.4.3.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/snappy-java-1.0.3.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/stax-api-1.0.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/velocity-1.7.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/xmlenc-0.52.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/zookeeper-3.4.5.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/build/classes
+org.clever.HostManager.HostCoordinator.HostCoordinator: init 2013-12-02 12:35:18,867 [main] DEBUG Host Coordinator - ./lib:/usr/lib/jni:./lib
+org.clever.HostManager.HostCoordinator.HostCoordinator: init 2013-12-02 12:35:18,867 [main] INFO  Host Coordinator - Initiator created
+org.clever.HostManager.HostCoordinator.HostCoordinator: init 2013-12-02 12:35:18,867 [main] INFO  Host Coordinator - 
+
+ valori nuovi caricati: 4 10
+org.clever.Common.Communicator.Agent: start 2013-12-02 12:35:18,871 [main] INFO  DispatcherAgentHM - 
+istanzio ModuleCommunicator(agentName), dove agentName: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:35:18,876 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:35:18,876 [main] INFO  LocalCommunicationPlugin - Modules HasMap instatiated
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:35:18,877 [main] INFO  LocalCommunicationPlugin - Module Attaching: DispatcherAgent on group:HM attached total (on each group) modules : 0
+org.clever.Common.Communicator.Agent: start 2013-12-02 12:35:18,877 [main] INFO  DispatcherAgentHM - 
+nfine istanza ModuleCommunicator
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getHostName 2013-12-02 12:35:18,879 [main] DEBUG XMPPCommunicator - Host name: giovanni-K53SV
+org.clever.HostManager.Dispatcher.NotificationThread: run 2013-12-02 12:35:18,879 [NotificationThread] DEBUG NotificationThread - Start NotificationThread run!
+org.clever.HostManager.Dispatcher.DispatcherAgent: initialization 2013-12-02 12:35:18,879 [main] DEBUG DispatcherAgentHM - ?=)** hostId= giovanni-K53SV
+org.clever.HostManager.Dispatcher.DispatcherAgent: sendNotification 2013-12-02 12:35:18,880 [main] DEBUG DispatcherAgentHM - preparing notify clever message
+org.clever.HostManager.Dispatcher.DispatcherAgent: sendNotification 2013-12-02 12:35:18,988 [main] DEBUG DispatcherAgentHM - notification sent
+org.clever.Common.Initiator.ModuleFactory.ModuleFactory: getInstance 2013-12-02 12:35:19,002 [main] DEBUG ModuleFactory - ModuleFactory created: org.clever.Common.Initiator.ModuleFactory.ModuleFactoryLocal
+org.clever.Common.Communicator.Agent: start 2013-12-02 12:35:19,002 [main] INFO  InfoAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: InfoAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:35:19,005 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:35:19,005 [main] INFO  LocalCommunicationPlugin - Module Attaching: InfoAgent on group:HM attached total (on each group) modules : 1
+org.clever.Common.Communicator.Agent: start 2013-12-02 12:35:19,005 [main] INFO  InfoAgent - 
+nfine istanza ModuleCommunicator
+org.clever.HostManager.HostCoordinator.HostCoordinator: launchAgents 2013-12-02 12:35:19,006 [main] INFO  Host Coordinator - # inizio lancio agente nell'HC
+org.clever.Common.Communicator.Agent: start 2013-12-02 12:35:19,008 [main] INFO  HypervisorAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: HyperVisorAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:35:19,011 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:35:19,011 [main] INFO  LocalCommunicationPlugin - Module Attaching: HyperVisorAgent on group:HM attached total (on each group) modules : 2
+org.clever.Common.Communicator.Agent: start 2013-12-02 12:35:19,012 [main] INFO  HypervisorAgent - 
+nfine istanza ModuleCommunicator
+org.clever.HostManager.HyperVisorPlugins.VirtualBox.HvVirtualBox: <init> 2013-12-02 12:35:19,019 [main] INFO  Virtualbox plugin - VirtualBox plugin created: 
+org.clever.HostManager.HyperVisorPlugins.VirtualBox.HvVirtualBox: init 2013-12-02 12:35:19,019 [main] DEBUG Virtualbox plugin - /usr/lib/virtualbox/:./lib:/usr/lib/jni:./lib
+org.clever.HostManager.HyperVisorPlugins.VirtualBox.HvVirtualBox: init 2013-12-02 12:35:19,475 [main] ERROR Virtualbox plugin - Exception in HvVirtualBox. :org.mozilla.xpcom.XPCOMException: The function "createInstanceByContractID" returned an error condition: "Interface not supported (NS_ERROR_NO_INTERFACE)"  (0x80004002)
+org.clever.HostManager.HyperVisor.HyperVisorAgent: initialization 2013-12-02 12:35:19,476 [main] DEBUG HypervisorAgent - called init of org.clever.HostManager.HyperVisorPlugins.VirtualBox.HvVirtualBox
+org.clever.HostManager.HyperVisor.HyperVisorAgent: initialization 2013-12-02 12:35:19,476 [main] INFO  HypervisorAgent - HyperVisorPlugin created 
+org.clever.HostManager.HostCoordinator.HostCoordinator: launchAgents 2013-12-02 12:35:19,476 [main] INFO  Host Coordinator - #fine lancio agente nell'HC!
+org.clever.HostManager.HostCoordinator.HostCoordinator: launchAgents 2013-12-02 12:35:19,477 [main] DEBUG Host Coordinator - Agent created: org.clever.HostManager.HyperVisor.HyperVisorAgent
+org.clever.HostManager.HostCoordinator.HostCoordinator: launchAgents 2013-12-02 12:35:19,477 [main] INFO  Host Coordinator - # inizio lancio agente nell'HC
+org.clever.Common.Communicator.Agent: start 2013-12-02 12:35:19,480 [main] INFO  ImageManagerAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: ImageManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:35:19,486 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:35:19,486 [main] INFO  LocalCommunicationPlugin - Module Attaching: ImageManagerAgent on group:HM attached total (on each group) modules : 3
+org.clever.Common.Communicator.Agent: start 2013-12-02 12:35:19,486 [main] INFO  ImageManagerAgent - 
+nfine istanza ModuleCommunicator
+org.clever.HostManager.ImageManager.ImageManagerAgent: initialization 2013-12-02 12:35:19,487 [main] INFO  ImageManagerAgent - 
+
+||||||!!!========££$$$$$$$$ Provo se il logger funziona ImageManagerAgent di HM!!!!
+
+
+org.clever.HostManager.ImageManager.ImageManagerAgent: initialization 2013-12-02 12:35:19,487 [main] INFO  ImageManagerAgent - 
+
+||||||!!!========££$$$$$$$$ Provo se il logger funziona ImageManagerAgent di HM!!!!
+
+
+org.clever.Common.SqliteDB.SQLite: openCon 2013-12-02 12:35:19,499 [main] ERROR SQLiteDB - ??XX2Exception caused by connection at the Mapping db:org.sqlite.JDBC
+org.clever.HostManager.ImageManager.ImageManagerAgent: initialization 2013-12-02 12:35:19,499 [main] INFO  ImageManagerAgent - ImageManager created!
+org.clever.HostManager.HostCoordinator.HostCoordinator: launchAgents 2013-12-02 12:35:19,500 [main] INFO  Host Coordinator - #fine lancio agente nell'HC!
+org.clever.HostManager.HostCoordinator.HostCoordinator: launchAgents 2013-12-02 12:35:19,500 [main] DEBUG Host Coordinator - Agent created: org.clever.HostManager.ImageManager.ImageManagerAgent
+org.clever.HostManager.HostCoordinator.HostCoordinator: launchAgents 2013-12-02 12:35:19,500 [main] INFO  Host Coordinator - # inizio lancio agente nell'HC
+org.clever.Common.Communicator.Agent: start 2013-12-02 12:35:19,505 [main] INFO  MonitorAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: MonitorAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:35:19,508 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:35:19,509 [main] INFO  LocalCommunicationPlugin - Module Attaching: MonitorAgent on group:HM attached total (on each group) modules : 4
+org.clever.Common.Communicator.Agent: start 2013-12-02 12:35:19,509 [main] INFO  MonitorAgent - 
+nfine istanza ModuleCommunicator
+org.clever.HostManager.MonitorPlugins.Sigar.LinuxHWMonitor: <init> 2013-12-02 12:35:19,577 [main] DEBUG org.clever.HostManager.MonitorPlugins.Sigar.LinuxHWMonitor - Creating Sigar LinuxHwMonitor 
+org.clever.HostManager.Monitor.MonitorAgent: initialization 2013-12-02 12:35:19,577 [main] INFO  MonitorAgent - MonitorPlugin Created
+org.clever.HostManager.HostCoordinator.HostCoordinator: launchAgents 2013-12-02 12:35:19,577 [main] INFO  Host Coordinator - #fine lancio agente nell'HC!
+org.clever.HostManager.HostCoordinator.HostCoordinator: launchAgents 2013-12-02 12:35:19,578 [main] DEBUG Host Coordinator - Agent created: org.clever.HostManager.Monitor.MonitorAgent
+org.clever.HostManager.HostCoordinator.HostCoordinator: launchAgents 2013-12-02 12:35:19,578 [main] INFO  Host Coordinator - # inizio lancio agente nell'HC
+org.clever.Common.Communicator.Agent: start 2013-12-02 12:35:19,584 [main] INFO  NetworkManagerAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: NetworkManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:35:19,588 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:35:19,589 [main] INFO  LocalCommunicationPlugin - Module Attaching: NetworkManagerAgent on group:HM attached total (on each group) modules : 5
+org.clever.Common.Communicator.Agent: start 2013-12-02 12:35:19,589 [main] INFO  NetworkManagerAgent - 
+nfine istanza ModuleCommunicator
+org.clever.HostManager.NetworkManager.NetworkManagerAgent: initialization 2013-12-02 12:35:19,592 [main] INFO  NetworkManagerAgent - NetworkManagerPlugin creating 
+org.clever.HostManager.NetworkManagerPlugins.Linux.NetworkManagerLinux: <init> 2013-12-02 12:35:19,596 [main] INFO  NetworkManagerLinux - Network Manager plugin created: 
+org.clever.HostManager.NetworkManager.NetworkManagerAgent: initialization 2013-12-02 12:35:19,596 [main] DEBUG NetworkManagerAgent - called init of org.clever.HostManager.NetworkManagerPlugins.Linux.NetworkManagerLinux
+org.clever.HostManager.NetworkManager.NetworkManagerAgent: initialization 2013-12-02 12:35:19,597 [main] INFO  NetworkManagerAgent - NetworkManagerPlugin created 
+org.clever.HostManager.HostCoordinator.HostCoordinator: launchAgents 2013-12-02 12:35:19,597 [main] INFO  Host Coordinator - #fine lancio agente nell'HC!
+org.clever.HostManager.HostCoordinator.HostCoordinator: launchAgents 2013-12-02 12:35:19,597 [main] DEBUG Host Coordinator - Agent created: org.clever.HostManager.NetworkManager.NetworkManagerAgent
+org.clever.HostManager.HostCoordinator.HostCoordinator: launchAgents 2013-12-02 12:35:19,598 [main] INFO  Host Coordinator - # inizio lancio agente nell'HC
+org.clever.Common.Communicator.Agent: start 2013-12-02 12:35:19,601 [main] INFO  HelloWorldAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: HelloWorldAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:35:19,604 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:35:19,605 [main] INFO  LocalCommunicationPlugin - Module Attaching: HelloWorldAgent on group:HM attached total (on each group) modules : 6
+org.clever.Common.Communicator.Agent: start 2013-12-02 12:35:19,605 [main] INFO  HelloWorldAgent - 
+nfine istanza ModuleCommunicator
+org.clever.HostManager.HelloWorld.HelloWorldAgent: initialization 2013-12-02 12:35:19,608 [main] INFO  HelloWorldAgent - HelloWorldPlugin istantiated!
+org.clever.HostManager.HostCoordinator.HostCoordinator: launchAgents 2013-12-02 12:35:19,608 [main] INFO  Host Coordinator - #fine lancio agente nell'HC!
+org.clever.HostManager.HostCoordinator.HostCoordinator: launchAgents 2013-12-02 12:35:19,608 [main] DEBUG Host Coordinator - Agent created: org.clever.HostManager.HelloWorld.HelloWorldAgent
+org.clever.HostManager.HostCoordinator.HostCoordinator: launchAgents 2013-12-02 12:35:19,608 [main] INFO  Host Coordinator - # inizio lancio agente nell'HC
+org.clever.Common.Communicator.Agent: start 2013-12-02 12:35:19,610 [main] INFO  Agent - 
+istanzio ModuleCommunicator(agentName), dove agentName: HadoopDatanodeAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:35:19,615 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:35:19,616 [main] INFO  LocalCommunicationPlugin - Module Attaching: HadoopDatanodeAgent on group:HM attached total (on each group) modules : 7
+org.clever.Common.Communicator.Agent: start 2013-12-02 12:35:19,616 [main] INFO  Agent - 
+nfine istanza ModuleCommunicator
+org.clever.HostManager.HadoopDatanode.HadoopDatanodeAgent: initialization 2013-12-02 12:35:19,616 [main] INFO  HadoopDatanodeAgent - Read Configuration HadoopDatanodeAgent!
+org.clever.HostManager.DatanodePlugin.PluginDatanode: <init> 2013-12-02 12:35:19,622 [main] INFO  PluginDatanode - Read Configuration HadoopDatanodeAgent!
+org.clever.HostManager.DatanodePlugin.PluginDatanode: <init> 2013-12-02 12:35:19,626 [main] INFO  PluginDatanode - /usr/local/hadoop/hadoop-1.0.4/conf/core-site.xml
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:19,629 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DispatcherAgentHm
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:19,643 [main] DEBUG LocalCommunicationPlugin - sync message to DispatcherAgentHm
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:19,651 [main] ERROR LocalCommunicationPlugin - Error CleverException , sending as Msg: org.clever.Common.Exceptions.CleverException: module DispatcherAgentHmnot found
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:19,651 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<org.clever.Common.Exceptions.CleverException>
+  <detailMessage>module DispatcherAgentHmnot found</detailMessage>
+  <stackTrace>
+    <trace>org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal.sendRecv(CommunicatorLocal.java:75)</trace>
+    <trace>org.clever.Common.Communicator.ModuleCommunicator.invoke(ModuleCommunicator.java:104)</trace>
+    <trace>org.clever.Common.Communicator.Agent.sendNotification(Agent.java:194)</trace>
+    <trace>org.clever.HostManager.HadoopDatanode.HadoopDatanodeAgent.initialization(HadoopDatanodeAgent.java:121)</trace>
+    <trace>org.clever.Common.Initiator.ModuleFactory.ModuleFactoryLocal.createAgent(ModuleFactoryLocal.java:87)</trace>
+    <trace>org.clever.HostManager.HostCoordinator.HostCoordinator.launchAgents(HostCoordinator.java:189)</trace>
+    <trace>org.clever.HostManager.HostCoordinator.HostCoordinator.start(HostCoordinator.java:230)</trace>
+    <trace>org.clever.Common.Initiator.Initiator.launchHostCoordinator(Initiator.java:439)</trace>
+    <trace>org.clever.Common.Initiator.Initiator.start(Initiator.java:495)</trace>
+    <trace>org.clever.Common.Initiator.Main.main(Main.java:42)</trace>
+  </stackTrace>
+  <suppressedExceptions class="java.util.Collections$UnmodifiableRandomAccessList" resolves-to="java.util.Collections$UnmodifiableList">
+    <c class="list"/>
+    <list reference="../c"/>
+  </suppressedExceptions>
+</org.clever.Common.Exceptions.CleverException>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:19,675 [main] DEBUG ModuleCommunicator - Result :org.clever.Common.Exceptions.CleverException: module DispatcherAgentHmnot found
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:19,675 [main] DEBUG ModuleCommunicator - Exception received :
+org.clever.Common.Communicator.Agent: sendNotification 2013-12-02 12:35:19,675 [main] ERROR Agent - Invoke error: org.clever.Common.Exceptions.CleverException: module DispatcherAgentHmnot found
+org.clever.HostManager.HadoopDatanode.HadoopDatanodeAgent: initialization 2013-12-02 12:35:19,675 [main] INFO  HadoopDatanodeAgent - notification HADOOP sent
+org.clever.HostManager.HadoopDatanode.HadoopDatanodeAgent: initialization 2013-12-02 12:35:19,676 [main] INFO  HadoopDatanodeAgent - HadoopDatanodePlugin created 
+org.clever.HostManager.HostCoordinator.HostCoordinator: launchAgents 2013-12-02 12:35:19,676 [main] INFO  Host Coordinator - #fine lancio agente nell'HC!
+org.clever.HostManager.HostCoordinator.HostCoordinator: launchAgents 2013-12-02 12:35:19,676 [main] DEBUG Host Coordinator - Agent created: org.clever.HostManager.HadoopDatanode.HadoopDatanodeAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:35:19,679 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:35:19,679 [main] INFO  LocalCommunicationPlugin - Module Attaching: HostCoordinator on group:HM attached total (on each group) modules : 8
+org.clever.HostManager.HostCoordinator.HostCoordinator: launchAgents 2013-12-02 12:35:19,679 [main] DEBUG Host Coordinator - Module Communicator instantiated
+org.clever.HostManager.HostCoordinator.HostCoordinator: launchAgents 2013-12-02 12:35:19,680 [main] INFO  Host Coordinator - HostCoordinator created
+org.clever.Common.Initiator.Initiator: VerificaNecessitaCM 2013-12-02 12:35:19,696 [main] INFO  Initiator - Number of CM istantiated is 0
+org.clever.Common.Initiator.Initiator: VerificaNecessitaCM 2013-12-02 12:35:19,696 [main] INFO  Initiator - Number of CM istantiated is 0
+org.clever.Common.Initiator.Initiator: start 2013-12-02 12:35:19,696 [main] INFO  Initiator - Number of CM istantiated: truetreshold is: 1
+org.clever.Common.Initiator.Initiator: start 2013-12-02 12:35:19,697 [main] INFO  Initiator - A new Cluster Manager is istantiated!
+org.clever.Common.Initiator.Initiator: launchClusterCoordinator 2013-12-02 12:35:19,697 [main] INFO  Initiator - Launching cluster coordinator with classpath: /home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/jdom.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/jna.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/jug-lgpl-2.0.0.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/sigar.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/smack.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/smackx-debug.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/smackx.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/dbus-2.7.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/api-1.1.3.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/bcmail-jdk16-145.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/bcprov-jdk16-145.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/client-1.1.3.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/log4j.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/activemq-all-5.5.0.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/vboxjxpcom.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/xstream-1.4.2-20110928.170215-1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/xmldb.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-cli-1.2.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-codec-1.4.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-collections-3.1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-httpclient-3.0.1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-logging-1.1.1-javadoc.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-logging-1.1.1-sources.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-logging-1.1.1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-logging-adapters-1.1.1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-logging-api-1.1.1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-net-3.0.1.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/commons-vfs2-2.0.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/hexdump.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/httpclient-4.1.2.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/httpclient-cache-4.1.2.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/httpcore-4.1.2.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/httpmime-4.1.2.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/libvirt-0.4.7.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/sedna-xmldb.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/unix.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/libraries/vijava520110926.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/activation-1.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/asm-3.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/aspectjrt-1.6.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/aspectjtools-1.6.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/avro-1.5.3.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/avro-ipc-1.5.3.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/com.google.protobuf-2.4.0.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-beanutils-1.7.0.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-beanutils-core-1.8.0.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-cli-1.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-codec-1.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-collections-3.2.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-configuration-1.6.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-daemon-1.0.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-digester-1.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-el-1.0.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-httpclient-3.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-io-2.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-lang-2.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-logging-1.1.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-math-2.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/commons-net-1.4.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/core-3.1.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/guava-11.0.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-ant-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-capacity-scheduler-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-client-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-core-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-examples-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-fairscheduler-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-minicluster-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-test-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-thriftfs-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hadoop-tools-1.0.4.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hbase-0.94.5-tests.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hbase-0.94.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/high-scale-lib-1.1.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/hsqldb-1.8.0.10.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/httpclient-4.1.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/httpcore-4.1.3.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jackson-core-asl-1.8.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jackson-jaxrs-1.8.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jackson-mapper-asl-1.8.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jackson-xc-1.8.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jamon-runtime-2.3.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jasper-compiler-5.5.23.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jasper-runtime-5.5.23.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jaxb-api-2.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jaxb-impl-2.2.3-1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jdeb-0.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jersey-core-1.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jersey-json-1.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jersey-server-1.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jets3t-0.6.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jettison-1.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jetty-6.1.26.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jetty-util-6.1.26.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jruby-complete-1.6.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jsch-0.1.42.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jsp-2.1-6.1.14.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jsp-api-2.1-6.1.14.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/jsr305-1.3.9.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/junit-4.10-HBASE-1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/junit-4.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/kfs-0.2.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/libthrift-0.8.0.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/log4j-1.2.16.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/metrics-core-2.1.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/mockito-all-1.8.5.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/netty-3.2.4.Final.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/oro-2.0.8.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/protobuf-java-2.4.0a.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/servlet-api-2.5-6.1.14.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/slf4j-api-1.4.3.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/slf4j-log4j12-1.4.3.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/snappy-java-1.0.3.2.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/stax-api-1.0.1.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/velocity-1.7.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/xmlenc-0.52.jar:/home/giovanni/librerie HBase - hadoop/TUTTE/zookeeper-3.4.5.jar:/home/giovanni/NetBeansProjects/clever-unime/trunk/clevercloud/build/classes
+org.clever.Common.Initiator.Initiator: launchClusterCoordinator 2013-12-02 12:35:19,697 [main] INFO  Initiator - ClusterCoordinato launching: [Ljava.lang.String;@6f8495
+org.clever.ClusterManager.ClusterCoordinator.Main: <init> 2013-12-02 12:35:19,919 [main] INFO  Main_ClusterCoordinator - 
+ Prima del lancio del costruttore cc!
+
+org.clever.ClusterManager.ClusterCoordinator.Main: <init> 2013-12-02 12:35:19,927 [main] INFO  Main_ClusterCoordinator - 
+Dopo il lancio del costruttore CC, si sta x avviare la start()
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: start 2013-12-02 12:35:19,927 [main] INFO  ClusterCoordinator - 
+START DI CC
+
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: init 2013-12-02 12:35:19,977 [main] DEBUG ClusterCoordinator - Setting java.library.path ...
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: init 2013-12-02 12:35:19,980 [main] DEBUG ClusterCoordinator - ./lib:/usr/lib/jvm/java-7-oracle/jre/lib/amd64:/usr/lib/jvm/java-7-oracle/jre/lib/i386::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib:./lib
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: init 2013-12-02 12:35:19,981 [main] INFO  ClusterCoordinator - 
+
+&&&&& i nuovi valori caricati sono: 4 10
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: init 2013-12-02 12:35:19,981 [main] INFO  ClusterCoordinator - 
+
+REPLACEAGENTS NEL CC: true
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: init 2013-12-02 12:35:19,982 [main] DEBUG ClusterCoordinator - ./lib:./lib:/usr/lib/jvm/java-7-oracle/jre/lib/amd64:/usr/lib/jvm/java-7-oracle/jre/lib/i386::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib:./lib:./lib
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: connectionManagement 2013-12-02 12:35:19,988 [main] INFO  ClusterCoordinator - Connection to server XMPP: server.dominioA.itat port: 5222
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: connect 2013-12-02 12:35:20,445 [main] INFO  XMPPCommunicator - XMPP connected plain mode
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: connectionManagement 2013-12-02 12:35:20,445 [main] INFO  ClusterCoordinator - authentication....
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: authenticate 2013-12-02 12:35:21,062 [main] DEBUG XMPPCommunicator - XMPP connection established with username: cmgiovanni-K53SV password: macmthj server: server.dominioA.it port: 5222
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: joinInRoom 2013-12-02 12:35:21,068 [main] INFO  XMPPCommunicator - Creating room: main@conference.server.dominioA.it with nickname: cmgiovanni-K53SV
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: joinInRoom 2013-12-02 12:35:21,090 [main] INFO  XMPPCommunicator - Created room: main@conference.server.dominioA.it with nickname: cmgiovanni-K53SV
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: connectionManagement 2013-12-02 12:35:21,098 [main] INFO  ClusterCoordinator - DispatcherAgent created
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:35:21,102 [main] INFO  DispatcherAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:35:21,107 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:35:21,108 [main] INFO  LocalCommunicationPlugin - Modules HasMap instatiated
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:35:21,108 [main] INFO  LocalCommunicationPlugin - Module Attaching: DispatcherAgent on group:CM attached total (on each group) modules : 0
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:35:21,108 [main] INFO  DispatcherAgent - 
+nfine istanza ModuleCommunicator
+org.clever.ClusterManager.Dispatcher.DispatcherAgent: initialization 2013-12-02 12:35:21,117 [main] INFO  DispatcherAgent - Dispatcher created
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: connectionManagement 2013-12-02 12:35:21,118 [main] INFO  ClusterCoordinator - Dispatcher Plugin created
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:35:21,120 [main] INFO  InfoAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: InfoAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:35:21,123 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:35:21,123 [main] INFO  LocalCommunicationPlugin - Module Attaching: InfoAgent on group:CM attached total (on each group) modules : 1
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:35:21,123 [main] INFO  InfoAgent - 
+nfine istanza ModuleCommunicator
+org.clever.Common.Initiator.ModuleFactory.ModuleFactory: getInstance 2013-12-02 12:35:21,128 [main] DEBUG ModuleFactory - ModuleFactory created: org.clever.Common.Initiator.ModuleFactory.ModuleFactoryLocal
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: connectionManagement 2013-12-02 12:35:21,128 [main] INFO  ClusterCoordinator - InfoAgent for CM created
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: start 2013-12-02 12:35:21,129 [main] INFO  ClusterCoordinator - Starting procedure launching Agents for CM
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: start 2013-12-02 12:35:21,129 [main] INFO  ClusterCoordinator - This CM is FORCED to launch his Agents
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:35:21,132 [main] INFO  StorageManagerAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: StorageManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:35:21,135 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:35:21,135 [main] INFO  LocalCommunicationPlugin - Module Attaching: StorageManagerAgent on group:CM attached total (on each group) modules : 2
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:35:21,135 [main] INFO  StorageManagerAgent - 
+nfine istanza ModuleCommunicator
+org.clever.ClusterManager.StorageManager.StorageManagerAgent: initialization 2013-12-02 12:35:21,136 [main] INFO  StorageManagerAgent - Read Configuration StorageManager!
+org.clever.ClusterManager.StorageManager.StorageManagerAgent: initialization 2013-12-02 12:35:21,141 [main] INFO  StorageManagerAgent - StorageManager Plugin instantiated !
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: launchAgents 2013-12-02 12:35:21,141 [main] DEBUG ClusterCoordinator - Agent created: org.clever.ClusterManager.StorageManager.StorageManagerAgent
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:35:21,145 [main] INFO  TestAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: TestAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:35:21,149 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:35:21,149 [main] INFO  LocalCommunicationPlugin - Module Attaching: TestAgent on group:CM attached total (on each group) modules : 3
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:35:21,150 [main] INFO  TestAgent - 
+nfine istanza ModuleCommunicator
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: launchAgents 2013-12-02 12:35:21,150 [main] DEBUG ClusterCoordinator - Agent created: org.clever.ClusterManager.Test.TestAgent
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:35:21,152 [main] INFO  DatabaseManagerAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:35:21,155 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:35:21,155 [main] INFO  LocalCommunicationPlugin - Module Attaching: DatabaseManagerAgent on group:CM attached total (on each group) modules : 4
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:35:21,155 [main] INFO  DatabaseManagerAgent - 
+nfine istanza ModuleCommunicator
+org.clever.ClusterManager.DatabaseManagerPlugins.Sedna.DbSedna: <init> 2013-12-02 12:35:21,175 [main] DEBUG DbSednaPlugin - DbSedna plugin created!
+org.clever.ClusterManager.DatabaseManager.DatabaseManagerAgent: initialization 2013-12-02 12:35:21,175 [main] DEBUG DatabaseManagerAgent - called init of org.clever.ClusterManager.DatabaseManagerPlugins.Sedna.DbSedna
+org.clever.ClusterManager.DatabaseManager.DatabaseManagerAgent: initialization 2013-12-02 12:35:21,236 [main] INFO  DatabaseManagerAgent - DbManagerPlugin created 
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,237 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,351 [main] DEBUG LocalCommunicationPlugin - sync message to DispatcherAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,369 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,371 [main] DEBUG DatabaseManagerAgent - Method invoked: subscribeNotification
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,375 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,375 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,380 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: launchAgents 2013-12-02 12:35:21,380 [main] DEBUG ClusterCoordinator - Agent created: org.clever.ClusterManager.DatabaseManager.DatabaseManagerAgent
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:35:21,383 [main] INFO  CMAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: VirtualizationManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:35:21,386 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:35:21,386 [main] INFO  LocalCommunicationPlugin - Module Attaching: VirtualizationManagerAgent on group:CM attached total (on each group) modules : 5
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:35:21,386 [main] INFO  CMAgent - 
+nfine istanza ModuleCommunicator
+org.clever.ClusterManager.VirtualizationManager.VirtualizationManagerAgent: initialization 2013-12-02 12:35:21,386 [main] INFO  VirtualizationManagerAgent - Read Configuration VirtualManager!
+org.clever.ClusterManager.VirtualizationManagerPlugin.VirtualizationManagerClever: <init> 2013-12-02 12:35:21,391 [main] INFO  VirtualizationManager plugin - VirtualizationManager plugin created: 
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,391 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,395 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,401 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,404 [main] DEBUG CMAgent - Method invoked: checkAgentNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,407 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,408 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,412 [main] DEBUG ModuleCommunicator - Result :false
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,413 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,416 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,422 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,452 [main] DEBUG CMAgent - Method invoked: insertNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,458 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,458 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,461 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,462 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,465 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,470 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,474 [main] DEBUG CMAgent - Method invoked: checkAgentNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,483 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,484 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,497 [main] DEBUG ModuleCommunicator - Result :false
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,498 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,501 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,506 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,532 [main] DEBUG CMAgent - Method invoked: insertNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,541 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,542 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,552 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.ClusterManager.VirtualizationManager.VirtualizationManagerAgent: initialization 2013-12-02 12:35:21,553 [main] DEBUG VirtualizationManagerAgent - called init of org.clever.ClusterManager.VirtualizationManagerPlugin.VirtualizationManagerClever
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,553 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,565 [main] DEBUG LocalCommunicationPlugin - sync message to DispatcherAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,570 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,570 [main] DEBUG CMAgent - Method invoked: subscribeNotification
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,573 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,573 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,576 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,576 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,579 [main] DEBUG LocalCommunicationPlugin - sync message to DispatcherAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,585 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,585 [main] DEBUG CMAgent - Method invoked: subscribeNotification
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,588 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,588 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,591 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,592 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,595 [main] DEBUG LocalCommunicationPlugin - sync message to DispatcherAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,599 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,599 [main] DEBUG CMAgent - Method invoked: subscribeNotification
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,602 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,602 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,605 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,605 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,608 [main] DEBUG LocalCommunicationPlugin - sync message to DispatcherAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,612 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,612 [main] DEBUG CMAgent - Method invoked: subscribeNotification
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,614 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,615 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,618 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,618 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,621 [main] DEBUG LocalCommunicationPlugin - sync message to DispatcherAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,625 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,626 [main] DEBUG CMAgent - Method invoked: subscribeNotification
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,628 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,628 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,632 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,632 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,635 [main] DEBUG LocalCommunicationPlugin - sync message to DispatcherAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,640 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,640 [main] DEBUG CMAgent - Method invoked: subscribeNotification
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,642 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,642 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,645 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.ClusterManager.VirtualizationManager.VirtualizationManagerAgent: initialization 2013-12-02 12:35:21,645 [main] INFO  VirtualizationManagerAgent - VirtualizationManager Agent created 
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: launchAgents 2013-12-02 12:35:21,645 [main] DEBUG ClusterCoordinator - Agent created: org.clever.ClusterManager.VirtualizationManager.VirtualizationManagerAgent
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:35:21,647 [main] INFO  HelloWorldLauncherAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: HelloWorldLauncherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:35:21,650 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:35:21,650 [main] INFO  LocalCommunicationPlugin - Module Attaching: HelloWorldLauncherAgent on group:CM attached total (on each group) modules : 6
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:35:21,650 [main] INFO  HelloWorldLauncherAgent - 
+nfine istanza ModuleCommunicator
+org.clever.ClusterManager.HelloWorldLauncher.HelloWorldLauncherAgent: initialization 2013-12-02 12:35:21,650 [main] INFO  HelloWorldLauncherAgent - Reading configuration HelloWorldLauncher
+org.clever.ClusterManager.HelloWorldLauncher.HelloWorldLauncherAgent: initialization 2013-12-02 12:35:21,652 [main] DEBUG HelloWorldLauncherAgent - inxml: java.io.BufferedInputStream@1d06aa01
+org.clever.ClusterManager.HelloWorldLauncher.HelloWorldLauncherAgent: initialization 2013-12-02 12:35:21,654 [main] INFO  HelloWorldLauncherAgent - HelloWorldLauncher plugin instantiated !
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,654 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: HelloWorldLauncherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,656 [main] DEBUG LocalCommunicationPlugin - sync message to HelloWorldLauncherAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,661 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,661 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,664 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,669 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,677 [main] DEBUG HelloWorldLauncherAgent - Method invoked: checkAgentNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,682 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,683 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,687 [main] DEBUG ModuleCommunicator - Result :false
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,687 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,690 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,694 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,702 [main] DEBUG HelloWorldLauncherAgent - Method invoked: checkAgentNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,705 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,705 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,708 [main] DEBUG ModuleCommunicator - Result :false
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,708 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,712 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,720 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,759 [main] DEBUG HelloWorldLauncherAgent - Method invoked: insertNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,766 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,767 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,771 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,771 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,774 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,784 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,791 [main] DEBUG HelloWorldLauncherAgent - Method invoked: checkAgentNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,795 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>true</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,796 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>true</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,805 [main] DEBUG ModuleCommunicator - Result :true
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,805 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,808 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,812 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,819 [main] DEBUG HelloWorldLauncherAgent - Method invoked: existNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,826 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,826 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,831 [main] DEBUG ModuleCommunicator - Result :false
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,831 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,834 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,839 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,855 [main] DEBUG HelloWorldLauncherAgent - Method invoked: insertNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,861 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,862 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,866 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,867 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,869 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,873 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,880 [main] DEBUG HelloWorldLauncherAgent - Method invoked: existNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,883 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>true</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,884 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>true</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,888 [main] DEBUG ModuleCommunicator - Result :true
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,888 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,891 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,895 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,906 [main] DEBUG HelloWorldLauncherAgent - Method invoked: deleteNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,908 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,908 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,913 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,913 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,916 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,920 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,922 [main] DEBUG HelloWorldLauncherAgent - Method invoked: existNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,925 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,925 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,928 [main] DEBUG ModuleCommunicator - Result :false
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,928 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,931 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,935 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,944 [main] DEBUG HelloWorldLauncherAgent - Method invoked: getContentNodeXML
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,947 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <string>&lt;agent name=&quot;HadoopNamenodeAgent&quot;&gt;
+  &lt;HadoopStorage/&gt;
+&lt;/agent&gt;</string>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,947 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<string>&lt;agent name=&quot;HadoopNamenodeAgent&quot;&gt;
+  &lt;HadoopStorage/&gt;
+&lt;/agent&gt;</string>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,951 [main] DEBUG ModuleCommunicator - Result :<agent name="HadoopNamenodeAgent">
+  <HadoopStorage/>
+</agent>
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,951 [main] DEBUG HelloWorldLauncherAgent - Method invoked: tryDbSedna
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,953 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <string>RISULTATO DI tryDbSedna()
+HadoopNamenodeAgent non trovato
+HadoopStorage non trovato
+HadoopStorage inserito
+HadoopStorage trovato stavolta
+File non trovato dentro HadoopStorageFile inserito in HadoopStorage
+File trovato stavolta dentro HadoopStorage
+Cancellato nodo File da HadoopStorage
+File non trovato neanche stavolta dentro HadoopStorage
+&lt;agent name=&quot;HadoopNamenodeAgent&quot;&gt;
+  &lt;HadoopStorage/&gt;
+&lt;/agent&gt;</string>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,953 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<string>RISULTATO DI tryDbSedna()
+HadoopNamenodeAgent non trovato
+HadoopStorage non trovato
+HadoopStorage inserito
+HadoopStorage trovato stavolta
+File non trovato dentro HadoopStorageFile inserito in HadoopStorage
+File trovato stavolta dentro HadoopStorage
+Cancellato nodo File da HadoopStorage
+File non trovato neanche stavolta dentro HadoopStorage
+&lt;agent name=&quot;HadoopNamenodeAgent&quot;&gt;
+  &lt;HadoopStorage/&gt;
+&lt;/agent&gt;</string>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,956 [main] DEBUG ModuleCommunicator - Result :RISULTATO DI tryDbSedna()
+HadoopNamenodeAgent non trovato
+HadoopStorage non trovato
+HadoopStorage inserito
+HadoopStorage trovato stavolta
+File non trovato dentro HadoopStorageFile inserito in HadoopStorage
+File trovato stavolta dentro HadoopStorage
+Cancellato nodo File da HadoopStorage
+File non trovato neanche stavolta dentro HadoopStorage
+<agent name="HadoopNamenodeAgent">
+  <HadoopStorage/>
+</agent>
+org.clever.ClusterManager.HelloWorldLauncher.HelloWorldLauncherAgent: initialization 2013-12-02 12:35:21,956 [main] INFO  HelloWorldLauncherAgent - RISULTATO DI tryDbSedna()
+HadoopNamenodeAgent non trovato
+HadoopStorage non trovato
+HadoopStorage inserito
+HadoopStorage trovato stavolta
+File non trovato dentro HadoopStorageFile inserito in HadoopStorage
+File trovato stavolta dentro HadoopStorage
+Cancellato nodo File da HadoopStorage
+File non trovato neanche stavolta dentro HadoopStorage
+<agent name="HadoopNamenodeAgent">
+  <HadoopStorage/>
+</agent>
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: launchAgents 2013-12-02 12:35:21,957 [main] DEBUG ClusterCoordinator - Agent created: org.clever.ClusterManager.HelloWorldLauncher.HelloWorldLauncherAgent
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:35:21,959 [main] INFO  CMAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: HadoopNamenodeAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:35:21,962 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:35:21,962 [main] INFO  LocalCommunicationPlugin - Module Attaching: HadoopNamenodeAgent on group:CM attached total (on each group) modules : 7
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:35:21,962 [main] INFO  CMAgent - 
+nfine istanza ModuleCommunicator
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:21,962 [main] INFO  HadoopNamenodeAgent - Read Configuration HadoopNamenodeAgent!
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,965 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,967 [main] DEBUG LocalCommunicationPlugin - sync message to DispatcherAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,972 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,972 [main] DEBUG CMAgent - Method invoked: subscribeNotification
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,974 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,974 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,976 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,977 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DispatcherAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,979 [main] DEBUG LocalCommunicationPlugin - sync message to DispatcherAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,983 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:21,983 [main] DEBUG CMAgent - Method invoked: subscribeNotification
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,985 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,985 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,988 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.ClusterManager.HadoopPlugin.NamenodePlugin: <init> 2013-12-02 12:35:21,990 [main] INFO  NamenodePlugin - Read Configuration HadoopNamenodeAgent!
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:21,993 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:21,995 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:21,999 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:22,007 [main] DEBUG CMAgent - Method invoked: checkAgentNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:22,011 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:22,011 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:22,018 [main] DEBUG ModuleCommunicator - Result :false
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:22,018 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:22,022 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:22,026 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:22,037 [main] DEBUG CMAgent - Method invoked: insertNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:22,044 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:22,044 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:22,047 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:22,048 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:22,050 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:22,055 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:22,075 [main] DEBUG CMAgent - Method invoked: insertNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:22,079 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:22,080 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:22,083 [main] DEBUG ModuleCommunicator - Result :null
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:22,084 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:22,087 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:22,091 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:22,094 [main] DEBUG CMAgent - Method invoked: checkAgentNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:22,096 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>true</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:22,096 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>true</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:22,100 [main] DEBUG ModuleCommunicator - Result :true
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:22,100 [main] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:22,103 [main] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:22,107 [main] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:22,112 [main] DEBUG CMAgent - Method invoked: getContentNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:22,114 [main] DEBUG LocalCommunicationPlugin - message sent ; response: <list>
+  <string>192.168.10.10</string>
+  <string>giovanni-K53SV</string>
+  <string>giovanni</string>
+</list>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:22,114 [main] DEBUG ModuleCommunicator - After sendRecv with has return :<list>
+  <string>192.168.10.10</string>
+  <string>giovanni-K53SV</string>
+  <string>giovanni</string>
+</list>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:22,118 [main] DEBUG ModuleCommunicator - Result :[192.168.10.10, giovanni-K53SV, giovanni]
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,118 [main] INFO  HadoopNamenodeAgent - scrivo file127.0.0.1	localhost
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,118 [main] INFO  HadoopNamenodeAgent - scrivo file127.0.1.1	giovanni-K53SV
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,118 [main] INFO  HadoopNamenodeAgent - scrivo file
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,118 [main] INFO  HadoopNamenodeAgent - scrivo file# CLEVER
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,119 [main] INFO  HadoopNamenodeAgent - scrivo file
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,119 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.110	server.dominioA.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,119 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.111	clever1.dominioA.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,119 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.112	clever2.dominioA.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,119 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.113	clever3.dominioA.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,119 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.114	clever4.dominioA.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,120 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.115	clever5.dominioA.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,120 [main] INFO  HadoopNamenodeAgent - scrivo file
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,120 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.120	server.dominioB.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,120 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.121	clever1.dominioB.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,120 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.122	clever2.dominioB.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,121 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.123	clever3.dominioB.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,121 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.124	clever4.dominioB.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,121 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.125	clever5.dominioB.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,121 [main] INFO  HadoopNamenodeAgent - scrivo file
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,121 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.130	server.dominioC.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,121 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.131	clever1.dominioC.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,122 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.132	clever2.dominioC.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,122 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.133	clever3.dominioC.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,122 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.134	clever4.dominioC.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,122 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.135	clever5.dominioC.it
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,122 [main] INFO  HadoopNamenodeAgent - scrivo file
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,122 [main] INFO  HadoopNamenodeAgent - scrivo file192.168.10.140	server.federation
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,123 [main] INFO  HadoopNamenodeAgent - scrivo file
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,123 [main] INFO  HadoopNamenodeAgent - scrivo file# The following lines are desirable for IPv6 capable hosts
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,123 [main] INFO  HadoopNamenodeAgent - scrivo file::1     ip6-localhost ip6-loopback
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,123 [main] INFO  HadoopNamenodeAgent - scrivo filefe00::0 ip6-localnet
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,123 [main] INFO  HadoopNamenodeAgent - scrivo fileff00::0 ip6-mcastprefix
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,123 [main] INFO  HadoopNamenodeAgent - scrivo fileff02::1 ip6-allnodes
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,123 [main] INFO  HadoopNamenodeAgent - scrivo fileff02::2 ip6-allrouters
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,124 [main] INFO  HadoopNamenodeAgent - added to vector
+org.apache.hadoop.conf.Configuration: <init> 2013-12-02 12:35:22,145 [main] DEBUG org.apache.hadoop.conf.Configuration - java.io.IOException: config()
+	at org.apache.hadoop.conf.Configuration.<init>(Configuration.java:227)
+	at org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent.initialization(HadoopNamenodeAgent.java:285)
+	at org.clever.Common.Initiator.ModuleFactory.ModuleFactoryLocal.createAgent(ModuleFactoryLocal.java:87)
+	at org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator.launchAgents(ClusterCoordinator.java:388)
+	at org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator.start(ClusterCoordinator.java:508)
+	at org.clever.ClusterManager.ClusterCoordinator.Main.<init>(Main.java:71)
+	at org.clever.ClusterManager.ClusterCoordinator.Main.main(Main.java:100)
+
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,178 [main] INFO  HadoopNamenodeAgent - dim23
+org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent: initialization 2013-12-02 12:35:22,182 [main] INFO  HadoopNamenodeAgent - HadoopNamenode Plugin instantiated !
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: launchAgents 2013-12-02 12:35:22,182 [main] DEBUG ClusterCoordinator - Agent created: org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:35:22,185 [main] INFO  FederationListenerAgent - 
+istanzio ModuleCommunicator(agentName), dove agentName: FederationListenerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: <init> 2013-12-02 12:35:22,188 [main] INFO  LocalCommunicationPlugin - Plugin created
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: init 2013-12-02 12:35:22,188 [main] INFO  LocalCommunicationPlugin - Module Attaching: FederationListenerAgent on group:CM attached total (on each group) modules : 8
+org.clever.Common.Communicator.CmAgent: start 2013-12-02 12:35:22,188 [main] INFO  FederationListenerAgent - 
+nfine istanza ModuleCommunicator
+org.clever.ClusterManager.Federation.FederationListenerAgent: initialization 2013-12-02 12:35:22,188 [main] INFO  FederationListenerAgent - Reading configuration FederationListenerAgent
+org.clever.ClusterManager.Federation.FederationListenerAgent: initialization 2013-12-02 12:35:22,194 [main] INFO  FederationListenerAgent - configuring FederationListenerAgent...
+org.clever.ClusterManager.Federation.FederationListenerAgent: initialization 2013-12-02 12:35:22,195 [main] INFO  FederationListenerAgent - FederationListenerAgent configured!
+org.clever.Common.XMPPCommunicator.RoomListener: <init> 2013-12-02 12:35:22,196 [main] DEBUG RoomListener - roomlistener added: 
+org.clever.ClusterManager.Federation.FederationListenerAgent: initialization 2013-12-02 12:35:22,197 [main] INFO  FederationListenerAgent - FEDERATION RoomListener created
+org.clever.ClusterManager.Federation.FederationListenerAgent: connectionManagement 2013-12-02 12:35:22,197 [main] INFO  FederationListenerAgent - Connection to federation's server XMPP: server.federationat port: 5222
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: connect 2013-12-02 12:35:22,276 [main] INFO  XMPPCommunicator - XMPP connected plain mode
+org.clever.ClusterManager.Federation.FederationListenerAgent: connectionManagement 2013-12-02 12:35:22,277 [main] INFO  FederationListenerAgent - authentication with federation's XMPP server....
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: authenticate 2013-12-02 12:35:22,838 [main] DEBUG XMPPCommunicator - XMPP connection established with username: cmgiovanni-K53SV password: spakeed server: server.federation port: 5222
+org.clever.ClusterManager.Federation.FederationListenerAgent: connectionManagement 2013-12-02 12:35:22,838 [main] INFO  FederationListenerAgent - authenticated with federation's XMPP server!
+org.clever.ClusterManager.Federation.FederationListenerAgent: initialization 2013-12-02 12:35:22,839 [main] INFO  FederationListenerAgent - Created connection to FEDERATION XMPP server
+org.clever.ClusterManager.Federation.FederationListenerAgent: initialization 2013-12-02 12:35:22,846 [main] INFO  FederationListenerAgent - FederatioMessagePoolThread started
+org.clever.ClusterManager.Federation.FederationMessagePoolThread: run 2013-12-02 12:35:22,846 [Thread-11] INFO  FederationListenerAgent - There are not messages to send to other federated CMs. Time to sleep
+org.clever.ClusterManager.Federation.FederationListenerAgent: initialization 2013-12-02 12:35:22,846 [main] INFO  FederationListenerAgent - FederationListenerPlugin istantiated!
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: launchAgents 2013-12-02 12:35:22,848 [main] DEBUG ClusterCoordinator - Agent created: org.clever.ClusterManager.Federation.FederationListenerAgent
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: launchAgents 2013-12-02 12:35:22,850 [main] DEBUG ClusterCoordinator - Brain created: org.clever.ClusterManager.Brain.SensorBrain
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: launchAgents 2013-12-02 12:35:22,851 [main] INFO  ClusterCoordinator - Cluster Coordinator created
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: tryActiveCC 2013-12-02 12:35:22,851 [main] INFO  ClusterCoordinator - Start Election thread....
+org.clever.ClusterManager.ClusterCoordinator.Main: <init> 2013-12-02 12:35:22,853 [main] INFO  Main_ClusterCoordinator - 
+dopo la start()
+
+org.clever.Common.Initiator.ElectionThread: run 2013-12-02 12:35:22,854 [Thread-12] INFO  Election Thread for: cmgiovanni-K53SV - Switching a cluster manager active
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: joinInRoom 2013-12-02 12:35:23,077 [Thread-12] INFO  XMPPCommunicator - Creating room: shell@conference.server.dominioA.it with nickname: cmgiovanni-K53SV
+org.clever.HostManager.Dispatcher.NotificationThread: run 2013-12-02 12:35:23,084 [NotificationThread] DEBUG NotificationThread - X?X target=cmgiovanni-K53SV
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: joinInRoom 2013-12-02 12:35:23,084 [Thread-12] INFO  XMPPCommunicator - Created room: shell@conference.server.dominioA.it with nickname: cmgiovanni-K53SV
+org.clever.Common.XMPPCommunicator.RoomListener: <init> 2013-12-02 12:35:23,085 [Thread-12] DEBUG RoomListener - roomlistener added: 
+org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator: setAsActiveCC 2013-12-02 12:35:23,086 [Thread-12] INFO  ClusterCoordinator - The number of CM in room CLEVER_MAIN is now: 1
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:23,086 [Thread-12] DEBUG ModuleCommunicator - Before sendRecv with has return: FederationListenerAgent
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: sendMessage 2013-12-02 12:35:23,094 [NotificationThread] DEBUG XMPPCommunicator - Sending message: <?xml version="1.0" encoding="UTF-8"?>
+<message id="1699518812" type="NOTIFY">
+  <source>giovanni-K53SV</source>
+  <destination>cmgiovanni-K53SV</destination>
+  <timestamp>Mon Dec 02 12:35:23 CET 2013</timestamp>
+  <replyToMsg>0</replyToMsg>
+  <hasReply>false</hasReply>
+  <body>
+    <notification useAttachementId="true">
+      <hostId>giovanni-K53SV</hostId>
+      <agentId />
+      <notificationId>PRESENCE/HM</notificationId>
+    </notification>
+  </body>
+  <attachement id="0"><![CDATA[<null/>]]></attachement>
+</message>
+
+
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: sendMessage 2013-12-02 12:35:23,094 [NotificationThread] DEBUG XMPPCommunicator - Chat toward cmgiovanni-K53SV@server.dominioA.it not found
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:23,097 [Thread-12] DEBUG LocalCommunicationPlugin - sync message to FederationListenerAgent
+org.clever.Common.XMPPCommunicator.CleverChatManagerListener: chatCreated 2013-12-02 12:35:23,097 [NotificationThread] INFO  XMPPCommunicator - Chat created with: cmgiovanni-K53SV@server.dominioA.it createdLocally: true
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: sendMessage 2013-12-02 12:35:23,097 [NotificationThread] DEBUG XMPPCommunicator - sending message
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: sendMessage 2013-12-02 12:35:23,100 [NotificationThread] DEBUG XMPPCommunicator - message sent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:23,101 [Thread-12] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.ClusterManager.Federation.FederationListenerAgent: setAsActiveCM 2013-12-02 12:35:23,102 [Thread-12] DEBUG FederationListenerAgent - ConnectionXMPP.ROOM.FEDERATION = FEDERATION
+org.clever.ClusterManager.Federation.FederationListenerAgent: setAsActiveCM 2013-12-02 12:35:23,102 [Thread-12] DEBUG FederationListenerAgent - conn = org.clever.Common.XMPPCommunicator.ConnectionXMPP@9be2eac
+org.clever.ClusterManager.Federation.FederationListenerAgent: setAsActiveCM 2013-12-02 12:35:23,102 [Thread-12] DEBUG FederationListenerAgent - room = federation@conference.server.federation
+org.clever.ClusterManager.Federation.FederationListenerAgent: setAsActiveCM 2013-12-02 12:35:23,102 [Thread-12] DEBUG FederationListenerAgent - username = cmgiovanni-K53SV
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: joinInRoom 2013-12-02 12:35:23,102 [Thread-12] INFO  XMPPCommunicator - Creating room: federation@conference.server.federation with nickname: cmgiovanni-K53SV
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: joinInRoom 2013-12-02 12:35:23,105 [Thread-12] INFO  XMPPCommunicator - Created room: federation@conference.server.federation with nickname: cmgiovanni-K53SV
+org.clever.Common.XMPPCommunicator.CleverChatManagerListener: chatCreated 2013-12-02 12:35:23,105 [Smack Listener Processor (0)] INFO  XMPPCommunicator - Chat created with: giovanni-k53sv@server.dominioa.it createdLocally: false
+org.clever.ClusterManager.Federation.FederationListenerAgent: setAsActiveCM 2013-12-02 12:35:23,106 [Thread-12] INFO  FederationListenerAgent - CM joined in FEDERATION room
+org.clever.ClusterManager.Federation.FederationListenerAgent: setAsActiveCM 2013-12-02 12:35:23,106 [Thread-12] DEBUG FederationListenerAgent - MultiUserChat = org.jivesoftware.smackx.muc.MultiUserChat@4051b1fb
+org.clever.ClusterManager.Federation.FederationListenerAgent: setAsActiveCM 2013-12-02 12:35:23,107 [Thread-12] INFO  FederationListenerAgent - Room listener added in FEDERATION MultiUserChat
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:35:23,107 [Thread-12] DEBUG XMPPCommunicator - lanciato getFederatedCMs
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:35:23,107 [Thread-12] DEBUG XMPPCommunicator - mucTemp: org.jivesoftware.smackx.muc.MultiUserChat@4051b1fb
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:35:23,108 [Thread-12] DEBUG XMPPCommunicator - it: java.util.Collections$UnmodifiableCollection$1@216b55e2
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:35:23,108 [Thread-12] DEBUG XMPPCommunicator - it.next
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:35:23,108 [Thread-12] DEBUG XMPPCommunicator - occupantJid: federation@conference.server.federation/cmgiovanni-K53SV
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:35:23,108 [Thread-12] DEBUG XMPPCommunicator - presence: available: chat (CM_ACTIVE)
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:35:23,108 [Thread-12] DEBUG XMPPCommunicator - nick: cmgiovanni-K53SV
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:35:23,109 [Thread-12] DEBUG XMPPCommunicator - it.next
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:35:23,109 [Thread-12] DEBUG XMPPCommunicator - occupantJid: federation@conference.server.federation/cmclever1.dominioB.it
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:35:23,109 [Thread-12] DEBUG XMPPCommunicator - presence: available: chat (CM_ACTIVE)
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:35:23,109 [Thread-12] DEBUG XMPPCommunicator - nick: cmclever1.dominioB.it
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:35:23,109 [Thread-12] DEBUG XMPPCommunicator - tmp: CM_ACTIVE
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:35:23,110 [Thread-12] DEBUG XMPPCommunicator - Occupant aggiunto alla lista il CM cmclever1.dominioB.it
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: getFederatedCMs 2013-12-02 12:35:23,110 [Thread-12] DEBUG XMPPCommunicator - array: [cmclever1.dominioB.it]
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:23,110 [Thread-12] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:23,113 [Thread-12] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:23,117 [Thread-12] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:23,120 [Thread-12] DEBUG FederationListenerAgent - Method invoked: existNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:23,123 [Thread-12] DEBUG LocalCommunicationPlugin - message sent ; response: <boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:23,123 [Thread-12] DEBUG ModuleCommunicator - After sendRecv with has return :<boolean>false</boolean>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:23,127 [Thread-12] DEBUG ModuleCommunicator - Result :false
+org.clever.ClusterManager.FederationPlugins.FederationListener: initAsActive 2013-12-02 12:35:23,127 [Thread-12] INFO  FederationListenerAgent - Federation's node doesn't exist in sednaDB. Creating federation's node
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:23,128 [Thread-12] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:23,131 [Thread-12] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.Communicator.ModuleCommunicator: handleMessage 2013-12-02 12:35:23,136 [Thread-12] DEBUG ModuleCommunicator - >:( sono qui
+org.clever.Common.Communicator.Agent: handleInvocation 2013-12-02 12:35:23,153 [Thread-12] DEBUG FederationListenerAgent - Method invoked: insertNode
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:35:23,155 [Thread-12] DEBUG LocalCommunicationPlugin - message sent ; response: <null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:23,155 [Thread-12] DEBUG ModuleCommunicator - After sendRecv with has return :<null/>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:35:23,158 [Thread-12] DEBUG ModuleCommunicator - Result :null
+org.clever.ClusterManager.FederationPlugins.FederationListener: initAsActive 2013-12-02 12:35:23,159 [Thread-12] INFO  FederationListenerAgent - FederationNode created.
+org.clever.ClusterManager.FederationPlugins.FederationListener: initAsActive 2013-12-02 12:35:23,159 [Thread-12] DEBUG FederationListenerAgent - Creation of nodes on sednaDB for each of the federated CMs...
+org.clever.ClusterManager.FederationPlugins.FederationListener: initAsActive 2013-12-02 12:35:23,159 [Thread-12] DEBUG FederationListenerAgent - target: cmclever1.dominioB.it
+org.clever.ClusterManager.FederationPlugins.FederationListener: initAsActive 2013-12-02 12:35:23,159 [Thread-12] INFO  FederationListenerAgent - Retrieving nick and domain for CM: cmclever1.dominioB.it
+org.clever.ClusterManager.FederationPlugins.FederationListener: forwardCommandToCM 2013-12-02 12:35:23,162 [Thread-12] DEBUG FederationListenerAgent - ID for this msg: -1245997181
+org.clever.ClusterManager.FederationPlugins.FederationListener: forwardCommandToCM 2013-12-02 12:35:23,172 [Thread-12] DEBUG FederationListenerAgent - Launching addAsActiveCMandReply method of FederationListenerAgent agent to dominioA.it domain (CM=cmclever1.dominioB.it).
+org.clever.ClusterManager.FederationPlugins.FederationListener: forwardCommandToCM 2013-12-02 12:35:23,173 [Thread-12] DEBUG FederationListenerAgent - Message type: REQUEST type value: 0 id: -1245997181
+org.clever.ClusterManager.FederationPlugins.FederationListener: forwardCommandToCM 2013-12-02 12:35:23,175 [Thread-12] INFO  FederationListenerAgent - Launched addAsActiveCMandReply method of FederationListenerAgent agent to dominioA.it domain (CM=cmclever1.dominioB.it).
+org.clever.ClusterManager.FederationPlugins.FederationListener: forwardCommandToCM 2013-12-02 12:35:23,175 [Thread-12] DEBUG FederationListenerAgent - Waiting and etrieving result for addAsActiveCMandReply method of FederationListenerAgent agent, lauched to dominioA.it domain (CM=cmclever1.dominioB.it).
+org.clever.Common.XMPPCommunicator.RoomListener: processPacket 2013-12-02 12:35:23,248 [Smack Listener Processor (1)] DEBUG RoomListener - messaggio xmpp: org.jivesoftware.smack.packet.Message@e9844f35
+org.clever.Common.XMPPCommunicator.RoomListener: processPacket 2013-12-02 12:35:23,416 [Smack Listener Processor (1)] DEBUG RoomListener - messaggio xmpp: org.jivesoftware.smack.packet.Message@3448eca3
+org.clever.ClusterManager.Federation.FederationListenerAgent: handleCleverMessage 2013-12-02 12:35:23,420 [Smack Listener Processor (1)] DEBUG FederationListenerAgent - Message: <?xml version="1.0" encoding="UTF-8"?>
+<message id="-1245997181" type="REPLY">
+  <source>cmclever1.dominioB.it</source>
+  <destination>cmgiovanni-K53SV</destination>
+  <timestamp>Mon Dec 02 12:35:23 CET 2013</timestamp>
+  <replyToMsg>-1245997181</replyToMsg>
+  <hasReply>false</hasReply>
+  <body>
+    <result type="OBJECT" useAttachementId="true">
+      <module>FederationListenerAgent</module>
+      <operation>addAsActiveCMandReply</operation>
+    </result>
+  </body>
+  <attachement id="0"><![CDATA[<string-array>
+  <string>dominioB.it</string>
+  <string>cmclever1.dominioB.it</string>
+</string-array>]]></attachement>
+</message>
+
+
+org.clever.ClusterManager.Federation.FederationListenerAgent: handleCleverMessage 2013-12-02 12:35:23,421 [Smack Listener Processor (1)] DEBUG FederationListenerAgent - id risposta: -1245997181
+org.clever.ClusterManager.Federation.FederationListenerAgent: handleCleverMessage 2013-12-02 12:35:23,421 [Smack Listener Processor (1)] DEBUG FederationListenerAgent - Prendo la request alla key -1245997181 dalla hashmap che fa da pool
+org.clever.ClusterManager.Federation.FederationListenerAgent: handleCleverMessage 2013-12-02 12:35:23,421 [Smack Listener Processor (1)] DEBUG FederationListenerAgent - Request = org.clever.ClusterManager.DispatcherPlugins.DispatcherClever.Request@295c9583
+org.clever.ClusterManager.Federation.FederationListenerAgent: handleCleverMessage 2013-12-02 12:35:23,426 [Smack Listener Processor (1)] DEBUG FederationListenerAgent - reply object: [Ljava.lang.String;@5c6d416
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:42:24,695 [Thread-6] DEBUG ModuleCommunicator - Before sendRecv with has return: DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:42:24,701 [Thread-6] DEBUG LocalCommunicationPlugin - sync message to DatabaseManagerAgent
+org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal: sendRecv 2013-12-02 12:42:24,707 [Thread-6] ERROR LocalCommunicationPlugin - Error CleverException , sending as Msg: org.clever.Common.Exceptions.CleverException: module DatabaseManagerAgentnot found
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:42:24,708 [Thread-6] DEBUG ModuleCommunicator - After sendRecv with has return :<org.clever.Common.Exceptions.CleverException>
+  <detailMessage>module DatabaseManagerAgentnot found</detailMessage>
+  <stackTrace>
+    <trace>org.clever.Common.CommunicatorPlugins.Local.CommunicatorLocal.sendRecv(CommunicatorLocal.java:75)</trace>
+    <trace>org.clever.Common.Communicator.ModuleCommunicator.invoke(ModuleCommunicator.java:104)</trace>
+    <trace>org.clever.HostManager.ImageManagerPlugins.ImageManagerClever.ImageManager$ThreadCloser.run(ImageManager.java:872)</trace>
+  </stackTrace>
+  <suppressedExceptions class="java.util.Collections$UnmodifiableRandomAccessList" resolves-to="java.util.Collections$UnmodifiableList">
+    <c class="list"/>
+    <list reference="../c"/>
+  </suppressedExceptions>
+</org.clever.Common.Exceptions.CleverException>
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:42:24,715 [Thread-6] DEBUG ModuleCommunicator - Result :org.clever.Common.Exceptions.CleverException: module DatabaseManagerAgentnot found
+org.clever.Common.Communicator.ModuleCommunicator: invoke 2013-12-02 12:42:24,715 [Thread-6] DEBUG ModuleCommunicator - Exception received :
+org.clever.HostManager.ImageManagerPlugins.ImageManagerClever.ImageManager$ThreadCloser: run 2013-12-02 12:42:24,715 [Thread-6] ERROR ImageManager - Error deleting host info from the database : module DatabaseManagerAgentnot found

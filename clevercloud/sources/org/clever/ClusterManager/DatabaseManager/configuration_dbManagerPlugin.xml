@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <DbManagerPlugin>org.clever.ClusterManager.DatabaseManagerPlugins.Sedna.DbSedna</DbManagerPlugin>
+  <moduleName>DatabaseManagerAgent</moduleName>
+  <pluginParams>
+    <!--<serverURL>localhost</serverURL>-->
+    <serverURL>nodo1A</serverURL>
+    <!--<dbName>nuovoDB</dbName>-->
+    <dbName>sednaDB</dbName>
+    <user>SYSTEM</user>
+    <password>MANAGER</password>
+    <document>cleverData</document>
+  </pluginParams>
+</root>

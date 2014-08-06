@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+The MIT License
+
+Copyright (c) 2013 Mariacristina Sinagra
+Copyright (c) 2014 Giovanni Volpintesta
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+ -->
+ 
+<root>
+<HadoopNamenodePlugin>org.clever.ClusterManager.HadoopPlugin.NamenodePlugin</HadoopNamenodePlugin>
+<moduleName>HadoopJobtrackerAgent</moduleName>
+<!--<startHadoop>/usr/local/hadoop/hadoop-1.0.4/bin/start-dfs.sh</startHadoop>
+<stopHadoop>/usr/local/hadoop/hadoop-1.0.4/bin/stop-dfs.sh</stopHadoop>-->
+<!--<startHadoop>/home/apanarello/hadoop/hadoop-1.0.4/bin/start-dfs.sh</startHadoop>-->
+<!--<formatHadoop>/home/apanarello/hadoop/hadoop-1.0.4/bin/hadoop namenode -format</formatHadoop>-->
+<!--<stopHadoop>/home/apanarello/hadoop/hadoop-1.0.4/bin/stop-dfs.sh</stopHadoop>-->
+<!--<startHadoop>/usr/local/hadoop/hadoop-1.0.4/restartHadoop.sh</startHadoop>
+<stopHadoop>/usr/local/hadoop/hadoop-1.0.4/bin/stopDatanode.sh</stopHadoop>-->
+<coreSite>/home/apanarello/hadoop/hadoop-1.0.4/conf/core-site.xml</coreSite>
+<hdfsSite>/home/apanarello/hadoop/hadoop-1.0.4/conf/hdfs-site.xml</hdfsSite>
+<mapredSite>/home/apanarello/hadoop/hadoop-1.0.4/conf/mapred-site.xml</mapredSite>
+<slaves>/home/apanarello/hadoop/hadoop-1.0.4/conf/slaves</slaves>
+<!--<masters>/usr/local/hadoop/hadoop-1.0.4/conf/masters</masters>-->
+<masters>/home/apanarello/hadoop/hadoop-1.0.4/masters</masters>
+<!--<spaceID>/app/hadoop/tmp/dfs/name/current/VERSION</spaceID>-->
+<namenodePort>8020</namenodePort>
+<hadoopTmpDir>/home/apanarello/hadoop/tmp</hadoopTmpDir>
+<dirPermissions>777</dirPermissions>
+<append>true</append>
+</root>

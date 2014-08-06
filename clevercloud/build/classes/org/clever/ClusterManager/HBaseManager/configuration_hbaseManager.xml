@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+        <HBaseManagerPlugin>org.clever.ClusterManager.HBaseManagerPlugins.HBaseManager</HBaseManagerPlugin>
+	<moduleName>HBaseManagerAgent</moduleName>
+        <checkpointTimeout>60000</checkpointTimeout>
+        <options>
+            <!--Port on which the namenode is waiting for client connections.
+            It must be specified here and not between HDFS properties because if
+            not specified here, the default port will be used.-->
+            <namenodePort>9500</namenodePort>
+            
+            <!--Number of backup masters always present in the cluster.
+                When HBase active master crashes, one of them will become active
+                and then Clever will replace it launching a new backup master.-->
+            <backupMastersNumber>0</backupMastersNumber>
+            
+            <!--Number of Zookeeper peers. If Zookeeper is formed by 3 pees, when
+            a peer crashes, also Zookeeper cluster crashes, and then also HBase does it
+            because it doesn't find Zookeeper anymore. If Zookeeper is formed by
+            4 or more peers, it allows peer's crash until at least 3 peers remain
+            active.
+            It's impossible to replace a crashed Zookeeper peer while the cluster is
+            running because the IP of all of the peers must be specified in Zookeeper peers
+            configuration files at the startup of each of them-->
+            <zookeeperPeersNumber>1</zookeeperPeersNumber>
+            
+            <!--Hadoop secondary namenode is not (like in HBase) a sleeping master
+            replacing the principal one when it crashes, but a second master helping
+            the principal one by doing part of his works. It regularily makes a checkpoint
+            on the cluster, and then it sleep for a long period of time until the next one.-->
+            <useSecondaryNamenode>true</useSecondaryNamenode>
+            
+            <!--Maximum number of nodes (including Hadoop, Zookeeper and HBase)
+            launched on each of the Clever hosts. This configuration will be ignored if
+            the number of hosts is not sufficient to soddisfy it.-->
+            <nodesPerHostMaxNumber>2</nodesPerHostMaxNumber>
+            
+            <!--If "true" only one master per host will be launched, if possible.
+            If "false" master and slave nodes will be distribuited in the on the
+            hosts without distinction, so there could be hosts with 2 masters and
+            hosts with no masters. Zookeeper peer are considered masters.
+            If the number of hosts in Clever cluster is less than the number of 
+            masters specified in other configuration of this file, then this configuration
+            will be ignored.-->
+            <launchOnlyOneMasterPerHost>true</launchOnlyOneMasterPerHost>
+            
+            <!--If "true" nodes of Zookeeper, Hadoop and HBase will run on different
+            hosts, so there won't be a single host in which nodes appartaining to different
+            clusters run at the same time. This configuration has priority over the others.-->
+            <keepClustersSepared>false</keepClustersSepared>
+            
+            <!--If "false" Clever will launch masters only in nodes without slaves
+            and therefore it won't launch any slaves on them. This property is ignored
+            if the number of hosts isn't sufficient.-->
+            <launchSlavesOnMasterNodes>false</launchSlavesOnMasterNodes>
+            
+            <!--This configuration has maximum priority.
+            This configuration sets the occupation ratio in which Hadoop, HBase and Zookeeper
+            nodes will use Clever hosts. For example, if its value is "1", all Clever
+            hosts will used to launch Hadoop, HBase and Zookeeper nodes; if its value
+            is "0.5" just half Clever hosts will used, and so on.-->
+            <cleverOccupationRatio>1</cleverOccupationRatio>
+            
+            <!--This configuration sets the ratio beetween the number on HBase and
+            Hadoop slave nodes. For example if its value is "2", HBase will have double
+            the number of slaves than Hadoop; if its value is "1" they will have the same
+            number of slaves, and so on.
+            This configuration applies only to slaves, not to masters. Masters number is
+            specified in other configuration and is not variable.-->
+            <HBase-HadoopSlavesRatio>1</HBase-HadoopSlavesRatio>
+            
+            <!--If "true", regionservers will be PREFERABLY launched on hosts in which
+            a datanode is already running, and datanodes will be PREFERABLY launched on
+            hosts in which a regionserver is already running, rather than on other hosts,
+            to use the distribuition of nodes suggested by developers of HBase.-->
+            <joinRegionserversAndDatanodes>true</joinRegionserversAndDatanodes>
+            
+            <!--The properties used to configure Hadoop in its configuration files.
+            See online documentation and in particular the "*-default.xml" files in
+            Hadoop_HOME/src directory and its subdirectories to obtain a list of all
+            possible configuration properties and their default values.
+            "fs.default.name" must not be specified (if specified it will be ignored).
+            For each of the properties theese tags must be written:
+                    <property>
+                        <name>NOME_PROPRIETA'</name>
+                        <value>VALORE_PROPRIETA'</value>
+                    </property>
+            -->
+            <HadoopProperties>
+            </HadoopProperties>
+            
+            <!--The properties used to configure HBase in its configuration files.
+            See online documentation and in particular the "hbase-default.xml" file
+            in HBase_HOME/src/main/resources directory to obtain a list of all
+            possible configuration properties and ther default values.
+            Online documentation is available at URL:
+            http://hbase.apache.org/book/config.files.html 
+            "hbase.zookeeper.quorum" must not be specified (if specified it will be ignored).
+            For each of the properties theese tags must be written:
+                    <property>
+                        <name>NOME_PROPRIETA'</name>
+                        <value>VALORE_PROPRIETA'</value>
+                    </property>
+            -->
+            <HBaseProperties>
+            </HBaseProperties>
+        </options>
+</configuration>

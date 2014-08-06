@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<HadoopDatanodePlugin>org.clever.HostManager.DatanodePlugin.PluginDatanode</HadoopDatanodePlugin>
+<moduleName>HadoopDatanodeAgent</moduleName>
+<coreSite>/usr/local/hadoop/hadoop-1.0.4/conf/core-site.xml</coreSite>
+<hdfsSite>/usr/local/hadoop/hadoop-1.0.4/conf/hdfs-site.xml</hdfsSite>
+<mapredSite>/usr/local/hadoop/hadoop-1.0.4/conf/mapred-site.xml</mapredSite>
+<spaceID>/app/hadoop/tmp/dfs/data/current/VERSION</spaceID>   
+<!--<startCommand>/usr/local/hadoop/hadoop-1.0.4/bin/hadoop datanode start</startCommand> 
+<stopCommand>/usr/local/hadoop/hadoop-1.0.4/bin/hadoop datanode stop</stopCommand> -->
+<startCommand>/usr/local/hadoop/hadoop-1.0.4/startCleanDatanode.sh</startCommand> 
+<stopCommand>/usr/local/hadoop/hadoop-1.0.4/stopDatanode.sh</stopCommand>
+<hadoopTmpDir>/app/hadoop/tmp</hadoopTmpDir>
+</root>
