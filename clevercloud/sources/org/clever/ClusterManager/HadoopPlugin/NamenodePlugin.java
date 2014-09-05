@@ -1044,10 +1044,11 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
      }*/
     @Override
-    public void submitJob(String fileBuffer, String jobName, String bucket, String fileS3Name, Long startByte, Long endByte, Byte p) throws CleverException {
+    public String submitJob(String fileBuffer, String jobName, String bucket, String fileS3Name, Long startByte, Long endByte, Byte p) throws CleverException {
+        String url="";
         S3Tools s3 = new S3Tools(this.logger);
         
-        String dest = "/home/apanarello/"+ fileS3Name +"part-"+ p;
+        String dest = "/home/apanarello/"+ fileS3Name +"part-"+p;
         logger.debug("PROVO A LANCIARE IL GETFILE CON IL SEGUENTE PATH DI DESTINAZIONE: "+dest);
         //Process pro=null;
         try {
@@ -1077,15 +1078,17 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
         } catch (RuntimeException ex) {
             logger.error("Error to exec ffmpeg transcode");
         } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(NamenodePlugin.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("IOerror in runtime.exec", ex);
         }
         //s3.uploadFile(fileBuffer, dest, bucket, fileS3Name);
-         
+        
                 //     
                 //....
         logger.debug("SONO NEL DOMINIO,METODO" + this.getClass().getMethods().toString());
-
-    }
+        url="https://s3.amazonaws.com/"+bucket+"/"+fileS3Name;
+        logger.debug("SONO NEL DOMINIO,METODO: "+url);
+        return url;
+       }
 
     @Override
     public ArrayList<String> listMyFiles(String user, String password) throws CleverException {

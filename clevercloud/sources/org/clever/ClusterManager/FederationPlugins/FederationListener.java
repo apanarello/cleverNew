@@ -393,30 +393,31 @@ public class FederationListener implements FederationListenerPlugin {
         msg.fillMessageFields(CleverMessage.MessageType.REQUEST, src, cm, hasReply, params, new ExecOperation(command, params, agent), id);
         msg.setId(id);
         Object result;
-        int tries;
-        for (tries=0; tries<this.attempts; tries++) {
-            Request request = new Request (msg.getId());
+        //int tries;
+        //for (tries=0; tries<this.attempts; tries++) {
+            //for (tries=0; tries<2; tries++) {
+            Request request = new Request (msg.getId(),(long)120000);
             //aggiungo la request alla requestPool
             ((FederationListenerAgent)this.owner).getRequestPool().put(new Integer(id), request);
             logger.debug("Launching "+command+" method of "+agent+" agent to CM="+cm+").");
             logger.debug ("Message type: "+msg.getType().toString()+" type value: "+msg.getType().ordinal()+" id: "+msg.getId());
             ((FederationListenerAgent)this.owner).sendMessage(msg);
-            logger.info("Launched "+command+" method of "+agent+" agent to CM="+cm+").");
+            logger.info("Launched "+command+" method of "+agent+" agent to CM="+cm);
             logger.debug("Waiting and retrieving result for "+command+" method of "+agent+" agent, lauched to CM="+cm+").");
             try {
                 result = request.getReturnValue();
-                logger.info(command+" method of "+agent+" agent successfully launched to CM="+cm+" after "+tries+" failed tries.");
+                logger.info(command+" method of "+agent+" agent successfully launched to CM= "+cm);
                 return result;
             } catch (CleverException ex) {
                 if (ex instanceof RequestExpired) {
-                    logger.info ("The launch of "+command+" method of "+agent+" to CM="+cm+" failed due to reached timeout (attempt "+(tries+1)+"). Trying to relaunch it.");
+                    logger.info ("The launch of "+command+" method of "+agent+" to CM="+cm+" failed due to reached timeout ");
                     //continue the cycle.
                 } else
                     throw ex;
             }
-        }
+        //}
         //If arrived here, the attempts of failed tries have been reached
-        throw new RequestAborted ("The launch of "+command+" method of "+agent+" to CM="+cm+" failed due to reached timeout for "+tries+" attempts. Request aborted");
+        throw new RequestAborted ("The launch of "+command+" method of "+agent+" to CM="+cm+" failed due to reached timeout . Request aborted");
     }
     /**
      * This method choose one of the federated CMs and launch the method using it

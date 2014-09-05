@@ -28,7 +28,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
@@ -47,10 +46,8 @@ import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 import java.io.OutputStream;
 import java.io.StringReader;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import javax.crypto.NoSuchPaddingException;
 import org.apache.log4j.Logger;
 import org.clever.Common.Exceptions.CleverException;
@@ -266,6 +263,7 @@ public class S3Tools {
                         out.close();
                         logger.debug("Il file  è stato creato: "+destPath);
                     } catch (IOException e) {
+                        logger.error("during writing file to fs",e);
                     }
 
                 } else {
@@ -275,18 +273,20 @@ public class S3Tools {
                 logger.error("",e);
             }
         } catch (AmazonServiceException ase) {
-            logger.error("Caught an AmazonServiceException, which means your request made it "
+           /* logger.error("Caught an AmazonServiceException, which means your request made it "
                     + "to Amazon S3, but was rejected with an error response for some reason.",ase);
             logger.error("Error Message:    " + ase.getMessage(),ase);
             logger.error("HTTP Status Code: " + ase.getStatusCode(),ase);
             logger.error("AWS Error Code:   " + ase.getErrorCode(),ase);
             logger.error("Error Type:       " + ase.getErrorType(),ase);
             logger.error("Request ID:       " + ase.getRequestId(),ase);
+            */
         } catch (AmazonClientException ace) {
-            logger.error("Caught an AmazonClientException, which means the client encountered "
+           /* logger.error("Caught an AmazonClientException, which means the client encountered "
                     + "a serious internal problem while trying to communicate with S3, "
                     + "such as not being able to access the network.",ace);
             logger.error("Error Message: " + ace.getMessage(),ace);
+            */
         }
     }
 

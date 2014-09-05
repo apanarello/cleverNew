@@ -23,11 +23,13 @@
  */
 
 package org.clever.Common.XMLTools;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.logging.Level;
 //import java.util.logging.Logger;
 import org.apache.log4j.Logger;
@@ -60,19 +62,23 @@ import org.w3c.dom.ls.LSSerializer;
 public class SmilXML {
 private final Logger logger;
 String nameF,nameB;
+private Map map;
 
-    public SmilXML(Logger log, String f,String b) {
+
+    public SmilXML(Logger log, Map m) {
         logger = log;
-        nameF=f;
-        nameB=b;
+       //ameF=f;
+        this.map=m;
+        //nameB=b;
     }
     /**
      * @param list
      * @throws java.io.FileNotFoundException
      * @throws java.lang.ClassNotFoundException
      */
-    public  void createSmil(ArrayList <String>list ) throws FileNotFoundException, ClassNotFoundException {
+    public  void createSmil( ) throws FileNotFoundException, ClassNotFoundException {
         
+        logger.debug("Create structure of smil xml file");
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -106,11 +112,14 @@ String nameF,nameB;
              // seq elements
              Element seq = doc.createElement("seq");
              body.appendChild(seq);
-            for (String list1 : list) {
-                String src = "https://s3.amazonaws.com/"+nameB+"/" + list1;
+             logger.debug("Created structure of SMIL XML FILE");
+            for (int i=0;i<map.size();i++) {
+                logger.debug("try to add url in smil file: "+"part: "+i);
                 Element video = doc.createElement("video");
-                video.setAttribute("src", src);
+                video.setAttribute("src", map.get(i).toString());
                 video.appendChild(seq);
+                logger.debug("Added urls to smil file");
+
             }       
              
             /*
@@ -137,8 +146,9 @@ String nameF,nameB;
              salary.appendChild(doc.createTextNode("100000"));
              staff.appendChild(salary);
              * */
+            logger.debug("Try to save smil file in local fs");
             FileOutputStream fos = null;
-            // write the content into xml file
+            //  write the content into xml file
             File f = new File("/home/dissennato/"+nameF+".smil");
             fos = new FileOutputStream(f);
            // TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -149,6 +159,7 @@ String nameF,nameB;
             LSOutput lso = impl.createLSOutput();
             lso.setByteStream(fos);
             serializer.write(doc,lso);
+            logger.debug("SMIL FILE SAVED IN: "+"/home/dissennato/"+nameF+".smil");
           //DOMSource source = new DOMSource(doc);
            // StreamResult result = new StreamResult(new File("/home/dissennato/file.xml"));
 
@@ -157,7 +168,7 @@ String nameF,nameB;
 
             //transformer.transform(source, result);
 
-            System.out.println("File saved!");
+            //logger.debug("File saved!");
 
         } catch (ParserConfigurationException ex) {
         logger.error("Error in ParserConfiguration",ex);

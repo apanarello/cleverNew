@@ -26,22 +26,9 @@ package org.clever.ClusterManager.HadoopPlugin;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Random;
-import java.util.Set;
-import java.util.UUID;
-import java.util.logging.Level;
-import javax.crypto.NoSuchPaddingException;
-import javax.xml.parsers.DocumentBuilderFactory;
 import org.apache.log4j.Logger;
 import org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent;
 import org.clever.ClusterManager.HadoopNamenode.HadoopNamenodePlugin;
@@ -50,16 +37,10 @@ import org.clever.Common.Exceptions.CleverException;
 //import org.clever.Common.Exceptions.HDFSInternalException;
 //import org.clever.Common.StorageRuler.FileInfo;
 import org.clever.Common.Timestamp.Timestamper;
-import org.clever.ClusterManager.HadoopJobtracker.HadoopJobtrackerAgent;
-import org.clever.ClusterManager.HadoopJobtracker.HadoopJobTrackerPlugin;
-import static org.clever.Common.Communicator.Agent.logger;
-import org.clever.Common.XMLTools.FileStreamer;
 import org.clever.Common.XMLTools.ParserXML;
 import org.clever.Common.S3tools.S3Tools;
 
 import org.clever.Common.JobRouler.Dataweight;
-import org.clever.Common.JobRouler.WeightComparator;
-import org.clever.Common.XMLTools.SmilXML;
 
 /**
  *
@@ -67,6 +48,7 @@ import org.clever.Common.XMLTools.SmilXML;
  */
 public class JobRuler implements Runnable {
 
+    public HashMap<Byte, String> urlMap=null;
     private HadoopNamenodeAgent owner;
     private HadoopNamenodePlugin ownerPlugin;
     private ClientRuler clientRuler;
@@ -86,7 +68,8 @@ public class JobRuler implements Runnable {
     String[][] domRes;
     private S3Tools s3t = null;
     byte part;
-    static int count=0;
+    static int count = 0;
+    ArrayList<Dataweight> domWeights;
 
     public JobRuler() {
 
@@ -95,7 +78,7 @@ public class JobRuler implements Runnable {
 
     }
 
-    public JobRuler(boolean loc, String fileBuffer, String jobName, String bucketName, String fileNameS3, long start, long end, byte part) {
+    public JobRuler(boolean loc, String fileBuffer, String jobName, String bucketName, String fileNameS3, long start, long end, byte part, HashMap m) {
 
         this.fileBuffer = fileBuffer;
         this.jobName = jobName;
@@ -105,8 +88,9 @@ public class JobRuler implements Runnable {
         //this.pass = pass;
         this.first = start;
         this.last = end;
-        local = loc;
+        this.local = loc;
         this.part = part;
+        this.urlMap = m;
         //this.position = b;
 
     }
@@ -115,11 +99,14 @@ public class JobRuler implements Runnable {
      *
      * @param b true = thread locale
      * @param a
+     * @param p
      */
-    public JobRuler(boolean b, ArrayList a) {
+    public JobRuler(boolean b, ArrayList a, byte p, HashMap m) {
 
         this.fedParms = a;
-        local = b;
+        this.local = b;
+        this.part = p;
+        this.urlMap = m;
         //this.part=part;
         //this.position = b;
     }
@@ -197,28 +184,28 @@ public class JobRuler implements Runnable {
             throw new CleverException("Authentication failed with user: " + user);
         }
         this.logger.debug("Autenticazione fatta");
-        String domain = null;
+        String domain = "";
         //
 
         ArrayList<Object> federationParams = new ArrayList<Object>();
         ArrayList<Object> commandParams = new ArrayList<Object>();
-       /*commandParams.add("STRINGA DI PROVA");
-        federationParams.add("dominioA");
-        federationParams.add(this.agentName);
-        federationParams.add("prova");
-        federationParams.add(true); //even if it's false. The reply isn't used in any case
-        federationParams.add(commandParams);
-        this.logger.debug("Sto per lanciare L'invoke con i seguenti parametri: " + federationParams.get(0));
-        try{
-        Object reply = this.owner.invoke("FederationListenerAgent", "forwardCommandToDomainWithoutTimeout", true, federationParams);
-        }catch(CleverException ex){
-        logger.error("Invoke del metodo prova NON riuscito",ex);} 
-        this.logger.debug(" Lanciato con successo invoke");
-        */
-       
+        /*commandParams.add("STRINGA DI PROVA");
+         federationParams.add("dominioA");
+         federationParams.add(this.agentName);
+         federationParams.add("prova");
+         federationParams.add(true); //even if it's false. The reply isn't used in any case
+         federationParams.add(commandParams);
+         this.logger.debug("Sto per lanciare L'invoke con i seguenti parametri: " + federationParams.get(0));
+         try{
+         Object reply = this.owner.invoke("FederationListenerAgent", "forwardCommandToDomainWithoutTimeout", true, federationParams);
+         }catch(CleverException ex){
+         logger.error("Invoke del metodo prova NON riuscito",ex);} 
+         this.logger.debug(" Lanciato con successo invoke");
+         */
+
         forwardable = false;
         String[] login = null;
-        ArrayList<Dataweight> domWeights = new ArrayList<Dataweight>();
+        domWeights = new ArrayList<Dataweight>();
         s3t = new S3Tools(this.logger);
         s3t.getAuth(fileBuffer);
         this.logger.debug("Autenticazione S3 fatta");
@@ -226,80 +213,96 @@ public class JobRuler implements Runnable {
         size = s3t.getInfo(fileNameS3);
         this.logger.debug("size ricavata file");
         logger.debug("VERIFICO VALORE array domRES: " + domRes[0][0] + "con numero VM: " + domRes[0][1]);
-        domWeights = calcWeights(domRes, localResources, size);
-        int numberthread=domWeights.size();
-        this.logger.debug("calcolo pesi fatto" + domWeights.get(0).getStart() + " " + domWeights.get(0).getEnd() + " dominioA:  " + domWeights.get(1).getStart() + " " + domWeights.get(1).getEnd());
+        logger.debug("VERIFICO VALORE array domRES: " + domRes[1][0] + "con numero VM: " + domRes[1][1]);
+
+        domWeights = calcWeights(domRes, size);
+        //int numberthread = domWeights.size();
+        //this.logger.debug("calcolo pesi fatto" + domWeights.get(0).getStart() + " " + domWeights.get(0).getEnd() + " dominioA:  " + domWeights.get(1).getStart() + " " + domWeights.get(1).getEnd());
         this.logger.debug("Launching the command to local domain...");
-        int[] numThread=new int[1];
-        numThread[0]=0;
-        try {
-            long firstByte = domWeights.get(0).getStart();
-            long lastByte = domWeights.get(0).getEnd();
+        //int[] numThread=new int[1];
+        //numThread[0]=0;
 
-            this.logger.debug("first =: " + domWeights.get(0).getStart() + " last: " + domWeights.get(0).getEnd());
-            //temp = domWeights.get(this.localDomains());+
-            JobRuler nJobRuler = new JobRuler(true, fileBuffer, jobName, bucketName, fileNameS3, firstByte, lastByte, (byte) 0);
-            nJobRuler.init(this.clientRuler, this.owner, this.logger);
-
-            //this.logger.debug(" Lancio thread locale , variabile local= "+local);
-            new Thread(nJobRuler).start();
-            this.local = false;/*  LANCIA THREAD  JOB IN LOCALE QUI*/
-
-            this.logger.debug("Thread locale lanciato, variabile local= " + local);
-            this.logger.debug("Removing local domain" + domWeights.get(0).getDomain() + "from list");
-            domWeights.remove(0);
-
-        } catch (RuntimeException ex) {
-            this.logger.debug("Error to launch Thread", ex);
-        }
         //domWeights.remove(0);
         Dataweight datTemp = null;
-        
+
         //Iterator<Dataweight> it = domWeights.iterator();
-        part=1;
-        for(int i=0;i<domWeights.size();i++){
-        
+        //part = 0;
+        this.logger.debug("Before For to launch thread, thread to launch are: "+domWeights.size());
+        for (int i = 0; i < domWeights.size(); i++) {
+            this.logger.debug("CICLO NUMERO: "+i);
             try {
                 datTemp = domWeights.get(i);
                 domain = datTemp.getDomain();
-                
-                logger.info("Domain " + domain + " was choosen");
-                login = this.ownerPlugin.retrieveLoginInfo(domain);
-                logger.info("Domain authentication info retrieved: user=" + login[0] + " pass=" + login[1]);
-                logger.debug("Domain : " + domain + "has to transcode the following byte range : from " + datTemp.getStart() + "to" + datTemp.getEnd());
-                
-                federationParams.clear();
-                commandParams.clear();
-                commandParams.add(fileBuffer);
-                commandParams.add(jobName);
-                commandParams.add(bucketName);
-                commandParams.add(fileNameS3);
-                //commandParams.add(login[0]); //user
-                //commandParams.add(login[1]); //userPass
-                commandParams.add(datTemp.getStart());
-                commandParams.add(datTemp.getEnd());
-                commandParams.add(part);
+                this.logger.debug("Domain on which to launch jop is: "+domain);
+                this.logger.debug("CICLO NUMERO: "+i);
+                boolean t=domain.equals(localDomains());
+                if (t) {
+                   this.logger.debug(" domain.equals(localoDomains() is : "+t);
+                    try {
+                        long firstByte = datTemp.getStart();
+                        long lastByte = datTemp.getEnd();
 
-                federationParams.add(domain);
-                federationParams.add(this.agentName);
-                federationParams.add("sendJob");
-                federationParams.add(true); //even if it's false. The reply isn't used in any case
-                federationParams.add(commandParams);
-                part++; 
-                //JobRuler job = new JobRuler(federationParams);
-                this.logger.debug("Try to launch thread to send command to federated domain: " + domain);
-                JobRuler nJobRuler = new JobRuler(false, federationParams);
-                nJobRuler.init(this.clientRuler, this.owner, this.logger);
-                new Thread(nJobRuler).start();
+                        this.logger.debug("first =: " + datTemp.getStart() + " last: " + datTemp.getEnd());
+                        //temp = domWeights.get(this.localDomains());+
+                        JobRuler nJobRuler = new JobRuler(true, fileBuffer, jobName, bucketName, fileNameS3, firstByte, lastByte, (byte) i, urlMap);
+                        nJobRuler.init(this.clientRuler, this.owner, this.logger);
+
+                        //this.logger.debug(" Lancio thread locale , variabile local= "+local);
+                        new Thread(nJobRuler).start();
+                        this.local = false;/*  LANCIA THREAD  JOB IN LOCALE QUI*/
+
+                        //this.logger.debug("Thread locale lanciato, variabile local= " + local);
+                        //this.logger.debug("Removing local domain" + datTemp.getDomain() + "from list");
+                        //domWeights.remove(0);
+
+                    } catch (RuntimeException ex) {
+                        this.logger.debug("Error to launch Thread", ex);
+                    }
+                } else {
+                    logger.info("Domain  choosen to send job is: "+ domain );
+                    login = this.ownerPlugin.retrieveLoginInfo(domain);
+                    logger.info("Domain authentication info retrieved: user=" + login[0] + " pass=" + login[1]);
+                    logger.debug("Domain : " + domain + "has to transcode the following byte range : from " + datTemp.getStart() + "to" + datTemp.getEnd());
+
+                    federationParams.clear();
+                    commandParams.clear();
+                    commandParams.add(fileBuffer);
+                    commandParams.add(jobName);
+                    commandParams.add(bucketName);
+                    commandParams.add(fileNameS3);
+                    //commandParams.add(login[0]); //user
+                    //commandParams.add(login[1]); //userPass
+                    commandParams.add(datTemp.getStart());
+                    commandParams.add(datTemp.getEnd());
+                    commandParams.add((byte)i);
+
+                    federationParams.add(domain);
+                    federationParams.add(this.agentName);
+                    federationParams.add("sendJob");
+                    federationParams.add(true); //even if it's false. The reply isn't used in any case
+                    federationParams.add(commandParams);
+                    //part++;
+                    //JobRuler job = new JobRuler(federationParams);
+                    this.logger.debug("Try to launch thread to send command to federated domain: " + domain);
+                    JobRuler nJobRuler = new JobRuler(false, federationParams, (byte) (i), urlMap);
+                    nJobRuler.init(this.clientRuler, this.owner, this.logger);
+                    new Thread(nJobRuler).start();
+                }
 
             } catch (CleverException ex) {
+                logger.error("Error to start thread job", ex);
+            }catch (Exception ex){
                 logger.error("Error to start thread job", ex);
             }
 
         }
-        //while(count<numberthread){}
         
-        SmilXML smil = new SmilXML(this.logger,fileNameS3,bucketName);
+        
+        //ControlDim cDim = new ControlDim(this.logger, domWeights.size(), urlMap);
+        //new Thread(cDim).start();
+        
+        
+        //while(count<numberthread){}
 
         //this.ownerPlugin.execJob(fileBuffer, jobName, numDom, listDomains);
     }
@@ -313,12 +316,13 @@ public class JobRuler implements Runnable {
      * @param starByte
      * @param endByte
      * @param p
+     * @return url
      * @throws CleverException
      * @throws IOException
      */
-    public void sendJob(String fileBuffer, String jobName, String bucket, String fileS3, Long starByte, Long endByte, Byte p) throws CleverException, IOException {
+    public String sendJob(String fileBuffer, String jobName, String bucket, String fileS3, Long starByte, Long endByte, Byte p) throws CleverException, IOException {
         logger.debug("Local federated sendJob method: " + this.toString());
-        this.ownerPlugin.submitJob(fileBuffer, jobName, bucket, fileS3, starByte, endByte, p);
+        return this.ownerPlugin.submitJob(fileBuffer, jobName, bucket, fileS3, starByte, endByte, p);
         //this.execJob(fileBuffer, jobName, fileS3, bucket, starByte, endByte, p);
 
     }
@@ -331,7 +335,7 @@ public class JobRuler implements Runnable {
      * @return
      * @throws java.io.IOException
      */
-    public ArrayList<Dataweight> calcWeights(String domR[][], long local, long size) throws IOException {
+    public ArrayList<Dataweight> calcWeights(String domR[][], long size) throws IOException {
 
         ArrayList<Dataweight> tempArray = new ArrayList<Dataweight>();
         ArrayList<Dataweight> tempArray2 = new ArrayList<Dataweight>();
@@ -339,7 +343,7 @@ public class JobRuler implements Runnable {
         String localdomain;
         long locWeight;
         logger.debug("Calculate num chunks for each domain");
-        locWeight = local;
+        //locWeight = local;
         int c;
         Long sum = 0L;
         Dataweight obTemp, obTempPrev;
@@ -350,16 +354,20 @@ public class JobRuler implements Runnable {
             logger.debug("Creato Iterator per TempARRAy");
             //int numDom = domRes.size();
             localdomain = localDomains();
-            logger.debug("VALORI da aggiungere all'array sono: " + localdomain + " con peso " + locWeight);
-            tempArray.add(new Dataweight(localdomain, (int) (locWeight)));
-            logger.debug("Aggiunto alla lista : " + tempArray.get(0).getDomain() + " con valore: " + tempArray.get(0).getWeight());
+            // logger.debug("VALORI da aggiungere all'array sono: " + localdomain + " con peso " + locWeight);
+            // tempArray.add(new Dataweight(localdomain, (int) (locWeight)));
+            //logger.debug("Aggiunto alla lista : " + tempArray.get(0).getDomain() + " con valore: " + tempArray.get(0).getWeight());
+            try{
             for (int j = 0; j < domR.length; j++) {
                 tempArray.add(new Dataweight(domR[j][0], Integer.parseInt(domR[j][1])));
 
-                logger.debug("Aggiunto alla lista : " + tempArray.get(1).getDomain() + " con valore: " + tempArray.get(1).getWeight());
+                logger.debug("Aggiunto alla lista : " + tempArray.get(0).getDomain() + " con valore: " + tempArray.get(0).getWeight());
             }
-            logger.debug("PRIMA DEL WHILE");
+            logger.debug("PRIMA DEL FOR");
             //it = tempArray.iterator();
+            }catch(Exception e){
+            logger.error("Error in calcWeights",e);
+            }
             for (c = 0; c < tempArray.size(); c++) {
 
                 //logger.debug("DENTRO WHILE");
@@ -382,10 +390,10 @@ public class JobRuler implements Runnable {
                 //obTemp = it.next();
                 //obTempPrev = (Dataweight) obTemp.clone();
                 //logger.debug("Effettuata copia oggetti");
-                if (obTemp.getDomain().equals(localdomain)) {
+                if (c == 0) {
                     logger.debug("calcolo il range per il dominio locale");
                     obTemp.setStart(0);
-                    obTemp.setEnd((chunck * local));
+                    obTemp.setEnd((chunck * (obTemp.getWeight())));
                     tempArray2.add(obTemp);
                     //range[0][1] = (Long) (local * chunck);
                     //weight.put("localdomain", range);
@@ -429,7 +437,7 @@ public class JobRuler implements Runnable {
     }
 
     /**
-   Buffer
+     * Buffer
      */
     //public void execJob(String fileBuffer, String jobName, String fileS3, String bucket, long starByte, long endByte, byte p) throws IOException {
         /*
@@ -462,7 +470,7 @@ public class JobRuler implements Runnable {
      }
      s3.uploadFile(fileBuffer, dest, bucket, fileS3);
      */
-   //     logger.debug("SONO NEL DOMINIO: " + this.localDomains() + "METODO" + this.getClass().getMethods().toString());
+    //     logger.debug("SONO NEL DOMINIO: " + this.localDomains() + "METODO" + this.getClass().getMethods().toString());
     // }
     @Override
     public void run() {
@@ -471,6 +479,8 @@ public class JobRuler implements Runnable {
 
                 this.logger.debug("Launching the command to choosen domain...");
                 Object reply = null;
+                ArrayList a =  (ArrayList) fedParms.get(4);
+                
                 try {
                     Timestamper.write("T16-inizioLancioSendJobSuDominioFederato");
                 } catch (IOException ex) {
@@ -478,7 +488,15 @@ public class JobRuler implements Runnable {
                 }
                 this.logger.debug("Sto per lanciare L'invoke con i seguenti parametri: " + fedParms.get(0).toString() + ";" + fedParms.get(1).toString() + ";" + fedParms.get(2).toString() + ";" + fedParms.get(3).toString());
                 reply = this.owner.invoke("FederationListenerAgent", "forwardCommandToDomainWithoutTimeout", true, fedParms);
-                count++;
+                this.logger.debug("Response of INVOKE IS: "+reply+"---VALUE----: "+(String)reply);
+                 urlMap=new HashMap<Byte, String>();
+                //count++;
+                try {
+                    urlMap.put(this.part,"https://s3.amazonaws.com/"+a.get(2)+"/"+a.get(3)+"part-"+a.get(7));
+                } catch (Exception e) {
+                    logger.error("error in urlMap put", e);
+                }
+                logger.debug("Aggiunto Url all'hash table: " + urlMap.get(this.part));
                 this.logger.debug("INVOCATO FORWARD");
                 try {
                     Timestamper.write("T17-riuscitoLancioSendJobSuDominioFederato");
@@ -495,8 +513,23 @@ public class JobRuler implements Runnable {
                 //listDomains.remove(domain);
             } //this.sendJob(fileBuffer, jobName, fileNameS3, bucketName, user, pass, start, end);
             else {
+                // String url="";
+                //ArrayList<Object> para = new ArrayList<Object>();
+
                 this.logger.debug("Lancio del metodo : " + this.getClass().getName());
-                this.ownerPlugin.submitJob(fileBuffer, jobName, bucketName, fileNameS3, first, last, part);
+                //url=this.ownerPlugin.submitJob(fileBuffer, jobName, bucketName, fileNameS3, first, last, part);
+                urlMap=new HashMap<Byte, String>();
+                urlMap.put((byte) this.part, this.ownerPlugin.submitJob(fileBuffer, jobName, bucketName, fileNameS3, first, last, part));
+                /*para.add(this.agentName);
+                 para.add("<" + this.JobNode + " />");
+                 para.add("into");
+                 para.add("");
+                 try {
+                 this.owner.invoke("DatabaseManagerAgent", "insertNode", true, para);
+                 } catch (CleverException ex) {
+                 logger.error("Error inserting Job node in DB");
+                 }*/
+                logger.debug("Aggiunto Url all'hash table: " + urlMap.get(0));
                 count++;
             }
         } catch (CleverException ex) {

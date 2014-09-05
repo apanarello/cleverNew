@@ -65,7 +65,7 @@ public interface HadoopNamenodePlugin {
     public void InsertItemIntoHadoopNode(String hostname, String address, String username) throws CleverException;
     //public void prova(String stringa) throws CleverException;
    // public String submitJob(String input, String output) throws Exception;
-    public void submitJob (String fileBuffer, String jobName,String bucket,String fileS3Name, Long startByte,Long endByte,Byte p) throws CleverException;;
+    public String submitJob (String fileBuffer, String jobName,String bucket,String fileS3Name, Long startByte,Long endByte,Byte p) throws CleverException;;
     public void setOwner(Agent owner);
         
     //Giovanni Volpintesta's commands
