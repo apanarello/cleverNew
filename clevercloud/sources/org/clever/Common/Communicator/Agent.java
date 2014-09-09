@@ -112,23 +112,31 @@ public abstract class Agent implements MethodInvokerHandler {
         if (params != null) {
             par = new Class[params.size()];
             input = new Object[params.size()];
-
+                
             for (i = 0; i < params.size(); i++) {
+                
                 par[i] = params.get(i).getClass();
                 input[i] = params.get(i);
+                logger.debug("SONO IN HANDLEiNVOCATION INPUT["+i+"]= "+input[i]);
             }
         } else {
+            logger.debug("SONO IN HANDLEiNVOCATION Params=null");
             par = null;
         }
         try {
             //agent method
+            logger.debug("Sto chiamando getMethod e lo metto in mthd");
             mthd = this.getClass().getMethod(method.getMethodName(), par);
-
+            logger.debug("method.getHasReturn is: "+method.getHasReturn());
             if (method.getHasReturn()) {
+                logger.debug("SONO IN AGENT e method.getHasReturn is: "+method.getHasReturn());
                 output = (Object) mthd.invoke(this, input);
+                //logger.debug("SONO IN AGENT: "+(String)output);
+                logger.debug("SONO IN AGENT: "+output);
 
 
             } else {
+                logger.debug("SONO IN AGENT Dentro ELSE "+method.getHasReturn());
                 mthd.invoke(this, input);
                 output = null;
             }
@@ -170,6 +178,8 @@ public abstract class Agent implements MethodInvokerHandler {
                 throw new CleverException("Security Exception: " + ex.getMessage());
             }
             logger.debug("Method invoked: " + method.getMethodName());
+            logger.debug("Method invoked: " +output );
+            // logger.debug("Method invoked: " +(String)output );
             return (output);
 
 

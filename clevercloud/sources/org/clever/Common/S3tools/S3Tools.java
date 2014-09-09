@@ -48,6 +48,7 @@ import java.io.OutputStream;
 import java.io.StringReader;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
 import javax.crypto.NoSuchPaddingException;
 import org.apache.log4j.Logger;
 import org.clever.Common.Exceptions.CleverException;
@@ -109,7 +110,7 @@ public class S3Tools {
      * @throws java.security.spec.InvalidKeySpecException
      * @throws org.clever.Common.Exceptions.CleverException
      */
-    public void getFileFromS3(String rootK, String destPath, String bucket, String fileName, Long init, Long ends) throws IOException, NoSuchAlgorithmException, NoSuchProviderException, NoSuchPaddingException, InvalidKeySpecException, InterruptedException, CleverException {
+    public void getFileFromS3(String rootK, String destPath, String bucket, String fileName, Long init, Long ends) throws IOException, CleverException {
         /*
          * Important: Be sure to fill in your AWS access credentials in the
          *            AwsCredentials.properties file before you try to run this
@@ -201,7 +202,7 @@ public class S3Tools {
             //int end = Integer.parseInt(end);
             this.destPath = destPath;
             Long start = (init);
-            Long  end = (ends);
+            Long end = (ends);
 
             logger.debug("Start to Download bytes of object: " + start + " - " + end);
             //System.out.println(end);
@@ -215,9 +216,9 @@ public class S3Tools {
              }*/
             int count;
             //String s=null;
-             logger.debug("PROVO A CREARE FILE CON PATH: "+destPath);
+            logger.debug("PROVO A CREARE FILE CON PATH: " + destPath);
             File fileVid = new File(destPath);
-            logger.debug("CREATO FILE CON PATH: "+destPath);
+            logger.debug("CREATO FILE CON PATH: " + destPath);
             S3Object object = s3.getObject(new GetObjectRequest(bucket, fileName).withRange(start, end));
             logger.debug("CREATO OGGETTO S3OBJECT");
             //System.out.println("Content-Type: "  + object.getObjectMetadata().getContentType());
@@ -228,9 +229,9 @@ public class S3Tools {
              while((s=stdInput.readLine())!=null){
              System.out.println(s);
              }*/
-            
+
             try {
-            
+
                 if (fileVid.exists()) {
                     logger.warn("file " + destPath + " just exists");
                     try {
@@ -246,10 +247,12 @@ public class S3Tools {
                         out.close();
                     } catch (IOException e) {
                         logger.debug("Error to write file in localFs", e);
+                    } catch (InterruptedException e) {
+                        logger.debug("Error to write file in localFs- Interruptesd", e);
                     }
 
                 } else if (fileVid.createNewFile()) {
-                    
+
                     try {
                         InputStream in = object.getObjectContent();
                         byte[] buf = new byte[end.intValue()];
@@ -261,32 +264,34 @@ public class S3Tools {
                             out.write(buf, 0, count);
                         }
                         out.close();
-                        logger.debug("Il file  è stato creato: "+destPath);
+                        logger.debug("Il file  è stato creato: " + destPath);
                     } catch (IOException e) {
-                        logger.error("during writing file to fs",e);
+                        logger.error("during writing file to fs", e);
+                    } catch (InterruptedException e) {
+                        logger.error("during writing file to fs", e);
                     }
 
                 } else {
                     logger.debug("Il file " + destPath + " non può essere creato");
                 }
             } catch (IOException e) {
-                logger.error("",e);
+                logger.error("", e);
             }
         } catch (AmazonServiceException ase) {
-           /* logger.error("Caught an AmazonServiceException, which means your request made it "
-                    + "to Amazon S3, but was rejected with an error response for some reason.",ase);
-            logger.error("Error Message:    " + ase.getMessage(),ase);
-            logger.error("HTTP Status Code: " + ase.getStatusCode(),ase);
-            logger.error("AWS Error Code:   " + ase.getErrorCode(),ase);
-            logger.error("Error Type:       " + ase.getErrorType(),ase);
-            logger.error("Request ID:       " + ase.getRequestId(),ase);
-            */
+            /* logger.error("Caught an AmazonServiceException, which means your request made it "
+             + "to Amazon S3, but was rejected with an error response for some reason.",ase);
+             logger.error("Error Message:    " + ase.getMessage(),ase);
+             logger.error("HTTP Status Code: " + ase.getStatusCode(),ase);
+             logger.error("AWS Error Code:   " + ase.getErrorCode(),ase);
+             logger.error("Error Type:       " + ase.getErrorType(),ase);
+             logger.error("Request ID:       " + ase.getRequestId(),ase);
+             */
         } catch (AmazonClientException ace) {
-           /* logger.error("Caught an AmazonClientException, which means the client encountered "
-                    + "a serious internal problem while trying to communicate with S3, "
-                    + "such as not being able to access the network.",ace);
-            logger.error("Error Message: " + ace.getMessage(),ace);
-            */
+            /* logger.error("Caught an AmazonClientException, which means the client encountered "
+             + "a serious internal problem while trying to communicate with S3, "
+             + "such as not being able to access the network.",ace);
+             logger.error("Error Message: " + ace.getMessage(),ace);
+             */
         }
     }
 
@@ -332,9 +337,9 @@ public class S3Tools {
         try {
             for (Iterator<Bucket> it = s3.listBuckets().iterator(); it.hasNext();) {
                 obj = s3.listObjects(it.next().getName());
-                 this.logger.debug("BUCKET" + obj.getBucketName() );
-                 obList=obj.getObjectSummaries();
-                 this.logger.debug("NUMERO OGGETTI IN BUCKET" +  obj.getBucketName()+" : "+ obList.size());
+                this.logger.debug("BUCKET" + obj.getBucketName());
+                obList = obj.getObjectSummaries();
+                this.logger.debug("NUMERO OGGETTI IN BUCKET" + obj.getBucketName() + " : " + obList.size());
 
                 do {
                     for (S3ObjectSummary objSumm : obj.getObjectSummaries()) {
@@ -382,14 +387,13 @@ public class S3Tools {
 
             fos = new FileOutputStream(temp);
             //temp = new File("rootkey_", ".csv", new File("/home/apanarello/"));
-            
 
             fos.write(rootK.getBytes());
             temp.deleteOnExit();
         } catch (IOException ex) {
-            this.logger.error("Creazione file temporaneo non riuscita",ex);
+            this.logger.error("Creazione file temporaneo non riuscita", ex);
         }
-       //KeySpec keySpec = new PBEKeySpec(passPhrase.toCharArray(), salt, iterationCount);
+        //KeySpec keySpec = new PBEKeySpec(passPhrase.toCharArray(), salt, iterationCount);
         //SecretKey key = SecretKeyFactory.getInstance("PBEWithMD5AndDES").generateSecret(keySpec);
         //PropertiesCredentials p = new PropertiesCredentials(null)
         //File f = new File(rootK);
@@ -397,7 +401,7 @@ public class S3Tools {
         PropertiesCredentials prop = new PropertiesCredentials(temp);
         s3 = new AmazonS3Client(prop);
         this.logger.debug("Ritorno Oggetto s3 " + this.getClass().getName());
-      //return s3;
+        //return s3;
 
     }
 
@@ -411,7 +415,7 @@ public class S3Tools {
 
         int iterationCount = 19;
 
-       //KeySpec keySpec = new PBEKeySpec(passPhrase.toCharArray(), salt, iterationCount);
+        //KeySpec keySpec = new PBEKeySpec(passPhrase.toCharArray(), salt, iterationCount);
         //SecretKey key = SecretKeyFactory.getInstance("PBEWithMD5AndDES").generateSecret(keySpec);
         //PropertiesCredentials p = new PropertiesCredentials(null)
         File f = new File(rootK);

@@ -119,6 +119,7 @@ public class Request implements Runnable
     org.clever.ClusterManager.Dispatcher.DispatcherAgent.logger.debug("expired = "+expired);
     if(expired)
     {
+        org.clever.ClusterManager.Dispatcher.DispatcherAgent.logger.debug("Sono nel get value ed expired = "+expired);
         throw new RequestExpired();
     }
     if(returnValue instanceof CleverException)

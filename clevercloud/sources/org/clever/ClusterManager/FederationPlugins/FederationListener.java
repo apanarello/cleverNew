@@ -396,7 +396,7 @@ public class FederationListener implements FederationListenerPlugin {
         //int tries;
         //for (tries=0; tries<this.attempts; tries++) {
             //for (tries=0; tries<2; tries++) {
-            Request request = new Request (msg.getId(),(long)120000);
+            Request request = new Request (msg.getId(),0);
             //aggiungo la request alla requestPool
             ((FederationListenerAgent)this.owner).getRequestPool().put(new Integer(id), request);
             logger.debug("Launching "+command+" method of "+agent+" agent to CM="+cm+").");
@@ -407,9 +407,11 @@ public class FederationListener implements FederationListenerPlugin {
             try {
                 result = request.getReturnValue();
                 logger.info(command+" method of "+agent+" agent successfully launched to CM= "+cm);
+                logger.info("Result = "+(String)result);
                 return result;
             } catch (CleverException ex) {
                 if (ex instanceof RequestExpired) {
+                    logger.info("E' Scaduto il time out--");
                     logger.info ("The launch of "+command+" method of "+agent+" to CM="+cm+" failed due to reached timeout ");
                     //continue the cycle.
                 } else

@@ -26,6 +26,7 @@ package org.clever.Common.XMLTools;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import org.apache.log4j.Logger;
 /**
@@ -34,15 +35,16 @@ import org.apache.log4j.Logger;
  */
 public class ControlDim implements Runnable{
     private final Logger logger;
-    public Map<Byte,String> urlMap;
+    public HashMap<Byte,String> urlMap;
     int numThread;
+    private String fileName;
 
-        public ControlDim(Logger log, int i, Map m) {
+        public ControlDim(Logger log, int i, HashMap m,String nameF) {
             this.urlMap=m;
             this.numThread=i;
             this.logger=log;
             logger.debug("Object "+this+" creato");
-            
+            this.fileName=nameF;
         }
 
         @Override
@@ -50,10 +52,11 @@ public class ControlDim implements Runnable{
             try {
                 
                 //logger.debug("BEFORE WHILE LOOP: "+"URLMAP SIZE: "+urlMap.size()+" Num thread : "+ numThread);
-                                logger.debug("BEFORE WHILE LOOP: "+"URLMAP SIZE: ");
+                
                 while (urlMap.isEmpty()) 
-                    Thread.sleep(8000);
+                    Thread.sleep(10000);
                 while (urlMap.size()<numThread){
+                    logger.debug("INTO WHILE LOOP: "+"URLMAP SIZE: "+urlMap.size());
                     try {
                         logger.debug("Into Cycle controll "+this+"\\\\ Actually Hash table size is: "+urlMap.size()+" and the number of thread which are terminated is: "+numThread);
                         Thread.sleep(5000);
@@ -61,8 +64,10 @@ public class ControlDim implements Runnable{
                         logger.error("error in threar sleep", ex);
                     }
                 }
-                logger.debug("Create smil object");
-                SmilXML smil = new SmilXML(logger,urlMap);
+                logger.debug("Create smil object...urlmap-size is: "+urlMap.size());
+               
+                
+                SmilXML smil = new SmilXML(logger,urlMap,fileName);
                 logger.debug("Created smil object and start to create SMIL XML FILE");
                 smil.createSmil();
                 logger.debug("Create smil file");
@@ -71,7 +76,7 @@ public class ControlDim implements Runnable{
             } catch (ClassNotFoundException ex) {
                 logger.error("Error in  smil.createSmil", ex);;
             } catch (Exception ex) {
-                logger.error("Error in  run method", ex);;
+                logger.error("Error in  run method", ex);
             }
             /*try {
                 s3t.uploadFile(fileBuffer, pass, bucketName, fileNameS3);

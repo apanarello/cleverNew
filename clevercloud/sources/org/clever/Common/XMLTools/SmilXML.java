@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package org.clever.Common.XMLTools;
 
 import java.io.File;
@@ -29,6 +28,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 //import java.util.logging.Logger;
@@ -42,8 +42,6 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
-
 
 import org.w3c.dom.Attr;
 import org.w3c.dom.DOMImplementation;
@@ -60,24 +58,25 @@ import org.w3c.dom.ls.LSSerializer;
  * @author dissennato
  */
 public class SmilXML {
-private final Logger logger;
-String nameF,nameB;
-private Map map;
 
+    private final Logger logger;
+    String nameF, nameB, url;
+    private HashMap map;
 
-    public SmilXML(Logger log, Map m) {
+    public SmilXML(Logger log, HashMap m, String f) {
         logger = log;
-       //ameF=f;
-        this.map=m;
+        nameF = f;
+        this.map = m;
         //nameB=b;
     }
+
     /**
      * @param list
      * @throws java.io.FileNotFoundException
      * @throws java.lang.ClassNotFoundException
      */
-    public  void createSmil( ) throws FileNotFoundException, ClassNotFoundException {
-        
+    public void createSmil() throws FileNotFoundException, ClassNotFoundException {
+
         logger.debug("Create structure of smil xml file");
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -86,42 +85,38 @@ private Map map;
             // root elements
             Document doc = docBuilder.newDocument();
             DOMImplementation domImpl = doc.getImplementation();
-           
+
            //OMImplementationLS domImplementation =
-                   //DOMImplementationLS) DocumentBuilderFactory.newInstance().newDocumentBuilder().getDOMImplementation();
-            
-            
-            
-            
+            //DOMImplementationLS) DocumentBuilderFactory.newInstance().newDocumentBuilder().getDOMImplementation();
             DocumentType docType = domImpl.createDocumentType("smil", "-//W3C//DTD SMIL 2.0//EN", "http://www.w3.org/2001/SMIL20/SMIL20.dtd");
             doc.appendChild(docType);
             Element smilElem = doc.createElement("smil");
             smilElem.setAttribute("xmlns", "http://www.w3.org/2001/SMIL20/Language");
-           
-           
+
             doc.appendChild(smilElem);
 
              // head elements
+            Element head = doc.createElement("head");
+            smilElem.appendChild(head);
 
-             Element head = doc.createElement("head");
-             smilElem.appendChild(head);
-             
-             // body elements
-             Element body = doc.createElement("body");
-             smilElem.appendChild(body);
-             // seq elements
-             Element seq = doc.createElement("seq");
-             body.appendChild(seq);
-             logger.debug("Created structure of SMIL XML FILE");
-            for (int i=0;i<map.size();i++) {
-                logger.debug("try to add url in smil file: "+"part: "+i);
+            // body elements
+            Element body = doc.createElement("body");
+            smilElem.appendChild(body);
+            // seq elements
+            Element seq = doc.createElement("seq");
+            body.appendChild(seq);
+            logger.debug("Created structure of SMIL XML FILE");
+            for (byte i = 0; i < map.size(); i++) {
+                logger.debug("try to add url in smil file: " + "part: " + i);
                 Element video = doc.createElement("video");
-                video.setAttribute("src", map.get(i).toString());
-                video.appendChild(seq);
+                url = (String) map.get(i);
+                logger.debug("Sto aggiungendo la stringa url: " + url + " to smil file");
+                video.setAttribute("src", url);
+                seq.appendChild(video);
                 logger.debug("Added urls to smil file");
 
-            }       
-             
+            }
+
             /*
              // set attribute to staff element
              Attr attr = doc.createAttribute("id");
@@ -149,43 +144,38 @@ private Map map;
             logger.debug("Try to save smil file in local fs");
             FileOutputStream fos = null;
             //  write the content into xml file
-            File f = new File("/home/dissennato/"+nameF+".smil");
+            File f = new File("/home/apanarello/" + nameF + ".smil");
             fos = new FileOutputStream(f);
-           // TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            // TransformerFactory transformerFactory = TransformerFactory.newInstance();
             //Transformer transformer = transformerFactory.newTransformer();
             DOMImplementationRegistry reg = DOMImplementationRegistry.newInstance();
             DOMImplementationLS impl = (DOMImplementationLS) reg.getDOMImplementation("LS");
             LSSerializer serializer = impl.createLSSerializer();
             LSOutput lso = impl.createLSOutput();
             lso.setByteStream(fos);
-            serializer.write(doc,lso);
-            logger.debug("SMIL FILE SAVED IN: "+"/home/dissennato/"+nameF+".smil");
+            serializer.write(doc, lso);
+            logger.debug("SMIL FILE SAVED IN: " + "/home/apanarello/" + nameF + ".smil");
           //DOMSource source = new DOMSource(doc);
-           // StreamResult result = new StreamResult(new File("/home/dissennato/file.xml"));
+            // StreamResult result = new StreamResult(new File("/home/dissennato/file.xml"));
 
             // Output to console for testing
             // StreamResult result = new StreamResult(System.out);
-
             //transformer.transform(source, result);
-
             //logger.debug("File saved!");
-
         } catch (ParserConfigurationException ex) {
-        logger.error("Error in ParserConfiguration",ex);
-    } catch (InstantiationException ex) {
-        logger.error("Error in InstantiationException",ex);
-    } catch (IllegalAccessException ex) {
-        logger.error("Error in InstantiationException",ex);
-    } catch (ClassCastException ex) {
-        logger.error("Error in InstantiationException",ex);
-    } 
+            logger.error("Error in ParserConfiguration", ex);
+        } catch (InstantiationException ex) {
+            logger.error("Error in InstantiationException", ex);
+        } catch (IllegalAccessException ex) {
+            logger.error("Error in InstantiationException", ex);
+        } catch (ClassCastException ex) {
+            logger.error("Error in InstantiationException", ex);
+        } catch (Exception ex) {
+            logger.error("Erroc Exception", ex);
+        }
     }
 }
 /**
  *
  * @author dissennato
  */
-
-    
-    
-

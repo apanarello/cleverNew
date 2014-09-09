@@ -86,6 +86,7 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
     private String hdfsHadoop;
     private String mapredHadoop;
     private String slave;
+    private String url;
 
     public final static String storageNode = "HadoopStorage";
     public final static String domainNode = "domain";
@@ -1052,21 +1053,13 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
         logger.debug("PROVO A LANCIARE IL GETFILE CON IL SEGUENTE PATH DI DESTINAZIONE: "+dest);
         //Process pro=null;
         try {
+            logger.debug("Provo l'autenticazione su s3");
             s3.getAuth(fileBuffer);
             logger.debug("Autenticazione fatto prima del get file");
             s3.getFileFromS3(fileBuffer, dest, bucket, fileS3Name, startByte, endByte);
-        } catch (NoSuchAlgorithmException ex) {
-            this.logger.error("Error to retrive S3 file from Amazon", ex);
-        } catch (NoSuchProviderException ex) {
-            this.logger.error("Error to retrive S3 file from Amazon", ex);
-        } catch (NoSuchPaddingException ex) {
-            this.logger.error("Error to retrive S3 file from Amazon", ex);
-        } catch (InvalidKeySpecException ex) {
-            this.logger.error("Error to retrive S3 file from Amazon", ex);
-        } catch (InterruptedException ex) {
-            this.logger.error("Error to retrive S3 file from Amazon", ex);
+            logger.debug("GET S3 eseguito con successo");
         } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(NamenodePlugin.class.getName()).log(Level.SEVERE, null, ex);
+            //java.util.logging.Logger.getLogger(NamenodePlugin.class.getName()).log(Level.SEVERE, null, ex);
         }
       
         try {
@@ -1126,17 +1119,18 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
      * @throws CleverException
      */
     @Override
-    public void sendJob(String fileBuffer, String jobName, String bucket, String fileS3Name, Long startByte, Long end, Byte p) throws CleverException {
+    public String sendJob(String fileBuffer, String jobName, String bucket, String fileS3Name, Long startByte, Long end, Byte p) throws CleverException {
 
         this.logger.debug("Entrato in SendJob-NamenodePlugin for federation :" + " JobName: " + jobName + "; BucketName: " + bucket + "; FileName S3: " + fileS3Name + "; Range Start: " + startByte + "; Range End " + end + "; PartFile " + p);
 
         try {
-            this.jobRuler.sendJob(fileBuffer, jobName, bucket, fileS3Name, startByte, end, p);
+            url=this.jobRuler.sendJob(fileBuffer, jobName, bucket, fileS3Name, startByte, end, p);
+            
         } catch (IOException ex) {
             logger.error("Error to send sendJob: ", ex);
 
         }
-
+        return url;
     }
 
     /* @Override

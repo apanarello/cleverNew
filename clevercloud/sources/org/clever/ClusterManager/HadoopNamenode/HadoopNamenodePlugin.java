@@ -166,6 +166,6 @@ public interface HadoopNamenodePlugin {
      * @param p
      * @throws CleverException
      */
-    public void sendJob (String fileBuffer, String jobName,String bucket,String files3Name,  Long startByte, Long endByte, Byte p) throws CleverException;
+    public String sendJob (String fileBuffer, String jobName,String bucket,String files3Name,  Long startByte, Long endByte, Byte p) throws CleverException;
 
 }

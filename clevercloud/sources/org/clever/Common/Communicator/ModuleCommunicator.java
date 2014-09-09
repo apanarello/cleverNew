@@ -90,6 +90,7 @@ public class ModuleCommunicator implements MessageHandler {
             return (MessageFormatter.messageFromObject(obj));
 
         } else {
+            logger.debug("Sono nel ELSE del handleMessage");
             //eventHandler.handleNotification( ( Notification ) rcvd );
             return (null);
         }
@@ -99,7 +100,7 @@ public class ModuleCommunicator implements MessageHandler {
 
         if (method.getHasReturn()) {
             logger.debug("Before sendRecv with has return: " + method.getModule());
-
+            logger.debug("!!!SONO QUI!!!"+method.getMethodName());
 
             String s = cp.sendRecv(method.getModule(), MessageFormatter.messageFromObject(method));
 

@@ -32,6 +32,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent;
 import org.clever.ClusterManager.HadoopNamenode.HadoopNamenodePlugin;
+import org.clever.ClusterManager.FederationPlugins.FederationListener;
 import org.clever.Common.Exceptions.CleverException;
 //import org.clever.Common.Exceptions.HDFSConnectionException;
 //import org.clever.Common.Exceptions.HDFSInternalException;
@@ -41,6 +42,7 @@ import org.clever.Common.XMLTools.ParserXML;
 import org.clever.Common.S3tools.S3Tools;
 
 import org.clever.Common.JobRouler.Dataweight;
+import org.clever.Common.XMLTools.ControlDim;
 
 /**
  *
@@ -51,6 +53,7 @@ public class JobRuler implements Runnable {
     public HashMap<Byte, String> urlMap=null;
     private HadoopNamenodeAgent owner;
     private HadoopNamenodePlugin ownerPlugin;
+    
     private ClientRuler clientRuler;
     //private String localDomain;
     private boolean flag;
@@ -100,6 +103,7 @@ public class JobRuler implements Runnable {
      * @param b true = thread locale
      * @param a
      * @param p
+     * @param m hashmap di url
      */
     public JobRuler(boolean b, ArrayList a, byte p, HashMap m) {
 
@@ -224,11 +228,12 @@ public class JobRuler implements Runnable {
 
         //domWeights.remove(0);
         Dataweight datTemp = null;
+        urlMap=new HashMap<Byte, String>();
 
         //Iterator<Dataweight> it = domWeights.iterator();
         //part = 0;
         this.logger.debug("Before For to launch thread, thread to launch are: "+domWeights.size());
-        for (int i = 0; i < domWeights.size(); i++) {
+        for (byte i = 0; i < domWeights.size(); i++) {
             this.logger.debug("CICLO NUMERO: "+i);
             try {
                 datTemp = domWeights.get(i);
@@ -244,7 +249,7 @@ public class JobRuler implements Runnable {
 
                         this.logger.debug("first =: " + datTemp.getStart() + " last: " + datTemp.getEnd());
                         //temp = domWeights.get(this.localDomains());+
-                        JobRuler nJobRuler = new JobRuler(true, fileBuffer, jobName, bucketName, fileNameS3, firstByte, lastByte, (byte) i, urlMap);
+                        JobRuler nJobRuler = new JobRuler(t, fileBuffer, jobName, bucketName, fileNameS3, firstByte, lastByte,  i, urlMap);
                         nJobRuler.init(this.clientRuler, this.owner, this.logger);
 
                         //this.logger.debug(" Lancio thread locale , variabile local= "+local);
@@ -274,7 +279,7 @@ public class JobRuler implements Runnable {
                     //commandParams.add(login[1]); //userPass
                     commandParams.add(datTemp.getStart());
                     commandParams.add(datTemp.getEnd());
-                    commandParams.add((byte)i);
+                    commandParams.add(i);
 
                     federationParams.add(domain);
                     federationParams.add(this.agentName);
@@ -284,7 +289,7 @@ public class JobRuler implements Runnable {
                     //part++;
                     //JobRuler job = new JobRuler(federationParams);
                     this.logger.debug("Try to launch thread to send command to federated domain: " + domain);
-                    JobRuler nJobRuler = new JobRuler(false, federationParams, (byte) (i), urlMap);
+                    JobRuler nJobRuler = new JobRuler(t, federationParams,i, urlMap);
                     nJobRuler.init(this.clientRuler, this.owner, this.logger);
                     new Thread(nJobRuler).start();
                 }
@@ -298,8 +303,8 @@ public class JobRuler implements Runnable {
         }
         
         
-        //ControlDim cDim = new ControlDim(this.logger, domWeights.size(), urlMap);
-        //new Thread(cDim).start();
+        ControlDim cDim = new ControlDim(this.logger, domWeights.size(), urlMap,fileNameS3);
+        new Thread(cDim).start();
         
         
         //while(count<numberthread){}
@@ -480,7 +485,7 @@ public class JobRuler implements Runnable {
                 this.logger.debug("Launching the command to choosen domain...");
                 Object reply = null;
                 ArrayList a =  (ArrayList) fedParms.get(4);
-                
+                Byte n=(Byte)a.get(6);
                 try {
                     Timestamper.write("T16-inizioLancioSendJobSuDominioFederato");
                 } catch (IOException ex) {
@@ -488,15 +493,16 @@ public class JobRuler implements Runnable {
                 }
                 this.logger.debug("Sto per lanciare L'invoke con i seguenti parametri: " + fedParms.get(0).toString() + ";" + fedParms.get(1).toString() + ";" + fedParms.get(2).toString() + ";" + fedParms.get(3).toString());
                 reply = this.owner.invoke("FederationListenerAgent", "forwardCommandToDomainWithoutTimeout", true, fedParms);
+//                reply = this.owner.invoke("FederationListenerAgent", "forwardCommandToDomainWithoutTimeout", true, fedParms);
                 this.logger.debug("Response of INVOKE IS: "+reply+"---VALUE----: "+(String)reply);
-                 urlMap=new HashMap<Byte, String>();
+                 
                 //count++;
                 try {
-                    urlMap.put(this.part,"https://s3.amazonaws.com/"+a.get(2)+"/"+a.get(3)+"part-"+a.get(7));
+                    urlMap.put(n.byteValue(),"https://s3.amazonaws.com/"+a.get(2)+"/"+a.get(3)+"-part-"+n.toString());
                 } catch (Exception e) {
                     logger.error("error in urlMap put", e);
                 }
-                logger.debug("Aggiunto Url all'hash table: " + urlMap.get(this.part));
+                logger.debug("Aggiunto Url all'hash table: "+"chiave: "+n.byteValue() +" - Valore:  " + urlMap.get(n.byteValue()));
                 this.logger.debug("INVOCATO FORWARD");
                 try {
                     Timestamper.write("T17-riuscitoLancioSendJobSuDominioFederato");
@@ -513,13 +519,17 @@ public class JobRuler implements Runnable {
                 //listDomains.remove(domain);
             } //this.sendJob(fileBuffer, jobName, fileNameS3, bucketName, user, pass, start, end);
             else {
-                // String url="";
+                logger.debug("job ruler lanciato jon in locale...:");
+                String url="";
                 //ArrayList<Object> para = new ArrayList<Object>();
 
                 this.logger.debug("Lancio del metodo : " + this.getClass().getName());
                 //url=this.ownerPlugin.submitJob(fileBuffer, jobName, bucketName, fileNameS3, first, last, part);
-                urlMap=new HashMap<Byte, String>();
-                urlMap.put((byte) this.part, this.ownerPlugin.submitJob(fileBuffer, jobName, bucketName, fileNameS3, first, last, part));
+                //urlMap=new HashMap<Byte, String>();
+                url =this.ownerPlugin.submitJob(fileBuffer, jobName, bucketName, fileNameS3, first, last, part);
+                logger.debug("url locale è: "+url);
+                urlMap.put((byte) this.part, url+"-part-"+this.part);
+                
                 /*para.add(this.agentName);
                  para.add("<" + this.JobNode + " />");
                  para.add("into");
@@ -529,7 +539,7 @@ public class JobRuler implements Runnable {
                  } catch (CleverException ex) {
                  logger.error("Error inserting Job node in DB");
                  }*/
-                logger.debug("Aggiunto Url all'hash table: " + urlMap.get(0));
+                logger.debug("Aggiunto Url all'hash table: "+"chiave: "+this.part +" - Valore: "+ urlMap.get(this.part));
                 count++;
             }
         } catch (CleverException ex) {
