@@ -8,3 +8,5 @@ org.clever.Common.XMPPCommunicator.ConnectionXMPP: connect 2013-12-16 18:37:15,1
   -- caused by: java.net.NoRouteToHostException: Nessun instradamento per l'host
 org.clever.Common.XMPPCommunicator.ConnectionXMPP: connect 2013-12-16 18:37:24,390 [main] ERROR XMPPCommunicator - Error during the XMPP connection: XMPPError connecting to server.dominioA.it:5222.: remote-server-error(502) XMPPError connecting to server.dominioA.it:5222.
   -- caused by: java.net.NoRouteToHostException: Nessun instradamento per l'host
+org.clever.Common.XMPPCommunicator.ConnectionXMPP: connect 2014-09-24 17:07:51,398 [main] ERROR XMPPCommunicator - Error during the XMPP connection: Could not connect to server.dominioA.it:5222.: remote-server-timeout(504) Could not connect to server.dominioA.it:5222.
+  -- caused by: java.net.UnknownHostException: server.dominioA.it

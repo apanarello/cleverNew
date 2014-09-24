@@ -65,7 +65,7 @@ public interface HadoopNamenodePlugin {
     public void InsertItemIntoHadoopNode(String hostname, String address, String username) throws CleverException;
     //public void prova(String stringa) throws CleverException;
    // public String submitJob(String input, String output) throws Exception;
-    public String submitJob (String fileBuffer, String jobName,String bucket,String fileS3Name, Long startByte,Long endByte,Byte p) throws CleverException;;
+    public String submitJob (String fileBuffer, String jobName,String bucket,String fileS3Name, Long startByte,Long endByte,Byte p,Integer w) throws CleverException;;
     public void setOwner(Agent owner);
         
     //Giovanni Volpintesta's commands
@@ -143,29 +143,31 @@ public interface HadoopNamenodePlugin {
     
     /**
      *
-     * @param fileBuffer
-     * @param jobName
-     * @param files3
-     * @param bucket
+     * @param fileBuffer   file di autienticazione
+     * @param jobName       nome del job (ancora non utilizzato)
+     * @param files3    (nome del file su S3)
+     * @param bucket    (bucket su s3)
      * @param user
      * @param pass
-     * @param forwardable
-     * @param domRes
+     * @param forwardable (inbdica se il comando puo essere inoltrato nuovamente)
+     * @param domRes        (array che contiene nome del dominio e vms disponibili)
      * @throws CleverException
      */
     public void sendJob (String fileBuffer, String jobName, String bucket , String files3 ,String user, String pass, Boolean forwardable, String domRes[][]) throws CleverException;
 
     /**
      *
-     * @param fileBuffer
-     * @param jobName
-     * @param files3Name
-     * @param bucket
-     * @param startByte
-     * @param endByte
-     * @param p
+     * @param fileBuffer file di autienticazione
+     * @param jobName   nome del job (ancora non utilizzato)
+     * @param files3Name (nome del file su S3)
+     * @param bucket    (bucket su s3)
+     * @param startByte (index di inizio del chunk da scaricare)
+     * @param endByte   (index di fine del chunk da scaricare)
+     * @param p         (un intero che indentifica il domino)
+     * @param vm        (numero di macchine virtuali disponibili nel dominio)
+     * @return 
      * @throws CleverException
      */
-    public String sendJob (String fileBuffer, String jobName,String bucket,String files3Name,  Long startByte, Long endByte, Byte p) throws CleverException;
+    public String sendJob (String fileBuffer, String jobName,String bucket,String files3Name,  Long startByte, Long endByte, Byte p, Integer vm) throws CleverException;
 
 }

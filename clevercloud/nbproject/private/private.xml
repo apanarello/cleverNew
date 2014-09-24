@@ -14,5 +14,6 @@
             <file>file:/home/apanarello/Scrivania/progetto/FINITO/clevercloud/sources/org/clever/ClusterManager/HadoopJobtracker/configuration_HadoopJobTracker.xml</file>
         </group>
         <group name="Federation"/>
+        <group name="DirectTranscodeHadoop"/>
     </open-files>
 </project-private>

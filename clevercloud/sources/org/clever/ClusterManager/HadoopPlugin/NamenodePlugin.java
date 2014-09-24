@@ -26,6 +26,7 @@ package org.clever.ClusterManager.HadoopPlugin;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.net.InetAddress;
@@ -51,6 +52,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.nio.file.Paths;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.spec.InvalidKeySpecException;
@@ -62,6 +64,7 @@ import org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent;
 import org.clever.Common.Communicator.CmAgent;
 import org.clever.Common.Exceptions.HDFSConnectionException;
 import org.clever.Common.Exceptions.HDFSInternalException;
+import org.clever.Common.JobRouler.Dataweight;
 import org.clever.Common.S3tools.S3Tools;
 import org.clever.Common.Shared.Support;
 import org.clever.Common.StorageRuler.Client;
@@ -1040,48 +1043,126 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
         this.storageRuler.deleteFile(srcDbPath, user, password, Long.parseLong(timeout));
     }
 
-   // @Override
+    // @Override
     /*public String submitJob(String input, String output) throws Exception {
      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
      }*/
     @Override
-    public String submitJob(String fileBuffer, String jobName, String bucket, String fileS3Name, Long startByte, Long endByte, Byte p) throws CleverException {
-        String url="";
+    public String submitJob(String fileBuffer, String jobName, String bucket, String fileS3Name, Long startByte, Long endByte, Byte p, Integer vm) throws CleverException {
+        String url = "";
+        ArrayList<String> paths = new ArrayList<String>();
+        //ArrayList<String> transcodepaths = new ArrayList<String>();
+
         S3Tools s3 = new S3Tools(this.logger);
-        
-        String dest = "/home/apanarello/"+ fileS3Name +"part-"+p;
-        logger.debug("PROVO A LANCIARE IL GETFILE CON IL SEGUENTE PATH DI DESTINAZIONE: "+dest);
+        String dest;
+
+        String file = fileS3Name.substring(0, fileS3Name.indexOf("."));
+        //String newFileName = "transcodedPart-" + p + "-" + file;
+        String home = "/home/apanarello/";
+        String merge = "";
+        String destAfterTranscode, fileAfterMerge = null;
+        //logger.debug("PROVO A LANCIARE IL GETFILE CON IL SEGUENTE PATH DI DESTINAZIONE: "+dest);
         //Process pro=null;
+        logger.debug("File name senza estensione è: " + file);
         try {
             logger.debug("Provo l'autenticazione su s3");
             s3.getAuth(fileBuffer);
             logger.debug("Autenticazione fatto prima del get file");
-            s3.getFileFromS3(fileBuffer, dest, bucket, fileS3Name, startByte, endByte);
+            byte part = 0;
+            long div = (endByte - startByte) / vm;
+            for (long i = startByte; i < (endByte); i = i + div) {
+                dest = home + file + "-part-" + p + "-" + part + ".ts";
+                s3.getFileFromS3(fileBuffer, dest, bucket, fileS3Name, i, (i + div));
+                paths.add(file + "-part-" + p + "-" + part + ".ts");
+                part++;
+            }
+            //s3.getFileFromS3(fileBuffer, dest, bucket, fileS3Name, startByte, endByte);
             logger.debug("GET S3 eseguito con successo");
         } catch (IOException ex) {
-            //java.util.logging.Logger.getLogger(NamenodePlugin.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("Error in IO ", ex);
         }
-      
+        for (byte y = 0; y < paths.size(); y++) {
+            logger.debug("lista di paths: " + " path " + y + "= " + home + paths.get(y));
+
+        }
+        Process ps = null;
         try {
+            for (byte y = 0; y < paths.size(); y++) {
+                ps = Runtime.getRuntime().exec("hadoop fs -put " + home + paths.get(y) + " /input/ ");
+                ps.waitFor();
+            }
+            if (ps.exitValue() == 0) {
+                //DOVREBBE ESSERE UN JOB DI HADOOP A FARE LA TRANSCODIFICA
+                logger.debug("DOVREI LANCIARE IL JOB" + "hadoop jar " + home + jobName + " com.manuh.vidproc.DirectVideoProcessor /input/ /output/");
 
-            Runtime.getRuntime().exec("hadoop fs -put "+ dest +" /output-"+ p);
+                ps = Runtime.getRuntime().exec("hadoop jar " + home + jobName + " com.manuh.vidproc.DirectVideoProcessor /input/ /output");
+                ps.waitFor();
+                if (ps.exitValue() == 0) {
+                    File files = null;
+                    //DOVREBBE ESSERE UN JOB DI HADOOP A FARE LA TRANSCODIFICA
+                    logger.debug("JOB DONE - try to cancel local files.");
+                    ps = Runtime.getRuntime().exec("hadoop fs -rm /input/*");
+                    ps.waitFor();
+                    for (byte y = 0; y < paths.size(); y++) {
+                        files = new File(home + paths.get(y));
+                        if (files.delete()) {
+                            logger.debug("deleted file: " + home + paths.get(y));
+                        } else {
+                            throw new CleverException("ERROR DURING DELETING FILE");
+                        }
+                        destAfterTranscode = home + paths.get(y).substring(0, paths.get(y).indexOf(".")) + ".mpeg";
+                        logger.debug("get file  DONE - new file= " + destAfterTranscode);
+                        ps = Runtime.getRuntime().exec("hadoop fs -get /output/" + paths.get(y) + " " + destAfterTranscode);
+                        ps.waitFor();
+                        if (ps.exitValue() == 0) {
+                            if (y == paths.size() - 1) {
+                                merge = merge + destAfterTranscode;
+                            } else {
+                                merge = merge + destAfterTranscode + "|";
+                            }
+                            logger.debug("merge string is: " + merge);
+                            ps = Runtime.getRuntime().exec("avconv -i \"concat:" + merge + " -codec copy " + home + "transcoded_" + file + "-" + p + ".mpeg");
+                            ps.waitFor();
+                            if (ps.exitValue() == 0) {
+                            
+                            }
+                            else {
+                            throw new CleverException("ERROR DURING merging FILEs");
+                        }
+                            //transcodepaths.add(destAfterTranscode);
+                        } else {
+                            throw new CleverException("ERROR DURING GETTING FILE FROM HDSF");
+                        }
+                    }
+                    fileAfterMerge = "transcoded_" + file + "-" + p + ".mpeg";
 
-            //DOVREBBE ESSERE UN JOB DI HADOOP A FARE LA TRANSCODIFICA
+                } else {
+                    throw new CleverException("Error to exec hadoop jar; exec has returned " + ps.exitValue());
+                }
+
+            } else {
+                throw new CleverException("Error to exec hadoop put; exe has returned " + ps.exitValue());
+            }
+
+            //Eseguo File SH che carica il file su hadoop, fa partire il job e poi alla fine riposizione il file nel fs locale
+            //Runtime.getRuntime().exec("hadoop fs -put "+ dest +" /output-"+ p);
             //Runtime.getRuntime().exec("ffmpeg -i " + dest + " -acodec copy -vcodec mpeg4" + " /home/dissennato/output-" + p);
         } catch (RuntimeException ex) {
             logger.error("Error to exec ffmpeg transcode");
         } catch (IOException ex) {
             logger.error("IOerror in runtime.exec", ex);
+        } catch (InterruptedException ex) {
+            logger.error("Error to exec hadoop put pswaitfor");
         }
-        //s3.uploadFile(fileBuffer, dest, bucket, fileS3Name);
-        
-                //     
-                //....
+        //s3.uploadFile(fileBuffer, dest, bucket, destAfterTranscode);
+
+        //     
+        //....
         logger.debug("SONO NEL DOMINIO,METODO" + this.getClass().getMethods().toString());
-        url="https://s3.amazonaws.com/"+bucket+"/"+fileS3Name;
-        logger.debug("SONO NEL DOMINIO,METODO: "+url);
+        url = "https://s3.amazonaws.com/" + bucket + "/" + fileAfterMerge;
+        logger.debug("Sono in submitJob, con URL: " + url + "// E -BucketName= " + bucket + " - fileName= " + fileAfterMerge + " -PartFile= " + p);
         return url;
-       }
+    }
 
     @Override
     public ArrayList<String> listMyFiles(String user, String password) throws CleverException {
@@ -1116,16 +1197,17 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
      * @param startByte
      * @param end
      * @param p, part chuck to elaborate
+     * @param vm nmbero of vms available
      * @throws CleverException
      */
     @Override
-    public String sendJob(String fileBuffer, String jobName, String bucket, String fileS3Name, Long startByte, Long end, Byte p) throws CleverException {
+    public String sendJob(String fileBuffer, String jobName, String bucket, String fileS3Name, Long startByte, Long end, Byte p, Integer vm) throws CleverException {
 
-        this.logger.debug("Entrato in SendJob-NamenodePlugin for federation :" + " JobName: " + jobName + "; BucketName: " + bucket + "; FileName S3: " + fileS3Name + "; Range Start: " + startByte + "; Range End " + end + "; PartFile " + p);
+        this.logger.debug("Entrato in SendJob-NamenodePlugin for federation :" + " JobName: " + jobName + "; BucketName: " + bucket + "; FileName S3: " + fileS3Name + "; Range Start: " + startByte + "; Range End " + end + "; PartFile " + p + ";NumVms " + vm);
 
         try {
-            url=this.jobRuler.sendJob(fileBuffer, jobName, bucket, fileS3Name, startByte, end, p);
-            
+            url = this.jobRuler.sendJob(fileBuffer, jobName, bucket, fileS3Name, startByte, end, p, vm);
+
         } catch (IOException ex) {
             logger.error("Error to send sendJob: ", ex);
 
