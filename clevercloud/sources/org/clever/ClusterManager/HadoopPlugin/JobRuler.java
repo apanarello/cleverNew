@@ -50,7 +50,7 @@ import org.clever.Common.XMLTools.ControlDim;
  */
 public class JobRuler implements Runnable {
 
-    public HashMap<Byte, String> urlMap = null;
+    public HashMap<Byte, ArrayList> urlMap = null;
     private HadoopNamenodeAgent owner;
     private HadoopNamenodePlugin ownerPlugin;
 
@@ -82,7 +82,7 @@ public class JobRuler implements Runnable {
 
     }
 
-    public JobRuler(boolean loc, String fileBuffer, String jobName, String bucketName, String fileNameS3, long start, long end, byte part, HashMap m,int w) {
+    public JobRuler(boolean loc, String fileBuffer, String jobName, String bucketName, String fileNameS3, long start, long end, byte part, HashMap m, int w) {
 
         this.fileBuffer = fileBuffer;
         this.jobName = jobName;
@@ -218,7 +218,7 @@ public class JobRuler implements Runnable {
         size = s3t.getInfo(fileNameS3);
         this.logger.debug("size ricavata file");
         logger.debug("VERIFICO VALORE array domRES: " + domRes[0][0] + "con numero VM: " + domRes[0][1]);
-        logger.debug("VERIFICO VALORE array domRES: " + domRes[1][0] + "con numero VM: " + domRes[1][1]);
+  //      logger.debug("VERIFICO VALORE array domRES: " + domRes[1][0] + "con numero VM: " + domRes[1][1]);
 
         domWeights = calcWeights(domRes, size);
         //int numberthread = domWeights.size();
@@ -229,8 +229,8 @@ public class JobRuler implements Runnable {
 
         //domWeights.remove(0);
         Dataweight datTemp = null;
-        urlMap = new HashMap<Byte, String>();
-        
+        urlMap = new HashMap<Byte, ArrayList>();
+
         //Iterator<Dataweight> it = domWeights.iterator();
         //part = 0;
         this.logger.debug("Before For to launch thread, thread to launch are: " + domWeights.size());
@@ -247,10 +247,10 @@ public class JobRuler implements Runnable {
                     try {
                         long firstByte = datTemp.getStart();
                         long lastByte = datTemp.getEnd();
-                        
+
                         this.logger.debug("first =: " + datTemp.getStart() + " last: " + datTemp.getEnd());
                         //temp = domWeights.get(this.localDomains());+
-                        JobRuler nJobRuler = new JobRuler(t, fileBuffer, jobName, bucketName, fileNameS3, firstByte, lastByte, i, urlMap,datTemp.getWeight());
+                        JobRuler nJobRuler = new JobRuler(t, fileBuffer, jobName, bucketName, fileNameS3, firstByte, lastByte, i, urlMap, datTemp.getWeight());
                         nJobRuler.init(this.clientRuler, this.owner, this.logger);
 
                         //this.logger.debug(" Lancio thread locale , variabile local= "+local);
@@ -324,36 +324,45 @@ public class JobRuler implements Runnable {
      * @throws CleverException
      * @throws IOException
      */
-    public String sendJob(String fileBuffer, String jobName, String bucket, String fileS3, Long starByte, Long endByte, Byte p,Integer w) throws CleverException, IOException {
+    public ArrayList sendJob(String fileBuffer, String jobName, String bucket, String fileS3, Long starByte, Long endByte, Byte p, Integer w) throws CleverException, IOException {
         logger.debug("Local federated sendJob method: " + this.toString());
-        return this.ownerPlugin.submitJob(fileBuffer, jobName, bucket, fileS3, starByte, endByte, p,w);
+        return this.ownerPlugin.submitJob(fileBuffer, jobName, bucket, fileS3, starByte, endByte, p, w);
         //this.execJob(fileBuffer, jobName, fileS3, bucket, starByte, endByte, p);
 
     }
 
     @Override
     public void run() {
-        try {
+        
             if (!local) {
 
                 this.logger.debug("Launching the command to choosen domain...");
                 Object reply = null;
                 ArrayList a = (ArrayList) fedParms.get(4);
                 Byte n = (Byte) a.get(6);
-                w=(Integer)a.get(7);
+                w = (Integer) a.get(7);
                 try {
                     Timestamper.write("T16-inizioLancioSendJobSuDominioFederato");
                 } catch (IOException ex) {
                     this.logger.warn("can't write timestamp log: " + ex.getMessage());
                 }
                 this.logger.debug("Sto per lanciare L'invoke con i seguenti parametri: " + fedParms.get(0).toString() + ";" + fedParms.get(1).toString() + ";" + fedParms.get(2).toString() + ";" + fedParms.get(3).toString());
+                try{
                 reply = this.owner.invoke("FederationListenerAgent", "forwardCommandToDomainWithoutTimeout", true, fedParms);
 //                reply = this.owner.invoke("FederationListenerAgent", "forwardCommandToDomainWithoutTimeout", true, fedParms);
-                this.logger.debug("Response of INVOKE IS: " + reply + "---VALUE----: " + (String) reply);
+                this.logger.debug("Response of INVOKE IS: first element in arraylist is " + ((ArrayList) reply).get(0) + "---VALUE----: ");
+                this.logger.info("Command launched. Reply: " + reply);
+                if (reply != null && reply instanceof Exception) {
+                    throw new CleverException((Exception) reply);
+                }
+                }catch (CleverException ex) {
+            
+            this.logger.error("Exception caught while forwarding sendJob method on " + fedParms.get(0) + " domain: " + ex);
 
+        }
                 //count++;
                 try {
-                    urlMap.put(n.byteValue(), (String) reply);
+                    urlMap.put(n.byteValue(), (ArrayList) reply);
 
                     // urlMap.put(n.byteValue(),"https://s3.amazonaws.com/"+a.get(2)+"/"+a.get(3)+"-part-"+n.toString());
                 } catch (Exception e) {
@@ -366,10 +375,7 @@ public class JobRuler implements Runnable {
                 } catch (IOException ex) {
                     this.logger.warn("can't write timestamp log: " + ex.getMessage());
                 }
-                this.logger.info("Command launched. Reply: " + reply);
-                if (reply != null && reply instanceof Exception) {
-                    throw new CleverException((Exception) reply);
-                }
+                
                 this.logger.debug("Command successfully launched on domain " + fedParms.get(0));
                 //break;
 
@@ -383,17 +389,18 @@ public class JobRuler implements Runnable {
                 this.logger.debug("Lancio del metodo : " + this.getClass().getName());
                 //url=this.ownerPlugin.submitJob(fileBuffer, jobName, bucketName, fileNameS3, first, last, part);
                 //urlMap=new HashMap<Byte, String>();
+                try {
+                    urlMap.put(this.part, this.ownerPlugin.submitJob(fileBuffer, jobName, bucketName, fileNameS3, first, last, part, w));
 
-                urlMap.put(this.part, this.ownerPlugin.submitJob(fileBuffer, jobName, bucketName, fileNameS3, first, last, part,w));
-
-                logger.debug("Aggiunto Url all'hash table: " + "chiave: " + this.part + " - Valore: " + urlMap.get(this.part));
+                    logger.debug("Aggiunto Url all'hash table: " + "chiave: " + this.part + " - Valore: " + urlMap.get(this.part));
                 //count++;
-            }
-        } catch (CleverException ex) {
-            logger.error("Error to lauch job in local domain", ex);
-            this.logger.warn("Exception caught while forwarding sendJob method on " + fedParms.get(0) + " domain: " + ex);
+                } catch (CleverException ex) {
+                    logger.error("Error to lauch job in local domain", ex);
+                    //this.logger.warn("Exception caught while forwarding sendJob method on " + fedParms.get(0) + " domain: " + ex);
 
-        }
+                }
+            }
+        
     }
 
     public String localDomains() throws IOException {

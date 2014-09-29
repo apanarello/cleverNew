@@ -78,6 +78,7 @@ public class SmilXML {
     public void createSmil() throws FileNotFoundException, ClassNotFoundException {
 
         logger.debug("Create structure of smil xml file");
+        ArrayList<String> urlList=new ArrayList<String>();
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -107,12 +108,16 @@ public class SmilXML {
             body.appendChild(seq);
             logger.debug("Created structure of SMIL XML FILE");
             for (byte i = 0; i < map.size(); i++) {
+                urlList=(ArrayList)map.get(i);
+                for(byte k=0;k<urlList.size();k++){
                 logger.debug("try to add url in smil file: " + "part: " + i);
                 Element video = doc.createElement("video");
-                url = (String) map.get(i);
+                
+                url = (String) urlList.get(k);
                 logger.debug("Sto aggiungendo la stringa url: " + url + " to smil file");
                 video.setAttribute("src", url);
                 seq.appendChild(video);
+                }
                 logger.debug("Added urls to smil file");
 
             }

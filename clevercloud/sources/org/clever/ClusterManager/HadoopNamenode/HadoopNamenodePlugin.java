@@ -29,6 +29,7 @@ package org.clever.ClusterManager.HadoopNamenode;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import org.apache.hadoop.fs.Path;
 import org.clever.Common.Communicator.Agent;
 import org.clever.Common.Communicator.ModuleCommunicator;
 import org.clever.Common.Exceptions.CleverException;
@@ -65,7 +66,7 @@ public interface HadoopNamenodePlugin {
     public void InsertItemIntoHadoopNode(String hostname, String address, String username) throws CleverException;
     //public void prova(String stringa) throws CleverException;
    // public String submitJob(String input, String output) throws Exception;
-    public String submitJob (String fileBuffer, String jobName,String bucket,String fileS3Name, Long startByte,Long endByte,Byte p,Integer w) throws CleverException;;
+    
     public void setOwner(Agent owner);
         
     //Giovanni Volpintesta's commands
@@ -168,6 +169,16 @@ public interface HadoopNamenodePlugin {
      * @return 
      * @throws CleverException
      */
-    public String sendJob (String fileBuffer, String jobName,String bucket,String files3Name,  Long startByte, Long endByte, Byte p, Integer vm) throws CleverException;
+    public ArrayList sendJob (String fileBuffer, String jobName,String bucket,String files3Name,  Long startByte, Long endByte, Byte p, Integer vm) throws CleverException;
+
+    public ArrayList submitJob (String fileBuffer, String jobName,String bucket,String fileS3Name, Long startByte,Long endByte,Byte p,Integer w) throws CleverException;
+
+    public void putFileInHDFS (String srcP,Path hdsfDstP, String file) throws HDFSConnectionException, HDFSInternalException;
+    
+    public void getFileFromHDFS (Path hdsfSrcP,String dstP) throws HDFSConnectionException, HDFSInternalException, IOException;
+
+    public void deleteFileFromHDFS (Path dbPath) throws HDFSConnectionException, HDFSInternalException;
+    
 
 }
+

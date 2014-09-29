@@ -295,12 +295,12 @@ public class S3Tools {
         }
     }
 
-    public void uploadFile(String fileRoot, String path, String bucket, String fileName) throws IOException, CleverException {
+    public void uploadFile(String srcPath, String bucket, String destFileName) throws IOException, CleverException {
         logger.debug("it's trying to autenticate with amazon " + this.toString());
 //        if (s3==null) s3=getAuth(fileRoot);
         logger.debug("Authentication done with amazon: " + this.toString());
-        File f = new File(path);
-        PutObjectRequest req = new PutObjectRequest(bucket, fileName, f);
+        File f = new File(srcPath);
+        PutObjectRequest req = new PutObjectRequest(bucket, destFileName, f);
         ObjectMetadata metadata = new ObjectMetadata();
         metadata.setContentLength(f.length());
         req.setMetadata(metadata);

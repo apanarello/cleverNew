@@ -407,7 +407,7 @@ public class FederationListener implements FederationListenerPlugin {
             try {
                 result = request.getReturnValue();
                 logger.info(command+" method of "+agent+" agent successfully launched to CM= "+cm);
-                logger.info("Result = "+(String)result);
+                logger.info("Result = "+result);
                 return result;
             } catch (CleverException ex) {
                 if (ex instanceof RequestExpired) {
