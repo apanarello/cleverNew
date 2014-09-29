@@ -1050,7 +1050,7 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
      }*/
     @Override
     public ArrayList submitJob(String fileBuffer, String jobName, String bucket, String fileS3Name, Long startByte, Long endByte, Byte p, Integer vm) throws CleverException {
-        String url = "";
+        ArrayList<String> filePaths = new ArrayList<String>();
         ArrayList<String> paths = new ArrayList<String>();
         ArrayList urList = new ArrayList<String>();
         //ArrayList<String> transcodepaths = new ArrayList<String>();
@@ -1064,7 +1064,7 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
         //Path home_ = new Path("/home/apanarello/");
         //Path hdsf_Path = new Path("/input/");
         //String merge = "";
-        String fileAfterTranscode, fileAfterMerge = null;
+        String fileAfterTranscode = null;
         //logger.debug("PROVO A LANCIARE IL GETFILE CON IL SEGUENTE PATH DI DESTINAZIONE: "+dest);
         //Process pro=null;
         logger.debug("File name senza estensione è: " + file);
@@ -1073,6 +1073,9 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
             s3.getAuth(fileBuffer);
             logger.debug("Autenticazione fatto prima del get file");
             byte part = 0;
+            
+            
+            //-----------------------------------------------
             long div = (endByte - startByte) / vm;
             for (long i = startByte; i < (endByte); i = i + div) {
                 dest = new Path(home + file + "-part-" + p + "-" + part + ".ts");
@@ -1080,6 +1083,8 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
                 paths.add(file + "-part-" + p + "-" + part + ".ts");
                 part++;
             }
+            //-------------------------------------------------
+            
             //s3.getFileFromS3(fileBuffer, dest, bucket, fileS3Name, startByte, endByte);
             logger.debug("GET S3 eseguito con successo");
         } catch (IOException ex) {
@@ -1092,6 +1097,7 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
         Process ps = null;
         
         try {
+            //-------------------------------
             for (byte y = 0; y < paths.size(); y++) {
                 ps = Runtime.getRuntime().exec("hadoop fs -put " + home + paths.get(y) + " /input/ ");
                 ps.waitFor();
@@ -1103,14 +1109,19 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
                     throw new CleverException("Error to write in HDSH path: " + "/input/" + paths.get(y));
 
                 }
+                //---------------------------
                 */
             }
             if (ps.exitValue() == 0) {
             //DOVREBBE ESSERE UN JOB DI HADOOP A FARE LA TRANSCODIFICA
             logger.debug("DOVREI LANCIARE IL JOB" + " hadoop jar " + home + jobName + " com.manuh.vidproc.DirectVideoProcessor /input/ /output/");
             //this.wait(10000);
+            
+            //___________---------------
             ps = Runtime.getRuntime().exec("hadoop jar " + home + jobName + " com.manuh.vidproc.DirectVideoProcessor /input/ /output");
             ps.waitFor();
+            //___________---------------
+            
             logger.debug("JOB DONE - try to cancel local files. exit value: " + ps.exitValue());
             if (ps.exitValue() == 0) {
                 File files = null;
@@ -1119,6 +1130,8 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
                 ps = Runtime.getRuntime().exec("hadoop fs -rm /input/*");
                 ps.waitFor();
                 for (byte y = 0; y < paths.size(); y++) {
+                    
+                    //___-----___-__-__--____--
                     files = new File(home + paths.get(y));
                     if (files.delete()) {
                         logger.debug("deleted file: " + home + paths.get(y));
@@ -1127,9 +1140,11 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
                     }
                     fileAfterTranscode = paths.get(y).substring(0, paths.get(y).indexOf(".")) + ".mpeg";
                     logger.debug("get file  DONE - new file= " + fileAfterTranscode);
+                    
+                    
                     ps = Runtime.getRuntime().exec("hadoop fs -get /output/" + paths.get(y) + " " + home+fileAfterTranscode);
                     ps.waitFor();
-                    s3.uploadFile(home+fileAfterTranscode,  bucket, fileAfterTranscode);
+                    filePaths.add(fileAfterTranscode);
                     /*
                     try {
                         logger.debug("launching getFIleFromHDFS - src: " + "/output/" + paths.get(y) + " dstPath : " + home + fileAfterTranscode);
@@ -1164,6 +1179,17 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
                      */
                     } else {
                        throw new CleverException("ERROR DURING GETTING FILE FROM HDSF- urls not added to list");
+                    }
+                }
+                
+                for(int y=0;y<paths.size();y++){
+                
+                  s3.uploadFile(home+filePaths.get(y),  bucket, filePaths.get(y));
+                  files = new File(home + filePaths.get(y));
+                    if (files.delete()) {
+                        logger.debug("deleted file: " + home + filePaths.get(y));
+                    } else {
+                        throw new CleverException("ERROR DURING DELETING FILE");
                     }
                 }
                 //fileAfterMerge = "transcoded_" + file + "-" + p + ".mpeg";

@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.log4j.Logger;
+import org.clever.Common.S3tools.S3Tools;
 /**
  *
  * @author apanarello
@@ -38,17 +39,23 @@ public class ControlDim implements Runnable{
     public HashMap<Byte,String> urlMap;
     int numThread;
     private String fileName;
+    ArrayList<String> filePathS;
+    S3Tools s3t =null;
+    String bucket=null;
 
-        public ControlDim(Logger log, int i, HashMap m,String nameF) {
+        public ControlDim(Logger log, int i, HashMap m,String bucket, String nameF, S3Tools s3t) {
             this.urlMap=m;
             this.numThread=i;
             this.logger=log;
             logger.debug("Object "+this+" creato");
             this.fileName=nameF;
+            this.s3t=s3t;
+            this.bucket=bucket;
         }
 
         @Override
         public void run() {
+            
             try {
                 
                 //logger.debug("BEFORE WHILE LOOP: "+"URLMAP SIZE: "+urlMap.size()+" Num thread : "+ numThread);
@@ -66,10 +73,13 @@ public class ControlDim implements Runnable{
                 }
                 logger.debug("Create smil object...urlmap-size is: "+urlMap.size());
                
-                
+                String fileSmil="";
                 SmilXML smil = new SmilXML(logger,urlMap,fileName);
                 logger.debug("Created smil object and start to create SMIL XML FILE");
-                smil.createSmil();
+                fileSmil=smil.createSmil();
+                s3t.uploadFile("/home/apanarello/"+fileSmil,this.bucket , fileSmil);
+                
+                
                 logger.debug("Create smil file");
             } catch (FileNotFoundException ex) {
                 logger.error("File non found in method smil.createSmil", ex);

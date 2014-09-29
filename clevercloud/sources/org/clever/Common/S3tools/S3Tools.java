@@ -38,6 +38,7 @@ import com.amazonaws.auth.PropertiesCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.Bucket;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.ObjectListing;
 import com.amazonaws.services.s3.model.ObjectMetadata;
@@ -303,7 +304,9 @@ public class S3Tools {
         PutObjectRequest req = new PutObjectRequest(bucket, destFileName, f);
         ObjectMetadata metadata = new ObjectMetadata();
         metadata.setContentLength(f.length());
+        req.setCannedAcl(CannedAccessControlList.PublicRead);
         req.setMetadata(metadata);
+        
         logger.debug("Uploading a new object to S3 from a file\n");
         s3.putObject(req);
 
