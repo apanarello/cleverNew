@@ -140,6 +140,10 @@
         <string>sendJob</string>
         <class>org.clever.administration.commands.SendJobCommand</class>
     </command>
+     <command>
+        <string>sendJobXml</string>
+        <class>org.clever.administration.commands.SendJobCommandByXml</class>
+    </command>
     
   <!--
   <command>

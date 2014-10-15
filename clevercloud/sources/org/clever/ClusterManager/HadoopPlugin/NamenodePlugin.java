@@ -24,8 +24,10 @@
  */
 package org.clever.ClusterManager.HadoopPlugin;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -37,6 +39,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import org.apache.log4j.Logger;
 import org.clever.ClusterManager.HadoopNamenode.HadoopNamenodePlugin;
 import org.clever.Common.Communicator.Agent;
@@ -59,6 +63,7 @@ import java.security.spec.InvalidKeySpecException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import javax.crypto.NoSuchPaddingException;
+import org.apache.commons.io.IOUtils;
 //import org.clever.ClusterManager.HadoopJobtracker.HadoopJobtrackerAgent;
 import org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent;
 import org.clever.Common.Communicator.CmAgent;
@@ -1059,6 +1064,7 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
         Path dest;
 
         String file = fileS3Name.substring(0, fileS3Name.indexOf("."));
+        String format = fileS3Name.substring(fileS3Name.indexOf("."));
         //String newFileName = "transcodedPart-" + p + "-" + file;
         String home = "/home/apanarello/";
         //Path home_ = new Path("/home/apanarello/");
@@ -1078,9 +1084,9 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
             //-----------------------------------------------
             long div = (endByte - startByte) / vm;
             for (long i = startByte; i < (endByte); i = i + div) {
-                dest = new Path(home + file + "-part-" + p + "-" + part + ".ts");
+                dest = new Path(home + file + "-part-" + p + "-" + part + format);
                 s3.getFileFromS3(fileBuffer, dest.toString(), bucket, fileS3Name, i, (i + div));
-                paths.add(file + "-part-" + p + "-" + part + ".ts");
+                paths.add(file + "-part-" + p + "-" + part + format);
                 part++;
             }
             //-------------------------------------------------
@@ -1099,9 +1105,9 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
         try {
             //-------------------------------
             for (byte y = 0; y < paths.size(); y++) {
-                ps = Runtime.getRuntime().exec("hadoop fs -put " + home + paths.get(y) + " /input/ ");
-                ps.waitFor();
-/*
+               // ps = Runtime.getRuntime().exec("hadoop fs -put " + home + paths.get(y) + " /input/ ");
+               // ps.waitFor();
+
                 try {
                     this.putFileInHDFS(home + paths.get(y), new Path("/input/"), paths.get(y));
                 } catch (HDFSConnectionException ex) {
@@ -1110,15 +1116,18 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
 
                 }
                 //---------------------------
-                */
+             
             }
-            if (ps.exitValue() == 0) {
+             logger.debug("PUTFILE ESEGUITO CON SUCCESSO: ");
+           
             //DOVREBBE ESSERE UN JOB DI HADOOP A FARE LA TRANSCODIFICA
             logger.debug("DOVREI LANCIARE IL JOB" + " hadoop jar " + home + jobName + " com.manuh.vidproc.DirectVideoProcessor /input/ /output/");
             //this.wait(10000);
             
             //___________---------------
-            ps = Runtime.getRuntime().exec("hadoop jar " + home + jobName + " com.manuh.vidproc.DirectVideoProcessor /input/ /output");
+            ps = Runtime.getRuntime().exec("hadoop jar " + home + "Transcodifica/dist/Transcodifica.jar" + " com.manuh.vidproc.DirectVideoProcessor /input /output");
+                       
+            //ps = Runtime.getRuntime().exec("hadoop jar " + home + "HadoopVideoTranscode/dist/VideoTranscode.jar" + " com.manuh.vidproc.DirectVideoProcessor /input/ /output");
             ps.waitFor();
             //___________---------------
             
@@ -1127,10 +1136,12 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
                 File files = null;
                 //DOVREBBE ESSERE UN JOB DI HADOOP A FARE LA TRANSCODIFICA
                 logger.debug("JOB DONE - try to cancel local files.");
-                ps = Runtime.getRuntime().exec("hadoop fs -rm /input/*");
-                ps.waitFor();
+                
+               
+                //ps = Runtime.getRuntime().exec("hadoop fs -rm /input/*");
+                //ps.waitFor();
                 for (byte y = 0; y < paths.size(); y++) {
-                    
+                     this.deleteFileFromHDFS(new Path("/input/"+paths.get(y)));
                     //___-----___-__-__--____--
                     files = new File(home + paths.get(y));
                     if (files.delete()) {
@@ -1141,21 +1152,22 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
                     fileAfterTranscode = paths.get(y).substring(0, paths.get(y).indexOf(".")) + ".mpeg";
                     logger.debug("get file  DONE - new file= " + fileAfterTranscode);
                     
-                    
+                   /* 
                     ps = Runtime.getRuntime().exec("hadoop fs -get /output/" + paths.get(y) + " " + home+fileAfterTranscode);
                     ps.waitFor();
-                    filePaths.add(fileAfterTranscode);
-                    /*
+                    
+                   */ 
                     try {
                         logger.debug("launching getFIleFromHDFS - src: " + "/output/" + paths.get(y) + " dstPath : " + home + fileAfterTranscode);
                         this.getFileFromHDFS(new Path("/output/" + paths.get(y)), home + fileAfterTranscode);
+                    filePaths.add(fileAfterTranscode);
                     } catch (HDFSConnectionException ex) {
                         logger.error("Error to get file from HDSF path: /output/" + paths.get(y), ex);
                         throw new CleverException("Error to get file from HDSF path: /output/" + paths.get(y));
                     } catch (HDFSInternalException ex) {
                         logger.error("INTERNAL EXCEPTION Error to get file from HDSF path: /output/" + paths.get(y), ex);
                         throw new CleverException("Error to get file from HDSF path: /output/" + paths.get(y));
-                    }*/
+                    }
                     if (ps.exitValue() == 0) {
                     urList.add("https://s3.amazonaws.com/" + bucket + "/" + fileAfterTranscode);
 
@@ -1198,9 +1210,7 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
                 throw new CleverException("Error to exec hadoop jar; exec has returned " + ps.exitValue());
             }
 
-           } else {
-                throw new CleverException("Error to exec hadoop put; exe has returned " + ps.exitValue());
-             }
+           
             //Eseguo File SH che carica il file su hadoop, fa partire il job e poi alla fine riposizione il file nel fs locale
             //Runtime.getRuntime().exec("hadoop fs -put "+ dest +" /output-"+ p);
             //Runtime.getRuntime().exec("ffmpeg -i " + dest + " -acodec copy -vcodec mpeg4" + " /home/dissennato/output-" + p);
@@ -1288,7 +1298,15 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
         conf.addResource(new Path(mapredHadoop));
         this.logger.debug("Read configuration files and created Configuration object");
         FileSystem fileSystem = null;
-
+        java.nio.file.Path pathFile = Paths.get(srcP.toString());
+        byte[] data = null;
+        try {
+            data = Files.readAllBytes(pathFile);
+        } catch (IOException ex) {
+            logger.error("Errore to read byte from file",ex);
+        }
+        InputStream in = new BufferedInputStream(new ByteArrayInputStream(data));
+        
         try {
 
             fileSystem = FileSystem.get(conf);
@@ -1336,19 +1354,21 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
             }
         }
 
-        FileReader reader = null;
+       // FileReader reader = null;
 
         try {
-
+            
+            org.apache.hadoop.io.IOUtils.copyBytes(in, fsOut, conf);
+            
             this.logger.debug("Coping file content in HDFS");
 
             /*            
              fileSystem.copyFromLocalFile(srcPath, dstPath);
              */
-            reader = new FileReader(srcP.toString());
+            //reader = new FileReader(srcP.toString());
 
-            logger.debug("inizioScritturaFileSuHadoop");
-
+            //logger.debug("inizioScritturaFileSuHadoop");
+/*
             while (true) {
                 int c = reader.read();
                 if (c == -1) {
@@ -1356,6 +1376,7 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
                 }
                 fsOut.write(c); //fsOut non può essere null
             }
+        */
 
             logger.debug("P09-riuscitaScritturaFileSuHadoop(PUT)");
 
@@ -1365,12 +1386,14 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
             logger.error("Error creating file " + hdsfDstP + " in HDFS: " + ex.getMessage());
             try {
                 fileSystem.delete(hdsfDstP, true);
+               /*
                 if (reader != null) {
                     reader.close();
                 }
                 if (fsOut != null) {
                     fsOut.close();
                 }
+                       */
             } catch (IOException ex1) {
                 logger.warn("Error trying to recover from failed copy of temp in file " + hdsfDstP.getName() + " in HDFS: error occurred while deleting file: " + ex1.getMessage());
             } finally {
@@ -1384,6 +1407,7 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
                 throw new HDFSInternalException("Error while coping file contento from local temp file to HDFS: " + ex.getMessage());
             }
         }
+        /*
         if (reader != null) {
             try {
                 reader.close();
@@ -1391,6 +1415,7 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
                 logger.error("errore scrittura- errore chiusura reader", ex);
             }
         }
+                */
         if (fsOut != null) {
             try {
                 this.logger.debug("FSOUT DIVERSO DA NULL");
@@ -1494,16 +1519,18 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
     @Override
     public void deleteFileFromHDFS(Path dbPath) throws HDFSConnectionException, HDFSInternalException {
 
-        Path path = new Path(dbPath.toString());
+        
         Configuration conf = new Configuration();
         conf.addResource(new Path(coreHadoop));
         conf.addResource(new Path(hdfsHadoop));
         conf.addResource(new Path(mapredHadoop));
+        Path path = new Path(dbPath.toString());
         FileSystem fileSystem = null;
         try {
             fileSystem = FileSystem.get(conf);
 
         } catch (IOException ex) {
+            logger.error("Try to get configuration file hdsf: ");
             throw new HDFSConnectionException(ex);
         }
         try {
