@@ -24,6 +24,7 @@
 package org.clever.ClusterManager.FederationPlugins;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
@@ -102,11 +103,35 @@ public class FederationListener implements FederationListenerPlugin {
         //If the method have not returned at this point it means that he tried to
         //launch the method to all federated CM withouto success. So throw Exception.
     }
-    
-    private ArrayList<String> getFederatedCMs () {
-        return this.conn.getFederatedCMs();
+    @Override
+    public ArrayList<String> getFederatedCM (){
+    logger.debug("Sono nel mio get FederatedCM");
+    return this.getFederatedCMs();
     }
     
+    private ArrayList<String> getFederatedCMs () {
+        ArrayList<String> a = new ArrayList<String>();
+        a=this.conn.getAllFederatedCMs();
+        //logger.debug("a.size= "+a.size());
+        //logger.debug("a.value= "+a.get(0));
+        return a;
+                
+                
+    }
+    @Override
+    public int getNumHmPerDomain(String domain) throws CleverException{
+        logger.debug(" - - - GetNumHmPerDomain");
+        int a=this.getNumVms();
+        logger.debug("Numero HM per il dominio: "+domain+" è= "+a);
+
+        return a;
+        
+    }
+    private int getNumVms(){
+        ArrayList<String> a = new ArrayList<String>();
+        a=this.conn.getHCsInRoom();
+        return a.size();
+    }
     /**
      * This method actually returns a random domain from the HashMap, but it's written as a method
      * because in future there could be more complex politics to decide the domain.
@@ -180,7 +205,21 @@ public class FederationListener implements FederationListenerPlugin {
         } else
             this.addDomain(domain, CMnick);
     }
+    public void deleteDomain(String domain) throws CleverException{
+        logger.debug("deleteDomain - ");
+        this.deleteDomainOnDB(domain);
     
+    }
+    private void deleteDomainOnDB (String domain) throws CleverException {
+        if (this.existsDomain(domain)) {
+            ArrayList<Object> params = new ArrayList<Object>();
+            String location = "/"+FederationListener.federationNode+"/"+FederationListener.CMtag+"[@"+FederationListener.domainAttribute+"='"+domain+"']";
+            params.add(FederationListener.agentName);
+            params.add(location);
+            this.owner.invoke("DatabaseManagerAgent", "deleteNode", true, params);
+            //this.addDomain(domain, CMnick);
+        } 
+    }
     private String getCM (String domain) throws CleverException {
         String location = "/"+FederationListener.federationNode+"/"+FederationListener.CMtag+"[@"+FederationListener.domainAttribute+"='"+domain+"']";
         ArrayList<Object> params = new ArrayList<Object>();
@@ -206,6 +245,8 @@ public class FederationListener implements FederationListenerPlugin {
         params.add(FederationListener.agentName);
         params.add(location);
         String xml = (String) this.owner.invoke("DatabaseManagerAgent", "getContentNodeObject", true, params);
+        logger.debug("IL GETContentNodeObject ritorna la stringa: " +  xml);
+
         xml = this.decodeSednaXml(xml);
         while(true) {
             String[] p = xml.split("<"+FederationListener.CMtag, 2);
@@ -470,6 +511,7 @@ public class FederationListener implements FederationListenerPlugin {
     public ArrayList<String> getFederatedDomains() throws CleverException {
         HashMap<String, String> federation = this.scanFederation();
         ArrayList<String> result = new ArrayList<String> (federation.keySet());
+        
         result.remove(this.domain);
         return result;
     }
@@ -488,6 +530,16 @@ public class FederationListener implements FederationListenerPlugin {
     public void setAttempts(int n) {
         this.attempts = n;
     }
+
+    @Override
+    public HashMap<String, String> getFederatedCMinDB() throws CleverException {
+        HashMap<String, String> federationAll = this.scanFederation();
+       // ArrayList<String> result = new ArrayList<String> (federationAll.values());
+        return federationAll;
+     
+    }
+
+    
 
     
 }

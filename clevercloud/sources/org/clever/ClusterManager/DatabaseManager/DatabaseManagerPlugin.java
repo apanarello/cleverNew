@@ -81,4 +81,8 @@ public interface DatabaseManagerPlugin extends RunnerPlugin {
   //String getFatherAttributeNode(String agentId,String location,String sonCondition,String tipo) throws XMLDBException;
   //Cristina
   public String getHostName(String agentId,String location,String property) throws XMLDBException;  
+/*Alfonso*/
+  public int countHost(String agentId, String location) throws CleverException ;
+
+  
 }

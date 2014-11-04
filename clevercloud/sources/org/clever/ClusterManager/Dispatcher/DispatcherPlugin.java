@@ -52,7 +52,7 @@ public interface DispatcherPlugin extends RunnerPlugin
   //public void handleNotification(final CleverMessage msg);
 
   public void handleNotification(final Notification notification);
-
+  public int getHmsInRoom(String dominio);
   //  public void scheduleMsg(CleverMessage msg);
 
   public void setOwner(Agent owner);

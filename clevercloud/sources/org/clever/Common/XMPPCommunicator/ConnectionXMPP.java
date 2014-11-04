@@ -504,27 +504,70 @@ public class ConnectionXMPP implements javax.security.auth.callback.CallbackHand
 
     while( it.hasNext() )
     {
-      logger.debug("it.next");
+      logger.debug("it.next-----");
       occupantJid = it.next();
-      logger.debug("occupantJid: "+occupantJid);
+      logger.debug("occupantJid -----: "+occupantJid);
       presence = mucTemp.getOccupantPresence(occupantJid);
-      logger.debug("presence: "+presence);
+      logger.debug("presence -----: "+presence);
       nick = mucTemp.getOccupant(occupantJid).getNick();
-      logger.debug("nick: "+ nick);
-      if (nick.compareTo(this.getUsername())==0)
+      logger.debug("nick-----: "+ nick);
+      if (nick.compareTo(this.getUsername())==0){
+          logger.debug("nick-----: "+ nick+" ---scartato");
           continue; //skip THIS host
+      
+      }
       tmp = presence.getStatus();
       logger.debug("tmp: "+tmp);
       
       if((tmp!=null && (tmp.equals("CM_ACTIVE")))) { //it's important to control if tmp!=null
           array.add(nick);
-          logger.debug ("Occupant aggiunto alla lista il CM "+nick);
+          logger.debug ("Occupant aggiunto alla lista il CM -----"+nick);
       }
     }
     logger.debug("array: "+array);
     return array;
   }
 
+    /**
+     Returns an ArrayList containing nicknames for all the active CMs in Federation room
+   * (inluding this CM).
+     * Alfonso Panarello
+     * @return 
+     */
+    public ArrayList<String> getAllFederatedCMs() {
+    logger.debug("lanciato getFederatedCMs");
+    MultiUserChat mucTemp = getMultiUserChat(ROOM.FEDERATION);
+    logger.debug ("mucTemp: "+mucTemp);
+    ArrayList<String> array = new ArrayList<String>();
+          
+    Iterator<String> it = mucTemp.getOccupants(); 
+    logger.debug("it: "+it);
+    Presence presence = null; 
+    String occupantJid = ""; 
+    String tmp = "";
+    String nick = "";
+
+    while( it.hasNext() )
+    {
+      logger.debug("it.next-----");
+      occupantJid = it.next();
+      logger.debug("occupantJid -----: "+occupantJid);
+      presence = mucTemp.getOccupantPresence(occupantJid);
+      logger.debug("presence -----: "+presence);
+      nick = mucTemp.getOccupant(occupantJid).getNick();
+      logger.debug("nick-----: "+ nick);
+      
+      tmp = presence.getStatus();
+      logger.debug("tmp: "+tmp);
+      
+      if((tmp!=null && (tmp.equals("CM_ACTIVE")))) { //it's important to control if tmp!=null
+          array.add(nick);
+          logger.debug ("Occupant aggiunto alla lista il CM -----"+nick);
+      }
+    }
+    logger.debug("array: "+array);
+    return array;
+  }
   /**
    * Procedure for retrieving the number of CMs in a specific room
    * @param room
@@ -702,6 +745,38 @@ public class ConnectionXMPP implements javax.security.auth.callback.CallbackHand
     }
     return collection;
   }*/
+  
+  public ArrayList<String> getHCsInRoom(  ) 
+  {
+    logger.debug("----Sono in getHCsInROOM --- 1");
+    MultiUserChat mucTemp = getMultiUserChat();
+    
+    ArrayList<String> collection = new ArrayList<String>(); //collezione di uscita!
+    Iterator<String> it = mucTemp.getOccupants(); 
+    Occupant occupant = null;
+    Presence presence = null; 
+    String occupantJid = ""; 
+    String tmp = "";
+    logger.debug("----Sono in getHCsInROOM --- 2");
+    /*devo effettuare ora una ricerca x status*/
+    while( it.hasNext() )
+    {
+      occupantJid = it.next();
+      logger.debug("----Sono in getHCsInROOM --- 2 --- occupantJid= "+occupantJid);
+      presence = mucTemp.getOccupantPresence(occupantJid);
+      occupant = mucTemp.getOccupant(occupantJid);
+      tmp = presence.getStatus();
+      logger.debug("----Sono in getHCsInROOM --- 3");
+      if(tmp == null)
+          continue;
+      
+      if( (!tmp.isEmpty()) && (tmp.equals("HM")) )
+      
+      //if( (tmp!=null) && (tmp.equals("HM")) ) //controlla sempre tmp a null! che è importante
+          collection.add(occupant.getNick());
+    }
+    return collection;
+  }
   
   public Collection<Occupant> getHCsInRoom( final ROOM roomType ) 
   {

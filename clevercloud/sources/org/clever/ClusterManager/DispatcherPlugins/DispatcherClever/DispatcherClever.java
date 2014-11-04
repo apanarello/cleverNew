@@ -51,41 +51,41 @@ import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.util.StringUtils;
 
-
 class RequestThread implements Runnable {
+
     private CleverMessage message;
     private DispatcherPlugin dispatcher;
-    public RequestThread(DispatcherPlugin dispatcher, CleverMessage message)
-    {
-       this.message=message;
-       this.dispatcher = dispatcher;
+
+    public RequestThread(DispatcherPlugin dispatcher, CleverMessage message) {
+        this.message = message;
+        this.dispatcher = dispatcher;
     }
+
     @Override
     public void run() {
-         switch( this.message.getType() )
+        switch (this.message.getType()) {
 
-        {
+            case NOTIFY:
+                Notification notification = this.message.getNotificationFromMessage();
+                //Pass notification to dispatcher
+                dispatcher.handleNotification(notification);
 
-                  case NOTIFY:
-                      Notification notification=this.message.getNotificationFromMessage();
-                      //Pass notification to dispatcher
-                      dispatcher.handleNotification(notification);
+                break;
+            case ERROR:
+            case REPLY:
+                dispatcher.handleMessage(this.message);
+                break;
+            case REQUEST:
 
-                    break;
-                  case ERROR:
-                  case REPLY:
-                    dispatcher.handleMessage( this.message );
-                    break;
-                  case REQUEST:
-
-                    dispatcher.dispatch( this.message );
-                    break;
+                dispatcher.dispatch(this.message);
+                break;
         }
-       }
+    }
 
 }
 
-public class DispatcherClever implements DispatcherPlugin,PacketListener {
+public class DispatcherClever implements DispatcherPlugin, PacketListener {
+
     private Agent owner;
     private String version = "0.0.1";
     private String description = "Clever Dispatcher";
@@ -96,27 +96,21 @@ public class DispatcherClever implements DispatcherPlugin,PacketListener {
     private Logger logger = null;
     private Map<String, List<String>> notificationDelivery = new HashMap<String, List<String>>();
 
-
     //AGGIUNTO DA ME PER HBASEMANAGER
     public ConnectionXMPP getConnectionXMPP() {
         return this.connectionXMPP;
     }
-    
-    
-    
+
     /**
      * This method manage a received clevermessage launching a separate thread
      *
      * @param message
      */
-
     //@Override
-    public void scheduleMsg(CleverMessage msg)
-    {
+    public void scheduleMsg(CleverMessage msg) {
         //TODO: Check the number of active requestThreads;
-          new Thread(new RequestThread(this,msg),"requestThread").start();
+        new Thread(new RequestThread(this, msg), "requestThread").start();
     }
-
 
     @Override
     public String getName() {
@@ -134,7 +128,7 @@ public class DispatcherClever implements DispatcherPlugin,PacketListener {
     }
 
     @Override
-    public void init(Element params,Agent owner) throws CleverException {
+    public void init(Element params, Agent owner) throws CleverException {
         requestsManager = new RequestsManager();
         logger = Logger.getLogger("DispatcherClever");
         this.connectionXMPP.addPresenceListener(ConnectionXMPP.ROOM.CLEVER_MAIN, this);
@@ -142,10 +136,10 @@ public class DispatcherClever implements DispatcherPlugin,PacketListener {
 
     @Override
     /**
-     * This method will handle CleverMessage whose body is of 'exec' type
-     * For other types of CleverMessage's body we plain to use other methods
-     * such as RequestInformationDispatcher, etc...
-     * MethodDispatcher must be called ONLY with 'exec' body
+     * This method will handle CleverMessage whose body is of 'exec' type For
+     * other types of CleverMessage's body we plain to use other methods such as
+     * RequestInformationDispatcher, etc... MethodDispatcher must be called ONLY
+     * with 'exec' body
      *
      * @param message
      */
@@ -153,58 +147,56 @@ public class DispatcherClever implements DispatcherPlugin,PacketListener {
         // Check if the message is for the current coordinator
         if (message.getDst().equals(connectionXMPP.getUsername())) {
             // Ok is for me. invoke locally and return
-             
-             logger.debug("Msg: "+message.toXML());
-             logger.debug("Creazione method configuration per messaggio: "+message.getId());
-             
-             MethodConfiguration methodConf = new MethodConfiguration(message.getBody(), message.getAttachments());
 
-             logger.debug("Creazione method invoker per messaggio: "+message.getId());
-             
-             MethodInvoker mi = new MethodInvoker(methodConf.getModuleName(),
+            logger.debug("Msg: " + message.toXML());
+            logger.debug("Creazione method configuration per messaggio: " + message.getId());
+
+            MethodConfiguration methodConf = new MethodConfiguration(message.getBody(), message.getAttachments());
+
+            logger.debug("Creazione method invoker per messaggio: " + message.getId());
+
+            MethodInvoker mi = new MethodInvoker(methodConf.getModuleName(),
                     methodConf.getMethodName(),
                     message.needsForReply(),
                     methodConf.getParams());
-             
-             logger.debug("Creato method invoker");
-             
-                CleverMessage cleverMsg = new CleverMessage();
-                cleverMsg.setDst(message.getSrc());
-                cleverMsg.setSrc(message.getDst());
-                cleverMsg.setHasReply(false);
-                cleverMsg.setReplyToMsg(message.getId());
-                try {
-                    logger.debug("invoke");
-                    Object obj = mc.invoke(mi);
-                    logger.debug("invoked. Reply: "+obj);
-                    if (message.needsForReply()) {
-                        cleverMsg.setType( CleverMessage.MessageType.REPLY );
-                        cleverMsg.setBody( new OperationResult( Result.ResultType.OBJECT,
-                                                    obj,
-                                                    methodConf.getModuleName(),
-                                                    methodConf.getMethodName() ) );
-                        cleverMsg.addAttachment( MessageFormatter.messageFromObject( obj ) );
 
-                    } else {
+            logger.debug("Creato method invoker");
 
-                        return;
-                    }
-
-                } catch (CleverException ex) {
-                    //TODO: use specialized CleverException for non such method
-
-                    cleverMsg.setType(CleverMessage.MessageType.ERROR);
-                    cleverMsg.setBody(new ErrorResult(Result.ResultType.ERROR,
-                            (new CleverException(ex)).toString(),
+            CleverMessage cleverMsg = new CleverMessage();
+            cleverMsg.setDst(message.getSrc());
+            cleverMsg.setSrc(message.getDst());
+            cleverMsg.setHasReply(false);
+            cleverMsg.setReplyToMsg(message.getId());
+            try {
+                logger.debug("invoke");
+                Object obj = mc.invoke(mi);
+                logger.debug("invoked. Reply: " + obj);
+                if (message.needsForReply()) {
+                    cleverMsg.setType(CleverMessage.MessageType.REPLY);
+                    cleverMsg.setBody(new OperationResult(Result.ResultType.OBJECT,
+                            obj,
                             methodConf.getModuleName(),
                             methodConf.getMethodName()));
-                    cleverMsg.addAttachment(MessageFormatter.messageFromObject(ex));
+                    cleverMsg.addAttachment(MessageFormatter.messageFromObject(obj));
 
+                } else {
 
-                } finally {
-                    connectionXMPP.sendMessage(message.getSrc(), cleverMsg);
+                    return;
                 }
-            
+
+            } catch (CleverException ex) {
+                //TODO: use specialized CleverException for non such method
+
+                cleverMsg.setType(CleverMessage.MessageType.ERROR);
+                cleverMsg.setBody(new ErrorResult(Result.ResultType.ERROR,
+                        (new CleverException(ex)).toString(),
+                        methodConf.getModuleName(),
+                        methodConf.getMethodName()));
+                cleverMsg.addAttachment(MessageFormatter.messageFromObject(ex));
+
+            } finally {
+                connectionXMPP.sendMessage(message.getSrc(), cleverMsg);
+            }
 
         } else {
             if (message.needsForReply()) {
@@ -227,9 +219,6 @@ public class DispatcherClever implements DispatcherPlugin,PacketListener {
     public void handleMessage(final CleverMessage msg) {
         logger.debug("Dispatcher handle message: " + msg.toXML());
         logger.debug("Module name: " + msg.getBodyModule() + " and operation: " + msg.getBodyOperation());
-
-       
-
 
         int idToReply = msg.getReplyToMsg();
         Request result = requestsManager.getRequest(idToReply);
@@ -255,9 +244,7 @@ public class DispatcherClever implements DispatcherPlugin,PacketListener {
                 otherMsg.setSrc(connectionXMPP.getMultiUserChat(ROOM.SHELL).getNickname());
                 connectionXMPP.sendMessage(otherMsg.getDst(), otherMsg);
                 break;
-         }
-
-
+        }
 
         requestsManager.deleteRequestPending(idToReply);
     }
@@ -273,12 +260,11 @@ public class DispatcherClever implements DispatcherPlugin,PacketListener {
     }
 
     @Override
-    public Object dispatchToExtern(MethodInvoker method, String to) throws CleverException{
+    public Object dispatchToExtern(MethodInvoker method, String to) throws CleverException {
         CleverMessage cleverMessage = new CleverMessage();
         cleverMessage.fillMessageFields(MessageType.REQUEST, connectionXMPP.getUsername(),
                 to, true, method.getParams(), new ExecOperation(method.getMethodName(),
-                method.getParams(), method.getModule()), 0);
-
+                        method.getParams(), method.getModule()), 0);
 
         int id = requestsManager.addRequestPending(cleverMessage, Request.Type.INTERNAL);
         cleverMessage.setId(id);
@@ -289,7 +275,7 @@ public class DispatcherClever implements DispatcherPlugin,PacketListener {
     /*
      * Test method for Cluster Manager
      */
-    public String testMethod(String value){
+    public String testMethod(String value) {
         return "This is the value: " + value;
     }
 
@@ -304,38 +290,35 @@ public class DispatcherClever implements DispatcherPlugin,PacketListener {
         this.notificationDelivery.put(notificationId, agents);
     }
 
-
-
     /*@Override
-    public void handleNotification(CleverMessage msg) {
-         //Send notification to corresponding agents using notificationId
+     public void handleNotification(CleverMessage msg) {
+     //Send notification to corresponding agents using notificationId
 
-      Notification notification=msg.getNotificationFromMessage();
-      logger.debug("Received notification from "+msg.getSrc()+ "type "+notification.getId());
-      List<String> agentsNameList=notificationDelivery.get(notification.getId());
+     Notification notification=msg.getNotificationFromMessage();
+     logger.debug("Received notification from "+msg.getSrc()+ "type "+notification.getId());
+     List<String> agentsNameList=notificationDelivery.get(notification.getId());
 
-        if (agentsNameList == null) {
-            logger.info("No agents associated to notificationId " + notification.getId());
-        } else {
-            for (Object agent : agentsNameList) {
-                try {
-                    List params = new ArrayList();
-                    params.add(notification);
-                    MethodInvoker mi = new MethodInvoker((String) agent,
-                            "handleNotification",
-                            true,
-                            params);
+     if (agentsNameList == null) {
+     logger.info("No agents associated to notificationId " + notification.getId());
+     } else {
+     for (Object agent : agentsNameList) {
+     try {
+     List params = new ArrayList();
+     params.add(notification);
+     MethodInvoker mi = new MethodInvoker((String) agent,
+     "handleNotification",
+     true,
+     params);
 
-                    mc.invoke(mi);
-                } catch (CleverException ex) {
-                    logger.error("Error invoking agent handleNotification method " + ex);
-                }
-            }
-        }
+     mc.invoke(mi);
+     } catch (CleverException ex) {
+     logger.error("Error invoking agent handleNotification method " + ex);
+     }
+     }
+     }
 
 
-    }*/
-
+     }*/
     @Override
     public void handleNotification(Notification notification) {
         //Send notification to corresponding agents using notificationId
@@ -361,10 +344,7 @@ public class DispatcherClever implements DispatcherPlugin,PacketListener {
             }
         }
 
-
     }
-
-
 
     @Override
     public Object dispatchToIntern(MethodInvoker method) throws CleverException {
@@ -373,27 +353,37 @@ public class DispatcherClever implements DispatcherPlugin,PacketListener {
 
     @Override
     public void processPacket(Packet packet) {
-        String nameFrom=StringUtils.parseResource(packet.getFrom());
+        String nameFrom = StringUtils.parseResource(packet.getFrom());
 
-        if(!nameFrom.startsWith("cm")){
+        if (!nameFrom.startsWith("cm")) {
             //HM Presence notification
-            logger.debug("HM "+nameFrom+" detected");
+            logger.debug("HM " + nameFrom + " detected");
             /*CleverMessage cleverMsg = new CleverMessage();
-            cleverMsg.setType(CleverMessage.MessageType.NOTIFY);
-            cleverMsg.setSrc(this.connectionXMPP.getUsername());*/
-            Notification notification=new Notification();
+             cleverMsg.setType(CleverMessage.MessageType.NOTIFY);
+             cleverMsg.setSrc(this.connectionXMPP.getUsername());*/
+            Notification notification = new Notification();
             notification.setId("PRESENCE/HM");
             notification.setHostId(nameFrom);
             //cleverMsg.setBody(MessageFormatter.messageFromObject(notification));
             this.handleNotification(notification);
         }
     }
-    
-    public String receiveFile(String path){
+
+    public String receiveFile(String path) {
         return connectionXMPP.receiveFile(path);
     }
-    public void setOwner(Agent owner){
-        this.owner=owner;
+
+    public void setOwner(Agent owner) {
+        this.owner = owner;
+    }
+
+    @Override
+    public int getHmsInRoom(String dominio) {
+        logger.debug(" - - - getHmsInRoom");
+        int a = this.connectionXMPP.getHCsInRoom().size();
+        logger.debug("Numero HM per il dominio: " + dominio + " è= " + a);
+
+        return a;
     }
 
 }

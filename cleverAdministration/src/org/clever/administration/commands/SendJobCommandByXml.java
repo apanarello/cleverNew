@@ -106,7 +106,7 @@ public class SendJobCommandByXml extends CleverCommand {
                     }
 
                     ArrayList params = new ArrayList();
-                   
+
                     params.add(fileBuffer);
                     //2=job, 4=Bucket, 3=fileS3 ,5=user,6=pass
                     params.add(rootElement.getChildText("job_type"));
@@ -116,15 +116,19 @@ public class SendJobCommandByXml extends CleverCommand {
                     params.add(rootElement.getChildText("pass"));
 
                     /* if (args.length == argNames.length) //manca il timeout
-                     params.add("-1");*/
+                     params.add("-1");
+                    */
                     params.add(new Boolean(true)); //7=Forwardable
-                    /*s3t = new S3Tools();
+                    /*
+                    s3t = new S3Tools();
                      s3t.getAuthWithPath(args[1]);
                      long size;
                      size = s3t.getInfo(args[3]);
-                     params.add(size); //8=size S3 file*/
+                     params.add(size); //8=size S3 file
+                    */
                     //Map<String, Integer> domResources = new HashMap<String, Integer>();
                     //ArrayList listDomains = new ArrayList();
+/*
                     Element child = rootElement.getChild("domains");
                     List listOfTags = child.getChildren();
                     int num = listOfTags.size();
@@ -133,28 +137,26 @@ public class SendJobCommandByXml extends CleverCommand {
                         domResources[k] = new String[2];
                     }
                     int j = 0;
-                    System.out.println("Numero Domini = "+listOfTags.size());
-                    for (int i = 0; i < listOfTags.size(); i = i + 2) { /*Adding couple domains resoures*/
-                        
-                        domResources[j][0] = ((Element)listOfTags.get(i)).getText();
-                        System.out.println("Elemento " +i+ " della lista di domini \n");
-                        System.out.println(((Element)listOfTags.get(i)).getText());
-                        domResources[j][1] = ((Element)listOfTags.get(i+1)).getText();
-                        System.out.println("Value " +i+ " della lista di domini \n");
-                        System.out.println(((Element)listOfTags.get(i+1)).getText());
-                        
-                        
+                    System.out.println("Numero Domini = " + listOfTags.size());
+                    
+                    for (int i = 0; i < listOfTags.size(); i = i + 2) { /*Adding couple domains resoures
+
+                        domResources[j][0] = ((Element) listOfTags.get(i)).getText();
+                        System.out.println("Elemento " + i + " della lista di domini \n");
+                        System.out.println(((Element) listOfTags.get(i)).getText());
+                        domResources[j][1] = ((Element) listOfTags.get(i + 1)).getText();
+                        System.out.println("Value " + i + " della lista di domini \n");
+                        System.out.println(((Element) listOfTags.get(i + 1)).getText());
+
                         j++;
                         // listDomains.add(args[i]);
 
                     }
                     params.add(domResources);
-                    
-                    for(int m=0;m<params.size();m++){
-                    System.out.println("Parametri della lista sono : "+params.get(m));
-                    
-                    
-                    
+*/
+                    for (int m = 0; m < params.size(); m++) {
+                        System.out.println("Parametri della lista sono : " + params.get(m));
+
                     }
                     String target = ClusterManagerAdministrationTools.instance().getConnectionXMPP().getActiveCC(ConnectionXMPP.ROOM.SHELL);
                     try {

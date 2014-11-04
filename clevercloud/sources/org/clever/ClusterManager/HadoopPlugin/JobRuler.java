@@ -33,6 +33,8 @@ import org.apache.log4j.Logger;
 import org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent;
 import org.clever.ClusterManager.HadoopNamenode.HadoopNamenodePlugin;
 import org.clever.ClusterManager.FederationPlugins.FederationListener;
+import org.clever.ClusterManager.FederationPlugins.FederationDiscovery;
+
 import org.clever.Common.Exceptions.CleverException;
 //import org.clever.Common.Exceptions.HDFSConnectionException;
 //import org.clever.Common.Exceptions.HDFSInternalException;
@@ -190,11 +192,19 @@ public class JobRuler implements Runnable {
         }
         this.logger.debug("Autenticazione fatta");
         String domain = "";
-        //
-        //ArrayList<String> filePathSmil = new ArrayList<String>();
+        String fedRes[][] ;
+        logger.debug("Initialization of Discovery");
+        FederationDiscovery fedDiscovery = new FederationDiscovery(this.logger, this, this.owner);
+        logger.debug("waiting for retrive num of vms per domain");
+        fedRes = fedDiscovery.startDiscovery();
         ArrayList<Object> federationParams = new ArrayList<Object>();
         ArrayList<Object> commandParams = new ArrayList<Object>();
-        /*commandParams.add("STRINGA DI PROVA");
+        /*
+         //ArrayList<String> filePathSmil = new ArrayList<String>();
+        
+         ArrayList<Object> fParams = new ArrayList<Object>();
+       
+         commandParams.add("STRINGA DI PROVA");
          federationParams.add("dominioA");
          federationParams.add(this.agentName);
          federationParams.add("prova");
@@ -208,6 +218,109 @@ public class JobRuler implements Runnable {
          this.logger.debug(" Lanciato con successo invoke");
          */
 
+        //ArrayList<String> federatedDomains = (ArrayList<String>) this.owner.invoke("FederationListenerAgent", "getFederatedDomains", true, new ArrayList<Object>());
+        /*
+        
+         try {
+         ArrayList<String> federatedCmsChat = (ArrayList<String>) this.owner.invoke("FederationListenerAgent", "getFederatedCM", true, new ArrayList<Object>());
+         HashMap<String, String> federatedCmInDb = (HashMap<String, String>) this.owner.invoke("FederationListenerAgent", "getFederatedCMinDB", true, new ArrayList<Object>());
+         ArrayList<String> domini = new ArrayList<String>(federatedCmInDb.keySet());
+
+         logger.debug("federatedCmInDb size è " + federatedCmInDb.size());
+         logger.debug("federatedCms size è " + federatedCmsChat.size());
+         logger.debug("PRIMA DEL FOR -----");
+         boolean found = false;
+         int sizeDB = federatedCmInDb.size();
+         for (int i = 0; i < domini.size(); i++) {
+         logger.debug("--domini presenti in Fed prima del controllo: " + domini.get(i));
+         }
+         for (int i = 0; i < sizeDB; i++) {
+         found = false;
+         logger.debug("found vale : " + found);
+         logger.debug("Nel DB Sedna  è presente il cm con nick: " + federatedCmInDb.get(domini.get(i)) + " Appartenente al dominio: " + domini.get(i) + "\n");
+         for (int j = 0; j < federatedCmsChat.size(); j++) {
+         logger.debug("dentro il for innestato");
+         if (federatedCmInDb.get(domini.get(i)).equals(federatedCmsChat.get(j))) {
+         found = true;
+         logger.debug("dentro if del for innestato");
+         logger.debug("found vale : " + found);
+         }
+         }
+         if (found) {
+         logger.debug("dominio : " + federatedCmInDb.get(domini.get(i)) + " presente si in Db che in Chat");
+         }
+         if (!found) {
+         logger.debug("dominio : " + domini.get(i) + " sarà rimosso perchè non presente alcun cm appartenete ad esso in chat");
+         ArrayList<Object> domainsToDelete = new ArrayList<Object>();
+         domainsToDelete.add(domini.get(i));
+         this.owner.invoke("FederationListenerAgent", "deleteDomain", true, domainsToDelete);
+         domini.remove(i);
+         i = i - 1;
+         sizeDB = sizeDB - 1;
+
+         }
+         }
+         domini.add(localDomains());
+         String domResources[][] = new String[domini.size()][];
+         for (int k = 0; k < (domini.size()); k++) {
+         domResources[k] = new String[2];
+         }
+         for (int i = 0; i < domini.size(); i++) {
+         logger.debug("--domini presenti in Fed dopo del controllo: " + domini.get(i));
+         }
+         logger.debug("Nella chat sono presenti i cms con nick: " + federatedCmsChat.size() + " \n");
+         logger.debug("Nella chat sono presenti i cms con nick:\n");
+         logger.debug("Numero domini dopo il controllo: " + domini.size());
+         logger.debug("waiting for retrive num of vms per domain");
+         for (int i = 0; i < federatedCmsChat.size(); i++) {
+
+         fParams.clear();
+
+         commandParams.clear();
+
+         if (domini.get(i).equals(localDomains())) {
+         commandParams.add(domini.get(i));
+         domResources[0][0] = domini.get(i); //AGGIUNGO IL DOMINIO LOCALE ALLA LISTA DEI DOMINI
+         domResources[0][1] = String.valueOf(this.owner.invoke("FederationListenerAgent", "getNumHmPerDomain", true, commandParams));
+         } else {
+         commandParams.add(domini.get(i));
+         //commandParams.add(datTemp.getWeight());
+
+         fParams.add(domini.get(i));
+         fParams.add("FederationListenerAgent");
+         fParams.add("getNumHmPerDomain");
+         fParams.add(true); //even if it's false. The reply isn't used in any case
+         fParams.add(commandParams);
+         domResources[0][0] = domini.get(i);
+         domResources[0][1] = String.valueOf(this.owner.invoke("FederationListenerAgent", "forwardCommandToDomainWithoutTimeout", true, fParams));
+         logger.debug(" - " + federatedCmsChat.get(i) + "\n");
+         }
+
+         }
+         */
+        logger.debug("Vms information retrived");
+
+        /*
+         domResources[0][0] = this.localDomains(); //AGGIUNGO IL DOMINIO LOCALE ALLA LISTA DEI DOMINI
+         domResources[0][1] = String.valueOf(2); //METTO 2 PERCHE IL DOMINIO B DA CUI LANCIO IL COMANDO HA DUE VMS. soluzione tmp.
+         */
+        /* Soluzione temporanea prima di implementare iil discovery che torna il num di vms*/
+        /*
+         for (int k = 0; k < (domini.size()); k++) {
+         domResources[k + 1][0] = domini.get(k);
+         if (domini.get(k).equals("dominioA")) {
+         domResources[k + 1][0] = String.valueOf(4);
+         } else {
+         domResources[k + 1][0] = String.valueOf(2);
+         }
+         }
+            
+            
+         } catch (CleverException ex) {
+
+         logger.error("error in sendjob" + ex);
+         }
+         */
         forwardable = false;
         String[] login = null;
         domWeights = new ArrayList<Dataweight>();
@@ -217,50 +330,38 @@ public class JobRuler implements Runnable {
         long size;
         size = s3t.getInfo(fileNameS3);
         this.logger.debug("size ricavata file");
-        logger.debug("VERIFICO VALORE array domRES: " + domRes[0][0] + "con numero VM: " + domRes[0][1]);
-        //      logger.debug("VERIFICO VALORE array domRES: " + domRes[1][0] + "con numero VM: " + domRes[1][1]);
+        logger.debug("VERIFICO VALORE array domRES: " + fedRes[0][0] + "con numero VM: " + fedRes[0][1]);
+        domWeights = calcWeights(fedRes, size);
 
-        domWeights = calcWeights(domRes, size);
-        //int numberthread = domWeights.size();
-        //this.logger.debug("calcolo pesi fatto" + domWeights.get(0).getStart() + " " + domWeights.get(0).getEnd() + " dominioA:  " + domWeights.get(1).getStart() + " " + domWeights.get(1).getEnd());
         this.logger.debug("Launching the command to local domain...");
-        //int[] numThread=new int[1];
-        //numThread[0]=0;
 
-        //domWeights.remove(0);
         Dataweight datTemp = null;
         urlMap = new HashMap<Byte, ArrayList>();
 
-        //Iterator<Dataweight> it = domWeights.iterator();
-        //part = 0;
         this.logger.debug("Before For to launch thread, thread to launch are: " + domWeights.size());
+
         for (byte i = 0; i < domWeights.size(); i++) {
             this.logger.debug("CICLO NUMERO: " + i);
+
             try {
                 datTemp = domWeights.get(i);
-                domain = datTemp.getDomain();
+                domain = datTemp.getDomain();// metto in domain il dominio contenuto in domWeights
                 this.logger.debug("Domain on which to launch jop is: " + domain);
                 this.logger.debug("CICLO NUMERO: " + i);
                 boolean t = domain.equals(localDomains());
                 if (t) {
                     this.logger.debug(" domain.equals(localoDomains() is : " + t);
+
                     try {
                         long firstByte = datTemp.getStart();
                         long lastByte = datTemp.getEnd();
 
                         this.logger.debug("first =: " + datTemp.getStart() + " last: " + datTemp.getEnd());
-                        //temp = domWeights.get(this.localDomains());+
                         JobRuler nJobRuler = new JobRuler(t, fileBuffer, jobName, bucketName, fileNameS3, firstByte, lastByte, i, urlMap, datTemp.getWeight());
                         nJobRuler.init(this.clientRuler, this.owner, this.logger);
 
-                        //this.logger.debug(" Lancio thread locale , variabile local= "+local);
                         new Thread(nJobRuler).start();
-                        this.local = false;/*  LANCIA THREAD  JOB IN LOCALE QUI*/
-
-                        //this.logger.debug("Thread locale lanciato, variabile local= " + local);
-                        //this.logger.debug("Removing local domain" + datTemp.getDomain() + "from list");
-                        //domWeights.remove(0);
-
+                        this.local = false;
                     } catch (RuntimeException ex) {
                         this.logger.debug("Error to launch Thread", ex);
                     }
@@ -303,15 +404,10 @@ public class JobRuler implements Runnable {
             }
 
         }
-        
-        ControlDim cDim = new ControlDim(this.logger, domWeights.size(), urlMap,bucketName, fileNameS3, s3t);
+
+        ControlDim cDim = new ControlDim(this.logger, domWeights.size(), urlMap, bucketName, fileNameS3, s3t);
         new Thread(cDim).start();
-        
-        //this.logger.debug("STO AVVIANDO L'UPLOAD DEL FILE SMIL SU S3: " + filePathSmil.get(0));
 
-
-        //while(count<numberthread){}
-        //this.ownerPlugin.execJob(fileBuffer, jobName, numDom, listDomains);
     }
 
     /**
@@ -336,72 +432,82 @@ public class JobRuler implements Runnable {
 
     @Override
     public void run() {
+        logger.debug("ESEGUO IL RUN: " + this.toString());
 
         if (!local) {
+            logger.debug("ESEGUO IL RUN remoto: " + this.toString());
+            /*
 
-            this.logger.debug("Launching the command to choosen domain...");
-            Object reply = null;
-            ArrayList a = (ArrayList) fedParms.get(4);
-            Byte n = (Byte) a.get(6);
-            w = (Integer) a.get(7);
-            try {
-                Timestamper.write("T16-inizioLancioSendJobSuDominioFederato");
-            } catch (IOException ex) {
-                this.logger.warn("can't write timestamp log: " + ex.getMessage());
-            }
-            this.logger.debug("Sto per lanciare L'invoke con i seguenti parametri: " + fedParms.get(0).toString() + ";" + fedParms.get(1).toString() + ";" + fedParms.get(2).toString() + ";" + fedParms.get(3).toString());
-            try {
-                reply = this.owner.invoke("FederationListenerAgent", "forwardCommandToDomainWithoutTimeout", true, fedParms);
-//                reply = this.owner.invoke("FederationListenerAgent", "forwardCommandToDomainWithoutTimeout", true, fedParms);
-                this.logger.debug("Response of INVOKE IS: first element in arraylist is " + ((ArrayList) reply).get(0) + "---VALUE----: ");
-                this.logger.info("Command launched. Reply: " + reply);
-                if (reply != null && reply instanceof Exception) {
-                    throw new CleverException((Exception) reply);
-                }
-            } catch (CleverException ex) {
+             this.logger.debug("Launching the command to choosen domain...");
+             Object reply = null;
+             ArrayList a = (ArrayList) fedParms.get(4);
+             Byte n = (Byte) a.get(6);
+             w = (Integer) a.get(7);
+             try {
+             Timestamper.write("T16-inizioLancioSendJobSuDominioFederato");
+             } catch (IOException ex) {
+             this.logger.warn("can't write timestamp log: " + ex.getMessage());
+             }
+             this.logger.debug("Sto per lanciare L'invoke con i seguenti parametri: " + fedParms.get(0).toString() + ";" + fedParms.get(1).toString() + ";" + fedParms.get(2).toString() + ";" + fedParms.get(3).toString());
+            
+             try {
+             reply = this.owner.invoke("FederationListenerAgent", "forwardCommandToDomainWithoutTimeout", true, fedParms);
+             //                reply = this.owner.invoke("FederationListenerAgent", "forwardCommandToDomainWithoutTimeout", true, fedParms);
+             this.logger.debug("Response of INVOKE IS: first element in arraylist is " + ((ArrayList) reply).get(0) + "---VALUE----: ");
+             this.logger.info("Command launched. Reply: " + reply);
+             if (reply != null && reply instanceof Exception) {
+             throw new CleverException((Exception) reply);
+             }
+             } catch (CleverException ex) {
 
-                this.logger.error("Exception caught while forwarding sendJob method on " + fedParms.get(0) + " domain: " + ex);
+             this.logger.error("Exception caught while forwarding sendJob method on " + fedParms.get(0) + " domain: " + ex);
 
-            }
-            //count++;
-            try {
-                urlMap.put(n.byteValue(), (ArrayList) reply);
+             }
+             //count++;
+             try {
+             urlMap.put(n.byteValue(), (ArrayList) reply);
 
-                // urlMap.put(n.byteValue(),"https://s3.amazonaws.com/"+a.get(2)+"/"+a.get(3)+"-part-"+n.toString());
-            } catch (Exception e) {
-                logger.error("error in urlMap put", e);
-            }
-            logger.debug("Aggiunto Url all'hash table: " + "chiave: " + n.byteValue() + " - Valore:  " + urlMap.get(n.byteValue()));
-            this.logger.debug("INVOCATO FORWARD");
-            try {
-                Timestamper.write("T17-riuscitoLancioSendJobSuDominioFederato");
-            } catch (IOException ex) {
-                this.logger.warn("can't write timestamp log: " + ex.getMessage());
-            }
+             // urlMap.put(n.byteValue(),"https://s3.amazonaws.com/"+a.get(2)+"/"+a.get(3)+"-part-"+n.toString());
+             } catch (Exception e) {
+             logger.error("error in urlMap put", e);
+             }
+             logger.debug("Aggiunto Url all'hash table: " + "chiave: " + n.byteValue() + " - Valore:  " + urlMap.get(n.byteValue()));
+             this.logger.debug("INVOCATO FORWARD");
+             try {
+             Timestamper.write("T17-riuscitoLancioSendJobSuDominioFederato");
+             } catch (IOException ex) {
+             this.logger.warn("can't write timestamp log: " + ex.getMessage());
+             }
 
-            this.logger.debug("Command successfully launched on domain " + fedParms.get(0));
-                //break;
+             this.logger.debug("Command successfully launched on domain " + fedParms.get(0));
+             //break;
 
-            //listDomains.remove(domain);
+             //listDomains.remove(domain);
+             */
         } //this.sendJob(fileBuffer, jobName, fileNameS3, bucketName, user, pass, start, end);
         else {
-            logger.debug("job ruler lanciato jon in locale...:");
-            //String url="";
-            //ArrayList<Object> para = new ArrayList<Object>();
+            logger.debug("ESEGUO IL RUN locale: " + this.toString());
+            /*
+       
+        
+             logger.debug("job ruler lanciato jon in locale...:");
+             //String url="";
+             //ArrayList<Object> para = new ArrayList<Object>();
 
-            this.logger.debug("Lancio del metodo : " + this.getClass().getName());
-            //url=this.ownerPlugin.submitJob(fileBuffer, jobName, bucketName, fileNameS3, first, last, part);
-            //urlMap=new HashMap<Byte, String>();
-            try {
-                urlMap.put(this.part, this.ownerPlugin.submitJob(fileBuffer, jobName, bucketName, fileNameS3, first, last, part, w));
+             this.logger.debug("Lancio del metodo : " + this.getClass().getName());
+             //url=this.ownerPlugin.submitJob(fileBuffer, jobName, bucketName, fileNameS3, first, last, part);
+             //urlMap=new HashMap<Byte, String>();
+             try {
+             urlMap.put(this.part, this.ownerPlugin.submitJob(fileBuffer, jobName, bucketName, fileNameS3, first, last, part, w));
 
-                logger.debug("Aggiunto Url all'hash table: " + "chiave: " + this.part + " - Valore: " + urlMap.get(this.part));
-                //count++;
-            } catch (CleverException ex) {
-                logger.error("Error to lauch job in local domain", ex);
-                //this.logger.warn("Exception caught while forwarding sendJob method on " + fedParms.get(0) + " domain: " + ex);
+             logger.debug("Aggiunto Url all'hash table: " + "chiave: " + this.part + " - Valore: " + urlMap.get(this.part));
+             //count++;
+             } catch (CleverException ex) {
+             logger.error("Error to lauch job in local domain", ex);
+             //this.logger.warn("Exception caught while forwarding sendJob method on " + fedParms.get(0) + " domain: " + ex);
 
-            }
+             }
+             */
         }
 
     }
@@ -434,8 +540,8 @@ public class JobRuler implements Runnable {
         ArrayList<Dataweight> tempArray = new ArrayList<Dataweight>();
         ArrayList<Dataweight> tempArray2 = new ArrayList<Dataweight>();
         Dataweight dataWeight = null;
-        String localdomain;
-        long locWeight;
+        //String localdomain;
+        //long locWeight;
         logger.debug("Calculate num chunks for each domain");
         //locWeight = local;
         int c;
@@ -446,8 +552,9 @@ public class JobRuler implements Runnable {
         try {
 
             logger.debug("Creato Iterator per TempARRAy");
+             logger.debug("domR[][] size= "+domR.length);
             //int numDom = domRes.size();
-            localdomain = localDomains();
+            //localdomain = localDomains();
             // logger.debug("VALORI da aggiungere all'array sono: " + localdomain + " con peso " + locWeight);
             // tempArray.add(new Dataweight(localdomain, (int) (locWeight)));
             //logger.debug("Aggiunto alla lista : " + tempArray.get(0).getDomain() + " con valore: " + tempArray.get(0).getWeight());
@@ -485,7 +592,7 @@ public class JobRuler implements Runnable {
                 //obTempPrev = (Dataweight) obTemp.clone();
                 //logger.debug("Effettuata copia oggetti");
                 if (c == 0) {
-                    logger.debug("calcolo il range per il dominio locale");
+                    logger.debug("calcolo il range per il dominio: "+obTemp.getDomain());
                     obTemp.setStart(0);
                     obTemp.setEnd((chunck * (obTemp.getWeight())));
                     tempArray2.add(obTemp);

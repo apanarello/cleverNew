@@ -943,6 +943,38 @@ public class DbSedna implements DatabaseManagerPlugin {
         return a;
     }
   
+  /* ALFONSO*/
+    @Override
+  synchronized public int countHost(String agentId, String location) throws CleverException {
+       int result = 0;
+        Collection collect = null;
+        try {
+            collect = this.connect();
+            logger.debug("Executing query xpath=" + this.xpath + "/cm/agent[@name='" + agentId + "']" + location);
+            XQueryService serviceXQuery = (XQueryService) collect.getService("XQueryService", "1.0");
+            ResourceSet resultSet = serviceXQuery.queryResource(document, xpath + "/cm/agent[@name='" + agentId + "']" + location);
+            ResourceIterator results = resultSet.getIterator();
+            logger.debug("Executing query xpath=" + this.xpath + "/cm/agent[@name='" + agentId + "']" + location);
+            while (results.hasMoreResources()) {
+                XMLResource resource = (XMLResource) results.nextResource();
+                result++;
+                //result.append('\n');
+            }
+
+        } catch (XMLDBException ex) {
+            logger.error("Execute query failed: " + ex);
+            throw new CleverException("Error executing query: " + ex);
+        } finally {
+            try {
+                if (collect != null) {
+                    collect.close();
+                }
+            } catch (XMLDBException ex) {
+                logger.error("Error closing connection: " + ex.getMessage());
+            }
+        }
+        return result;
+    }
   
   //cristina
 	@Override

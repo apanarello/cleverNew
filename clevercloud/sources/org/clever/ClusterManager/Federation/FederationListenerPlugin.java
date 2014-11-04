@@ -24,6 +24,7 @@
 package org.clever.ClusterManager.Federation;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import org.apache.log4j.Logger;
 import org.clever.Common.Communicator.Agent;
 import org.clever.Common.Exceptions.CleverException;
@@ -51,5 +52,9 @@ public interface FederationListenerPlugin {
     public Object forwardCommandToDomainWithTimeout (final String domain, final String agent, final String command, final Boolean hasReply, final ArrayList params, Long timeout) throws CleverException;
     public Object forwardCommandToDomainWithoutTimeout (final String domain, final String agent, final String command, final Boolean hasReply, final ArrayList params) throws CleverException;
     public ArrayList<String> getFederatedDomains() throws CleverException;
-    public String getLocalDomainName();
+    public ArrayList<String> getFederatedCM() throws CleverException;
+    public HashMap<String, String> getFederatedCMinDB() throws CleverException;
+    public String getLocalDomainName()throws CleverException;
+    public void deleteDomain (String domain)throws CleverException;
+    public int getNumHmPerDomain(String domain) throws CleverException;
 }
