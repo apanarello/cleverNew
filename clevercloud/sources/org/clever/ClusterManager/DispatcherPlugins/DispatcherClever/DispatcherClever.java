@@ -1,6 +1,7 @@
  /*
  *  Copyright (c) 2010 Antonio Nastasi
  *  Copyright (c) 2011 Marco Sturiale
+ *  Copyright (c) 2014 Alfonso Panarello
  *
  *  Permission is hereby granted, free of charge, to any person
  *  obtaining a copy of this software and associated documentation

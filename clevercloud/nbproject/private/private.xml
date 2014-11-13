@@ -14,6 +14,15 @@
             <file>file:/home/apanarello/Scrivania/progetto/FINITO/clevercloud/sources/org/clever/ClusterManager/HadoopJobtracker/configuration_HadoopJobTracker.xml</file>
         </group>
         <group name="Federation"/>
-        <group name="DirectTranscodeHadoop"/>
+        <group name="DirectTranscodeHadoop">
+            <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/ClusterManager/Dispatcher/DispatcherAgent.java</file>
+            <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/Common/S3tools/S3Tools.java</file>
+            <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/ClusterManager/HadoopPlugin/NamenodePlugin.java</file>
+            <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/ClusterManager/HadoopNamenode/HadoopNamenodePlugin.java</file>
+            <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/ClusterManager/HadoopPlugin/JobRuler.java</file>
+            <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/ClusterManager/FederationPlugins/FederationListener.java</file>
+            <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/Common/XMLTools/ControlDim.java</file>
+            <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/ClusterManager/FederationPlugins/FederationDiscovery.java</file>
+        </group>
     </open-files>
 </project-private>

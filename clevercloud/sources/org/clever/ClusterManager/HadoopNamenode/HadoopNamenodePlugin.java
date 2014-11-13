@@ -3,6 +3,7 @@
  *
  * Copyright (c) 2013 Mariacristina Sinagra
  * Copyright (c) 2014 Giovanni Volpintesta
+ * Copyright (c) 2014 Alfonso Panarello
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -154,7 +155,7 @@ public interface HadoopNamenodePlugin {
      * @param domRes        (array che contiene nome del dominio e vms disponibili)
      * @throws CleverException
      */
-    public void sendJob (String fileBuffer, String jobName, String bucket , String files3 ,String user, String pass, Boolean forwardable, String domRes[][]) throws CleverException;
+    public void sendJob (String fileBuffer, String jobName, String bucket , String files3 ,String user, String pass, Boolean forwardable) throws CleverException;
 
     /**
      *

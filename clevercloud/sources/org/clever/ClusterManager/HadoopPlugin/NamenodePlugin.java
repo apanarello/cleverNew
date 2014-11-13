@@ -1079,10 +1079,14 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
             s3.getAuth(fileBuffer);
             logger.debug("Autenticazione fatto prima del get file");
             byte part = 0;
-            
-            
+
             //-----------------------------------------------
             long div = (endByte - startByte) / vm;
+            try {
+                Timestamper.write("Time10-InizioDownloadS3File");
+            } catch (IOException ex) {
+                this.logger.warn("can't write timestamp log: " + ex.getMessage());
+            }
             for (long i = startByte; i < (endByte); i = i + div) {
                 dest = new Path(home + file + "-part-" + p + "-" + part + format);
                 s3.getFileFromS3(fileBuffer, dest.toString(), bucket, fileS3Name, i, (i + div));
@@ -1090,7 +1094,11 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
                 part++;
             }
             //-------------------------------------------------
-            
+            try {
+                Timestamper.write("Time11-FineDownloadS3File");
+            } catch (IOException ex) {
+                this.logger.warn("can't write timestamp log: " + ex.getMessage());
+            }
             //s3.getFileFromS3(fileBuffer, dest, bucket, fileS3Name, startByte, endByte);
             logger.debug("GET S3 eseguito con successo");
         } catch (IOException ex) {
@@ -1101,116 +1109,172 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
 
         }
         Process ps = null;
-        
+        File files = null;
         try {
             //-------------------------------
-            for (byte y = 0; y < paths.size(); y++) {
-               // ps = Runtime.getRuntime().exec("hadoop fs -put " + home + paths.get(y) + " /input/ ");
-               // ps.waitFor();
-
-                try {
-                    this.putFileInHDFS(home + paths.get(y), new Path("/input/"), paths.get(y));
-                } catch (HDFSConnectionException ex) {
-                    logger.error("Error to put file to HDSF path: /input/" + paths.get(y), ex);
-                    throw new CleverException("Error to write in HDSH path: " + "/input/" + paths.get(y));
-
-                }
-                //---------------------------
-             
+            try {
+                Timestamper.write("Time12-InizioUpLoadSuHadoop");
+            } catch (IOException ex) {
+                this.logger.warn("can't write timestamp log: " + ex.getMessage());
             }
-             logger.debug("PUTFILE ESEGUITO CON SUCCESSO: ");
-           
+
+            for (byte y = 0; y < paths.size(); y++) {
+                ps = Runtime.getRuntime().exec("hadoop fs -put " + home + paths.get(y) + " /input/ ");
+                ps.waitFor();
+                /*
+                 try {
+                 this.putFileInHDFS(home + paths.get(y), new Path("/input/"), paths.get(y));
+                 } catch (HDFSConnectionException ex) {
+                 logger.error("Error to put file to HDSF path: /input/" + paths.get(y), ex);
+                 throw new CleverException("Error to write in HDSH path: " + "/input/" + paths.get(y));
+
+                 }
+                 */
+
+                //---------------------------
+            }
+            try {
+                Timestamper.write("Time12-FineUpLoadSuHadoop");
+            } catch (IOException ex) {
+                this.logger.warn("can't write timestamp log: " + ex.getMessage());
+            }
+            
+            //cancello file scaricati da s3 dal sistema
+            for (byte y = 0; y < paths.size(); y++) {
+                files = new File(home + paths.get(y));
+                if (files.delete()) {
+                    logger.debug("deleted file: " + home + paths.get(y));
+                } else {
+                    throw new CleverException("ERROR DURING DELETING FILE");
+                }
+            }
+            logger.debug("PUTFILE ESEGUITO CON SUCCESSO: ");
+
+            /*
+            * Solo per misure- Non eseguo il job---
+            * Ma faccio un get del file e lo taglio di un certa percentuale
+            *
+            *
+            *
+            */
+            
+            
+            
+            
+            
             //DOVREBBE ESSERE UN JOB DI HADOOP A FARE LA TRANSCODIFICA
             logger.debug("DOVREI LANCIARE IL JOB" + " hadoop jar " + home + jobName + " com.manuh.vidproc.DirectVideoProcessor /input/ /output/");
             //this.wait(10000);
-            
+
             //___________---------------
             ps = Runtime.getRuntime().exec("hadoop jar " + home + "Transcodifica/dist/Transcodifica.jar" + " com.manuh.vidproc.DirectVideoProcessor /input /output");
-                       
+
             //ps = Runtime.getRuntime().exec("hadoop jar " + home + "HadoopVideoTranscode/dist/VideoTranscode.jar" + " com.manuh.vidproc.DirectVideoProcessor /input/ /output");
             ps.waitFor();
+
             //___________---------------
-            
             logger.debug("JOB DONE - try to cancel local files. exit value: " + ps.exitValue());
             if (ps.exitValue() == 0) {
-                File files = null;
-                //DOVREBBE ESSERE UN JOB DI HADOOP A FARE LA TRANSCODIFICA
-                logger.debug("JOB DONE - try to cancel local files.");
-                
-               
-                //ps = Runtime.getRuntime().exec("hadoop fs -rm /input/*");
-                //ps.waitFor();
-                for (byte y = 0; y < paths.size(); y++) {
-                     this.deleteFileFromHDFS(new Path("/input/"+paths.get(y)));
-                    //___-----___-__-__--____--
-                    files = new File(home + paths.get(y));
-                    if (files.delete()) {
-                        logger.debug("deleted file: " + home + paths.get(y));
-                    } else {
-                        throw new CleverException("ERROR DURING DELETING FILE");
-                    }
-                    fileAfterTranscode = paths.get(y).substring(0, paths.get(y).indexOf(".")) + ".mpeg";
-                    logger.debug("get file  DONE - new file= " + fileAfterTranscode);
-                    
-                   /* 
-                    ps = Runtime.getRuntime().exec("hadoop fs -get /output/" + paths.get(y) + " " + home+fileAfterTranscode);
-                    ps.waitFor();
-                    
-                   */ 
-                    try {
-                        logger.debug("launching getFIleFromHDFS - src: " + "/output/" + paths.get(y) + " dstPath : " + home + fileAfterTranscode);
-                        this.getFileFromHDFS(new Path("/output/" + paths.get(y)), home + fileAfterTranscode);
-                    filePaths.add(fileAfterTranscode);
-                    } catch (HDFSConnectionException ex) {
-                        logger.error("Error to get file from HDSF path: /output/" + paths.get(y), ex);
-                        throw new CleverException("Error to get file from HDSF path: /output/" + paths.get(y));
-                    } catch (HDFSInternalException ex) {
-                        logger.error("INTERNAL EXCEPTION Error to get file from HDSF path: /output/" + paths.get(y), ex);
-                        throw new CleverException("Error to get file from HDSF path: /output/" + paths.get(y));
-                    }
-                    if (ps.exitValue() == 0) {
-                    urList.add("https://s3.amazonaws.com/" + bucket + "/" + fileAfterTranscode);
 
-                    logger.debug("url added to arryalist= " + "https://s3.amazonaws.com/" + bucket + "/" + fileAfterTranscode);
-                    /*
-                     if (y == paths.size() - 1) {
-                     merge = merge + destAfterTranscode;
-                     } else {
-                     merge = merge + destAfterTranscode + "|";
-                     }
-                     logger.debug("merge string is: " + merge);
-                     ps = Runtime.getRuntime().exec("avconv -i \"concat:" + merge + " -codec copy " + home + "transcoded_" + file + "-" + p + ".mpeg");
-                     ps.waitFor();
-                     if (ps.exitValue() == 0) {
-                            
-                     }
-                     else {
-                     throw new CleverException("ERROR DURING merging FILEs");
-                     }
-                     //transcodepaths.add(destAfterTranscode);
-                     */
-                    } else {
-                       throw new CleverException("ERROR DURING GETTING FILE FROM HDSF- urls not added to list");
+                logger.debug("JOB DONE - try to cancel local files.");
+
+                ps = Runtime.getRuntime().exec("hadoop fs -rm /input/*");
+                ps.waitFor();
+                if (ps.exitValue() == 0) {
+                    try {
+                        Timestamper.write("Time13-InizioUpLoadSuS3");
+                    } catch (IOException ex) {
+                        this.logger.warn("can't write timestamp log: " + ex.getMessage());
                     }
+                    for (byte y = 0; y < paths.size(); y++) {
+                        fileAfterTranscode = paths.get(y).substring(0, paths.get(y).indexOf(".")) + ".mpeg";
+                        ps = Runtime.getRuntime().exec("hadoop fs -get /output/" + paths.get(y) + " " + home + fileAfterTranscode);
+                        ps.waitFor();
+                        filePaths.add(fileAfterTranscode);
+                        urList.add("https://s3.amazonaws.com/" + bucket + "/" + fileAfterTranscode);
+
+                        logger.debug("url added to arryalist= " + "https://s3.amazonaws.com/" + bucket + "/" + fileAfterTranscode);
+                        if (ps.exitValue() == 0) {
+                        } else {
+                            logger.error("error to getfile " + home + filePaths.get(y));
+                        }
+
+                    }
+                } else {
+                    logger.error("error to deletefile from hdfs ");
+
                 }
+
+                /*
+                 for (byte y = 0; y < paths.size(); y++) {
+                 try {
+                 logger.debug("!!!try to delete file from hdfs: " + home + paths.get(y));
+                 this.deleteFileFromHDFS(new Path("/input/" + paths.get(y)));
+                 logger.debug("!!!deleted file from hdfs: " + home + paths.get(y));
+
+                 } catch (IOException ex) {
+                 logger.error("Error to deletefile from hdfs: /input/" + paths.get(y), ex);
+                 } catch (Exception ex) {
+                 logger.error("Error to deletefile from hdfs: /input/" + paths.get(y), ex);
+                 }
+                 //___-----___-__-__--____--
+                 files = new File(home + paths.get(y));
+                 if (files.delete()) {
+                 logger.debug("deleted file from fisical fs: " + home + paths.get(y));
+                 } else {
+                 throw new CleverException("ERROR DURING DELETING FILE");
+                 }
+                 fileAfterTranscode = paths.get(y).substring(0, paths.get(y).indexOf(".")) + ".mpeg";
+
+                 // ps = Runtime.getRuntime().exec("hadoop fs -get /output/" + paths.get(y) + " " + home+fileAfterTranscode);
+                 // ps.waitFor();
+                 try {
+                 logger.debug("!!!launching getFIleFromHDFS - src: " + "/output/" + paths.get(y) + " dstPath : " + home + fileAfterTranscode);
+                 this.getFileFromHDFS(new Path("/output/" + paths.get(y)), home + fileAfterTranscode);
+                 filePaths.add(fileAfterTranscode);
+                 logger.debug("get file  DONE - new file= " + fileAfterTranscode);
+
+                 } catch (HDFSConnectionException ex) {
+                 logger.error("Error to get file from HDSF path: /output/" + paths.get(y), ex);
+                 throw new CleverException("Error to get file from HDSF path: /output/" + paths.get(y));
+                 } catch (HDFSInternalException ex) {
+                 logger.error("INTERNAL EXCEPTION Error to get file from HDSF path: /output/" + paths.get(y), ex);
+                 throw new CleverException("Error to get file from HDSF path: /output/" + paths.get(y));
+                 }
+                 // if (ps.exitValue() == 0) {
+                 urList.add("https://s3.amazonaws.com/" + bucket + "/" + fileAfterTranscode);
+
+                 logger.debug("url added to arryalist= " + "https://s3.amazonaws.com/" + bucket + "/" + fileAfterTranscode);
+
+                 }
                 
-                for(int y=0;y<paths.size();y++){
+                 */
+                //faccio upload su S3 dei file transcodificati
+                try {
+                    for (int y = 0; y < filePaths.size(); y++) {
+
+                        s3.uploadFile(home + filePaths.get(y), "outputfederation", filePaths.get(y));
+
+                    }
+                } catch (Exception ex) {
+                    logger.error("Error during uploading s3file", ex);
+
+                }
+                //fileAfterMerge = "transcoded_" + file + "-" + p + ".mpeg";
                 
-                  s3.uploadFile(home+filePaths.get(y),  bucket, filePaths.get(y));
-                  files = new File(home + filePaths.get(y));
+                //cancello file trascodificato dal sistema
+                for (int y = 0; y < filePaths.size(); y++) {
+                    files = new File(home + filePaths.get(y));
                     if (files.delete()) {
                         logger.debug("deleted file: " + home + filePaths.get(y));
                     } else {
                         throw new CleverException("ERROR DURING DELETING FILE");
                     }
                 }
-                //fileAfterMerge = "transcoded_" + file + "-" + p + ".mpeg";
-
             } else {
                 throw new CleverException("Error to exec hadoop jar; exec has returned " + ps.exitValue());
             }
 
-           
             //Eseguo File SH che carica il file su hadoop, fa partire il job e poi alla fine riposizione il file nel fs locale
             //Runtime.getRuntime().exec("hadoop fs -put "+ dest +" /output-"+ p);
             //Runtime.getRuntime().exec("ffmpeg -i " + dest + " -acodec copy -vcodec mpeg4" + " /home/dissennato/output-" + p);
@@ -1240,15 +1304,14 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
      *
      * @param jobName
      * @param fileS3Name
-     * @param domResources
      * @throws CleverException
      */
     @Override
-    public void sendJob(String fileBuffer, String jobName, String bucket, String fileS3Name, String user, String pass, Boolean forwardable, String domResources[][]) throws CleverException {
+    public void sendJob(String fileBuffer, String jobName, String bucket, String fileS3Name, String user, String pass, Boolean forwardable) throws CleverException {
 
         this.logger.debug("Entrato in SendJob-NamenodePlugin ");
         try {
-            this.jobRuler.sendJob(fileBuffer, jobName, bucket, fileS3Name, user, pass, forwardable, domResources);
+            this.jobRuler.sendJob(fileBuffer, jobName, bucket, fileS3Name, user, pass, forwardable);
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(NamenodePlugin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1269,6 +1332,12 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
      */
     @Override
     public ArrayList sendJob(String fileBuffer, String jobName, String bucket, String fileS3Name, Long startByte, Long end, Byte p, Integer vm) throws CleverException {
+
+        try {
+            Timestamper.write("Time09-Time06-FineInoltro");
+        } catch (IOException ex) {
+            this.logger.warn("can't write timestamp log: " + ex.getMessage());
+        }
 
         this.logger.debug("Entrato in SendJob-NamenodePlugin for federation :" + " JobName: " + jobName + "; BucketName: " + bucket + "; FileName S3: " + fileS3Name + "; Range Start: " + startByte + "; Range End " + end + "; PartFile " + p + ";NumVms " + vm);
 
@@ -1303,10 +1372,10 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
         try {
             data = Files.readAllBytes(pathFile);
         } catch (IOException ex) {
-            logger.error("Errore to read byte from file",ex);
+            logger.error("Errore to read byte from file", ex);
         }
         InputStream in = new BufferedInputStream(new ByteArrayInputStream(data));
-        
+
         try {
 
             fileSystem = FileSystem.get(conf);
@@ -1318,9 +1387,8 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
         try {
             if (fileSystem.exists(hdsfDstP)) {
                 this.logger.debug("directory esistente");
-            }
-            else{
-            fileSystem.mkdirs(hdsfDstP);
+            } else {
+                fileSystem.mkdirs(hdsfDstP);
             }
         } catch (IOException ex) {
             this.logger.error("Impossibile leggere la directory");
@@ -1354,30 +1422,27 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
             }
         }
 
-       // FileReader reader = null;
-
+        // FileReader reader = null;
         try {
-            
+
             org.apache.hadoop.io.IOUtils.copyBytes(in, fsOut, conf);
-            
+
             this.logger.debug("Coping file content in HDFS");
 
             /*            
              fileSystem.copyFromLocalFile(srcPath, dstPath);
              */
             //reader = new FileReader(srcP.toString());
-
             //logger.debug("inizioScritturaFileSuHadoop");
 /*
-            while (true) {
-                int c = reader.read();
-                if (c == -1) {
-                    break;
-                }
-                fsOut.write(c); //fsOut non può essere null
-            }
-        */
-
+             while (true) {
+             int c = reader.read();
+             if (c == -1) {
+             break;
+             }
+             fsOut.write(c); //fsOut non può essere null
+             }
+             */
             logger.debug("P09-riuscitaScritturaFileSuHadoop(PUT)");
 
             this.logger.debug("File content copied in HDFS");
@@ -1386,14 +1451,14 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
             logger.error("Error creating file " + hdsfDstP + " in HDFS: " + ex.getMessage());
             try {
                 fileSystem.delete(hdsfDstP, true);
-               /*
-                if (reader != null) {
-                    reader.close();
-                }
-                if (fsOut != null) {
-                    fsOut.close();
-                }
-                       */
+                /*
+                 if (reader != null) {
+                 reader.close();
+                 }
+                 if (fsOut != null) {
+                 fsOut.close();
+                 }
+                 */
             } catch (IOException ex1) {
                 logger.warn("Error trying to recover from failed copy of temp in file " + hdsfDstP.getName() + " in HDFS: error occurred while deleting file: " + ex1.getMessage());
             } finally {
@@ -1408,14 +1473,14 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
             }
         }
         /*
-        if (reader != null) {
-            try {
-                reader.close();
-            } catch (IOException ex) {
-                logger.error("errore scrittura- errore chiusura reader", ex);
-            }
-        }
-                */
+         if (reader != null) {
+         try {
+         reader.close();
+         } catch (IOException ex) {
+         logger.error("errore scrittura- errore chiusura reader", ex);
+         }
+         }
+         */
         if (fsOut != null) {
             try {
                 this.logger.debug("FSOUT DIVERSO DA NULL");
@@ -1479,6 +1544,7 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
                 try {
                     fileSystem.close();
                 } catch (IOException ex) {
+                    logger.debug("Error closing filesystem : ", ex);
                 }
                 throw new HDFSInternalException("File doesn't exist in HDFS");
             }
@@ -1488,9 +1554,12 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
                 try {
                     fileSystem.close();
                 } catch (IOException ex1) {
+                    logger.debug("Error closing filesystem : ", ex1);
                 }
                 throw new HDFSInternalException(ex);
             }
+        } catch (Exception ex) {
+            logger.debug("Error closing filesystem : ", ex);
         }
         //logger.debug(fileSystem.getHomeDirectory().toString());
         //StringWriter writer = new StringWriter();
@@ -1516,21 +1585,24 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
 
     }
 
+    //Alfonso
     @Override
     public void deleteFileFromHDFS(Path dbPath) throws HDFSConnectionException, HDFSInternalException {
 
-        
+        logger.debug("Try to get configuration file hdsf: ");
+
         Configuration conf = new Configuration();
         conf.addResource(new Path(coreHadoop));
         conf.addResource(new Path(hdfsHadoop));
         conf.addResource(new Path(mapredHadoop));
         Path path = new Path(dbPath.toString());
         FileSystem fileSystem = null;
+        logger.debug("configuration obtained file hdsf: ");
         try {
             fileSystem = FileSystem.get(conf);
 
         } catch (IOException ex) {
-            logger.error("Try to get configuration file hdsf: ");
+            logger.error("error to get configuration file hdsf: ");
             throw new HDFSConnectionException(ex);
         }
         try {

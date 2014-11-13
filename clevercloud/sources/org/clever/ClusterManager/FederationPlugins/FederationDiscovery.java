@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2014 apanarello.
+ * Copyright 2014 Alfonso Panarello.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,9 +23,11 @@
  */
 package org.clever.ClusterManager.FederationPlugins;
 
+import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -68,27 +70,31 @@ public class FederationDiscovery {
     public String[][] startDiscovery() throws CleverException, IOException {
 
         ArrayList<String> federatedCmsChat = (ArrayList<String>) this.owner.invoke("FederationListenerAgent", "getFederatedCM", true, new ArrayList<Object>());
+        //ritorna tutti i domini nel DM compreso il presente
         HashMap<String, String> federatedCmInDb = (HashMap<String, String>) this.owner.invoke("FederationListenerAgent", "getFederatedCMinDB", true, new ArrayList<Object>());
         ArrayList<String> domini = new ArrayList<String>(federatedCmInDb.keySet());
-
+        BufferedReader b;
+        
         logger.debug("federatedCmInDb size è " + federatedCmInDb.size());
-        logger.debug(
-                "federatedCms size è " + federatedCmsChat.size());
-        logger.debug(
-                "PRIMA DEL FOR -----");
+        logger.debug("federatedCms size è " + federatedCmsChat.size());
+        logger.debug("PRIMA DEL FOR -----");
         boolean found = false;
         int sizeDB = federatedCmInDb.size();
-        for (int i = 0;
-                i < domini.size();
-                i++) {
-            logger.debug("--domini presenti in Fed prima del controllo: " + domini.get(i));
+        for (int i = 0; i < domini.size(); i++) {
+            logger.debug("--domini presenti in DB Fed prima del controllo: " + domini.get(i));
         }
-        for (int i = 0; i < sizeDB; i++) {
+        /*
+        * Doppio ciclo innestato seguente verifica che i domini federati presenti nel DB siano al momento della richiesta
+        * presenti nella chat. Se cosi non è elimina il dominio dal DB 
+        * (se un dominio presente in chat è sicuramente presente nel DB ma non è vero il contrario
+        */
+        for (int i = 0; i <sizeDB; i++) {
             found = false;
             logger.debug("found vale : " + found);
-            logger.debug("Nel DB Sedna  è presente il cm con nick: " + federatedCmInDb.get(domini.get(i)) + " Appartenente al dominio: " + domini.get(i) + "\n");
+            //logger.debug("Nel DB Sedna  è presente il cm con nick: " + federatedCmInDb.get(domini.get(i)) + " Appartenente al dominio: " + domini.get(i) + "\n");
             for (int j = 0; j < federatedCmsChat.size(); j++) {
-                logger.debug("dentro il for innestato");
+                logger.debug("dentro il for innestato"+"dominio in chat: "+federatedCmsChat.get(j));
+                logger.debug("dentro il for innestato"+"dominio: "+federatedCmInDb.get(domini.get(i)));
                 if (federatedCmInDb.get(domini.get(i)).equals(federatedCmsChat.get(j))) {
                     found = true;
                     logger.debug("dentro if del for innestato");
@@ -134,13 +140,13 @@ public class FederationDiscovery {
             try {
                 if (domini.get(i).equals(jobRuler.localDomains())) {
                     commandParams.add(domini.get(i));
-                    logger.debug("Dominio scelto per il getNumHmPerDomain è: "+domini.get(i));
+                    logger.debug("Dominio scelto per il getNumHmPerDomain è: " + domini.get(i));
 
                     domResources[i][0] = domini.get(i); //AGGIUNGO IL DOMINIO LOCALE ALLA LISTA DEI DOMINI
-                    logger.debug("  - - - Aggiunto all'array il dominio: -------  "+domini.get(i));
-                    String a =String.valueOf(this.owner.invoke("DispatcherAgent", "getHmsInRoom", true, commandParams));
+                    logger.debug("  - - - Aggiunto all'array il dominio: -------  " + domini.get(i));
+                    String a = String.valueOf(this.owner.invoke("DispatcherAgent", "getHmsInRoom", true, commandParams));
                     domResources[i][1] = a;
-                    logger.debug("Lanciato Invoke sul comando getNuHmPerDomain locale ritorna = "+a);
+                    logger.debug("Lanciato Invoke sul comando getNuHmPerDomain locale ritorna = " + a);
 
                 } else {
                     commandParams.add(domini.get(i));
@@ -154,9 +160,23 @@ public class FederationDiscovery {
                     domResources[i][0] = domini.get(i);
                     logger.debug("Lancio Invoke sul comando getNuHmPerDomain in federazione");
                     String a = String.valueOf(this.owner.invoke("FederationListenerAgent", "forwardCommandToDomainWithoutTimeout", true, fParams));
-                    logger.debug(" Invoke Remoto ritorna la stringa : "+a);
+                    /*
+                    * ///////////////////////////--------SOLO PER MISURE ACCCROCCHIO SIMULATO------------////////////////
+                    *    b=new BufferedReader(new FileReader("/home/........."));
+                    *    domResources[i][1] = b.readLine();
+                    *
+                    */
+                   
+                    logger.debug(" Invoke Remoto ritorna la stringa : " + a);
+                    
                     domResources[i][1] = a;
                     logger.debug(" - " + federatedCmsChat.get(i) + "\n");
+                   
+                    /*
+                    * ///////////////////////////--------SOLO PER MISURE ACCCROCCHIO SIMULATO------------////////////////
+                    *
+                    *
+                    */
                 }
             } catch (CleverException ex) {
                 logger.debug("Error during writing array of resources - 1 ", ex);

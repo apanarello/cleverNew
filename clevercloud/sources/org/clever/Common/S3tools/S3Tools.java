@@ -306,9 +306,47 @@ public class S3Tools {
         metadata.setContentLength(f.length());
         req.setCannedAcl(CannedAccessControlList.PublicRead);
         req.setMetadata(metadata);
-        
+
         logger.debug("Uploading a new object to S3 from a file\n");
         s3.putObject(req);
+
+    }
+
+    public void deleteFile(String bucket) throws IOException, CleverException {
+        this.logger.debug("Entrato in Delete S3 file " + this.getClass().getName());
+        Long size = null;
+        ObjectListing obj;
+        List<S3ObjectSummary> obList;
+
+        // String Key=null;
+        //Bucket objBucket=null;
+        this.logger.debug("Listing Bucket: "+bucket);
+        try {
+            for (Iterator<Bucket> it = s3.listBuckets().iterator(); it.hasNext();) {
+                obj = s3.listObjects(it.next().getName());
+                this.logger.debug("BUCKET - to delete " + obj.getBucketName());
+                if (obj.getBucketName().equals(bucket)) {
+                    obList = obj.getObjectSummaries();
+                    this.logger.debug("NUMERO OGGETTI da eleiminalre IN BUCKET" + obj.getBucketName() + " : " + obList.size());
+
+                    do {
+                        for (S3ObjectSummary objSumm : obj.getObjectSummaries()) {
+
+                            this.logger.debug("FILE NAME AMAZON da cancellare" + objSumm.getSize() + " " + objSumm.getKey());
+
+                            //bucket.add(objSumm.getKey());
+                            this.logger.debug("Size ricavata " + objSumm.getSize() + "in " + this.getClass().getName());
+                            s3.deleteObject(bucket, objSumm.getKey());
+
+                        }
+
+                    } while (obj.isTruncated());
+                }
+            }
+        } catch (AmazonServiceException ex) {
+            System.err.println(ex.getErrorCode());
+
+        }
 
     }
     /* private void displayTextInputStream(InputStream input) throws IOException {
@@ -328,7 +366,7 @@ public class S3Tools {
      * @return
      * @throws CleverException
      */
-    public long getInfo(String fileName) throws CleverException {
+    public long getInfo(String fileName, String bucket) throws CleverException {
         this.logger.debug("Entrato in getINFO s3 " + this.getClass().getName());
         Long size = null;
         ObjectListing obj;
@@ -336,29 +374,33 @@ public class S3Tools {
 
         // String Key=null;
         //Bucket objBucket=null;
-        System.out.println("Listing Bucket");
+        this.logger.debug("Listing Bucket");
         try {
             for (Iterator<Bucket> it = s3.listBuckets().iterator(); it.hasNext();) {
                 obj = s3.listObjects(it.next().getName());
+                
                 this.logger.debug("BUCKET" + obj.getBucketName());
-                obList = obj.getObjectSummaries();
-                this.logger.debug("NUMERO OGGETTI IN BUCKET" + obj.getBucketName() + " : " + obList.size());
+                if (obj.getBucketName().equals(bucket)) {
 
-                do {
-                    for (S3ObjectSummary objSumm : obj.getObjectSummaries()) {
+                    obList = obj.getObjectSummaries();
 
-                        this.logger.debug("FILE NAME AMAZON " + objSumm.getSize() + " " + objSumm.getKey());
-                        this.logger.debug("FILE NAME IN INGRESSO: " + fileName + "S3FILENAME :" + objSumm.getKey());
-                        if (fileName.equals(objSumm.getKey())) {
-                            //bucket.add(objSumm.getKey());
-                            this.logger.debug("Size ricavata " + objSumm.getSize() + "in " + this.getClass().getName());
-                            return objSumm.getSize();
+                    this.logger.debug("NUMERO OGGETTI IN BUCKET" + obj.getBucketName() + " : " + obList.size());
 
+                    do {
+                        for (S3ObjectSummary objSumm : obj.getObjectSummaries()) {
+
+                            this.logger.debug("FILE NAME AMAZON " + objSumm.getSize() + " " + objSumm.getKey());
+                            this.logger.debug("FILE NAME IN INGRESSO: " + fileName + "S3FILENAME :" + objSumm.getKey());
+                            if (fileName.equals(objSumm.getKey())) {
+                                //bucket.add(objSumm.getKey());
+                                this.logger.debug("Size ricavata " + objSumm.getSize() + "in " + this.getClass().getName());
+                                return objSumm.getSize();
+
+                            }
                         }
-                    }
 
-                } while (obj.isTruncated());
-
+                    } while (obj.isTruncated());
+                }
             }
         } catch (AmazonServiceException ex) {
             System.err.println(ex.getErrorCode());

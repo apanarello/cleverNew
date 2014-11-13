@@ -144,7 +144,10 @@
         <string>sendJobXml</string>
         <class>org.clever.administration.commands.SendJobCommandByXml</class>
     </command>
-    
+    <command>
+    <string>listactiveagents</string>
+    <class>org.clever.administration.commands.ListActiveAgentsCommand</class>
+    </command>
   <!--
   <command>
     <string>cd</string>
@@ -244,10 +247,7 @@
     <class>org.clever.administration.commands.CreateAgentCommand</class>
   </command>
   
-  <command>
-    <string>listactiveagents</string>
-    <class>org.clever.administration.commands.ListActiveAgentsCommand</class>
-  </command>
+  
   
   <command>
     <string>querydb</string>

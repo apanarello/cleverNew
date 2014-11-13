@@ -75,7 +75,7 @@ public class SmilXML {
      * @throws java.io.FileNotFoundException
      * @throws java.lang.ClassNotFoundException
      */
-    public String createSmil() throws FileNotFoundException, ClassNotFoundException {
+    public String createSmil(String home) throws FileNotFoundException, ClassNotFoundException {
 
         logger.debug("Create structure of smil xml file");
         ArrayList<String> urlList=new ArrayList<String>();
@@ -149,7 +149,7 @@ public class SmilXML {
             logger.debug("Try to save smil file in local fs");
             FileOutputStream fos = null;
             //  write the content into xml file
-            File f = new File("/home/apanarello/" + nameF.substring(0,nameF.indexOf(".")) + ".smil");
+            File f = new File(home + nameF.substring(0,nameF.indexOf(".")) + ".smil");
             fos = new FileOutputStream(f);
             // TransformerFactory transformerFactory = TransformerFactory.newInstance();
             //Transformer transformer = transformerFactory.newTransformer();
@@ -159,7 +159,7 @@ public class SmilXML {
             LSOutput lso = impl.createLSOutput();
             lso.setByteStream(fos);
             serializer.write(doc, lso);
-            logger.debug("SMIL FILE SAVED IN: " + "/home/apanarello/" + nameF.substring(0,nameF.indexOf(".")) + ".smil");
+            logger.debug("SMIL FILE SAVED IN: " + home + nameF.substring(0,nameF.indexOf(".")) + ".smil");
           //DOMSource source = new DOMSource(doc);
             // StreamResult result = new StreamResult(new File("/home/dissennato/file.xml"));
 

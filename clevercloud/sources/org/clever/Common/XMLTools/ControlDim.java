@@ -21,80 +21,103 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package org.clever.Common.XMLTools;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 import org.apache.log4j.Logger;
+import org.clever.Common.Exceptions.CleverException;
 import org.clever.Common.S3tools.S3Tools;
+
 /**
  *
  * @author apanarello
  */
-public class ControlDim implements Runnable{
+public class ControlDim implements Runnable {
+
     private final Logger logger;
-    public HashMap<Byte,String> urlMap;
+    public HashMap<Byte, String> urlMap;
     int numThread;
     private String fileName;
     ArrayList<String> filePathS;
-    S3Tools s3t =null;
-    String bucket=null;
+    S3Tools s3t = null;
+    String bucket = null;
+    File files = null;
+    String fileSmil = "";
+    String home = "/home/apanarello/";
 
-        public ControlDim(Logger log, int i, HashMap m,String bucket, String nameF, S3Tools s3t) {
-            this.urlMap=m;
-            this.numThread=i;
-            this.logger=log;
-            logger.debug("Object "+this+" creato");
-            this.fileName=nameF;
-            this.s3t=s3t;
-            this.bucket=bucket;
-        }
-
-        @Override
-        public void run() {
-            
-            try {
-                
-                //logger.debug("BEFORE WHILE LOOP: "+"URLMAP SIZE: "+urlMap.size()+" Num thread : "+ numThread);
-                
-                while (urlMap.isEmpty()) 
-                    Thread.sleep(10000);
-                while (urlMap.size()<numThread){
-                    logger.debug("INTO WHILE LOOP: "+"URLMAP SIZE: "+urlMap.size());
-                    try {
-                        logger.debug("Into Cycle controll "+this+"\\\\ Actually Hash table size is: "+urlMap.size()+" and the number of thread which are terminated is: "+numThread);
-                        Thread.sleep(5000);
-                    } catch (InterruptedException ex) {
-                        logger.error("error in threar sleep", ex);
-                    }
-                }
-                logger.debug("Create smil object...urlmap-size is: "+urlMap.size());
-               
-                String fileSmil="";
-                SmilXML smil = new SmilXML(logger,urlMap,fileName);
-                logger.debug("Created smil object and start to create SMIL XML FILE");
-                fileSmil=smil.createSmil();
-                s3t.uploadFile("/home/apanarello/"+fileSmil,this.bucket , fileSmil);
-                
-                
-                logger.debug("Create smil file");
-            } catch (FileNotFoundException ex) {
-                logger.error("File non found in method smil.createSmil", ex);
-            } catch (ClassNotFoundException ex) {
-                logger.error("Error in  smil.createSmil", ex);;
-            } catch (Exception ex) {
-                logger.error("Error in  run method", ex);
-            }
-            /*try {
-                s3t.uploadFile(fileBuffer, pass, bucketName, fileNameS3);
-            } catch (IOException ex) {
-                logger.error("Error during upload smil in Amazon S3",ex);
-            } catch (CleverException ex) {
-                logger.error("Error during upload smil in Amazon S3", ex);
-            }
-             */      
-        }
+    public ControlDim(Logger log, int i, HashMap m, String bucket, String nameF, S3Tools s3t) {
+        this.urlMap = m;
+        this.numThread = i;
+        this.logger = log;
+        logger.debug("Object " + this + " creato");
+        this.fileName = nameF;
+        this.s3t = s3t;
+        this.bucket = bucket;
     }
+
+    @Override
+    public void run() {
+
+        try {
+
+                //logger.debug("BEFORE WHILE LOOP: "+"URLMAP SIZE: "+urlMap.size()+" Num thread : "+ numThread);
+            while (urlMap.isEmpty()) {
+                Thread.sleep(10000);
+            }
+            while (urlMap.size() < numThread) {
+                logger.debug("INTO WHILE LOOP: " + "URLMAP SIZE: " + urlMap.size());
+                try {
+                    logger.debug("Into Cycle controll " + this + "\\\\ Actually Hash table size is: " + urlMap.size() + " and the number of thread which are terminated is: " + numThread);
+                    Thread.sleep(5000);
+                } catch (InterruptedException ex) {
+                    logger.error("error in threar sleep", ex);
+                }
+            }
+            logger.debug("Create smil object...urlmap-size is: " + urlMap.size());
+
+            SmilXML smil = new SmilXML(logger, urlMap, fileName);
+            logger.debug("Created smil object and start to create SMIL XML FILE");
+            fileSmil = smil.createSmil(this.home);
+            s3t.uploadFile(this.home + fileSmil, "outputfederation", fileSmil);
+        //solo per misureeeeeee   
+            //this.wait(10000);
+            logger.debug("Entro in deleteFile");
+            s3t.deleteFile("outputfederation");
+        //solo per misureeeeeee
+        
+        } catch (FileNotFoundException ex) {
+            logger.error("File non found in method smil.createSmil", ex);
+        } catch (ClassNotFoundException ex) {
+            logger.error("Error in  smil.createSmil", ex);;
+        } catch (Exception ex) {
+            logger.error("Error in  run method", ex);
+        }
+        try {
+            files = new File(home + fileSmil);
+            if (files.delete()) {
+                logger.debug("deleted file from fisical fs: " + home + fileSmil);
+            } else {
+                throw new CleverException("ERROR DURING DELETING FILE");
+            }
+        } catch (CleverException ex) {
+             logger.error("ERROR DURING DELETING SMIL FILE -1 ", ex);
+        }
+        catch (Exception ex) {
+            logger.error("ERROR DURING DELETING SMIL FILE -2", ex);
+        } 
+        /*try {
+         s3t.uploadFile(fileBuffer, pass, bucketName, fileNameS3);
+         } catch (IOException ex) {
+         logger.error("Error during upload smil in Amazon S3",ex);
+         } catch (CleverException ex) {
+         logger.error("Error during upload smil in Amazon S3", ex);
+         }
+         */
+    }
+}
