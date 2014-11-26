@@ -1087,27 +1087,31 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
             } catch (IOException ex) {
                 this.logger.warn("can't write timestamp log: " + ex.getMessage());
             }
+
             for (long i = startByte; i < (endByte); i = i + div) {
                 dest = new Path(home + file + "-part-" + p + "-" + part + format);
                 s3.getFileFromS3(fileBuffer, dest.toString(), bucket, fileS3Name, i, (i + div));
                 paths.add(file + "-part-" + p + "-" + part + format);
                 part++;
             }
+
             //-------------------------------------------------
             try {
                 Timestamper.write("Time11-FineDownloadS3File");
             } catch (IOException ex) {
                 this.logger.warn("can't write timestamp log: " + ex.getMessage());
             }
-            //s3.getFileFromS3(fileBuffer, dest, bucket, fileS3Name, startByte, endByte);
+
             logger.debug("GET S3 eseguito con successo");
         } catch (IOException ex) {
             logger.error("Error in IO ", ex);
         }
+
         for (byte y = 0; y < paths.size(); y++) {
-            logger.debug("lista di paths: " + " path " + y + "= " + home + paths.get(y));
+            /*SOLO PROVE */ logger.debug("lista di paths: " + " path " + y + "= " + home + paths.get(y));
 
         }
+
         Process ps = null;
         File files = null;
         try {
@@ -1138,45 +1142,45 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
             } catch (IOException ex) {
                 this.logger.warn("can't write timestamp log: " + ex.getMessage());
             }
-            
+
             //cancello file scaricati da s3 dal sistema
-            for (byte y = 0; y < paths.size(); y++) {
-                files = new File(home + paths.get(y));
-                if (files.delete()) {
-                    logger.debug("deleted file: " + home + paths.get(y));
-                } else {
-                    throw new CleverException("ERROR DURING DELETING FILE");
+            if (ps.exitValue() == 0) {
+                for (byte y = 0; y < paths.size(); y++) {
+                    files = new File(home + paths.get(y));
+                    if (files.delete()) {
+                        logger.debug("deleted file: " + home + paths.get(y));
+                    } else {
+                        throw new CleverException("ERROR DURING DELETING FILE");
+                    }
                 }
+                logger.debug("PUTFILE ESEGUITO CON SUCCESSO: ");
+            } else {
+                throw new CleverException("ERROR  putting FILE in hadoop");
             }
-            logger.debug("PUTFILE ESEGUITO CON SUCCESSO: ");
 
             /*
-            * Solo per misure- Non eseguo il job---
-            * Ma faccio un get del file e lo taglio di un certa percentuale
-            *
-            *
-            *
-            */
-            
-            
-            
-            
-            
+             * Solo per misure- Non eseguo il job---
+             * Ma faccio un get del file e lo taglio di un certa percentuale
+             *
+             *
+             *
+             */
             //DOVREBBE ESSERE UN JOB DI HADOOP A FARE LA TRANSCODIFICA
-            logger.debug("DOVREI LANCIARE IL JOB" + " hadoop jar " + home + jobName + " com.manuh.vidproc.DirectVideoProcessor /input/ /output/");
+            logger.debug("LANCIAO IL JOB" + " hadoop jar " + home + jobName + " com.manuh.vidproc.DirectVideoProcessor /input/ /output/");
             //this.wait(10000);
 
             //___________---------------
-            ps = Runtime.getRuntime().exec("hadoop jar " + home + "Transcodifica/dist/Transcodifica.jar" + " com.manuh.vidproc.DirectVideoProcessor /input /output");
+/*ORIGINALE CORRETTA*/ ps = Runtime.getRuntime().exec("hadoop jar " + home + "Transcodifica/dist/Transcodifica.jar" + " com.manuh.vidproc.DirectVideoProcessor /input /output");
+            /*SOLO PROVE*/ //ps = Runtime.getRuntime().exec("touch /home/apanarello/provaInput");
 
-            //ps = Runtime.getRuntime().exec("hadoop jar " + home + "HadoopVideoTranscode/dist/VideoTranscode.jar" + " com.manuh.vidproc.DirectVideoProcessor /input/ /output");
+            /*SOLO PROVE*/ //ps = Runtime.getRuntime().exec("hadoop fs -put /home/apanarello/provaInput /output/ ");
             ps.waitFor();
 
             //___________---------------
-            logger.debug("JOB DONE - try to cancel local files. exit value: " + ps.exitValue());
+            logger.debug("JOB DONE - try to delete files from HDFS. exit value: " + ps.exitValue());
             if (ps.exitValue() == 0) {
 
-                logger.debug("JOB DONE - try to cancel local files.");
+                logger.debug("JOB DONE - try to cancel HDFS files.");
 
                 ps = Runtime.getRuntime().exec("hadoop fs -rm /input/*");
                 ps.waitFor();
@@ -1188,10 +1192,12 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
                     }
                     for (byte y = 0; y < paths.size(); y++) {
                         fileAfterTranscode = paths.get(y).substring(0, paths.get(y).indexOf(".")) + ".mpeg";
-                        ps = Runtime.getRuntime().exec("hadoop fs -get /output/" + paths.get(y) + " " + home + fileAfterTranscode);
+/*ORIGINALE CORRETTA*/  ps = Runtime.getRuntime().exec("hadoop fs -get /output/" + paths.get(y) + " " + home + fileAfterTranscode);
+                        //logger.debug("----SONO prima del get provaInputGet");
+/*SOLO PROVE*/          //ps = Runtime.getRuntime().exec("hadoop fs -get /output/provaInput /home/apanarello/provaInputGet");
                         ps.waitFor();
-                        filePaths.add(fileAfterTranscode);
-                        urList.add("https://s3.amazonaws.com/" + bucket + "/" + fileAfterTranscode);
+                        /*ORIGINALE CORRETTA*/ filePaths.add(fileAfterTranscode);
+                        urList.add("https://s3.amazonaws.com/" + bucket + "/" + filePaths.get(y));
 
                         logger.debug("url added to arryalist= " + "https://s3.amazonaws.com/" + bucket + "/" + fileAfterTranscode);
                         if (ps.exitValue() == 0) {
@@ -1249,20 +1255,19 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
                  }
                 
                  */
-                //faccio upload su S3 dei file transcodificati
+                /*------faccio upload su S3 dei file transcodificati--------*/
                 try {
                     for (int y = 0; y < filePaths.size(); y++) {
 
                         s3.uploadFile(home + filePaths.get(y), "outputfederation", filePaths.get(y));
-
                     }
                 } catch (Exception ex) {
                     logger.error("Error during uploading s3file", ex);
-
                 }
-                //fileAfterMerge = "transcoded_" + file + "-" + p + ".mpeg";
-                
-                //cancello file trascodificato dal sistema
+
+/*SOLO PROVE*/ //s3.uploadFile(home + "provaInputGet", "outputfederation", "provaInputGet");
+
+                /*------cancello file trascodificato dal sistema----------*/
                 for (int y = 0; y < filePaths.size(); y++) {
                     files = new File(home + filePaths.get(y));
                     if (files.delete()) {
@@ -1271,12 +1276,11 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
                         throw new CleverException("ERROR DURING DELETING FILE");
                     }
                 }
+
             } else {
                 throw new CleverException("Error to exec hadoop jar; exec has returned " + ps.exitValue());
             }
 
-            //Eseguo File SH che carica il file su hadoop, fa partire il job e poi alla fine riposizione il file nel fs locale
-            //Runtime.getRuntime().exec("hadoop fs -put "+ dest +" /output-"+ p);
             //Runtime.getRuntime().exec("ffmpeg -i " + dest + " -acodec copy -vcodec mpeg4" + " /home/dissennato/output-" + p);
         } catch (RuntimeException ex) {
             logger.error("Error to exec ffmpeg transcode");
@@ -1285,13 +1289,9 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
         } catch (InterruptedException ex) {
             logger.error("Error to exec hadoop put pswaitfor");
         }
-        //s3.uploadFile(fileBuffer, dest, bucket, destAfterTranscode);
-
-        //     
-        //....
+        
         logger.debug("SONO NEL DOMINIO,METODO" + this.getClass().getMethods().toString());
-        //url = "https://s3.amazonaws.com/" + bucket + "/" + fileAfterMerge;
-        //logger.debug("Sono in submitJob, con URL: " + url + "// E -BucketName= " + bucket + " - fileName= " + fileAfterMerge + " -PartFile= " + p);
+        
         return urList;
     }
 

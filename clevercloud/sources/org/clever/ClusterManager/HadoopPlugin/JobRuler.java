@@ -221,7 +221,7 @@ public class JobRuler implements Runnable {
         s3t.getAuth(fileBuffer);
         this.logger.debug("Autenticazione S3 fatta");
         long size;
-        size = s3t.getInfo(fileNameS3,bucketName);
+        size = s3t.getInfo(fileNameS3, bucketName);
         this.logger.debug("size ricavata file - Chiamo il metodo calcWeights per il calcolo dei frammenti");
         //logger.debug("VERIFICO VALORE array domRES: " + fedRes[0][0] + "con numero VM: " + fedRes[0][1]);
         try {
@@ -229,7 +229,11 @@ public class JobRuler implements Runnable {
         } catch (IOException ex) {
             this.logger.warn("can't write timestamp log: " + ex.getMessage());
         }
+        try{
         domWeights = calcWeights(fedRes, size);
+        }catch(CleverException ex){
+        throw new CleverException(" Nessuno Dominio Federato Presente in chat");
+        }
         try {
             Timestamper.write("Time05-FineCalcoloBlock");
         } catch (IOException ex) {
@@ -312,7 +316,6 @@ public class JobRuler implements Runnable {
 
         ControlDim cDim = new ControlDim(this.logger, domWeights.size(), urlMap, bucketName, fileNameS3, s3t);
         new Thread(cDim).start();
-        
 
     }
 
@@ -354,7 +357,7 @@ public class JobRuler implements Runnable {
                 this.logger.warn("can't write timestamp log: " + ex.getMessage());
             }
             this.logger.debug("Sto per lanciare L'invoke con i seguenti parametri: " + fedParms.get(0).toString() + ";" + fedParms.get(1).toString() + ";" + fedParms.get(2).toString() + ";" + fedParms.get(3).toString());
-             try {
+            try {
                 Timestamper.write("Time07-Time08-InizioInoltroaA-" + fedParms.get(0));
             } catch (IOException ex) {
                 this.logger.warn("can't write timestamp log: " + ex.getMessage());
@@ -441,12 +444,12 @@ public class JobRuler implements Runnable {
      * @return
      * @throws java.io.IOException
      */
-    public ArrayList<Dataweight> calcWeights(String domR[][], long size) throws IOException {
+    public ArrayList<Dataweight> calcWeights(String domR[][], long size) throws IOException, CleverException {
 
         ArrayList<Dataweight> tempArray = new ArrayList<Dataweight>();
         ArrayList<Dataweight> tempArray2 = new ArrayList<Dataweight>();
         Dataweight dataWeight = null;
-        //String localdomain;
+        String localdomain;
         //long locWeight;
         logger.debug("Calculate num chunks for each domain");
         //locWeight = local;
@@ -460,7 +463,7 @@ public class JobRuler implements Runnable {
             logger.debug("Creato Iterator per TempARRAy");
             logger.debug("domR[][] size= " + domR.length);
             //int numDom = domRes.size();
-            //localdomain = localDomains();
+            localdomain = localDomains();
             // logger.debug("VALORI da aggiungere all'array sono: " + localdomain + " con peso " + locWeight);
             // tempArray.add(new Dataweight(localdomain, (int) (locWeight)));
             //logger.debug("Aggiunto alla lista : " + tempArray.get(0).getDomain() + " con valore: " + tempArray.get(0).getWeight());
@@ -468,13 +471,33 @@ public class JobRuler implements Runnable {
                 for (int j = 0; j < domR.length; j++) {
                     tempArray.add(new Dataweight(domR[j][0], Integer.parseInt(domR[j][1])));
 
-                    logger.debug("Aggiunto alla lista : " + tempArray.get(0).getDomain() + " con valore: " + tempArray.get(0).getWeight());
+                    logger.debug("Ciclo "+j+" --Aggiunto alla lista :  " + tempArray.get(j).getDomain() + " con valore: " + tempArray.get(j).getWeight());
                 }
                 logger.debug("PRIMA DEL FOR");
                 //it = tempArray.iterator();
             } catch (Exception e) {
                 logger.error("Error in calcWeights", e);
             }
+
+            ///////////////////////////////////////////////////////
+            ////SOLO PER MISURE SI ESCLUDE IL DOMINIO LOCALE///////
+            ///////////////////////////////////////////////////////
+            int d = tempArray.size(); ////elimino il dominio locale 
+            for (c = 0; c < d; c++) {
+
+                if ((tempArray.get(c).getDomain()).equals(localdomain)) {
+                       logger.debug("elimino il dominio locale "+tempArray.get(c).getDomain()+" dal calcolo: ");
+                    tempArray.remove(c);
+                    d = d - 1;
+                    c = c - 1;
+
+                }
+
+            }
+
+            ///////////////////////////////////////////////////////
+            ////SOLO PER MISURE SI ESCLUDE IL DOMINIO LOCALE///////
+            ///////////////////////////////////////////////////////
             for (c = 0; c < tempArray.size(); c++) {
 
                 //logger.debug("DENTRO WHILE");
@@ -488,56 +511,62 @@ public class JobRuler implements Runnable {
 
             ////versione con blocchi di guali di dim per dominio
            /*
-            long block;
-            block = size / tempArray.size();
+             long block;
+             block = size / tempArray.size();
 
-            for (c = 0; c < tempArray.size(); c++) {
-                obTemp = tempArray.get(c);
-
-                logger.debug("calcolo il range per il dominio: " + obTemp.getDomain());
-                obTemp.setStart(block * c);
-                obTemp.setEnd(block * (c + 1));
-                tempArray2.add(obTemp);
-                //range[0][1] = (Long) (local * chunck);
-                //weight.put("localdomain", range);
-                logger.debug("added domain: " + obTemp.getDomain() + " and range :" + obTemp.getStart() + " - " + obTemp.getEnd() + " to ArrayList");
-
-            }
-*/
-            long chunck;
-            chunck = size / (sum);
-            logger.debug("Il chunck ha dimensione: " + chunck);
-             
              for (c = 0; c < tempArray.size(); c++) {
-
-             //logger.debug("DENTRO WHILE");
              obTemp = tempArray.get(c);
-             //obTemp = it.next();
-             //obTempPrev = (Dataweight) obTemp.clone();
-             //logger.debug("Effettuata copia oggetti");
-             if (c == 0) {
+
              logger.debug("calcolo il range per il dominio: " + obTemp.getDomain());
-             obTemp.setStart(0);
-             obTemp.setEnd((chunck * (obTemp.getWeight())));
+             obTemp.setStart(block * c);
+             obTemp.setEnd(block * (c + 1));
              tempArray2.add(obTemp);
              //range[0][1] = (Long) (local * chunck);
              //weight.put("localdomain", range);
              logger.debug("added domain: " + obTemp.getDomain() + " and range :" + obTemp.getStart() + " - " + obTemp.getEnd() + " to ArrayList");
 
-             } else {
-             obTemp.setStart(tempArray.get(c - 1).getEnd());
-             obTemp.setEnd(tempArray.get(c - 1).getEnd() + (chunck * obTemp.getWeight()));
-             //range[0][0] = range[0][1];
-             //range[0][1] = (chunck * ((Long) domRes.get(dom)));
-             tempArray2.add(obTemp);
-             this.logger.debug("added domain: " + obTemp.getDomain() + " and range :" + obTemp.getStart() + " - " + obTemp.getEnd() + " to ArrayList");
-
              }
-             this.logger.debug("It is filling range Array");
+             */
+            long chunck;
+            if (sum != 0) {
+                
+                chunck = size / (sum);
+                logger.debug("Il chunck ha dimensione: " + chunck);
 
-             }
+                for (c = 0; c < tempArray.size(); c++) {
+
+                    //logger.debug("DENTRO WHILE");
+                    obTemp = tempArray.get(c);
+                    //obTemp = it.next();
+                    //obTempPrev = (Dataweight) obTemp.clone();
+                    //logger.debug("Effettuata copia oggetti");
+                    if (c == 0) {
+                        logger.debug("calcolo il range per il dominio: " + obTemp.getDomain());
+                        obTemp.setStart(0);
+                        obTemp.setEnd((chunck * (obTemp.getWeight())));
+                        tempArray2.add(obTemp);
+                        //range[0][1] = (Long) (local * chunck);
+                        //weight.put("localdomain", range);
+                        logger.debug("added domain: " + obTemp.getDomain() + " and range :" + obTemp.getStart() + " - " + obTemp.getEnd() + " to ArrayList");
+
+                    } else {
+                        obTemp.setStart(tempArray.get(c - 1).getEnd());
+                        obTemp.setEnd(tempArray.get(c - 1).getEnd() + (chunck * obTemp.getWeight()));
+                        //range[0][0] = range[0][1];
+                        //range[0][1] = (chunck * ((Long) domRes.get(dom)));
+                        tempArray2.add(obTemp);
+                        this.logger.debug("added domain: " + obTemp.getDomain() + " and range :" + obTemp.getStart() + " - " + obTemp.getEnd() + " to ArrayList");
+
+                    }
+                    this.logger.debug("It is filling range Array");
+
+                }
+                this.logger.debug("Finish Calculate chunck per domains");
+            }
+            else{
+            throw new CleverException("Nessun Dominio a cui lanciare il job");
             
-            this.logger.debug("Finish Calculate chunck per domains");
+            }
 
 //        
         } catch (NullPointerException ex) {
@@ -545,6 +574,8 @@ public class JobRuler implements Runnable {
         }
         return tempArray2;
     }
+
+   
     /**
      * Buffer
      */

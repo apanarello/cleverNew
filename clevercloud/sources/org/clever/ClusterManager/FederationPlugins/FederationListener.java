@@ -107,12 +107,21 @@ public class FederationListener implements FederationListenerPlugin {
     @Override
     public ArrayList<String> getFederatedCM (){
     logger.debug("Sono nel mio get FederatedCM");
-    return this.getFederatedCMs();
+    return this.getAllFederatedCM();
     }
     
+    private ArrayList<String> getAllFederatedCM () {
+    ArrayList<String> a = new ArrayList<String>();
+        a=this.conn.getAllFederatedCMs();
+        //logger.debug("a.size= "+a.size());
+        //logger.debug("a.value= "+a.get(0));
+        return a;
+    }
+            
+            
     private ArrayList<String> getFederatedCMs () {
         ArrayList<String> a = new ArrayList<String>();
-        a=this.conn.getAllFederatedCMs();
+        a=this.conn.getFederatedCMs();
         //logger.debug("a.size= "+a.size());
         //logger.debug("a.value= "+a.get(0));
         return a;
@@ -318,7 +327,8 @@ public class FederationListener implements FederationListenerPlugin {
     @Override
     public void initAsActive () {
         try {
-            ArrayList<String> federatedCMs = this.getFederatedCMs();
+            ArrayList<String> federatedCMs = this.getAllFederatedCM();
+            logger.debug("\n\n\n\n\n\nRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"+federatedCMs.get(0)+"RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
             ArrayList<Object> params = new ArrayList<Object>();
             //Check if the agent node exists
             params.add(FederationListener.agentName);
