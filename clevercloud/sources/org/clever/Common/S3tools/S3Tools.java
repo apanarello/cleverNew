@@ -301,6 +301,7 @@ public class S3Tools {
 //        if (s3==null) s3=getAuth(fileRoot);
         logger.debug("Authentication done with amazon: " + this.toString());
         File f = new File(srcPath);
+        try{
         PutObjectRequest req = new PutObjectRequest(bucket, destFileName, f);
         ObjectMetadata metadata = new ObjectMetadata();
         metadata.setContentLength(f.length());
@@ -309,6 +310,11 @@ public class S3Tools {
 
         logger.debug("Uploading a new object to S3 from a file\n");
         s3.putObject(req);
+        }
+        catch(AmazonClientException ex){
+                    logger.debug("ERRORE in upload file S3",ex);
+
+        }
 
     }
 

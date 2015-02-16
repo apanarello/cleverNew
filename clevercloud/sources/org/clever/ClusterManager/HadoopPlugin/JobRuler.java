@@ -29,6 +29,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 import org.apache.log4j.Logger;
 import org.clever.ClusterManager.HadoopNamenode.HadoopNamenodeAgent;
 import org.clever.ClusterManager.HadoopNamenode.HadoopNamenodePlugin;
@@ -180,143 +181,155 @@ public class JobRuler implements Runnable {
     public void sendJob(String fileBuffer, String jobName, String bucketName, String fileNameS3, String user, String pass, Boolean forwardable) throws CleverException, IOException {
 
         //this.start = start;
-        //this.end = end;
-        this.logger.debug("SONO NEL SEND JOB ESTERNO");
-        try {
-            Timestamper.write("T01-inizioEsecuzioneSendJob");
-        } catch (IOException ex) {
-            this.logger.warn("can't write timestamp log: " + ex.getMessage());
-        }
-        if (!this.clientRuler.authenticate(user, pass)) {
-            throw new CleverException("Authentication failed with user: " + user);
-        }
-        this.logger.debug("Autenticazione fatta");
-        String domain = "";
-        String fedRes[][];
-        logger.debug("Initialization of Discovery");
-        FederationDiscovery fedDiscovery = new FederationDiscovery(this.logger, this, this.owner);
-        logger.debug("waiting for retrive num of vms per domain");
-        try {
-            Timestamper.write("Time02-inizioDiscovery");
-        } catch (IOException ex) {
-            this.logger.warn("can't write timestamp log: " + ex.getMessage());
-        }
+        for (byte h = 0; h < 30; h++) {  //this.end = end;
+            this.logger.debug("SONO NEL SEND JOB ESTERNO");
+            try {
+                Timestamper.write("T01-inizioEsecuzioneSendJob");
+            } catch (IOException ex) {
+                this.logger.warn("can't write timestamp log: " + ex.getMessage());
+            }
+            if (!this.clientRuler.authenticate(user, pass)) {
+                throw new CleverException("Authentication failed with user: " + user);
+            }
+            this.logger.debug("Autenticazione fatta");
+            String domain = "";
+            String fedRes[][];
+            logger.debug("Initialization of Discovery");
+            FederationDiscovery fedDiscovery = new FederationDiscovery(this.logger, this, this.owner);
+            logger.debug("waiting for retrive num of vms per domain");
+            try {
+                Timestamper.write("Time02-inizioDiscovery");
+            } catch (IOException ex) {
+                this.logger.warn("can't write timestamp log: " + ex.getMessage());
+            }
 
-        fedRes = fedDiscovery.startDiscovery();
-
-        try {
-            Timestamper.write("Time03-FineDiscovery");
-        } catch (IOException ex) {
-            this.logger.warn("can't write timestamp log: " + ex.getMessage());
-        }
-        ArrayList<Object> federationParams = new ArrayList<Object>();
-        ArrayList<Object> commandParams = new ArrayList<Object>();
-
-        logger.debug("Vms information retrived");
-
-        forwardable = false;
-        String[] login = null;
-        domWeights = new ArrayList<Dataweight>();
-        s3t = new S3Tools(this.logger);
-        s3t.getAuth(fileBuffer);
-        this.logger.debug("Autenticazione S3 fatta");
-        long size;
-        size = s3t.getInfo(fileNameS3, bucketName);
-        this.logger.debug("size ricavata file - Chiamo il metodo calcWeights per il calcolo dei frammenti");
-        //logger.debug("VERIFICO VALORE array domRES: " + fedRes[0][0] + "con numero VM: " + fedRes[0][1]);
-        try {
-            Timestamper.write("Time04-InizioCalcoloBlock");
-        } catch (IOException ex) {
-            this.logger.warn("can't write timestamp log: " + ex.getMessage());
-        }
-        try{
-        domWeights = calcWeights(fedRes, size);
-        }catch(CleverException ex){
-        throw new CleverException(" Nessuno Dominio Federato Presente in chat");
-        }
-        try {
-            Timestamper.write("Time05-FineCalcoloBlock");
-        } catch (IOException ex) {
-            this.logger.warn("can't write timestamp log: " + ex.getMessage());
-        }
-        Dataweight datTemp = null;
-        urlMap = new HashMap<Byte, ArrayList>();
-
-        this.logger.debug("Before For to launch thread, thread to launch are: " + domWeights.size());
-
-        for (byte i = 0; i < domWeights.size(); i++) {
-            this.logger.debug("CICLO NUMERO: " + i);
+            fedRes = fedDiscovery.startDiscovery();
 
             try {
-                datTemp = domWeights.get(i);
-                domain = datTemp.getDomain();// metto in domain il dominio contenuto in domWeights
-                this.logger.debug("Domain on which to launch jop is: " + domain);
+                Timestamper.write("Time03-FineDiscovery");
+            } catch (IOException ex) {
+                this.logger.warn("can't write timestamp log: " + ex.getMessage());
+            }
+            ArrayList<Object> federationParams = new ArrayList<Object>();
+            ArrayList<Object> commandParams = new ArrayList<Object>();
+
+            logger.debug("Vms information retrived");
+
+            forwardable = false;
+            String[] login = null;
+            domWeights = new ArrayList<Dataweight>();
+            s3t = new S3Tools(this.logger);
+            s3t.getAuth(fileBuffer);
+            this.logger.debug("Autenticazione S3 fatta");
+            long size;
+            size = s3t.getInfo(fileNameS3, bucketName);
+            this.logger.debug("size ricavata file - Chiamo il metodo calcWeights per il calcolo dei frammenti");
+            //logger.debug("VERIFICO VALORE array domRES: " + fedRes[0][0] + "con numero VM: " + fedRes[0][1]);
+            try {
+                Timestamper.write("Time04-InizioCalcoloBlock");
+            } catch (IOException ex) {
+                this.logger.warn("can't write timestamp log: " + ex.getMessage());
+            }
+            try {
+                domWeights = calcWeights(fedRes, size);
+            } catch (CleverException ex) {
+                throw new CleverException(" Nessuno Dominio Federato Presente in chat");
+            }
+            try {
+                Timestamper.write("Time05-FineCalcoloBlock");
+            } catch (IOException ex) {
+                this.logger.warn("can't write timestamp log: " + ex.getMessage());
+            }
+            Dataweight datTemp = null;
+            urlMap = new HashMap<Byte, ArrayList>();
+
+            this.logger.debug("Before For to launch thread, thread to launch are: " + domWeights.size());
+
+            for (byte i = 0; i < domWeights.size(); i++) {
                 this.logger.debug("CICLO NUMERO: " + i);
-                boolean t = domain.equals(localDomains());
-                if (t) {
-                    this.logger.debug(" domain.equals(localoDomains() is : " + t);
 
-                    try {
-                        long firstByte = datTemp.getStart();
-                        long lastByte = datTemp.getEnd();
+                try {
+                    datTemp = domWeights.get(i);
+                    domain = datTemp.getDomain();// metto in domain il dominio contenuto in domWeights
+                    this.logger.debug("Domain on which to launch jop is: " + domain);
+                    this.logger.debug("CICLO NUMERO: " + i);
+                    boolean t = domain.equals(localDomains());
+                    if (t) {
+                        this.logger.debug(" domain.equals(localoDomains() is : " + t);
 
-                        this.logger.debug("first =: " + datTemp.getStart() + " last: " + datTemp.getEnd());
-                        JobRuler nJobRuler = new JobRuler(t, fileBuffer, jobName, bucketName, fileNameS3, firstByte, lastByte, i, urlMap, datTemp.getWeight());
+                        try {
+                            long firstByte = datTemp.getStart();
+                            long lastByte = datTemp.getEnd();
+
+                            this.logger.debug("first =: " + datTemp.getStart() + " last: " + datTemp.getEnd());
+                            JobRuler nJobRuler = new JobRuler(t, fileBuffer, jobName, bucketName, fileNameS3, firstByte, lastByte, i, urlMap, datTemp.getWeight());
+                            nJobRuler.init(this.clientRuler, this.owner, this.logger);
+
+                            new Thread(nJobRuler).start();
+                            this.logger.debug("Thread LANCIATOOOOO");
+
+                            this.local = false;
+                        } catch (RuntimeException ex) {
+                            this.logger.debug("Error to launch Thread", ex);
+                        }
+                    } else {
+                        try {
+                            Timestamper.write("Time06-InizioPreparazioneInoltroaA-" + domain);
+                        } catch (IOException ex) {
+                            this.logger.warn("can't write timestamp log: " + ex.getMessage());
+                        }
+                        logger.info("Domain  choosen to send job is: " + domain);
+                        login = this.ownerPlugin.retrieveLoginInfo(domain);
+                        logger.info("Domain authentication info retrieved: user=" + login[0] + " pass=" + login[1]);
+                        logger.debug("Domain : " + domain + "has to transcode the following byte range : from " + datTemp.getStart() + "to" + datTemp.getEnd());
+
+                        federationParams.clear();
+                        commandParams.clear();
+                        commandParams.add(fileBuffer);
+                        commandParams.add(jobName);
+                        commandParams.add(bucketName);
+                        commandParams.add(fileNameS3);
+                        //commandParams.add(login[0]); //user
+                        //commandParams.add(login[1]); //userPass
+                        commandParams.add(datTemp.getStart());
+                        commandParams.add(datTemp.getEnd());
+                        commandParams.add(i);
+                        commandParams.add(datTemp.getWeight());
+
+                        federationParams.add(domain);
+                        federationParams.add(this.agentName);
+                        federationParams.add("sendJob");
+                        federationParams.add(true); //even if it's false. The reply isn't used in any case
+                        federationParams.add(commandParams);
+                        //part++;
+                        //JobRuler job = new JobRuler(federationParams);
+                        this.logger.debug("Try to launch thread to send command to federated domain: " + domain);
+                        JobRuler nJobRuler = new JobRuler(t, federationParams, i, urlMap);
                         nJobRuler.init(this.clientRuler, this.owner, this.logger);
-
                         new Thread(nJobRuler).start();
-                        this.local = false;
-                    } catch (RuntimeException ex) {
-                        this.logger.debug("Error to launch Thread", ex);
                     }
-                } else {
-                    try {
-                        Timestamper.write("Time06-InizioPreparazioneInoltroaA-" + domain);
-                    } catch (IOException ex) {
-                        this.logger.warn("can't write timestamp log: " + ex.getMessage());
-                    }
-                    logger.info("Domain  choosen to send job is: " + domain);
-                    login = this.ownerPlugin.retrieveLoginInfo(domain);
-                    logger.info("Domain authentication info retrieved: user=" + login[0] + " pass=" + login[1]);
-                    logger.debug("Domain : " + domain + "has to transcode the following byte range : from " + datTemp.getStart() + "to" + datTemp.getEnd());
 
-                    federationParams.clear();
-                    commandParams.clear();
-                    commandParams.add(fileBuffer);
-                    commandParams.add(jobName);
-                    commandParams.add(bucketName);
-                    commandParams.add(fileNameS3);
-                    //commandParams.add(login[0]); //user
-                    //commandParams.add(login[1]); //userPass
-                    commandParams.add(datTemp.getStart());
-                    commandParams.add(datTemp.getEnd());
-                    commandParams.add(i);
-                    commandParams.add(datTemp.getWeight());
-
-                    federationParams.add(domain);
-                    federationParams.add(this.agentName);
-                    federationParams.add("sendJob");
-                    federationParams.add(true); //even if it's false. The reply isn't used in any case
-                    federationParams.add(commandParams);
-                    //part++;
-                    //JobRuler job = new JobRuler(federationParams);
-                    this.logger.debug("Try to launch thread to send command to federated domain: " + domain);
-                    JobRuler nJobRuler = new JobRuler(t, federationParams, i, urlMap);
-                    nJobRuler.init(this.clientRuler, this.owner, this.logger);
-                    new Thread(nJobRuler).start();
+                } catch (CleverException ex) {
+                    logger.error("Error to start thread job", ex);
+                } catch (Exception ex) {
+                    logger.error("Error to start thread job", ex);
                 }
 
-            } catch (CleverException ex) {
-                logger.error("Error to start thread job", ex);
-            } catch (Exception ex) {
-                logger.error("Error to start thread job", ex);
+            }
+
+            ControlDim cDim = new ControlDim(this.logger, domWeights.size(), urlMap, bucketName, fileNameS3, s3t);
+            cDim.start();
+            synchronized (cDim) {
+                try {
+                    logger.error("Error to start thread job");
+                    cDim.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
             }
 
         }
-
-        ControlDim cDim = new ControlDim(this.logger, domWeights.size(), urlMap, bucketName, fileNameS3, s3t);
-        new Thread(cDim).start();
-
     }
 
     /**
@@ -351,14 +364,16 @@ public class JobRuler implements Runnable {
             ArrayList a = (ArrayList) fedParms.get(4);
             Byte n = (Byte) a.get(6);
             w = (Integer) a.get(7);
+            this.logger.debug("Sono nel thread per il dominio: " + fedParms.get(0));
+            String dom= fedParms.get(0).toString();
             try {
-                Timestamper.write("Time07-Time06-FinePreparazioneInoltroaA-" + fedParms.get(0));
+                Timestamper.write("Time07-FinePreparazioneInoltroaA-" + fedParms.get(0));
             } catch (IOException ex) {
                 this.logger.warn("can't write timestamp log: " + ex.getMessage());
             }
             this.logger.debug("Sto per lanciare L'invoke con i seguenti parametri: " + fedParms.get(0).toString() + ";" + fedParms.get(1).toString() + ";" + fedParms.get(2).toString() + ";" + fedParms.get(3).toString());
             try {
-                Timestamper.write("Time07-Time08-InizioInoltroaA-" + fedParms.get(0));
+                Timestamper.write("Time08-InizioInoltroaA-" + fedParms.get(0));
             } catch (IOException ex) {
                 this.logger.warn("can't write timestamp log: " + ex.getMessage());
             }
@@ -367,6 +382,13 @@ public class JobRuler implements Runnable {
                 //                reply = this.owner.invoke("FederationListenerAgent", "forwardCommandToDomainWithoutTimeout", true, fedParms);
                 this.logger.debug("Response of INVOKE IS: first element in arraylist is " + ((ArrayList) reply).get(0) + "---VALUE----: ");
                 this.logger.info("Command launched. Reply: " + reply);
+
+                try {
+                    this.logger.debug("Sto per scrivere il log del dominio: " + dom);
+                    Timestamper.write("Time17-riuscitoLancioSendJobSuDominioFederato - " + dom);
+                } catch (IOException ex) {
+                    this.logger.warn("can't write timestamp log: " + ex.getMessage());
+                }
                 if (reply != null && reply instanceof Exception) {
                     throw new CleverException((Exception) reply);
                 }
@@ -386,7 +408,7 @@ public class JobRuler implements Runnable {
             logger.debug("Aggiunto Url all'hash table: " + "chiave: " + n.byteValue() + " - Valore:  " + urlMap.get(n.byteValue()));
             this.logger.debug("INVOCATO FORWARD");
             try {
-                Timestamper.write("T17-riuscitoLancioSendJobSuDominioFederato");
+                Timestamper.write("T17-riuscitoLancioSendJobSuDominioFederato - " + fedParms.get(0));
             } catch (IOException ex) {
                 this.logger.warn("can't write timestamp log: " + ex.getMessage());
             }
@@ -471,7 +493,7 @@ public class JobRuler implements Runnable {
                 for (int j = 0; j < domR.length; j++) {
                     tempArray.add(new Dataweight(domR[j][0], Integer.parseInt(domR[j][1])));
 
-                    logger.debug("Ciclo "+j+" --Aggiunto alla lista :  " + tempArray.get(j).getDomain() + " con valore: " + tempArray.get(j).getWeight());
+                    logger.debug("Ciclo " + j + " --Aggiunto alla lista :  " + tempArray.get(j).getDomain() + " con valore: " + tempArray.get(j).getWeight());
                 }
                 logger.debug("PRIMA DEL FOR");
                 //it = tempArray.iterator();
@@ -486,7 +508,7 @@ public class JobRuler implements Runnable {
             for (c = 0; c < d; c++) {
 
                 if ((tempArray.get(c).getDomain()).equals(localdomain)) {
-                       logger.debug("elimino il dominio locale "+tempArray.get(c).getDomain()+" dal calcolo: ");
+                    logger.debug("elimino il dominio locale " + tempArray.get(c).getDomain() + " dal calcolo: ");
                     tempArray.remove(c);
                     d = d - 1;
                     c = c - 1;
@@ -529,7 +551,7 @@ public class JobRuler implements Runnable {
              */
             long chunck;
             if (sum != 0) {
-                
+
                 chunck = size / (sum);
                 logger.debug("Il chunck ha dimensione: " + chunck);
 
@@ -562,10 +584,9 @@ public class JobRuler implements Runnable {
 
                 }
                 this.logger.debug("Finish Calculate chunck per domains");
-            }
-            else{
-            throw new CleverException("Nessun Dominio a cui lanciare il job");
-            
+            } else {
+                throw new CleverException("Nessun Dominio a cui lanciare il job");
+
             }
 
 //        
@@ -575,7 +596,6 @@ public class JobRuler implements Runnable {
         return tempArray2;
     }
 
-   
     /**
      * Buffer
      */

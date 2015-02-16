@@ -142,7 +142,6 @@ public class FederationDiscovery {
         logger.debug("Nella chat sono presenti  : " + federatedCmsChat.size() + " cms \n");
         logger.debug("Numero domini dopo il controllo: " + dominiInDB.size());
         logger.debug("waiting for retrive num of vms per domain");
-
         for (int i = 0; i < dominiInDB.size(); i++) {
 
             fParams.clear();
@@ -173,17 +172,27 @@ public class FederationDiscovery {
                         domResources[i][0] = dominiInDB.get(i);
                         logger.debug("Lancio Invoke sul comando getNuHmPerDomain in federazione");
                         String a = String.valueOf(this.owner.invoke("FederationListenerAgent", "forwardCommandToDomainWithoutTimeout", true, fParams));
-                        /*
-                         * ///////////////////////////--------SOLO PER MISURE ACCCROCCHIO SIMULATO------------////////////////
-                         *    b=new BufferedReader(new FileReader("/home/........."));
-                         *    domResources[i][1] = b.readLine();
-                         *
-                         */
+                         logger.debug(" Invoke Remoto ritorna la stringa : " + a);
+                        /* */
+                         
+                        ///////////////////////////--------SOLO PER MISURE ACCCROCCHIO SIMULATO------------////////////////
+                       /* */
+                         if(!dominiInDB.get(i).equals("dominioA")) //il dominio A torna il numero effettivo di nodi
+                         try {
+                            /* */ b = new BufferedReader(new FileReader("/home/apanarello/"+dominiInDB.get(i)));
+                            /* */ a = b.readLine();
+                            /* */ logger.debug(" sostituisco con il valore letto da file : " + a);
+                        } /* */ catch (IOException ex) {
 
-                        logger.debug(" Invoke Remoto ritorna la stringa : " + a);
+                            logger.warn("WARNING file numHM NON ESISTE ---PROCEDO CON VALORE DI DEFAULT", ex);
+                            domResources[i][1] = a ;
+                            logger.debug(" - Il dominio ha " +a+" "+ dominiInDB.get(i) + "\n");
+                            return domResources;
+                        }
+
+                        logger.debug(" Invoke Remoto sul dominio "+dominiInDB.get(i)+" ritorna la stringa : " + a);
 
                         domResources[i][1] = a;
-                        logger.debug(" - " + federatedCmsChat.get(i) + "\n");
 
                         /*
                          * ///////////////////////////--------SOLO PER MISURE ACCCROCCHIO SIMULATO------------////////////////

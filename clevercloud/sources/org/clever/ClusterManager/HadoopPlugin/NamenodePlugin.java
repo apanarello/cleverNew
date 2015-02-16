@@ -1083,7 +1083,7 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
             //-----------------------------------------------
             long div = (endByte - startByte) / vm;
             try {
-                Timestamper.write("Time10-InizioDownloadS3File");
+                Timestamper.write("Time10-InizioDownloadS3FileChunk");
             } catch (IOException ex) {
                 this.logger.warn("can't write timestamp log: " + ex.getMessage());
             }
@@ -1097,7 +1097,7 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
 
             //-------------------------------------------------
             try {
-                Timestamper.write("Time11-FineDownloadS3File");
+                Timestamper.write("Time11-FineDownloadS3FileChunk");
             } catch (IOException ex) {
                 this.logger.warn("can't write timestamp log: " + ex.getMessage());
             }
@@ -1125,6 +1125,7 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
             for (byte y = 0; y < paths.size(); y++) {
                 ps = Runtime.getRuntime().exec("hadoop fs -put " + home + paths.get(y) + " /input/ ");
                 ps.waitFor();
+                this.logger.debug("put file su hadoop esito = "+ps.exitValue());
                 /*
                  try {
                  this.putFileInHDFS(home + paths.get(y), new Path("/input/"), paths.get(y));
@@ -1142,6 +1143,52 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
             } catch (IOException ex) {
                 this.logger.warn("can't write timestamp log: " + ex.getMessage());
             }
+            /**
+             * ********************************************
+             *********************************************
+             * SPLITTO IL FILE ALL 83% DI QUELLO INIZIALE**** SOLOO PER
+             * MISUREEEE**************************
+             * ******vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv**
+             */
+            /**/ long dim = 0;
+            /**/ File f = null;
+
+            /**/ for (byte y = 0; y < paths.size(); y++) {
+                /**/
+                try {
+                    f = new File(home + paths.get(y));
+                    this.logger.debug("file da tagliare: "+f.getPath());
+                    /**/ dim = f.length();//bytes
+                     this.logger.debug("dimensione iniziale file da tagliare: "+dim);
+                /**/ dim = dim / 1000;//Kbytes
+                this.logger.debug("dimensione iniziale file da tagliare  in KB: "+dim);
+                /**/ dim = (dim * 83) / 100;
+                this.logger.debug("dimensione taglio in KB: "+dim);
+                    /**/
+                    /**/
+                } catch (Exception ex) {
+                    logger.error("errore durante taglio del file ");
+                            
+                }
+                /**/
+                logger.debug("inizio taglio all 83% ");
+                /**/ ps = Runtime.getRuntime().exec("split -b " + dim + "KB -a 1 -d " + home + paths.get(y) + " " + home + paths.get(y));
+                /**/ ps.waitFor();
+                logger.debug("FILE tagliato all 83% ");
+                /**/ ps = Runtime.getRuntime().exec("hadoop fs -put " + home + paths.get(y) + "0" + " /output/" + paths.get(y));
+                logger.debug("file caricato su hadoop: " + home + paths.get(y) + "0");
+                /**/ ps.waitFor();
+                /**/
+                /**/            }
+            /**/
+            /**/ /**
+             * **^^^^^^^^^^^^^^^^^^^^^^^^^^^************
+             * ******************************************** SPLITTO IL FILE ALL
+             * 83% DI QUELLO INIZIALE**** SOLOO PER
+             * MISUREEEE**************************
+             * *********************************************
+             */
+
 
             //cancello file scaricati da s3 dal sistema
             if (ps.exitValue() == 0) {
@@ -1165,17 +1212,12 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
              *
              *
              */
-            //DOVREBBE ESSERE UN JOB DI HADOOP A FARE LA TRANSCODIFICA
             logger.debug("LANCIAO IL JOB" + " hadoop jar " + home + jobName + " com.manuh.vidproc.DirectVideoProcessor /input/ /output/");
             //this.wait(10000);
 
             //___________---------------
-/*ORIGINALE CORRETTA*/ ps = Runtime.getRuntime().exec("hadoop jar " + home + "Transcodifica/dist/Transcodifica.jar" + " com.manuh.vidproc.DirectVideoProcessor /input /output");
-            /*SOLO PROVE*/ //ps = Runtime.getRuntime().exec("touch /home/apanarello/provaInput");
-
-            /*SOLO PROVE*/ //ps = Runtime.getRuntime().exec("hadoop fs -put /home/apanarello/provaInput /output/ ");
-            ps.waitFor();
-
+/*ORIGINALE CORRETTA*/              //ps = Runtime.getRuntime().exec("hadoop jar " + home + "Transcodifica/dist/Transcodifica.jar" + " com.manuh.vidproc.DirectVideoProcessor /input /output");
+/*ORIGINALE CORRETTA*/            // ps.waitFor();
             //___________---------------
             logger.debug("JOB DONE - try to delete files from HDFS. exit value: " + ps.exitValue());
             if (ps.exitValue() == 0) {
@@ -1190,12 +1232,17 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
                     } catch (IOException ex) {
                         this.logger.warn("can't write timestamp log: " + ex.getMessage());
                     }
+                    try {
+                        Timestamper.write("Time14-InizioDownLoadDaHadoop");
+                    } catch (IOException ex) {
+                        this.logger.warn("can't write timestamp log: " + ex.getMessage());
+                    }
                     for (byte y = 0; y < paths.size(); y++) {
                         fileAfterTranscode = paths.get(y).substring(0, paths.get(y).indexOf(".")) + ".mpeg";
-/*ORIGINALE CORRETTA*/  ps = Runtime.getRuntime().exec("hadoop fs -get /output/" + paths.get(y) + " " + home + fileAfterTranscode);
-                        //logger.debug("----SONO prima del get provaInputGet");
-/*SOLO PROVE*/          //ps = Runtime.getRuntime().exec("hadoop fs -get /output/provaInput /home/apanarello/provaInputGet");
+                        /*ORIGINALE CORRETTA*/ ps = Runtime.getRuntime().exec("hadoop fs -get /output/" + paths.get(y) + " " + home + fileAfterTranscode);
+                        logger.debug("scaricato file: " + fileAfterTranscode);
                         ps.waitFor();
+
                         /*ORIGINALE CORRETTA*/ filePaths.add(fileAfterTranscode);
                         urList.add("https://s3.amazonaws.com/" + bucket + "/" + filePaths.get(y));
 
@@ -1210,6 +1257,28 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
                     logger.error("error to deletefile from hdfs ");
 
                 }
+                try {
+                    Timestamper.write("Time15-FineDownLoadDaHadoop");
+                } catch (IOException ex) {
+                    this.logger.warn("can't write timestamp log: " + ex.getMessage());
+                }
+                /**
+                 * ************************************************************************************************************************
+                 ************************************* SOLO PER MISURE
+                 * ***********************************************************************************
+                 * *******vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv*******************************
+                 */
+                logger.debug("cencello file da /output");
+                ps = Runtime.getRuntime().exec("hadoop fs -rm /output/*");
+                ps.waitFor();
+                logger.debug("cencellati file da /output");
+                /**
+                 * *****^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^**********************************************************************
+                 * ****************** SOLO PER MISUREEE
+                 * ****************************************************************************************
+                 * *************************************************************************
+                 * ************************************************************************************************
+                 */
 
                 /*
                  for (byte y = 0; y < paths.size(); y++) {
@@ -1264,8 +1333,12 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
                 } catch (Exception ex) {
                     logger.error("Error during uploading s3file", ex);
                 }
-
-/*SOLO PROVE*/ //s3.uploadFile(home + "provaInputGet", "outputfederation", "provaInputGet");
+                try {
+                    Timestamper.write("Time16-FineupLoadSuS3");
+                } catch (IOException ex) {
+                    this.logger.warn("can't write timestamp log: " + ex.getMessage());
+                }
+                /*SOLO PROVE*/ //s3.uploadFile(home + "provaInputGet", "outputfederation", "provaInputGet");
 
                 /*------cancello file trascodificato dal sistema----------*/
                 for (int y = 0; y < filePaths.size(); y++) {
@@ -1289,9 +1362,9 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
         } catch (InterruptedException ex) {
             logger.error("Error to exec hadoop put pswaitfor");
         }
-        
+
         logger.debug("SONO NEL DOMINIO,METODO" + this.getClass().getMethods().toString());
-        
+
         return urList;
     }
 
@@ -1334,7 +1407,7 @@ public class NamenodePlugin implements HadoopNamenodePlugin {
     public ArrayList sendJob(String fileBuffer, String jobName, String bucket, String fileS3Name, Long startByte, Long end, Byte p, Integer vm) throws CleverException {
 
         try {
-            Timestamper.write("Time09-Time06-FineInoltro");
+            Timestamper.write("Time09-FineInoltro");
         } catch (IOException ex) {
             this.logger.warn("can't write timestamp log: " + ex.getMessage());
         }

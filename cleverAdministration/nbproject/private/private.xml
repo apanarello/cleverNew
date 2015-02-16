@@ -8,8 +8,6 @@
             <file>file:/home/apanarello/Scrivania/progetto/FINITO/cleverAdministration/src/org/clever/administration/commands/SendJobCommand.java</file>
         </group>
         <group name="Federation"/>
-        <group name="DirectTranscodeHadoop">
-            <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/cleverAdministration/src/org/clever/administration/commands/SendJobCommandByXml.java</file>
-        </group>
+        <group name="DirectTranscodeHadoop"/>
     </open-files>
 </project-private>
