@@ -28,8 +28,8 @@ import org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator;
 import org.clever.Common.XMPPCommunicator.ConnectionXMPP;
 import org.clever.Common.XMPPCommunicator.ConnectionXMPP.ROOM;
 import org.clever.HostManager.HostCoordinator.HostCoordinator;
-import org.jivesoftware.smack.XMPPException;
-import org.jivesoftware.smackx.muc.ParticipantStatusListener;
+import org.clever.Common.smack.XMPPException;
+import org.clever.Common.smackx.muc.ParticipantStatusListener;
 
 /**
  *

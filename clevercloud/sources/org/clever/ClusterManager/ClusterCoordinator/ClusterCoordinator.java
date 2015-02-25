@@ -71,7 +71,7 @@ import org.clever.Common.XMPPCommunicator.ConnectionXMPP;
 import org.clever.Common.XMPPCommunicator.ConnectionXMPP.ROOM;
 import org.clever.Common.XMPPCommunicator.RoomListener;
 import org.jdom.Element;
-import org.jivesoftware.smack.packet.Presence.Mode;
+import org.clever.Common.smack.packet.Presence.Mode;
 
 
 /**

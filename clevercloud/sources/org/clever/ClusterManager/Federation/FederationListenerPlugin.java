@@ -36,25 +36,43 @@ import org.clever.Common.XMPPCommunicator.ConnectionXMPP;
  * @author Giovanni Volpintesta
  */
 public interface FederationListenerPlugin {
-    public void setOwner (Agent owner);
-    public void setLogger (Logger logger);
-    public void setConnection (ConnectionXMPP conn);
-    public void setDomain (String domain);
-    public void setDefaultTimeout (long t);
-    public void setAttempts (int n);
-    
-    public String[] addAsActiveCMandReply (String domain, String nick) throws CleverException;
-    public void initAsActive ();
 
-    public FederationReply forwardCommand (final String agent, final String command, final Boolean hasReply, final ArrayList params) throws CleverException;
-    public FederationReply forwardCommandWithTimeout (final String agent, final String command, final Boolean hasReply, final ArrayList params, Long timeout) throws CleverException;
-    public Object forwardCommandToDomain (final String domain, final String agent, final String command, final Boolean hasReply, final ArrayList params) throws CleverException;
-    public Object forwardCommandToDomainWithTimeout (final String domain, final String agent, final String command, final Boolean hasReply, final ArrayList params, Long timeout) throws CleverException;
-    public Object forwardCommandToDomainWithoutTimeout (final String domain, final String agent, final String command, final Boolean hasReply, final ArrayList params) throws CleverException;
+    public void setOwner(Agent owner);
+
+    public void setLogger(Logger logger);
+
+    public void setConnection(ConnectionXMPP conn);
+
+    public void setDomain(String domain);
+
+    public void setDefaultTimeout(long t);
+
+    public void setAttempts(int n);
+
+    public String[] addAsActiveCMandReply(String domain, String nick) throws CleverException;
+
+    public void initAsActive();
+
+    public FederationReply forwardCommand(final String agent, final String command, final Boolean hasReply, final ArrayList params) throws CleverException;
+
+    public FederationReply forwardCommandWithTimeout(final String agent, final String command, final Boolean hasReply, final ArrayList params, Long timeout) throws CleverException;
+
+    public Object forwardCommandToDomain(final String domain, final String agent, final String command, final Boolean hasReply, final ArrayList params) throws CleverException;
+
+
+    public Object forwardCommandToDomainWithTimeout(final String domain, final String agent, final String command, final Boolean hasReply, final ArrayList params, Long timeout) throws CleverException;
+
+    public Object forwardCommandToDomainWithoutTimeout(final String domain, final String agent, final String command, final Boolean hasReply, final ArrayList params) throws CleverException;
+
     public ArrayList<String> getFederatedDomains() throws CleverException;
+
     public ArrayList<String> getFederatedCM() throws CleverException;
+
     public HashMap<String, String> getFederatedCMinDB() throws CleverException;
-    public String getLocalDomainName()throws CleverException;
-    public void deleteDomain (String domain)throws CleverException;
+
+    public String getLocalDomainName() throws CleverException;
+
+    public void deleteDomain(String domain) throws CleverException;
+
     public int getNumHmPerDomain(String domain) throws CleverException;
 }

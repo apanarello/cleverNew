@@ -35,8 +35,8 @@ import org.apache.log4j.Logger;
 import org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator;
 import org.clever.Common.XMPPCommunicator.ConnectionXMPP;
 import org.clever.Common.XMPPCommunicator.ConnectionXMPP.ROOM;
-import org.jivesoftware.smack.XMPPException;
-import org.jivesoftware.smackx.muc.ParticipantStatusListener;
+import org.clever.Common.smack.XMPPException;
+import org.clever.Common.smackx.muc.ParticipantStatusListener;
 
 
 
@@ -105,7 +105,7 @@ public class Listener implements ParticipantStatusListener
       // and assign the owner privileges
       if ( name.startsWith( "cm" ) ) //qui nn deve controllare il nome bensì lo status!
       {
-        String jid = conn.getMultiUserChat().getOccupant( nickName ).getJid();
+        String jid = conn.getMultiUserChat().getOccupant( nickName, this.logger ).getJid();
         conn.getMultiUserChat().grantOwnership( jid ); //quindi far diventare moderatore il CM!
       }
     }

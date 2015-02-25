@@ -15,11 +15,17 @@
         </group>
         <group name="Federation"/>
         <group name="DirectTranscodeHadoop">
-            <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/ClusterManager/HadoopNamenode/HadoopNamenodePlugin.java</file>
+            <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/Common/XMPPCommunicator/ConnectionXMPP.java</file>
             <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/ClusterManager/HadoopPlugin/NamenodePlugin.java</file>
+            <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/ClusterManager/HadoopNamenode/HadoopNamenodePlugin.java</file>
             <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/ClusterManager/HadoopPlugin/JobRuler.java</file>
             <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/ClusterManager/Federation/FederationListenerAgent.java</file>
-            <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/Common/Timestamp/Timestamper.java</file>
+            <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/ClusterManager/Federation/FederationListenerPlugin.java</file>
+            <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/ClusterManager/FederationPlugins/FederationListener.java</file>
+            <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/Common/XMPPCommunicator/CleverMessage.java</file>
+            <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/Common/XMPPCommunicator/CleverChatListener.java</file>
+            <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/Common/XMPPCommunicator/CleverMessageHandler.java</file>
+            <file>file:/home/apanarello/NetBeansProjects/CleverWithHDFS/clevercloud/sources/org/clever/Common/XMPPCommunicator/SecurityCallback.java</file>
         </group>
     </open-files>
 </project-private>

@@ -32,9 +32,9 @@ package org.clever.Common.XMPPCommunicator;
 import org.apache.log4j.Logger;
 import org.clever.ClusterManager.ClusterCoordinator.ClusterCoordinator;
 import org.clever.Common.Exceptions.CleverException;
-import org.jivesoftware.smack.PacketListener;
-import org.jivesoftware.smack.packet.Message;
-import org.jivesoftware.smack.packet.Packet;
+import org.clever.Common.smack.PacketListener;
+import org.clever.Common.smack.packet.Message;
+import org.clever.Common.smack.packet.Packet;
 
 
 

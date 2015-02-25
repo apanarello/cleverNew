@@ -27,9 +27,9 @@ package org.clever.Common.XMPPCommunicator;
 
 import org.apache.log4j.Logger;
 
-import org.jivesoftware.smack.Chat;
-import org.jivesoftware.smack.MessageListener;
-import org.jivesoftware.smack.packet.Message;
+import org.clever.Common.smack.Chat;
+import org.clever.Common.smack.MessageListener;
+import org.clever.Common.smack.packet.Message;
 
 
 

@@ -37,8 +37,8 @@ import org.clever.Common.Communicator.Agent;
 import org.clever.Common.Communicator.CmAgent;
 import org.clever.Common.Exceptions.CleverException;
 import org.clever.Common.XMPPCommunicator.ConnectionXMPP;
-import org.jivesoftware.smack.packet.Presence;
-import org.jivesoftware.smackx.muc.Occupant;
+import org.clever.Common.smack.packet.Presence;
+import org.clever.Common.smackx.muc.Occupant;
 import org.apache.log4j.Logger;
 
 /**

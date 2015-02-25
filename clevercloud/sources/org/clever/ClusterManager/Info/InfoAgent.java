@@ -39,7 +39,7 @@ import org.clever.Common.Exceptions.CleverException;
 import org.clever.Common.Initiator.ModuleFactory.ModuleFactory;
 import org.clever.Common.Shared.HostEntityInfo;
 import org.clever.Common.XMPPCommunicator.ConnectionXMPP;
-import org.jivesoftware.smackx.muc.Occupant;
+import org.clever.Common.smackx.muc.Occupant;
 
 
 

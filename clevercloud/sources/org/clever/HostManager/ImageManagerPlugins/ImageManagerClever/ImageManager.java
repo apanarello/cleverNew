@@ -59,13 +59,13 @@ import org.clever.HostManager.Monitor.ResourceState;
 import org.clever.HostManager.NetworkManager.AdapterInfo;
 import org.clever.HostManager.NetworkManager.IPAddress;
 import org.jdom.Element;
-import org.jivesoftware.smack.XMPPException;
-import org.jivesoftware.smackx.filetransfer.FileTransfer.Status;
-import org.jivesoftware.smackx.filetransfer.FileTransferListener;
-import org.jivesoftware.smackx.filetransfer.FileTransferManager;
-import org.jivesoftware.smackx.filetransfer.FileTransferRequest;
-import org.jivesoftware.smackx.filetransfer.IncomingFileTransfer;
-import org.jivesoftware.smackx.filetransfer.OutgoingFileTransfer;
+import org.clever.Common.smack.XMPPException;
+import org.clever.Common.smackx.filetransfer.FileTransfer.Status;
+import org.clever.Common.smackx.filetransfer.FileTransferListener;
+import org.clever.Common.smackx.filetransfer.FileTransferManager;
+import org.clever.Common.smackx.filetransfer.FileTransferRequest;
+import org.clever.Common.smackx.filetransfer.IncomingFileTransfer;
+import org.clever.Common.smackx.filetransfer.OutgoingFileTransfer;
 //import org.safehaus.uuid.UUIDGenerator;
 
 /*

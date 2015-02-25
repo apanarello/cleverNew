@@ -35,8 +35,8 @@ import org.clever.Common.Exceptions.CleverException;
 import org.clever.Common.XMPPCommunicator.CleverMessage;
 import org.clever.Common.XMPPCommunicator.ConnectionXMPP;
 import org.clever.Common.XMPPCommunicator.NotificationOperation;
-import org.jivesoftware.smack.PacketListener;
-import org.jivesoftware.smack.packet.Packet;
+import org.clever.Common.smack.PacketListener;
+import org.clever.Common.smack.packet.Packet;
 
 /**
  *

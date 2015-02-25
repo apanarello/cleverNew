@@ -28,8 +28,8 @@ package org.clever.Common.XMPPCommunicator;
 import java.util.HashMap;
 import java.util.Iterator;
 import org.apache.log4j.Logger;
-import org.jivesoftware.smack.Chat;
-import org.jivesoftware.smack.ChatManagerListener;
+import org.clever.Common.smack.Chat;
+import org.clever.Common.smack.ChatManagerListener;
 
 
 public class CleverChatManagerListener implements ChatManagerListener

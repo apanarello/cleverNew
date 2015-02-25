@@ -51,7 +51,7 @@ import org.clever.HostManager.Dispatcher.DispatcherAgent;
 import org.clever.HostManager.Info.InfoAgent;
 import org.clever.HostManager.Test.TestAgent;
 import org.jdom.Element;
-import org.jivesoftware.smack.packet.Presence.Mode;
+import org.clever.Common.smack.packet.Presence.Mode;
 
 public class HostCoordinator implements CleverMessageHandler {
 

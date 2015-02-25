@@ -48,9 +48,9 @@ import org.clever.Common.XMPPCommunicator.MethodConfiguration;
 import org.clever.Common.XMPPCommunicator.OperationResult;
 import org.clever.Common.XMPPCommunicator.Result;
 import org.jdom.Element;
-import org.jivesoftware.smack.PacketListener;
-import org.jivesoftware.smack.packet.Packet;
-import org.jivesoftware.smack.util.StringUtils;
+import org.clever.Common.smack.PacketListener;
+import org.clever.Common.smack.packet.Packet;
+import org.clever.Common.smack.util.StringUtils;
 
 class RequestThread implements Runnable {
 
